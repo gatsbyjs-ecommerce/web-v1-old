@@ -9,16 +9,14 @@
     "gatsby-plugin-react-helmet": "^2.0.3",
     "react-helmet": "^5.2.0"
   },
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "lint": "eslint \"src/**/*.{js,jsx}\"",
-    "format": "prettier-eslint --write \"src/**/*.{js,jsx}\" \"**/*.{json,md}\"",
+    "lint": "eslint \"**/*.{js,jsx}\"",
+    "format": "prettier-eslint --write \"**/*.{js,jsx,json,md}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
