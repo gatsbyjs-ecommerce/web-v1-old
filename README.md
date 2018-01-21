@@ -1,6 +1,6 @@
 # gatsby-starter-strict
 
-The strict Gatsby starter
+A Gatsby starter with a set of strict linting and auto-formatting rules.
 
 For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/)
 
