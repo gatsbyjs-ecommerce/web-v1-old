@@ -1,8 +1,6 @@
 {
   "root": true,
-  "extends": [
-    "airbnb"
-  ],
+  "extends": ["airbnb"],
   "env": {
     "browser": true
   },
@@ -10,16 +8,16 @@
     "graphql": true
   },
   "settings": {
-    "import/core-modules": [
-      "prop-types",
-      "react"
-    ]
+    "import/core-modules": ["prop-types", "react"]
   },
   "rules": {
-    "jsx-a11y/anchor-is-valid": ["error", {
-      "components": ["Link"],
-      "specialLink": ["to"],
-      "aspects": ["noHref", "invalidHref", "preferButton"]
-    }]
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ]
   }
 }
