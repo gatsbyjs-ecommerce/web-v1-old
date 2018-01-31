@@ -7,17 +7,17 @@
     "format": "prettier-eslint --write \"**/*.{js,jsx,json,css,md}\""
   },
   "dependencies": {
-    "gatsby": "^1.9.158",
-    "gatsby-link": "^1.6.34",
-    "gatsby-plugin-react-helmet": "^2.0.3",
+    "gatsby": "^1.9.175",
+    "gatsby-link": "^1.6.35",
+    "gatsby-plugin-react-helmet": "^2.0.4",
     "react-helmet": "^5.2.0"
   },
   "devDependencies": {
-    "eslint": "^4.9.0",
+    "eslint": "^4.16.0",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^7.4.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.6.1",
     "prettier-eslint-cli": "^4.7.0"
   }
 }
