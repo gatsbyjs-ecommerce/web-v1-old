@@ -4,8 +4,7 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "lint": "eslint \"**/*.{js,jsx}\"",
-    "format": "prettier-eslint --write \"**/*.{js,jsx,json,css,md}\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "format": "prettier-eslint --write \"**/*.{js,jsx,json,css,md}\""
   },
   "dependencies": {
     "gatsby": "^1.9.158",
