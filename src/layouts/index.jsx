@@ -5,7 +5,7 @@ import Helmet from 'react-helmet';
 import Header from '../components/Header';
 import './index.css';
 
-const TemplateWrapper = ({ children }) => (
+const IndexLayout = ({ children }) => (
   <div>
     <Helmet
       title="Gatsby Strict Starter"
@@ -28,8 +28,8 @@ const TemplateWrapper = ({ children }) => (
   </div>
 );
 
-TemplateWrapper.propTypes = {
+IndexLayout.propTypes = {
   children: PropTypes.func.isRequired,
 };
 
-export default TemplateWrapper;
+export default IndexLayout;
