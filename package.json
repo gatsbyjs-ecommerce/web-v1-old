@@ -3,7 +3,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "lint": "eslint \"**/*.{js,jsx}\"",
+    "lint": "eslint --ignore-path .gitignore \"**/*.{js,jsx}\"",
     "format": "prettier-eslint --write \"**/*.{js,jsx,json,css,md}\""
   },
   "dependencies": {
