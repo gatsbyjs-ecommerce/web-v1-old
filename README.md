@@ -4,12 +4,12 @@ A starting point using ReactJs, bundled with awesome GatsbyJs.
 
 ## Stack
 
-* [GatsbyJ](https://zeit.co/blog/next)
-* [React.js](hhttps://www.gatsbyjs.org/)
+* [GatsbyJs](https://www.gatsbyjs.org/)
+* [React.js](https://reactjs.org/)
 
 ## To use
 
-* Fork or download this repo
+* Fork or download this repository
 * Ready!
 
 ## Setup
