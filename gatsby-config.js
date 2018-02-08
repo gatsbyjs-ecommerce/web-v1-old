@@ -1,35 +1,85 @@
+const config = require('./src/config/index.js');
+
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + Netlify CMS Starter',
+    title: config.siteName,
+    author: config.author,
+    description: config.description,
+    siteUrl: config.siteUrl,
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-offline`,
+    `gatsby-plugin-react-helmet`,
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: config.googleAnalytics,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: config.themeColor,
+        showSpinner: false,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/pages`,
-        name: 'pages',
+        name: `pages`,
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: `gatsby-transformer-remark`,
       options: {
-        path: `${__dirname}/src/img`,
-        name: 'images',
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 690,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+        ],
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-transformer-remark',
-      options: {
-        plugins: [],
-      },
+      resolve: `gatsby-plugin-netlify-cms`,
     },
     {
-      resolve: 'gatsby-plugin-netlify-cms',
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
+        name: config.siteName,
+        short_name: config.siteName,
+        description: config.description,
+        start_url: config.siteUrl,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: 'minimal-ui',
+        icons: [
+          {
+            src: '/img/logo-48.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: '/img/logo-1024.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
       },
     },
   ],

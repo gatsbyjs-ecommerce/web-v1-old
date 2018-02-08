@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+import config from '../config/index.js';
 import Header from '../components/Header';
 import './index.css';
 
@@ -16,11 +17,8 @@ const Container = styled.div`
 const IndexLayout = ({ children }) => (
   <div>
     <Helmet
-      title="Gatsby Strict Starter"
-      meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' },
-      ]}
+      title={config.siteName}
+      meta={[{ name: 'description', content: config.description }]}
     />
     <Header />
     <Container>{children()}</Container>

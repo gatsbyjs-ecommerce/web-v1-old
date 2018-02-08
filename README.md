@@ -14,6 +14,8 @@ A starting point using ReactJs, bundled with awesome GatsbyJs.
 * Fork or download this repository
 * Ready!
 
+To change site config `./config/index.js`
+
 ## Setup
 
 Run:

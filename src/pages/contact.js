@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'gatsby-link';
+import Helmet from 'react-helmet';
 
 function encode(data) {
   return Object.keys(data)
@@ -32,6 +33,7 @@ export default class ContactPage extends React.Component {
   render() {
     return (
       <div>
+        <Helmet title="Contact" />
         <h1>Contact</h1>
         <form
           name="contact"
