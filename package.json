@@ -1,6 +1,19 @@
 {
-  "private": true,
+  "name": "kickoff-gatsbyjs",
+  "description": "A react starting point using GatsbyJS",
+  "version": "1.0.0",
+  "author": "Parminder Klair",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/perminder-klair/kickoff-gatsbyjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/perminder-klair/kickoff-gatsbyjs/issues"
+  },
+  "homepage": "https://github.com/perminder-klair/kickoff-gatsbyjs#readme",
   "scripts": {
+    "start": "npm run develop",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "lint": "eslint --ignore-path .gitignore \"**/*.{js,jsx}\"",
@@ -17,7 +30,18 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.6.1",
     "prettier-eslint-cli": "^4.7.0"
-  }
+  },
+  "keywords": [
+    "npm",
+    "node",
+    "gatsbyjs",
+    "javascript",
+    "graphql",
+    "graphql",
+    "reactjs",
+    "boilerplate"
+  ]
 }
