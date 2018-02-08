@@ -4,5 +4,3 @@
 
 * Add NetfifyCMS
 * Add Contact form (formik, yup, webtask)
-* https://github.com/Vagr9K/gatsby-advanced-starter
-*
