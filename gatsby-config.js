@@ -13,7 +13,6 @@ module.exports = {
     'gatsby-plugin-feed',
     'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-netlify-cms',
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
@@ -54,6 +53,12 @@ module.exports = {
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
         ],
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-netlify-cms',
+      options: {
+        modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
   ],

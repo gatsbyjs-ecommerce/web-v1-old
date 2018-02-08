@@ -30,6 +30,8 @@ export default class IndexPage extends React.Component {
         <br />
         <Link to="/about">About</Link>
         <br />
+        <Link to="/contact">Contact</Link>
+        <br />
         <Link to="/page-2/">Go to page 2</Link>
       </div>
     );
