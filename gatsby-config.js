@@ -4,13 +4,12 @@ module.exports = {
     author: 'Parminder Klair',
     description:
       'A starting point using ReactJs, bundled with awesome GatsbyJs.',
-    siteUrl: 'https://www.mysite.com',
+    siteUrl: 'http://kickoff-gatsbyjs.netlify.com',
   },
   plugins: [
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    'gatsby-plugin-feed',
     'gatsby-plugin-offline',
     'gatsby-plugin-react-helmet',
     {

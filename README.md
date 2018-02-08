@@ -34,7 +34,7 @@ yarn start
 
 ```
 yarn run build
-yarn start
+yarn serve
 ```
 
 ## Admin panel
