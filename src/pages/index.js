@@ -26,7 +26,7 @@ export default class IndexPage extends React.Component {
         <h1>Hi people</h1>
         <p>Welcome to your new Gatsby site.</p>
         <p>Now go build something great.</p>
-        <Link to="/blog">Blog</Link>
+        <Link to="/posts">Blog</Link>
         <br />
         <Link to="/about">About</Link>
         <br />

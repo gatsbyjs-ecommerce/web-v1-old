@@ -1,6 +1,5 @@
 backend:
   name: git-gateway
-  repo: perminder-klair/kickoff-gatsbyjs
   branch: master
 
 media_folder: static/img
