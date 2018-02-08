@@ -4,18 +4,36 @@ module.exports = {
     author: 'Parminder Klair',
     description:
       'A starting point using ReactJs, bundled with awesome GatsbyJs.',
-    siteUrl: 'https://www.webonise.co.uk',
+    siteUrl: 'https://www.mysite.com',
   },
   plugins: [
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-feed',
+    'gatsby-plugin-offline',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify-cms',
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'YOUR_GOOGLE_ANALYTICS_TRACKING_ID',
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/pages`,
         name: 'pages',
       },
     },
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
@@ -36,21 +54,6 @@ module.exports = {
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
         ],
-      },
-    },
-    'gatsby-plugin-feed',
-    'gatsby-plugin-offline',
-    {
-      resolve: 'gatsby-plugin-google-analytics',
-      options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
-      },
-    },
-    'gatsby-plugin-react-helmet',
-    {
-      resolve: 'gatsby-plugin-netlify-cms',
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
       },
     },
   ],
