@@ -8,7 +8,7 @@
     "graphql": true
   },
   "settings": {
-    "import/core-modules": ["prop-types", "react"]
+    "import/core-modules": ["prop-types", "react", "graphql"]
   },
   "rules": {
     "jsx-a11y/anchor-is-valid": [
@@ -18,6 +18,11 @@
         "specialLink": ["to"],
         "aspects": ["noHref", "invalidHref", "preferButton"]
       }
-    ]
+    ],
+    "react/jsx-filename-extension": 0,
+    "react/prop-types": 0,
+    "react/no-danger": 0,
+    "class-methods-use-this": 0,
+    "react/prefer-stateless-function": 0
   }
 }

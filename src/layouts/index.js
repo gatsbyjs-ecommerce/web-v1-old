@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
-import config from '../config/index.js';
+import config from '../config/index';
 import Header from '../components/Header';
 import './index.css';
 
