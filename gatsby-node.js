@@ -27,7 +27,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     }
   `).then(result => {
     if (result.errors) {
-      result.errors.forEach(e => console.error(e.toString()));
+      result.errors.forEach(e => console.error(e.toString())); // eslint-disable-line
       return Promise.reject(result.errors);
     }
 
