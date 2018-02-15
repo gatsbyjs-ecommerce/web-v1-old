@@ -17,8 +17,8 @@
     "develop": "gatsby develop",
     "serve": "gatsby serve",
     "build": "gatsby build",
-    "lint": "eslint --ignore-path .gitignore \"**/*.{js,jsx}\"",
-    "format": "prettier-eslint --write \"**/*.{js,jsx,json,css,md}\""
+    "lint": "eslint --ignore-path .gitignore \"src/**/*.{js,jsx}\"",
+    "format": "prettier-eslint --write \"src/**/*.{js,jsx,json,css,md}\""
   },
   "dependencies": {
     "gatsby": "^1.9.184",
