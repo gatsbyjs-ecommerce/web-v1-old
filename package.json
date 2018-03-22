@@ -43,7 +43,8 @@
     "styled-components": "^3.2.3"
   },
   "devDependencies": {
-    "eslint": "^4.19.0",
+    "babel-eslint": "7",
+    "eslint": "3.x",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.9.0",
