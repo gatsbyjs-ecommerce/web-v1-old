@@ -1,22 +1,21 @@
 import React from 'react';
-import Link from 'gatsby-link';
+
+import HomeBanner from '../components/HomeBanner';
+import ProductsList from '../components/ProductsList';
+import HomeAbout from '../components/HomeAbout';
 
 export default class IndexPage extends React.Component {
   render() {
-    const { data } = this.props;
-    console.log('data', data);
+    const {
+      data: { allContentfulProduct: products },
+    } = this.props;
 
     return (
-      <div>
-        <h1>Hi people</h1>
-        <p>Welcome to your new Gatsby site.</p>
-        <p>Now go build something great.</p>
-        <Link to="/posts">Blog</Link>
-        <br />
-        <Link to="/about">About</Link>
-        <br />
-        <Link to="/contact">Contact</Link>
-      </div>
+      <React.Fragment>
+        <HomeBanner />
+        <ProductsList products={products.edges} />
+        <HomeAbout />
+      </React.Fragment>
     );
   }
 }

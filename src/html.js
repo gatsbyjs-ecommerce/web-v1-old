@@ -27,8 +27,34 @@ module.exports = class HTML extends React.Component {
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            content="width=device-width, initial-scale=1.0"
           />
+          <meta charSet="UTF-8" />
+          <meta name="author" content="Parminder Klair" />
+          <base href="/" target="_blank" />
+          <script
+            defer
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"
+          />
+          <script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@14/dist/smooth-scroll.polyfills.min.js" />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css"
+          />
+          <script
+            defer
+            src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700"
+            rel="stylesheet"
+          />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="/styles/image-gallery.css"
+          />
+          <link rel="stylesheet" type="text/css" href="/styles/style.css" />
           {this.props.headComponents}
           {css}
         </head>

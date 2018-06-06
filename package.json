@@ -29,6 +29,7 @@
     "gatsby-plugin-nprogress": "^1.0.14",
     "gatsby-plugin-offline": "^1.0.18",
     "gatsby-plugin-react-helmet": "^2.0.11",
+    "gatsby-plugin-react-next": "^1.0.11",
     "gatsby-plugin-sharp": "^1.6.46",
     "gatsby-plugin-styled-components": "^2.0.11",
     "gatsby-remark-copy-linked-files": "^1.5.35",
@@ -41,10 +42,14 @@
     "gatsby-transformer-sharp": "^1.6.26",
     "graphql-tag": "^2.9.2",
     "prismjs": "^1.14.0",
+    "react-accessible-accordion": "^2.4.2",
     "react-apollo": "^2.1.4",
     "react-helmet": "^5.2.0",
+    "react-image-gallery": "^0.8.8",
     "react-load-script": "^0.0.6",
-    "styled-components": "^3.3.2"
+    "react-spring": "^5.3.8",
+    "styled-components": "^3.3.2",
+    "underscore": "^1.9.1"
   },
   "devDependencies": {
     "babel-eslint": "7",

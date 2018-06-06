@@ -1,7 +1,13 @@
-import ApolloClient from "apollo-boost";
+import ApolloClient from 'apollo-boost';
+
+import Config from '../config';
+
+const GRAPHQL_URL = Config.DEBUG
+  ? Config.GRAPHQL_ENDPOINT_DEV
+  : Config.GRAPHQL_ENDPOINT;
 
 const client = new ApolloClient({
-  uri: "https://w5xlvm3vzz.lp.gql.zone/graphql"
+  uri: GRAPHQL_URL,
 });
 
 export default client;

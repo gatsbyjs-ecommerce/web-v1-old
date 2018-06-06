@@ -1,0 +1,10 @@
+body {
+  font-family: 'Muli', sans-serif !important;
+}
+
+.label {
+  font-weight: 500;
+}
+.button.is-large {
+  font-size: 1.3rem;
+}
