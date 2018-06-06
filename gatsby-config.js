@@ -27,10 +27,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-source-contentful`,
       options: {
-        path: `${__dirname}/src/pages`,
-        name: `pages`,
+        spaceId: `o6uhtcakujse`,
+        accessToken: `42627fbeb9475a7867204b28243ff40aa2aec93995ecac371eea9957dda734b2`,
       },
     },
     {

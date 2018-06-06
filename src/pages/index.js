@@ -3,6 +3,9 @@ import Link from 'gatsby-link';
 
 export default class IndexPage extends React.Component {
   render() {
+    const { data } = this.props;
+    console.log('data', data);
+
     return (
       <div>
         <h1>Hi people</h1>
@@ -17,3 +20,17 @@ export default class IndexPage extends React.Component {
     );
   }
 }
+
+export const indexQuery = graphql`
+  query Products {
+    allContentfulProduct(filter: { status: { eq: "active" } }) {
+      edges {
+        node {
+          id
+          title
+          slug
+        }
+      }
+    }
+  }
+`;

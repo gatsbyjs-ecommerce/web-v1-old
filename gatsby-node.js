@@ -5,44 +5,80 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
   return graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
+      allContentfulPages {
         edges {
           node {
-            excerpt(pruneLength: 400)
-            html
             id
-            frontmatter {
-              templateKey
-              path
-              date
-              title
-              description
+            title
+            slug
+            content {
+              id
+            }
+          }
+        }
+      }
+      allContentfulProduct {
+        edges {
+          node {
+            id
+            title
+            slug
+            status
+            originalPrice
+            discountPrice
+            shippingCost
+            color
+            rating
+            productCode
+            featuredImage {
+              id
+            }
+            otherImages {
+              id
+            }
+            shortDetails {
+              id
+            }
+            longDetails {
+              id
             }
           }
         }
       }
     }
-  `).then(result => {
+  `).then(async result => {
     if (result.errors) {
       result.errors.forEach(e => console.error(e.toString())); // eslint-disable-line
       return Promise.reject(result.errors);
     }
 
-    return result.data.allMarkdownRemark.edges.forEach(({ node }) => {
-      const pagePath = node.frontmatter.path;
+    // console.log('result', result);
+    result.data.allContentfulPages.edges.forEach(({ node }) => {
+      // console.log('node', node);
+      const pagePath = `page/${node.slug}`;
       createPage({
         path: pagePath,
-        component: path.resolve(
-          `src/templates/${String(node.frontmatter.templateKey)}.js`,
-        ),
+        component: path.resolve(`src/templates/page.js`),
         // additional data can be passed via context
         context: {
-          path: pagePath,
+          slug: node.slug,
         },
       });
     });
+
+    result.data.allContentfulProduct.edges.forEach(({ node }) => {
+      // console.log('node', node);
+      const pagePath = `product/${node.slug}`;
+      createPage({
+        path: pagePath,
+        component: path.resolve(`src/templates/product.js`),
+        // additional data can be passed via context
+        context: {
+          slug: node.slug,
+        },
+      });
+    });
+
+    return null;
   });
 };
