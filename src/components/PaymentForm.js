@@ -10,8 +10,6 @@ import styles from '../utils/styles';
 import Heading from '../components/Heading';
 import CheckoutProgress from '../components/CheckoutProgress';
 
-const scroll = new SmoothScroll();
-
 const Price = styled.div`
   color: ${styles.primaryColor};
   font-size: 1.5rem;
@@ -49,6 +47,7 @@ class PaymentForm extends React.Component {
     setTimeout(() => {
       this.setState({ isVisible: true });
 
+      const scroll = new SmoothScroll();
       scroll.animateScroll(isMobile ? 1100 : 450);
     }, 200);
   }
@@ -72,7 +71,7 @@ class PaymentForm extends React.Component {
         </Price>
         <CheckoutProgress activeStep="two" />
         <Cards className="has-text-centered">
-          <img src="/static/images/payment-strip.png" alt="payments cards" />
+          <img src="/images/payment-strip.png" alt="payments cards" />
         </Cards>
         <Spring
           native
