@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
 import { isUndefined } from 'underscore';
+import Link from 'gatsby-link';
 
 import styles from '../utils/styles';
 import { formatCurrency } from '../utils/helpers';
@@ -36,7 +37,7 @@ const OrderId = styled.span`
   color: ${styles.primaryColor};
 `;
 
-const BuyBtn = styled.button`
+const BuyBtn = styled(Link)`
   width: 100%;
   margin-top: 3rem;
 `;
@@ -62,7 +63,7 @@ class PaymentConfirmed extends React.Component {
 
   render() {
     const { isVisible } = this.state;
-    const { product } = this.props;
+    const { product, paymentData } = this.props;
 
     return (
       <React.Fragment>
@@ -84,13 +85,16 @@ class PaymentConfirmed extends React.Component {
                   Payment complete
                 </h3>
                 <p className="info">
-                  Order code is <OrderId>#123123</OrderId>
+                  Order code is <OrderId>#{paymentData.orderId}</OrderId>
                   <br />
                   Please check your email<br />
                   for delivery updates.
                 </p>
               </Result>
-              <BuyBtn className="button is-dark is-large is-radiusless is-uppercase">
+              <BuyBtn
+                to="/"
+                className="button is-dark is-large is-radiusless is-uppercase"
+              >
                 Continue Shopping
               </BuyBtn>
             </animated.div>

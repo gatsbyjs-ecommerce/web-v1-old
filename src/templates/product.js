@@ -39,7 +39,7 @@ class Product extends React.Component {
   }
 
   render() {
-    const { activeStep, isVisible, paymentData } = this.state;
+    const { activeStep, isVisible, paymentData, userData } = this.state;
     const {
       data: {
         contentfulProduct: product,
@@ -60,60 +60,63 @@ class Product extends React.Component {
     return (
       <React.Fragment>
         <Helmet title={`${product.title} | Sejal Suits`} />
-        <Container className="columns">
-          <div className="column is-two-fifths">
-            <Spring
-              native
-              from={{ opacity: 0, marginLeft: -100 }}
-              to={{
-                opacity: isVisible ? 1 : 0,
-                marginLeft: isVisible ? 0 : -100,
-              }}
-            >
-              {styles => (
-                <animated.div style={styles}>
-                  <ImageGallery
-                    items={images}
-                    thumbnailPosition="bottom"
-                    showPlayButton={false}
-                    showNav={false}
-                    showThumbnails={!isMobile}
-                    showFullscreenButton={!isMobile}
-                    showBullets={isMobile}
-                  />
-                </animated.div>
+        <div>
+          <Container className="columns">
+            <div className="column is-two-fifths">
+              <Spring
+                native
+                from={{ opacity: 0, marginLeft: -100 }}
+                to={{
+                  opacity: isVisible ? 1 : 0,
+                  marginLeft: isVisible ? 0 : -100,
+                }}
+              >
+                {styles => (
+                  <animated.div style={styles}>
+                    <ImageGallery
+                      items={images}
+                      thumbnailPosition="bottom"
+                      showPlayButton={false}
+                      showNav={false}
+                      showThumbnails={!isMobile}
+                      showFullscreenButton={!isMobile}
+                      showBullets={isMobile}
+                    />
+                  </animated.div>
+                )}
+              </Spring>
+            </div>
+            <div className="column section">
+              {activeStep === 1 && (
+                <ProductInfo
+                  home={home}
+                  product={product}
+                  handleCheckout={() => this.setState({ activeStep: 2 })}
+                />
               )}
-            </Spring>
-          </div>
-          <div className="column section">
-            {activeStep === 1 && (
-              <ProductInfo
-                home={home}
-                product={product}
-                handleCheckout={() => this.setState({ activeStep: 2 })}
-              />
-            )}
-            {activeStep === 2 && (
-              <CheckoutForm
-                product={product}
-                handlePayment={data =>
-                  this.setState({ activeStep: 3, userData: data })
-                }
-              />
-            )}
-            {activeStep === 3 && (
-              <PaymentForm
-                product={product}
-                handlePayment={data =>
-                  this.setState({ activeStep: 4, paymentData: data })
-                }
-              />
-            )}
-            {activeStep === 4 && (
-              <PaymentConfirmed product={product} paymentData={paymentData} />
-            )}
-          </div>
-        </Container>
+              {activeStep === 2 && (
+                <CheckoutForm
+                  product={product}
+                  handlePayment={data =>
+                    this.setState({ activeStep: 3, userData: data })
+                  }
+                />
+              )}
+              {activeStep === 3 && (
+                <PaymentForm
+                  product={product}
+                  userData={userData}
+                  handlePayment={data =>
+                    this.setState({ activeStep: 4, paymentData: data })
+                  }
+                />
+              )}
+              {activeStep === 4 && (
+                <PaymentConfirmed product={product} paymentData={paymentData} />
+              )}
+            </div>
+          </Container>
+        </div>
         <ProductsList title="We think you'll" products={products.edges} />
       </React.Fragment>
     );

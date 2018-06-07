@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
 import { isUndefined } from 'underscore';
+import { withFormik } from 'formik';
+import Yup from 'yup';
 
 import styles from '../utils/styles';
 import { formatCurrency } from '../utils/helpers';
@@ -45,17 +47,18 @@ class CheckoutForm extends React.Component {
     }, 200);
   }
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const { handlePayment } = this.props;
-
-    $('.checkout-form-btn').addClass('is-loading');
-    setTimeout(handlePayment, 350);
-  };
-
   render() {
     const { isVisible } = this.state;
-    const { product } = this.props;
+    const {
+      values,
+      touched,
+      errors,
+      isSubmitting,
+      handleSubmit,
+      handleChange,
+      handleBlur,
+      product,
+    } = this.props;
 
     return (
       <React.Fragment>
@@ -71,27 +74,54 @@ class CheckoutForm extends React.Component {
         >
           {stylesProps => (
             <animated.div style={stylesProps}>
-              <form className="section" onSubmit={this.handleSubmit}>
+              <form className="section" onSubmit={handleSubmit}>
                 <div className="field">
                   <label className="label">Full name</label>
                   <div className="control">
                     <input
                       className="input is-shadowless"
-                      type="text"
+                      name="fullName"
+                      value={values.fullName}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
                       autoFocus
                     />
+                    {errors.fullName &&
+                      touched.fullName && (
+                        <p className="help is-danger">{errors.fullName}</p>
+                      )}
                   </div>
                 </div>
                 <div className="field">
                   <label className="label">Address 1</label>
                   <div className="control">
-                    <input className="input is-shadowless" type="text" />
+                    <input
+                      className="input is-shadowless"
+                      name="address1"
+                      value={values.address1}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.address1 &&
+                      touched.address1 && (
+                        <p className="help is-danger">{errors.address1}</p>
+                      )}
                   </div>
                 </div>
                 <div className="field">
                   <label className="label">Address 2</label>
                   <div className="control">
-                    <input className="input is-shadowless" type="text" />
+                    <input
+                      className="input is-shadowless"
+                      name="address2"
+                      value={values.address2}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.address2 &&
+                      touched.address2 && (
+                        <p className="help is-danger">{errors.address2}</p>
+                      )}
                   </div>
                 </div>
                 <div className="field is-horizontal">
@@ -99,13 +129,33 @@ class CheckoutForm extends React.Component {
                     <div className="field">
                       <label className="label">City</label>
                       <div className="control">
-                        <input className="input is-shadowless" type="text" />
+                        <input
+                          className="input is-shadowless"
+                          name="city"
+                          value={values.city}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {errors.city &&
+                          touched.city && (
+                            <p className="help is-danger">{errors.city}</p>
+                          )}
                       </div>
                     </div>
                     <div className="field">
                       <label className="label">Postcode</label>
                       <div className="control">
-                        <input className="input is-shadowless" type="text" />
+                        <input
+                          className="input is-shadowless"
+                          name="postcode"
+                          value={values.postcode}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {errors.postcode &&
+                          touched.postcode && (
+                            <p className="help is-danger">{errors.postcode}</p>
+                          )}
                       </div>
                     </div>
                   </div>
@@ -115,13 +165,33 @@ class CheckoutForm extends React.Component {
                     <div className="field">
                       <label className="label">State</label>
                       <div className="control">
-                        <input className="input is-shadowless" type="text" />
+                        <input
+                          className="input is-shadowless"
+                          name="state"
+                          value={values.state}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {errors.state &&
+                          touched.state && (
+                            <p className="help is-danger">{errors.state}</p>
+                          )}
                       </div>
                     </div>
                     <div className="field">
                       <label className="label">Country</label>
                       <div className="control">
-                        <input className="input is-shadowless" type="text" />
+                        <input
+                          className="input is-shadowless"
+                          name="country"
+                          value={values.country}
+                          onChange={handleChange}
+                          onBlur={handleBlur}
+                        />
+                        {errors.country &&
+                          touched.country && (
+                            <p className="help is-danger">{errors.country}</p>
+                          )}
                       </div>
                     </div>
                   </div>
@@ -129,20 +199,44 @@ class CheckoutForm extends React.Component {
                 <div className="field">
                   <label className="label">Email</label>
                   <div className="control">
-                    <input className="input is-shadowless" type="text" />
+                    <input
+                      className="input is-shadowless"
+                      name="email"
+                      value={values.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.email &&
+                      touched.email && (
+                        <p className="help is-danger">{errors.email}</p>
+                      )}
                   </div>
                 </div>
                 <div className="field">
                   <label className="label">Telephone</label>
                   <div className="control">
-                    <input className="input is-shadowless" type="text" />
+                    <input
+                      className="input is-shadowless"
+                      name="telephone"
+                      value={values.telephone}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                    />
+                    {errors.telephone &&
+                      touched.telephone && (
+                        <p className="help is-danger">{errors.telephone}</p>
+                      )}
                   </div>
                 </div>
                 <BuyBtn
                   type="submit"
+                  disabled={isSubmitting}
                   className="checkout-form-btn button is-dark is-large is-radiusless is-uppercase"
                 >
-                  Buy now
+                  <span className="icon">
+                    <i className="far fa-credit-card" />
+                  </span>
+                  <span>Make payment</span>
                 </BuyBtn>
               </form>
             </animated.div>
@@ -155,7 +249,38 @@ class CheckoutForm extends React.Component {
 
 CheckoutForm.propTypes = {
   product: PropTypes.object.isRequired,
-  handlePayment: PropTypes.func.isRequired,
 };
 
-export default CheckoutForm;
+export default withFormik({
+  mapPropsToValues: () => ({
+    fullName: '',
+    address1: '',
+    address2: '',
+    city: '',
+    postcode: '',
+    state: '',
+    country: '',
+    email: '',
+    telephone: '',
+  }),
+  validationSchema: Yup.object().shape({
+    fullName: Yup.string().required('Full name is required.'),
+    address1: Yup.string().required('Address 1 is required.'),
+    address2: Yup.string().required('Address 1 is required.'),
+    city: Yup.string().required('City is required.'),
+    postcode: Yup.string().required('Postcode is required.'),
+    state: Yup.string().required('State is required.'),
+    country: Yup.string().required('Country is required.'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required!'),
+    telephone: Yup.string().required('Telephone is required!'),
+  }),
+  handleSubmit: (values, { setSubmitting, props }) => {
+    // console.log('handle submit', values, props);
+    $('.checkout-form-btn').addClass('is-loading');
+    setSubmitting(false);
+    setTimeout(() => props.handlePayment(values), 350);
+  },
+  displayName: 'CheckoutForm', // helps with React DevTools
+})(CheckoutForm);

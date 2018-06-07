@@ -1,5 +1,5 @@
 module.exports = {
-  DEBUG: false, // process.env.NODE_ENV === 'development',
+  DEBUG: process.env.NODE_ENV === 'development',
 
   siteName: 'Sejal Suits',
   author: 'Parminder Klair',
@@ -11,11 +11,11 @@ module.exports = {
   fbAppId: '@sejalsuits',
   type: 'website',
 
-  GRAPHQL_ENDPOINT:
-    'https://api.graph.cool/simple/v1/cj0ikxyx8zu4d013355xzxmzh',
-  GRAPHQL_ENDPOINT_DEV: 'http://localhost:3000/graphql',
-  siteUrl: 'http://sejal-suits.netlify.com',
+  GRAPHQL_ENDPOINT: 'https://api.sejalsuits.co.uk/graphql',
+  GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000/graphql',
+  siteUrl: 'https://www.sejalsuits.co.uk',
   googleAnalytics: 'UA-1390187-40',
   backgroundColor: '#e0e0e0',
   themeColor: '#c62828',
+  stripePublishableKey: 'pk_live_eMN5tHGymDNn3DOZH8MX5ziD',
 };
