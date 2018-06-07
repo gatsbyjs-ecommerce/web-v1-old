@@ -86,7 +86,7 @@ class Product extends React.Component {
             </Spring>
           </div>
           <div className="column section">
-            {activeStep === 3 && (
+            {activeStep === 1 && (
               <ProductInfo
                 home={home}
                 product={product}
@@ -101,7 +101,7 @@ class Product extends React.Component {
                 }
               />
             )}
-            {activeStep === 1 && (
+            {activeStep === 3 && (
               <PaymentForm
                 product={product}
                 userData={userData}
