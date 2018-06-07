@@ -55,6 +55,24 @@ const AccordionStyled = styled(Accordion)`
   }
 `;
 
+const ShareContainer = styled.div`
+  padding: 0.9rem 0;
+  border-top: 1px solid #979797;
+  h3 {
+    text-transform: uppercase;
+    font-weight: 700;
+    float: left;
+  }
+  .share-icons {
+    float: right;
+    width: 110px;
+  }
+  svg {
+    color: #4a4a4a;
+    font-size: 1.5rem;
+  }
+`;
+
 class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -138,6 +156,33 @@ class ProductInfo extends React.Component {
                   </AccordionItemBody>
                 </AccordionItem>
               </AccordionStyled>
+              <ShareContainer>
+                <h3>Share</h3>
+                <div className="share-icons">
+                  <div className="level">
+                    <div className="level-item">
+                      <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-facebook-square" />
+                      </a>
+                    </div>
+                    <div className="level-item">
+                      <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-twitter-square" />
+                      </a>
+                    </div>
+                    <div className="level-item">
+                      <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-instagram" />
+                      </a>
+                    </div>
+                    <div className="level-item">
+                      <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i className="fab fa-pinterest-square" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </ShareContainer>
             </animated.div>
           )}
         </Spring>
