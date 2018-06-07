@@ -16,6 +16,46 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
                 html
               }
             }
+            otherContent {
+              childMarkdownRemark {
+                html
+              }
+            }
+            image {
+              id
+              title
+              file {
+                url
+                fileName
+                contentType
+              }
+              sizes {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+              resolutions {
+                base64
+                aspectRatio
+                width
+                height
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+              }
+              resize {
+                base64
+                src
+                width
+                height
+                aspectRatio
+              }
+            }
           }
         }
       }

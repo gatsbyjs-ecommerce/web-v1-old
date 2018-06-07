@@ -8,6 +8,7 @@ module.exports = {
     siteUrl: config.siteUrl,
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-plugin-react-next`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
