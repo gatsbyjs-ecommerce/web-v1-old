@@ -295,7 +295,7 @@ export default withFormik({
               },
             })
             .then(result => {
-              // console.log('order result', result);
+              console.log('order result', result);
               setTimeout(() => props.handlePayment({ orderId }), 300);
             })
             .catch(() => {
