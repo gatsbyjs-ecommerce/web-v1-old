@@ -39,7 +39,7 @@ class Product extends React.Component {
   }
 
   render() {
-    const { activeStep, isVisible, paymentData } = this.state;
+    const { activeStep, isVisible, paymentData, userData } = this.state;
     const {
       data: {
         contentfulProduct: product,
@@ -86,7 +86,7 @@ class Product extends React.Component {
             </Spring>
           </div>
           <div className="column section">
-            {activeStep === 1 && (
+            {activeStep === 3 && (
               <ProductInfo
                 home={home}
                 product={product}
@@ -101,9 +101,10 @@ class Product extends React.Component {
                 }
               />
             )}
-            {activeStep === 3 && (
+            {activeStep === 1 && (
               <PaymentForm
                 product={product}
+                userData={userData}
                 handlePayment={data =>
                   this.setState({ activeStep: 4, paymentData: data })
                 }

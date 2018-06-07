@@ -45,14 +45,11 @@ module.exports = class HTML extends React.Component {
             defer
             src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"
           />
+          <script src="https://js.stripe.com/v2/" />
+          <script defer src="/scripts/scripts.js" />
           <link
             href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700"
             rel="stylesheet"
-          />
-          <link
-            rel="stylesheet"
-            type="text/css"
-            href="/styles/image-gallery.css"
           />
           <link rel="stylesheet" type="text/css" href="/styles/style.css" />
           {this.props.headComponents}

@@ -62,7 +62,7 @@ class PaymentConfirmed extends React.Component {
 
   render() {
     const { isVisible } = this.state;
-    const { product } = this.props;
+    const { product, paymentData } = this.props;
 
     return (
       <React.Fragment>
@@ -84,7 +84,7 @@ class PaymentConfirmed extends React.Component {
                   Payment complete
                 </h3>
                 <p className="info">
-                  Order code is <OrderId>#123123</OrderId>
+                  Order code is <OrderId>#{paymentData.orderId}</OrderId>
                   <br />
                   Please check your email<br />
                   for delivery updates.
