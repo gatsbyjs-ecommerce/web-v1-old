@@ -10,8 +10,6 @@ const Container = styled.section`
   position: relative;
 `;
 
-const items = ['item1', 'item2', 'item3', 'item4', 'item5', 'item6'];
-
 class ProductsList extends React.Component {
   constructor(props) {
     super(props);
@@ -29,7 +27,7 @@ class ProductsList extends React.Component {
     const { title, products } = this.props;
     const { isOpen } = this.state;
     const keys = products.map(item => item.node.id);
-    console.log('products', products);
+    // console.log('products', products);
 
     return (
       <Container className="section">

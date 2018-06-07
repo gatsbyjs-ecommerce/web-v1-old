@@ -1,12 +1,13 @@
 /* global SmoothScroll, global */
 
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
 import { isUndefined } from 'underscore';
 
 import styles from '../utils/styles';
+import { formatCurrency } from '../utils/helpers';
 import Heading from '../components/Heading';
 import CheckoutProgress from '../components/CheckoutProgress';
 
@@ -61,12 +62,13 @@ class PaymentConfirmed extends React.Component {
 
   render() {
     const { isVisible } = this.state;
+    const { product } = this.props;
 
     return (
       <React.Fragment>
-        <Heading>Phulkari Suit</Heading>
+        <Heading>{product.title}</Heading>
         <Price className="has-text-weight-semibold has-text-centered">
-          £55 <span>+ £2 delivery</span>
+          {formatCurrency(product.discountPrice)} <span>+ £2 delivery</span>
         </Price>
         <CheckoutProgress activeStep="three" />
         <Spring
@@ -99,6 +101,9 @@ class PaymentConfirmed extends React.Component {
   }
 }
 
-PaymentConfirmed.propTypes = {};
+PaymentConfirmed.propTypes = {
+  paymentData: PropTypes.object.isRequired,
+  product: PropTypes.object.isRequired,
+};
 
 export default PaymentConfirmed;

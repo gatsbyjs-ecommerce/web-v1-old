@@ -12,7 +12,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             title
             slug
             content {
-              id
+              childMarkdownRemark {
+                html
+              }
             }
           }
         }
@@ -31,16 +33,83 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
             rating
             productCode
             featuredImage {
-              id
+              title
+              file {
+                url
+                fileName
+                contentType
+              }
+              sizes {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+              resolutions {
+                base64
+                aspectRatio
+                width
+                height
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+              }
+              resize {
+                base64
+                src
+                width
+                height
+                aspectRatio
+              }
             }
             otherImages {
               id
+              title
+              file {
+                url
+                fileName
+                contentType
+              }
+              sizes {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+              resolutions {
+                base64
+                aspectRatio
+                width
+                height
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+              }
+              resize {
+                base64
+                src
+                width
+                height
+                aspectRatio
+              }
             }
             shortDetails {
-              id
+              childMarkdownRemark {
+                html
+              }
             }
             longDetails {
-              id
+              childMarkdownRemark {
+                html
+              }
             }
           }
         }

@@ -3,13 +3,18 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 import Link from 'gatsby-link';
+import Img from 'gatsby-image';
 
 import stylesUtils from '../utils/styles';
+import { formatCurrency } from '../utils/helpers';
 
 const Container = styled(animated.div)`
   .card {
     border: none;
     box-shadow: none;
+    .image.is-4by5 {
+      padding-top: 0;
+    }
     .card-content {
       padding-left: 0;
       padding-top: 0.8rem;
@@ -33,9 +38,9 @@ const Container = styled(animated.div)`
   }
 `;
 
-const Image = styled.img`
+const Image = styled(Img)`
   object-fit: cover;
-  height: 415px;
+  height: 540px;
   width: 100%;
 `;
 
@@ -46,8 +51,10 @@ const ProductItem = ({ item, styles }) => (
         <Link to={`/product/${item.slug}`}>
           <figure className="image is-4by5">
             <Image
-              src="https://images.ctfassets.net/o6uhtcakujse/4ZT5eQovFm0EM4C4CUi82c/7001ed809d4dab28f3495375468cfce3/Shara_22001.jpg?q=75&w=360"
-              alt="Placeholder product"
+              sizes={item.featuredImage.sizes}
+              alt={item.featuredImage.title}
+              title={item.featuredImage.title}
+              backgroundColor="#f1f1f1"
             />
           </figure>
         </Link>
@@ -58,10 +65,14 @@ const ProductItem = ({ item, styles }) => (
             <p className="title is-5">
               <Link to={`/product/${item.slug}`}>{item.title}</Link>
             </p>
-            <p className="subtitle is-6 has-text-grey">Red and Green</p>
+            <p className="subtitle is-6 has-text-grey">{item.color}</p>
             <div className="price-container has-text-right">
-              <p className="title is-5 has-text-weight-normal price">£55</p>
-              <p className="subtitle is-6 has-text-grey-light old-price">£62</p>
+              <p className="title is-5 has-text-weight-normal price">
+                {formatCurrency(item.discountPrice)}
+              </p>
+              <p className="subtitle is-6 has-text-grey-light old-price">
+                {formatCurrency(item.originalPrice)}
+              </p>
             </div>
           </div>
         </div>
@@ -71,7 +82,7 @@ const ProductItem = ({ item, styles }) => (
 );
 
 ProductItem.propTypes = {
-  styles: PropTypes.object,
+  styles: PropTypes.object.isRequired,
 };
 
 export default ProductItem;

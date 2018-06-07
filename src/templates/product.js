@@ -6,6 +6,7 @@ import ImageGallery from 'react-image-gallery';
 import styled from 'styled-components';
 import { isUndefined } from 'underscore';
 import { Spring, animated } from 'react-spring';
+import Helmet from 'react-helmet';
 
 import ProductsList from '../components/ProductsList';
 import ProductInfo from '../components/ProductInfo';
@@ -18,21 +19,6 @@ const Container = styled.div`
     margin-top: 3rem;
   }
 `;
-
-const images = [
-  {
-    original:
-      'https://images.ctfassets.net/o6uhtcakujse/4ZT5eQovFm0EM4C4CUi82c/7001ed809d4dab28f3495375468cfce3/Shara_22001.jpg?q=75&h=900',
-    thumbnail:
-      'https://images.ctfassets.net/o6uhtcakujse/4ZT5eQovFm0EM4C4CUi82c/7001ed809d4dab28f3495375468cfce3/Shara_22001.jpg?q=75&h=150',
-  },
-  {
-    original:
-      'https://images.ctfassets.net/o6uhtcakujse/4ZT5eQovFm0EM4C4CUi82c/7001ed809d4dab28f3495375468cfce3/Shara_22001.jpg?q=75&h=900',
-    thumbnail:
-      'https://images.ctfassets.net/o6uhtcakujse/4ZT5eQovFm0EM4C4CUi82c/7001ed809d4dab28f3495375468cfce3/Shara_22001.jpg?q=75&h=150',
-  },
-];
 
 class Product extends React.Component {
   constructor(props) {
@@ -53,17 +39,23 @@ class Product extends React.Component {
   }
 
   render() {
-    const { activeStep, isVisible } = this.state;
+    const { activeStep, isVisible, paymentData } = this.state;
     const {
-      data: { contentfulProduct: product },
+      data: { contentfulProduct: product, allContentfulProduct: products },
     } = this.props;
+
     const isMobile = !isUndefined(global.window)
       ? global.window.innerWidth < 768
       : false;
-    console.log('product', product);
+
+    const images = product.otherImages.map(image => ({
+      original: image.sizes.src,
+      thumbnail: image.sizes.src,
+    }));
 
     return (
       <React.Fragment>
+        <Helmet title={`${product.title} | Sejal Suits`} />
         <Container className="columns">
           <div className="column is-two-fifths">
             <Spring
@@ -98,22 +90,26 @@ class Product extends React.Component {
             )}
             {activeStep === 2 && (
               <CheckoutForm
-                handlePayment={userData =>
-                  this.setState({ activeStep: 3, userData })
+                product={product}
+                handlePayment={data =>
+                  this.setState({ activeStep: 3, userData: data })
                 }
               />
             )}
             {activeStep === 3 && (
               <PaymentForm
-                handlePayment={paymentData =>
-                  this.setState({ activeStep: 4, paymentData })
+                product={product}
+                handlePayment={data =>
+                  this.setState({ activeStep: 4, paymentData: data })
                 }
               />
             )}
-            {activeStep === 4 && <PaymentConfirmed />}
+            {activeStep === 4 && (
+              <PaymentConfirmed product={product} paymentData={paymentData} />
+            )}
           </div>
         </Container>
-        <ProductsList title="We think you'll" limit={3} />
+        <ProductsList title="We think you'll" products={products.edges} />
       </React.Fragment>
     );
   }
@@ -127,24 +123,42 @@ export const productQuery = graphql`
       id
       title
       slug
-      status
       originalPrice
       discountPrice
       shippingCost
       color
-      rating
-      productCode
-      featuredImage {
-        id
-      }
       otherImages {
         id
-      }
-      shortDetails {
-        id
+        title
+        sizes(maxWidth: 1200) {
+          ...GatsbyContentfulSizes
+        }
       }
       longDetails {
-        id
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+    allContentfulProduct(
+      filter: { status: { eq: "active" }, slug: { ne: $slug } }
+      limit: 3
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug
+          color
+          originalPrice
+          discountPrice
+          featuredImage {
+            title
+            sizes(maxWidth: 550) {
+              ...GatsbyContentfulSizes
+            }
+          }
+        }
       }
     }
   }

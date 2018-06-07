@@ -7,6 +7,7 @@ import { Spring, animated } from 'react-spring';
 import { isUndefined } from 'underscore';
 
 import styles from '../utils/styles';
+import { formatCurrency } from '../utils/helpers';
 import Heading from '../components/Heading';
 import CheckoutProgress from '../components/CheckoutProgress';
 
@@ -54,12 +55,13 @@ class CheckoutForm extends React.Component {
 
   render() {
     const { isVisible } = this.state;
+    const { product } = this.props;
 
     return (
       <React.Fragment>
-        <Heading>Phulkari Suit</Heading>
+        <Heading>{product.title}</Heading>
         <Price className="has-text-weight-semibold has-text-centered">
-          £55 <span>+ £2 delivery</span>
+          {formatCurrency(product.discountPrice)} <span>+ £2 delivery</span>
         </Price>
         <CheckoutProgress activeStep="one" />
         <Spring
@@ -152,6 +154,7 @@ class CheckoutForm extends React.Component {
 }
 
 CheckoutForm.propTypes = {
+  product: PropTypes.object.isRequired,
   handlePayment: PropTypes.func.isRequired,
 };
 

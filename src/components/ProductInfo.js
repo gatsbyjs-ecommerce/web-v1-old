@@ -12,6 +12,7 @@ import {
 import { Spring, animated } from 'react-spring';
 
 import styles from '../utils/styles';
+import { formatCurrency, HTMLContent } from '../utils/helpers';
 import Heading from '../components/Heading';
 
 const Price = styled.div`
@@ -82,7 +83,8 @@ class ProductInfo extends React.Component {
       <React.Fragment>
         <Heading>{product.title}</Heading>
         <Price className="has-text-weight-semibold has-text-centered">
-          £55 <span>£62</span>
+          {formatCurrency(product.discountPrice)}{' '}
+          <span>{formatCurrency(product.originalPrice)}</span>
         </Price>
         <Spring
           native
@@ -103,19 +105,9 @@ class ProductInfo extends React.Component {
                     <h3>Product Details</h3>
                   </AccordionItemTitle>
                   <AccordionItemBody>
-                    <p>
-                      Lorizzle ipsum dolor sizzle amet, yo dizzle elit.
-                      Nullizzle go to hizzle fo shizzle, rizzle volutpizzle,
-                      suscipit quizzle, i saw beyonces tizzles and my pizzle
-                      went crizzle vizzle, crunk. Pellentesque rizzle tortor.
-                      Sizzle eros. Fizzle at ma nizzle dapibus turpis tempizzle
-                      tempizzle. Maurizzle pellentesque nizzle yo shizznit. Dawg
-                      izzle tortor. Pellentesque eleifend fizzle go to hizzle.
-                      In pot platea dictumst. Fizzle dapibizzle. Shizzlin dizzle
-                      fo shizzle my nizzle crocodizzle, we gonna chung fizzle,
-                      mattis doggy, things vitae, nunc. Sizzle suscipizzle.
-                      Integer semper i'm in the shizzle stuff away.
-                    </p>
+                    <HTMLContent
+                      content={product.longDetails.childMarkdownRemark.html}
+                    />
                   </AccordionItemBody>
                 </AccordionItem>
                 <AccordionItem>
@@ -143,7 +135,7 @@ class ProductInfo extends React.Component {
                       In pot platea dictumst. Fizzle dapibizzle. Shizzlin dizzle
                       fo shizzle my nizzle crocodizzle, we gonna chung fizzle,
                       mattis doggy, things vitae, nunc. Sizzle suscipizzle.
-                      Integer semper i'm in the shizzle stuff away.
+                      Integer semper im in the shizzle stuff away.
                     </p>
                   </AccordionItemBody>
                 </AccordionItem>
@@ -157,6 +149,7 @@ class ProductInfo extends React.Component {
 }
 
 ProductInfo.propTypes = {
+  product: PropTypes.object.isRequired,
   handleCheckout: PropTypes.func.isRequired,
 };
 

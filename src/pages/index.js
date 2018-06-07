@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 
 import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
@@ -12,6 +13,7 @@ export default class IndexPage extends React.Component {
 
     return (
       <React.Fragment>
+        <Helmet title="Punjabi designer suits | Sejal Suits" />
         <HomeBanner />
         <ProductsList products={products.edges} />
         <HomeAbout />
@@ -22,12 +24,24 @@ export default class IndexPage extends React.Component {
 
 export const indexQuery = graphql`
   query Products {
-    allContentfulProduct(filter: { status: { eq: "active" } }) {
+    allContentfulProduct(
+      filter: { status: { eq: "active" } }
+      sort: { fields: [listingOrder], order: ASC }
+    ) {
       edges {
         node {
           id
           title
           slug
+          color
+          originalPrice
+          discountPrice
+          featuredImage {
+            title
+            sizes(maxWidth: 550) {
+              ...GatsbyContentfulSizes
+            }
+          }
         }
       }
     }
