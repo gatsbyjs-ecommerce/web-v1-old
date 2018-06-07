@@ -17,5 +17,5 @@ module.exports = {
   googleAnalytics: 'UA-1390187-40',
   backgroundColor: '#e0e0e0',
   themeColor: '#c62828',
-  stripePublishableKey: 'pk_test_6pRNASCoBOKtIshFeQd4XMUh',
+  stripePublishableKey: 'pk_live_eMN5tHGymDNn3DOZH8MX5ziD',
 };
