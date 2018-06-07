@@ -4,6 +4,10 @@ import styled from 'styled-components';
 
 const Container = styled.section`
   width: 120px;
+  min-height: 26px;
+  .level-item {
+    margin-right: 2px;
+  }
   svg {
     color: ${props => (!props.inverted ? '#000' : '#fff')};
     font-size: 1.6rem;

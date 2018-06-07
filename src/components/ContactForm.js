@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Yup from 'yup';
-import {withFormik} from 'formik';
+import { withFormik } from 'formik';
 
 const Submit = styled.button`
   width: 100%;
@@ -23,43 +23,39 @@ const ContactForm = props => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="field">
-        <label className="label has-text-weight-semibold">Name</label>
+        <label className="label has-text-weight-semibold">Your name</label>
         <div className="control">
           <input
             className="input is-shadowless"
             type="text"
             name="name"
-            placeholder="your name.."
             value={values.name}
             onChange={handleChange}
             onBlur={handleBlur}
           />
           {errors.name &&
-            touched.name &&
-            <p className="help is-danger">{errors.name}</p>}
+            touched.name && <p className="help is-danger">{errors.name}</p>}
         </div>
       </div>
       <div className="field">
-        <label className="label has-text-weight-semibold">Email</label>
+        <label className="label has-text-weight-semibold">Your email</label>
         <div className="control">
           <input
             className="input is-shadowless"
             type="email"
             name="email"
-            placeholder="your email.."
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
           />
           {errors.email &&
-            touched.email &&
-            <p className="help is-danger is-capitalized">{errors.email}</p>}
+            touched.email && (
+              <p className="help is-danger is-capitalized">{errors.email}</p>
+            )}
         </div>
       </div>
       <div className="field">
-        <label className="label has-text-weight-semibold">
-          Message
-        </label>
+        <label className="label has-text-weight-semibold">Message</label>
         <div className="control">
           <textarea
             className="textarea is-shadowless"
@@ -70,8 +66,9 @@ const ContactForm = props => {
             onBlur={handleBlur}
           />
           {errors.message &&
-            touched.message &&
-            <p className="help is-danger">{errors.message}</p>}
+            touched.message && (
+              <p className="help is-danger">{errors.message}</p>
+            )}
         </div>
       </div>
       <Submit
@@ -95,23 +92,23 @@ ContactForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 };
 
-export default withFormik ({
+export default withFormik({
   mapPropsToValues: () => ({
     name: '',
     email: '',
     message: '',
   }),
-  validationSchema: Yup.object ().shape ({
-    name: Yup.string ().required ('Full name is required!'),
-    email: Yup.string ()
-      .email ('Invalid email address')
-      .required ('Email is required!'),
-    message: Yup.string ().required ('Message is required!'),
+  validationSchema: Yup.object().shape({
+    name: Yup.string().required('Full name is required!'),
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required!'),
+    message: Yup.string().required('Message is required!'),
   }),
-  handleSubmit: (values, {setSubmitting}) => {
-    console.log ('handle submit', values);
+  handleSubmit: (values, { setSubmitting }) => {
+    console.log('handle submit', values);
     // TODO: Mutation
-    setSubmitting (false);
+    setSubmitting(false);
   },
   displayName: 'ContactUs', // helps with React DevTools
-}) (ContactForm);
+})(ContactForm);

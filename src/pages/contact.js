@@ -25,33 +25,32 @@ export default ({ data }) => {
       <Helmet title="Contact" />
       <Heading>Get In touch</Heading>
       <div className="columns">
-        <div className="column is-two-fifths">
-          <div className="box">
-            <p>
-              If you have any question or enquiry, feel free to get in touch
-              with us
-            </p>
-            <p>
-              <i className="fas fa-map-marker" />
-              <span className="is-size-6">{contact.address}</span>
-            </p>
-            <p>
-              <i className="fas fa-mobile" />
-              <span className="is-size-6">{contact.telephone}</span>
-            </p>
-            <p>
-              <i className="fas fa-envelope-open" />
-              <span className="is-size-6">{contact.email}</span>
-            </p>
-            <br />
-            <br />
-            <SocialIcons data={contact} />
-          </div>
+        <div
+          className="column is-two-fifths"
+          style={{ borderRight: '1px solid #eee' }}
+        >
+          <p>
+            If you have any question or enquiry, feel free to get in touch with
+            us
+          </p>
+          <p>
+            <i className="fas fa-map-marker" />
+            <span className="is-size-6">{contact.address}</span>
+          </p>
+          <p>
+            <i className="fas fa-mobile" />
+            <span className="is-size-6">{contact.telephone}</span>
+          </p>
+          <p>
+            <i className="fas fa-envelope-open" />
+            <span className="is-size-6">{contact.email}</span>
+          </p>
+          <br />
+          <br />
+          <SocialIcons data={contact} />
         </div>
         <div className="column">
-          <div className="box">
-            <ContactForm />
-          </div>
+          <ContactForm />
         </div>
       </div>
     </Container>
