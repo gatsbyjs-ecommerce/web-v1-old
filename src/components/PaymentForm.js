@@ -10,7 +10,7 @@ import Yup from 'yup';
 import Cleave from 'cleave.js/react';
 import randomstring from 'randomstring';
 import gql from 'graphql-tag';
-import alertify from 'alertify.js';
+// import alertify from 'alertify.js';
 
 import config from '../config';
 import styles from '../utils/styles';
@@ -246,12 +246,12 @@ export default withFormik({
     cvc: '',
   }),
   validationSchema: Yup.object().shape({
-    number: Yup.string().required('Card number is required!'),
-    exp_month: Yup.string().required('Expiry month is required!'),
-    exp_year: Yup.string().required('Expiry year is required!'),
-    cvc: Yup.string().required('Card CVC is required!'),
+    number: Yup.string().required('Card number is required.'),
+    exp_month: Yup.string().required('Expiry month is required.'),
+    exp_year: Yup.string().required('Expiry year is required.'),
+    cvc: Yup.string().required('Card CVC is required.'),
   }),
-  handleSubmit: async (values, { setSubmitting, props }) => {
+  handleSubmit: (values, { setSubmitting, props }) => {
     // console.log('handle submit', values, props);
     const { userData } = props;
     const user = userData !== null ? userData : {};
@@ -277,7 +277,7 @@ export default withFormik({
       (error, token) => {
         if (error === 200) {
           // send data to server
-          console.log('sending data', token.id, orderId);
+          // console.log('sending data', token.id, orderId);
           apolloClient
             .mutate({
               mutation: crateOrder,
@@ -290,11 +290,12 @@ export default withFormik({
             })
             .then(result => {
               console.log('order result', result);
-              setTimeout(() => props.handlePayment({ orderId }), 300);
+              setTimeout(() => props.handlePayment({ orderId }), 250);
             })
             .catch(() => {
               $('.payment-form-btn').removeClass('is-loading');
               setSubmitting(false);
+              const alertify = require('alertify.js');
               alertify.alert('Payment failed, please try again.');
             });
         } else {

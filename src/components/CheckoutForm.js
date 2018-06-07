@@ -261,13 +261,13 @@ export default withFormik({
     telephone: '',
   }),
   validationSchema: Yup.object().shape({
-    fullName: Yup.string().required('Full name is required!'),
-    address1: Yup.string().required('Address 1 is required!'),
-    address2: Yup.string().required('Address 1 is required!'),
-    city: Yup.string().required('City is required!'),
-    postcode: Yup.string().required('Postcode is required!'),
-    state: Yup.string().required('State is required!'),
-    country: Yup.string().required('Country is required!'),
+    fullName: Yup.string().required('Full name is required.'),
+    address1: Yup.string().required('Address 1 is required.'),
+    address2: Yup.string().required('Address 1 is required.'),
+    city: Yup.string().required('City is required.'),
+    postcode: Yup.string().required('Postcode is required.'),
+    state: Yup.string().required('State is required.'),
+    country: Yup.string().required('Country is required.'),
     email: Yup.string()
       .email('Invalid email address')
       .required('Email is required!'),
