@@ -61,18 +61,18 @@ const crateOrder = gql`
       tokenId: $tokenId
       orderId: $orderId
       productId: $productId
-      fullName: $fullName
-      address1: $address1
-      address2: $address2
-      city: $city
-      state: $state
-      postcode: $postcode
-      country: $country
-      email: $email
-      telephone: $telephone
+      customerName: $fullName
+      customerAddress1: $address1
+      customerAddress2: $address2
+      customerCity: $city
+      customerState: $state
+      customerPostcode: $postcode
+      customerCountry: $country
+      customerEmail: $email
+      customerTelephone: $telephone
     ) {
       id
-      cartId
+      orderId
     }
   }
 `;
@@ -276,21 +276,15 @@ export default withFormik({
       },
       (error, token) => {
         if (error === 200) {
-          // TODO: send data to server
-          // console.log(
-          //   'sending data to server',
-          //   token.id,
-          //   orderId,
-          //   props.product.id,
-          //   user,
-          // );
+          // send data to server
+          console.log('sending data', token.id, orderId);
           apolloClient
             .mutate({
               mutation: crateOrder,
               variables: {
-                tokeId: token.id,
+                tokenId: token.id,
                 orderId,
-                productId: props.product.id,
+                productId: props.product.id.substr(1),
                 ...user,
               },
             })
