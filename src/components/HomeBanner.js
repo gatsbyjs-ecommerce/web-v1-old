@@ -31,24 +31,38 @@ const Strip = styled.div`
   }
 `;
 
+const StripMobile = styled.div`
+  padding: 0.3rem 0;
+  background-color: #100b0b;
+  width: 100%;
+  opacity: 0.9;
+`;
+
 const HomeBanner = ({ data }) => (
-  <Container className="section is-hidden-mobile">
-    <div className="text">
-      <p className="is-size-3	is-uppercase has-text-white has-text-weight-semibold main-text">
-        {data.homeSliderTitle}
-      </p>
-      <p className="has-text-white">Limited time only!</p>
-      <p className="is-size-6 has-text-white">Extra 20% off sale!</p>
-      <p className="is-size-6 has-text-white has-text-weight-semibold">
-        Use code: SALE
-      </p>
-    </div>
-    <Strip>
-      <p className="is-size-5	is-uppercase has-text-white has-text-centered has-text-weight-semibold">
+  <React.Fragment>
+    <Container className="section is-hidden-mobile">
+      <div className="text">
+        <p className="is-size-3	is-uppercase has-text-white has-text-weight-semibold main-text">
+          {data.homeSliderTitle}
+        </p>
+        <p className="has-text-white">Limited time only!</p>
+        <p className="is-size-6 has-text-white">Extra 20% off sale!</p>
+        <p className="is-size-6 has-text-white has-text-weight-semibold">
+          Use code: SALE
+        </p>
+      </div>
+      <Strip>
+        <p className="is-size-5	is-uppercase has-text-white has-text-centered has-text-weight-semibold">
+          {data.homeSliderSubTitle}
+        </p>
+      </Strip>
+    </Container>
+    <StripMobile className=" is-hidden-tablet">
+      <p className="is-size-6	is-uppercase has-text-white has-text-centered has-text-weight-semibold">
         {data.homeSliderSubTitle}
       </p>
-    </Strip>
-  </Container>
+    </StripMobile>
+  </React.Fragment>
 );
 
 export default HomeBanner;

@@ -9,6 +9,10 @@ body {
   font-size: 1.3rem;
 }
 
+p {
+  margin-bottom: 0.5rem;
+}
+
 /*!
   Ionicons, v2.0.0
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/

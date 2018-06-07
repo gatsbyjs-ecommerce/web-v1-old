@@ -4,16 +4,16 @@ import graphql from 'graphql';
 import Heading from '../components/Heading';
 import CouponItem from '../components/CouponItem';
 
-export default ({data}) => {
+export default ({ data }) => {
   const coupons = data.allContentfulCoupons.edges;
 
   return (
     <div className="section">
       <Heading>Coupons</Heading>
-      {coupons.map (coupon => (
-        <div className="columns  is-multiline">
+      {coupons.map(coupon => (
+        <div key={coupon.node.id} className="columns  is-multiline">
           <div className="column is-one-third">
-            <CouponItem key={coupon.node.id} data={coupon.node} />
+            <CouponItem data={coupon.node} />
           </div>
         </div>
       ))}
@@ -23,18 +23,18 @@ export default ({data}) => {
 
 export const pageQuery = graphql`
   query Coupons {
-    allContentfulCoupons{
-    edges{
-      node{
-        id
-        name
-        code
-        expiryDate
-        details {
-          details
+    allContentfulCoupons {
+      edges {
+        node {
+          id
+          name
+          code
+          expiryDate
+          details {
+            details
+          }
         }
       }
     }
-  }
   }
 `;
