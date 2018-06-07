@@ -3,9 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Spring, animated } from 'react-spring';
-import { isUndefined } from 'underscore';
-import { withFormik } from 'formik';
+import {Spring, animated} from 'react-spring';
+import {isUndefined} from 'underscore';
+import {withFormik} from 'formik';
 import Yup from 'yup';
 import Cleave from 'cleave.js/react';
 import randomstring from 'randomstring';
@@ -15,7 +15,7 @@ import gql from 'graphql-tag';
 import config from '../config';
 import styles from '../utils/styles';
 import apolloClient from '../utils/apollo';
-import { formatCurrency } from '../utils/helpers';
+import {formatCurrency} from '../utils/helpers';
 import Heading from '../components/Heading';
 import CheckoutProgress from '../components/CheckoutProgress';
 
@@ -78,27 +78,27 @@ const crateOrder = gql`
 `;
 
 class PaymentForm extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super (props);
 
-    this.state = { isVisible: false };
+    this.state = {isVisible: false};
   }
 
-  componentDidMount() {
-    const isMobile = !isUndefined(global.window)
+  componentDidMount () {
+    const isMobile = !isUndefined (global.window)
       ? global.window.innerWidth < 768
       : false;
 
-    setTimeout(() => {
-      this.setState({ isVisible: true });
+    setTimeout (() => {
+      this.setState ({isVisible: true});
 
-      const scroll = new SmoothScroll();
-      scroll.animateScroll(isMobile ? 1100 : 450);
+      const scroll = new SmoothScroll ();
+      scroll.animateScroll (isMobile ? 1100 : 450);
     }, 200);
   }
 
-  render() {
-    const { isVisible } = this.state;
+  render () {
+    const {isVisible} = this.state;
     const {
       values,
       touched,
@@ -114,17 +114,13 @@ class PaymentForm extends React.Component {
       <React.Fragment>
         <Heading>{product.title}</Heading>
         <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency(product.discountPrice)} <span>+ £2 delivery</span>
+          {formatCurrency (product.discountPrice)} <span>+ £2 delivery</span>
         </Price>
         <CheckoutProgress activeStep="two" />
         <Cards className="has-text-centered">
           <img src="/images/payment-strip.png" alt="payments cards" />
         </Cards>
-        <Spring
-          native
-          from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+        <Spring native from={{opacity: 0}} to={{opacity: isVisible ? 1 : 0}}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <form className="section" onSubmit={handleSubmit}>
@@ -138,12 +134,11 @@ class PaymentForm extends React.Component {
                       value={values.number}
                       onChange={handleChange}
                       onBlur={handleBlur}
-                      options={{ creditCard: true }}
+                      options={{creditCard: true}}
                     />
                     {errors.number &&
-                      touched.number && (
-                        <p className="help is-danger">{errors.number}</p>
-                      )}
+                      touched.number &&
+                      <p className="help is-danger">{errors.number}</p>}
                   </div>
                 </div>
                 <div className="field is-horizontal">
@@ -163,9 +158,8 @@ class PaymentForm extends React.Component {
                           }}
                         />
                         {errors.exp_month &&
-                          touched.exp_month && (
-                            <p className="help is-danger">{errors.exp_month}</p>
-                          )}
+                          touched.exp_month &&
+                          <p className="help is-danger">{errors.exp_month}</p>}
                       </div>
                     </div>
                     <div className="field">
@@ -183,9 +177,8 @@ class PaymentForm extends React.Component {
                           }}
                         />
                         {errors.exp_year &&
-                          touched.exp_year && (
-                            <p className="help is-danger">{errors.exp_year}</p>
-                          )}
+                          touched.exp_year &&
+                          <p className="help is-danger">{errors.exp_year}</p>}
                       </div>
                     </div>
                   </div>
@@ -205,9 +198,8 @@ class PaymentForm extends React.Component {
                       }}
                     />
                     {errors.cvc &&
-                      touched.cvc && (
-                        <p className="help is-danger">{errors.cvc}</p>
-                      )}
+                      touched.cvc &&
+                      <p className="help is-danger">{errors.cvc}</p>}
                   </div>
                 </div>
                 <BuyBtn
@@ -238,33 +230,33 @@ PaymentForm.propTypes = {
   userData: PropTypes.object,
 };
 
-export default withFormik({
+export default withFormik ({
   mapPropsToValues: () => ({
     number: '',
     exp_month: '',
     exp_year: '',
     cvc: '',
   }),
-  validationSchema: Yup.object().shape({
-    number: Yup.string().required('Card number is required.'),
-    exp_month: Yup.string().required('Expiry month is required.'),
-    exp_year: Yup.string().required('Expiry year is required.'),
-    cvc: Yup.string().required('Card CVC is required.'),
+  validationSchema: Yup.object ().shape ({
+    number: Yup.string ().required ('Card number is required.'),
+    exp_month: Yup.string ().required ('Expiry month is required.'),
+    exp_year: Yup.string ().required ('Expiry year is required.'),
+    cvc: Yup.string ().required ('Card CVC is required.'),
   }),
-  handleSubmit: (values, { setSubmitting, props }) => {
+  handleSubmit: (values, {setSubmitting, props}) => {
     // console.log('handle submit', values, props);
-    const { userData } = props;
+    const {userData} = props;
     const user = userData !== null ? userData : {};
-    const orderId = randomstring.generate(6).toUpperCase();
-    const alertify = require('alertify.js'); // eslint-disable-line
+    const orderId = randomstring.generate (6).toUpperCase ();
+    const alertify = require ('alertify.js'); // eslint-disable-line
 
-    $('.payment-form-btn').addClass('is-loading');
+    $ ('.payment-form-btn').addClass ('is-loading');
 
     // send data to stripe
-    Stripe.setPublishableKey(config.stripePublishableKey);
-    Stripe.card.createToken(
+    Stripe.setPublishableKey (config.stripePublishableKey);
+    Stripe.card.createToken (
       {
-        number: values.number.replace(/ /g, ''),
+        number: values.number.replace (/ /g, ''),
         cvc: values.cvc,
         exp_month: values.exp_month,
         exp_year: values.exp_year,
@@ -280,31 +272,31 @@ export default withFormik({
           // send data to server
           // console.log('sending data', token.id, orderId);
           apolloClient
-            .mutate({
+            .mutate ({
               mutation: crateOrder,
               variables: {
                 tokenId: token.id,
                 orderId,
-                productId: props.product.id.substr(1),
+                productId: props.product.id.substr (1),
                 ...user,
               },
             })
-            .then(result => {
-              console.log('order result', result);
-              setTimeout(() => props.handlePayment({ orderId }), 250);
+            .then (result => {
+              console.log ('order result', result);
+              setTimeout (() => props.handlePayment ({orderId}), 250);
             })
-            .catch(() => {
-              $('.payment-form-btn').removeClass('is-loading');
-              setSubmitting(false);
-              alertify.alert('Payment failed, please try again.');
+            .catch (() => {
+              $ ('.payment-form-btn').removeClass ('is-loading');
+              setSubmitting (false);
+              alertify.alert ('Payment failed, please try again.');
             });
         } else {
-          alertify.alert('Payment failed, invalid card details.');
-          $('.payment-form-btn').removeClass('is-loading');
-          setSubmitting(false);
+          alertify.alert ('Payment failed, invalid card details.');
+          $ ('.payment-form-btn').removeClass ('is-loading');
+          setSubmitting (false);
         }
-      },
+      }
     );
   },
   displayName: 'PaymentForm', // helps with React DevTools
-})(PaymentForm);
+}) (PaymentForm);

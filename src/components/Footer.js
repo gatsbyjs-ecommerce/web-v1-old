@@ -38,23 +38,22 @@ const Bottom = styled.div`
 `;
 
 const NavItems = [
-  { id: 1, name: 'About us', url: '/page/about' },
-  { id: 2, name: 'Contact us', url: '/contact' },
-  { id: 3, name: 'Terms and Conditions', url: '/page/terms-conditions' },
-  { id: 4, name: 'Privacy Notice', url: '/page/privacy' },
-  { id: 5, name: 'Returns Policy', url: '/page/returns' },
-  { id: 6, name: 'Delivery Information', url: '/page/delivery-information' },
-  { id: 7, name: 'Gift Vouchers', url: '/coupons' },
+  {id: 1, name: 'About us', url: '/page/about'},
+  {id: 2, name: 'Contact us', url: '/contact'},
+  {id: 3, name: 'Terms and Conditions', url: '/page/terms-and-condition'},
+  {id: 4, name: 'Privacy Policy', url: '/page/privacy-policy'},
+  {id: 5, name: 'Delivery Information', url: '/page/delivery-information'},
+  {id: 6, name: 'Gift Vouchers', url: '/coupons'},
 ];
 
-const Footer = ({ home }) => (
+const Footer = ({home}) => (
   <Container>
     <div className="section container is-hidden-mobile">
       <div className="columns is-multiline">
         <div className="column has-text-white">
           <Heading className="is-uppercase is-size-5">Customer service</Heading>
           <ul>
-            {NavItems.map(item => (
+            {NavItems.map (item => (
               <li key={item.id}>
                 <Link to={item.url} className="has-text-white">
                   {item.name}
@@ -85,7 +84,7 @@ const Footer = ({ home }) => (
           <div className="column has-text-right is-hidden-mobile">
             <img
               src="/images/payment-strip.png"
-              style={{ height: '30px' }}
+              style={{height: '30px'}}
               alt="payments cards"
             />
           </div>

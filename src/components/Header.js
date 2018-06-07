@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Spring, animated } from 'react-spring';
+import {Spring, animated} from 'react-spring';
 import Link from 'gatsby-link';
 
 import SocialIcons from './SocialIcons';
@@ -36,7 +36,7 @@ const ContainerMobile = styled.div`
   }
 `;
 
-const MobileMenu = styled(animated.div)`
+const MobileMenu = styled (animated.div)`
   && {
     position: fixed;
     left: 0;
@@ -62,23 +62,23 @@ const MobileMenu = styled(animated.div)`
 `;
 
 const NavItems = [
-  { id: 1, name: 'New In', url: '/' },
-  { id: 2, name: 'Sale', url: '/coupons' },
-  { id: 3, name: 'Blog', url: '/blog' },
-  { id: 4, name: 'About', url: '/page/about' },
-  { id: 5, name: 'Contact', url: '/contact' },
+  {id: 1, name: 'New In', url: '/'},
+  {id: 2, name: 'Sale', url: '/coupons'},
+  {id: 3, name: 'Blog', url: '/blog'},
+  {id: 4, name: 'About', url: '/page/about'},
+  {id: 5, name: 'Contact', url: '/contact'},
 ];
 
 class Header extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super (props);
 
-    this.state = { mobileMenuActive: false };
+    this.state = {mobileMenuActive: false};
   }
 
-  render() {
-    const { mobileMenuActive } = this.state;
-    const { home } = this.props;
+  render () {
+    const {mobileMenuActive} = this.state;
+    const {home} = this.props;
 
     return (
       <React.Fragment>
@@ -105,7 +105,7 @@ class Header extends React.Component {
             aria-label="main navigation"
           >
             <div className="navbar-menu is-uppercase has-text-weight-bold">
-              {NavItems.map(item => (
+              {NavItems.map (item => (
                 <Link to={item.url} className="navbar-item" key={item.id}>
                   {item.name}
                 </Link>
@@ -121,20 +121,18 @@ class Header extends React.Component {
               </Link>
             </div>
             <div className="column">
-              {mobileMenuActive ? (
-                <a onClick={() => this.setState({ mobileMenuActive: false })}>
-                  <i className="fas fa-times menu-trigger" />
-                </a>
-              ) : (
-                <a onClick={() => this.setState({ mobileMenuActive: true })}>
-                  <i className="fas fa-bars menu-trigger" />
-                </a>
-              )}
+              {mobileMenuActive
+                ? <a onClick={() => this.setState ({mobileMenuActive: false})}>
+                    <i className="fas fa-times menu-trigger" />
+                  </a>
+                : <a onClick={() => this.setState ({mobileMenuActive: true})}>
+                    <i className="fas fa-bars menu-trigger" />
+                  </a>}
             </div>
           </div>
           <Spring
             native
-            from={{ height: 0, opacity: 0, paddingTop: '-64px' }}
+            from={{height: 0, opacity: 0, paddingTop: '-64px'}}
             to={{
               height: mobileMenuActive ? 'auto' : 0,
               opacity: mobileMenuActive ? 1 : 0,
@@ -145,12 +143,11 @@ class Header extends React.Component {
               <MobileMenu style={styles}>
                 <aside className="menu">
                   <ul className="menu-list is-uppercase has-text-weight-bold is-size-4">
-                    {NavItems.map(item => (
+                    {NavItems.map (item => (
                       <li
                         key={item.id}
                         onClick={() =>
-                          this.setState({ mobileMenuActive: false })
-                        }
+                          this.setState ({mobileMenuActive: false})}
                       >
                         <Link to={item.url}>{item.name}</Link>
                       </li>

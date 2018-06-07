@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import {withFormik} from 'formik';
 
 import Heading from '../components/Heading';
 import ContactForm from '../components/ContactForm';
