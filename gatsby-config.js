@@ -35,28 +35,28 @@ module.exports = {
         accessToken: `42627fbeb9475a7867204b28243ff40aa2aec93995ecac371eea9957dda734b2`,
       },
     },
-    // {
-    //   resolve: `gatsby-transformer-remark`,
-    //   options: {
-    //     plugins: [
-    //       {
-    //         resolve: `gatsby-remark-images`,
-    //         options: {
-    //           maxWidth: 690,
-    //         },
-    //       },
-    //       {
-    //         resolve: `gatsby-remark-responsive-iframe`,
-    //         options: {
-    //           wrapperStyle: `margin-bottom: 1.0725rem`,
-    //         },
-    //       },
-    //       `gatsby-remark-prismjs`,
-    //       `gatsby-remark-copy-linked-files`,
-    //       `gatsby-remark-smartypants`,
-    //     ],
-    //   },
-    // },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 690,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+        ],
+      },
+    },
     // {
     //   resolve: 'gatsby-plugin-manifest',
     //   options: {
