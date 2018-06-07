@@ -256,6 +256,7 @@ export default withFormik({
     const { userData } = props;
     const user = userData !== null ? userData : {};
     const orderId = randomstring.generate(6).toUpperCase();
+    const alertify = require('alertify.js'); // eslint-disable-line
 
     $('.payment-form-btn').addClass('is-loading');
 
@@ -295,10 +296,10 @@ export default withFormik({
             .catch(() => {
               $('.payment-form-btn').removeClass('is-loading');
               setSubmitting(false);
-              const alertify = require('alertify.js');
               alertify.alert('Payment failed, please try again.');
             });
         } else {
+          alertify.alert('Payment failed, invalid card details.');
           $('.payment-form-btn').removeClass('is-loading');
           setSubmitting(false);
         }

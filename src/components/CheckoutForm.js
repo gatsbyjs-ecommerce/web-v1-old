@@ -233,7 +233,10 @@ class CheckoutForm extends React.Component {
                   disabled={isSubmitting}
                   className="checkout-form-btn button is-dark is-large is-radiusless is-uppercase"
                 >
-                  Buy now
+                  <span className="icon">
+                    <i className="far fa-credit-card" />
+                  </span>
+                  <span>Make payment</span>
                 </BuyBtn>
               </form>
             </animated.div>
