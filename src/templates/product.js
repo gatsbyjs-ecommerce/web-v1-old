@@ -41,7 +41,11 @@ class Product extends React.Component {
   render() {
     const { activeStep, isVisible, paymentData } = this.state;
     const {
-      data: { contentfulProduct: product, allContentfulProduct: products },
+      data: {
+        contentfulProduct: product,
+        allContentfulProduct: products,
+        contentfulHome: home,
+      },
     } = this.props;
 
     const isMobile = !isUndefined(global.window)
@@ -84,6 +88,7 @@ class Product extends React.Component {
           <div className="column section">
             {activeStep === 1 && (
               <ProductInfo
+                home={home}
                 product={product}
                 handleCheckout={() => this.setState({ activeStep: 2 })}
               />
@@ -134,7 +139,7 @@ export const productQuery = graphql`
           ...GatsbyContentfulSizes
         }
       }
-      longDetails {
+      shortDetails {
         childMarkdownRemark {
           html
         }
@@ -158,6 +163,18 @@ export const productQuery = graphql`
               ...GatsbyContentfulSizes
             }
           }
+        }
+      }
+    }
+    contentfulHome {
+      productDeliveryInfo {
+        childMarkdownRemark {
+          html
+        }
+      }
+      productShippingReturns {
+        childMarkdownRemark {
+          html
         }
       }
     }

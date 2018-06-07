@@ -70,9 +70,11 @@ const ProductItem = ({ item, styles }) => (
               <p className="title is-5 has-text-weight-normal price">
                 {formatCurrency(item.discountPrice)}
               </p>
-              <p className="subtitle is-6 has-text-grey-light old-price">
-                {formatCurrency(item.originalPrice)}
-              </p>
+              {item.discountPrice < item.originalPrice && (
+                <p className="subtitle is-6 has-text-grey-light old-price">
+                  {formatCurrency(item.originalPrice)}
+                </p>
+              )}
             </div>
           </div>
         </div>

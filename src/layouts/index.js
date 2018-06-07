@@ -8,7 +8,7 @@ import apolloClient from '../utils/apollo';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
-const IndexLayout = ({ children }) => (
+const IndexLayout = ({ children, data: { contentfulHome: home } }) => (
   <ApolloProvider client={apolloClient}>
     <div>
       <Helmet
@@ -16,10 +16,10 @@ const IndexLayout = ({ children }) => (
         meta={[{ name: 'description', content: config.description }]}
       />
       <div className="container">
-        <Header />
+        <Header home={home} />
         {children()}
       </div>
-      <Footer />
+      <Footer home={home} />
     </div>
   </ApolloProvider>
 );
@@ -29,3 +29,17 @@ IndexLayout.propTypes = {
 };
 
 export default IndexLayout;
+
+export const indexLayoutQuery = graphql`
+  query IndexLayout {
+    contentfulHome {
+      telephone
+      email
+      address
+      facebook
+      twitter
+      instagram
+      pinterest
+    }
+  }
+`;

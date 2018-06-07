@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 
@@ -36,53 +37,30 @@ const Bottom = styled.div`
   }
 `;
 
-const Footer = () => (
+const NavItems = [
+  { id: 1, name: 'About us', url: '/page/about' },
+  { id: 2, name: 'Contact us', url: '/contact' },
+  { id: 3, name: 'Terms and Conditions', url: '/page/terms-conditions' },
+  { id: 4, name: 'Privacy Notice', url: '/page/privacy' },
+  { id: 5, name: 'Returns Policy', url: '/page/returns' },
+  { id: 6, name: 'Delivery Information', url: '/page/delivery-information' },
+  { id: 7, name: 'Gift Vouchers', url: '/coupons' },
+];
+
+const Footer = ({ home }) => (
   <Container>
     <div className="section container is-hidden-mobile">
       <div className="columns is-multiline">
         <div className="column has-text-white">
           <Heading className="is-uppercase is-size-5">Customer service</Heading>
           <ul>
-            <li>
-              <Link to="/" className="has-text-white">
-                About us
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className="has-text-white">
-                Contact us
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className="has-text-white">
-                Terms and Conditions
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className="has-text-white">
-                Privacy Notice
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className="has-text-white">
-                Returns Policy
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className="has-text-white">
-                Delivery Information
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className="has-text-white">
-                Gift Vouchers
-              </Link>
-            </li>
-            <li>
-              <Link to="/" className="has-text-white">
-                Customer Service Twitter
-              </Link>
-            </li>
+            {NavItems.map(item => (
+              <li key={item.id}>
+                <Link to={item.url} className="has-text-white">
+                  {item.name}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
         <div className="column has-text-white">
@@ -94,7 +72,7 @@ const Footer = () => (
         </div>
         <div className="column has-text-white">
           <Heading className="is-uppercase is-size-5">Connect</Heading>
-          <SocialIcons inverted />
+          <SocialIcons data={home} inverted />
         </div>
       </div>
     </div>
@@ -116,5 +94,13 @@ const Footer = () => (
     </Bottom>
   </Container>
 );
+
+Footer.defaultProps = {
+  home: {},
+};
+
+Footer.propTypes = {
+  home: PropTypes.object,
+};
 
 export default Footer;

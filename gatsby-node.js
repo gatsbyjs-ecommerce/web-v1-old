@@ -16,11 +16,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
                 html
               }
             }
-            otherContent {
-              childMarkdownRemark {
-                html
-              }
-            }
             image {
               id
               title
@@ -142,11 +137,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               }
             }
             shortDetails {
-              childMarkdownRemark {
-                html
-              }
-            }
-            longDetails {
               childMarkdownRemark {
                 html
               }

@@ -31,11 +31,11 @@ const Strip = styled.div`
   }
 `;
 
-const HomeBanner = () => (
+const HomeBanner = ({ data }) => (
   <Container className="section is-hidden-mobile">
     <div className="text">
       <p className="is-size-3	is-uppercase has-text-white has-text-weight-semibold main-text">
-        Latest punjabi suits
+        {data.homeSliderTitle}
       </p>
       <p className="has-text-white">Limited time only!</p>
       <p className="is-size-6 has-text-white">Extra 20% off sale!</p>
@@ -45,7 +45,7 @@ const HomeBanner = () => (
     </div>
     <Strip>
       <p className="is-size-5	is-uppercase has-text-white has-text-centered has-text-weight-semibold">
-        Free uk standard deliver over £50 Hurry!
+        {data.homeSliderSubTitle}
       </p>
     </Strip>
   </Container>

@@ -8,15 +8,15 @@ import HomeAbout from '../components/HomeAbout';
 export default class IndexPage extends React.Component {
   render() {
     const {
-      data: { allContentfulProduct: products },
+      data: { allContentfulProduct: products, contentfulHome: home },
     } = this.props;
 
     return (
       <React.Fragment>
         <Helmet title="Punjabi designer suits | Sejal Suits" />
-        <HomeBanner />
+        <HomeBanner data={home} />
         <ProductsList products={products.edges} />
-        <HomeAbout />
+        <HomeAbout data={home} />
       </React.Fragment>
     );
   }
@@ -42,6 +42,21 @@ export const indexQuery = graphql`
               ...GatsbyContentfulSizes
             }
           }
+        }
+      }
+    }
+    contentfulHome {
+      homeSliderTitle
+      homeSliderSubTitle
+      homeSliderImage {
+        title
+        sizes(maxWidth: 550) {
+          ...GatsbyContentfulSizes
+        }
+      }
+      homeIntro {
+        childMarkdownRemark {
+          html
         }
       }
     }

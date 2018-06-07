@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
 import Link from 'gatsby-link';
@@ -62,9 +63,10 @@ const MobileMenu = styled(animated.div)`
 
 const NavItems = [
   { id: 1, name: 'New In', url: '/' },
-  { id: 2, name: 'Sale', url: '/' },
-  { id: 3, name: 'Blog', url: '/' },
-  { id: 4, name: 'About', url: '/' },
+  { id: 2, name: 'Sale', url: '/coupons' },
+  { id: 3, name: 'Blog', url: '/blog' },
+  { id: 4, name: 'About', url: '/page/about' },
+  { id: 5, name: 'Contact', url: '/contact' },
 ];
 
 class Header extends React.Component {
@@ -76,13 +78,14 @@ class Header extends React.Component {
 
   render() {
     const { mobileMenuActive } = this.state;
+    const { home } = this.props;
 
     return (
       <React.Fragment>
         <Container className="is-hidden-mobile">
           <div className="columns">
             <div className="column">
-              <SocialIcons />
+              <SocialIcons data={home} />
             </div>
             <div className="column has-text-centered">
               <Link to="/">
@@ -91,7 +94,8 @@ class Header extends React.Component {
             </div>
             <div className="column has-text-right has-text-weight-semibold	">
               <p>
-                <a>hi@sejalsuits.co.uk</a> | <a>+44 123123123</a>
+                <a href={`mailto:${home.email}`}>{home.email}</a> |{' '}
+                <a href={`tel:${home.telephone}`}>{home.telephone}</a>
               </p>
             </div>
           </div>
@@ -152,7 +156,7 @@ class Header extends React.Component {
                       </li>
                     ))}
                     <li className="social">
-                      <SocialIcons inverted />
+                      <SocialIcons data={home} inverted />
                     </li>
                   </ul>
                 </aside>
@@ -164,5 +168,13 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.defaultProps = {
+  home: {},
+};
+
+Header.propTypes = {
+  home: PropTypes.object,
+};
 
 export default Header;
