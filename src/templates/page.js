@@ -15,7 +15,9 @@ export const pageQuery = graphql`
       title
       slug
       content {
-        id
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }
