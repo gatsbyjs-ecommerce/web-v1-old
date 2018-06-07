@@ -1,70 +1,71 @@
 import React from 'react';
 import Helmet from 'react-helmet';
+import styled from 'styled-components';
 
-function encode(data) {
-  return Object.keys(data)
-    .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
-    .join('&');
-}
+import Heading from '../components/Heading';
+import ContactForm from '../components/ContactForm';
+import SocialIcons from '../components/SocialIcons';
 
-export default class ContactPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
+const Container = styled.div`
+  span{
+    padding: 1rem;
   }
+  p{
+    padding: 1rem;
+  }
+  svg{
+    color:#494949;
+  }
+`;
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+export default ({data}) => {
+  const contact = data.contentfulHome;
+  return (
+    <Container className="section">
+      <Helmet title="Contact" />
+      <Heading>Get In touch</Heading>
+      <div className="columns">
+        <div className="column">
+          <div className="box">
+            <p>
+              <i className="fas fa-map-marker is-size-4" />
+              <span className="is-size-6">{contact.address}</span>
+            </p>
+            <p>
+              <i className="fas fa-mobile is-size-4" />
+              <span className="is-size-6">{contact.telephone}</span>
+            </p>
+            <p>
+              <i className="fas fa-envelope-open is-size-4" />
+              <span className="is-size-6">{contact.email}</span>
+            </p>
+            <p className="has-text-centered">
+              <SocialIcons data={contact} />
+            </p>
 
-  handleSubmit = e => {
-    e.preventDefault();
+          </div>
+        </div>
+        <div className="column">
+          <div className="box">
+            <ContactForm />
+          </div>
 
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({ 'form-name': 'contact', ...this.state }),
-    })
-      .then(() => alert('Success!'))
-      .catch(error => alert(error));
-  };
-
-  render() {
-    return (
-      <div>
-        <Helmet title="Contact" />
-        <h1>Contact</h1>
-        <form
-          name="contact"
-          method="post"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          netlify="true"
-          onSubmit={this.handleSubmit}
-        >
-          <input type="hidden" name="form-name" value="contact" />
-          <p>
-            <label>
-              Your Name:{' '}
-              <input type="text" name="name" onChange={this.handleChange} />
-            </label>
-          </p>
-          <p>
-            <label>
-              Your Email:{' '}
-              <input type="email" name="email" onChange={this.handleChange} />
-            </label>
-          </p>
-          <p>
-            <label>
-              Message: <textarea name="message" onChange={this.handleChange} />
-            </label>
-          </p>
-          <p>
-            <button type="submit">Send</button>
-          </p>
-        </form>
+        </div>
       </div>
-    );
+    </Container>
+  );
+};
+
+export const contactQuery = graphql`
+  query Contact {
+    contentfulHome{
+    address
+    email
+    telephone
+    facebook
+    twitter
+    instagram
+    pinterest
   }
-}
+  }
+`;
