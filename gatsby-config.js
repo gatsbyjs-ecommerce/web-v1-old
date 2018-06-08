@@ -1,4 +1,4 @@
-const config = require('./src/config/index.js');
+const config = require ('./src/config/index.js');
 
 module.exports = {
   siteMetadata: {
@@ -57,29 +57,53 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: config.siteName,
-    //     short_name: config.siteName,
-    //     description: config.description,
-    //     start_url: config.siteUrl,
-    //     background_color: config.backgroundColor,
-    //     theme_color: config.themeColor,
-    //     display: 'minimal-ui',
-    //     icons: [
-    //       {
-    //         src: '/images/logo-48.png',
-    //         sizes: '192x192',
-    //         type: 'image/png',
-    //       },
-    //       {
-    //         src: '/images/logo-1024.png',
-    //         sizes: '512x512',
-    //         type: 'image/png',
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-medium`,
+      options: {
+        username: `sejal-suits`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: './static/images/favicon.png',
+        injectHTML: true,
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          twitter: false,
+          yandex: false,
+          windows: false,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: config.siteName,
+        short_name: config.siteName,
+        description: config.description,
+        start_url: config.siteUrl,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: 'minimal-ui',
+        icons: [
+          {
+            src: './static/images/favicon.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: './static/images/favicon.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+      },
+    },
   ],
 };
