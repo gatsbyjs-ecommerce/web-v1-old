@@ -17,6 +17,13 @@ p {
   float: left;
 }
 
+@media only screen and (max-width: 768px) {
+  .image-gallery-image,
+  .image-gallery-image img {
+    height: 600px !important;
+  }
+}
+
 /*!
   Ionicons, v2.0.0
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -461,10 +468,10 @@ p {
 }
 
 .image-gallery-image {
-  height: 900px;
+  height: 800px;
 }
 .image-gallery-slide img {
-  height: 900px;
+  height: 800px;
   object-fit: cover;
 }
 

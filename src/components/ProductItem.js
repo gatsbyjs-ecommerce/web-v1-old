@@ -62,7 +62,7 @@ const ProductItem = ({ item, styles }) => (
       <div className="card-content">
         <div className="media">
           <div className="media-content">
-            <p className="title is-5">
+            <p className="title is-5" style={{ maxWidth: '94%' }}>
               <Link to={`/product/${item.slug}`}>{item.title}</Link>
             </p>
             <p className="subtitle is-6 has-text-grey">{item.color}</p>

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Link from 'gatsby-link';
 
 import SocialIcons from './SocialIcons';
+import SubscribeForm from './SubscribeForm';
 
 const Container = styled.footer`
   padding-bottom: 80px;
@@ -14,16 +15,6 @@ const Container = styled.footer`
 
 const Heading = styled.p`
   margin-bottom: 1rem;
-`;
-
-const SubscribeForm = styled.form`
-  margin-top: 1rem;
-  input {
-    background-color: #3e3e3e;
-    border: 1px solid #979797;
-    border-radius: 0px;
-    color: #fff;
-  }
 `;
 
 const Bottom = styled.div`
@@ -64,9 +55,7 @@ const Footer = ({ home }) => (
         <div className="column has-text-white">
           <Heading className="is-uppercase is-size-5">Subscribe</Heading>
           <p>Receive special offers when you signup our mailing list</p>
-          <SubscribeForm>
-            <input className="input" type="text" placeholder="Text input" />
-          </SubscribeForm>
+          <SubscribeForm />
         </div>
         <div className="column has-text-white">
           <Heading className="is-uppercase is-size-5">Connect</Heading>

@@ -66,6 +66,9 @@ const ShareContainer = styled.div`
   .share-icons {
     float: right;
     width: 110px;
+    .level-item {
+      margin-left: 0.3rem;
+    }
   }
   svg {
     color: #4a4a4a;

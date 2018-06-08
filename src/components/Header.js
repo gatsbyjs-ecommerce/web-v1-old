@@ -57,6 +57,8 @@ const MobileMenu = styled(animated.div)`
       color: #fff;
     }
     .social {
+      margin-left: 1.2rem;
+      margin-top: 2rem;
       > section {
         width: 240px;
         .level-item {
@@ -128,9 +130,15 @@ class Header extends React.Component {
             </div>
             <div className="column">
               {mobileMenuActive ? (
-                <a onClick={() => this.setState({ mobileMenuActive: false })}>
-                  <i className="fas fa-times menu-trigger" />
-                </a>
+                <span>
+                  <a
+                    onClick={() =>
+                      this.setState({ mobileMenuActive: !mobileMenuActive })
+                    }
+                  >
+                    <i className="fas fa-times menu-trigger" />
+                  </a>
+                </span>
               ) : (
                 <a onClick={() => this.setState({ mobileMenuActive: true })}>
                   <i className="fas fa-bars menu-trigger" />
@@ -142,7 +150,7 @@ class Header extends React.Component {
             native
             from={{ height: 0, opacity: 0, paddingTop: '-64px' }}
             to={{
-              height: mobileMenuActive ? 'auto' : 0,
+              height: mobileMenuActive ? 800 : 0,
               opacity: mobileMenuActive ? 1 : 0,
               paddingTop: mobileMenuActive ? 0 : -64,
             }}
