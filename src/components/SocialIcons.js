@@ -6,7 +6,10 @@ const Container = styled.section`
   width: 120px;
   min-height: 26px;
   .level-item {
-    margin-right: 2px;
+    margin-right: 0.3rem;
+    a {
+      padding: 0 !important;
+    }
   }
   svg {
     color: ${props => (!props.inverted ? '#000' : '#fff')};

@@ -3,6 +3,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Yup from 'yup';
 import { withFormik } from 'formik';
+import gql from 'graphql-tag';
+
+import apolloClient from '../utils/apollo';
+
+const contactMutation = gql`
+  mutation contact($name: String!, $email: String!, $message: String!) {
+    contact(name: $name, email: $email, message: $message) {
+      email
+    }
+  }
+`;
 
 const Submit = styled.button`
   width: 100%;
@@ -106,9 +117,24 @@ export default withFormik({
     message: Yup.string().required('Message is required!'),
   }),
   handleSubmit: (values, { setSubmitting }) => {
-    console.log('handle submit', values);
-    // TODO: Mutation
-    setSubmitting(false);
+    // console.log('handle submit', values);
+    const alertify = require('alertify.js'); // eslint-disable-line
+
+    apolloClient
+      .mutate({
+        mutation: contactMutation,
+        variables: values,
+      })
+      .then(() => {
+        alertify.alert(
+          'Thank you contacting us, we will get back to you soon.',
+        );
+        setSubmitting(false);
+      })
+      .catch(() => {
+        setSubmitting(false);
+        alertify.alert('Contact form failed, please try again.');
+      });
   },
   displayName: 'ContactUs', // helps with React DevTools
 })(ContactForm);

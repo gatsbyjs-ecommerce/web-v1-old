@@ -7,8 +7,9 @@ import ContactForm from '../components/ContactForm';
 import SocialIcons from '../components/SocialIcons';
 
 const Container = styled.div`
-  span {
+  a {
     padding: 1rem;
+    color: #4a4a4a;
   }
   p {
     padding: 0.2rem 0;
@@ -35,15 +36,21 @@ export default ({ data }) => {
           </p>
           <p>
             <i className="fas fa-map-marker" />
-            <span className="is-size-6">{contact.address}</span>
+            <a href="#" className="is-size-6">
+              {contact.address}
+            </a>
           </p>
           <p>
             <i className="fas fa-mobile" />
-            <span className="is-size-6">{contact.telephone}</span>
+            <a href={`tel:${contact.telephone}`} className="is-size-6">
+              {contact.telephone}
+            </a>
           </p>
           <p>
             <i className="fas fa-envelope-open" />
-            <span className="is-size-6">{contact.email}</span>
+            <a href={`mailto:${contact.email}`} className="is-size-6">
+              {contact.email}
+            </a>
           </p>
           <br />
           <br />
