@@ -49,6 +49,7 @@
     "gatsby-transformer-sharp": "^1.6.26",
     "graphql-tag": "^2.9.2",
     "isomorphic-unfetch": "^2.0.0",
+    "lodash": "^4.17.10",
     "prismjs": "^1.14.0",
     "randomstring": "^1.1.5",
     "react-accessible-accordion": "^2.4.2",

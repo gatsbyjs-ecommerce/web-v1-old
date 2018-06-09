@@ -4,16 +4,18 @@ import Helmet from 'react-helmet';
 import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
+import SEO from '../components/SEO';
 
 export default class IndexPage extends React.Component {
-  render() {
+  render () {
     const {
-      data: { allContentfulProduct: products, contentfulHome: home },
+      data: {allContentfulProduct: products, contentfulHome: home},
     } = this.props;
 
     return (
       <React.Fragment>
-        <Helmet title="Punjabi designer suits | Sejal Suits" />
+        <SEO isProduct={false} productData="" productImage="" />
+        {/* <Helmet title="Punjabi designer suits | Sejal Suits" /> */}
         <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} />
