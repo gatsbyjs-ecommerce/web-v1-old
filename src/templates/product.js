@@ -4,15 +4,16 @@ import React from 'react';
 import graphql from 'graphql';
 import ImageGallery from 'react-image-gallery';
 import styled from 'styled-components';
-import { isUndefined } from 'underscore';
-import { Spring, animated } from 'react-spring';
-import Helmet from 'react-helmet';
+import {isUndefined, first} from 'underscore';
+import {Spring, animated} from 'react-spring';
 
 import ProductsList from '../components/ProductsList';
 import ProductInfo from '../components/ProductInfo';
 import CheckoutForm from '../components/CheckoutForm';
 import PaymentForm from '../components/PaymentForm';
 import PaymentConfirmed from '../components/PaymentConfirmed';
+import SEO from '../components/SEO';
+import config from '../config/index';
 
 const Container = styled.div`
   &&& {
@@ -21,8 +22,8 @@ const Container = styled.div`
 `;
 
 class Product extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super (props);
 
     this.state = {
       isVisible: false,
@@ -32,14 +33,14 @@ class Product extends React.Component {
     };
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ isVisible: true });
+  componentDidMount () {
+    setTimeout (() => {
+      this.setState ({isVisible: true});
     }, 400);
   }
 
-  render() {
-    const { activeStep, isVisible, paymentData, userData } = this.state;
+  render () {
+    const {activeStep, isVisible, paymentData, userData} = this.state;
     const {
       data: {
         contentfulProduct: product,
@@ -48,24 +49,36 @@ class Product extends React.Component {
       },
     } = this.props;
 
-    const isMobile = !isUndefined(global.window)
+    const isMobile = !isUndefined (global.window)
       ? global.window.innerWidth < 768
       : false;
 
-    const images = product.otherImages.map(image => ({
+    const images = product.otherImages.map (image => ({
       original: image.sizes.src,
       thumbnail: image.sizes.src,
     }));
+    const metaData = {
+      title: product.title,
+      description: product.shortDetails.shortDetails,
+    };
+    const metaImage = isUndefined (first (product.otherImages))
+      ? first (product.otherImages).image.sizes.src
+      : `${config.url}${config.logo}`;
 
     return (
       <React.Fragment>
-        <Helmet title={`${product.title} | Sejal Suits`} />
+        <SEO
+          data={metaData}
+          isProduct
+          url={`${config.url}/product/${product.slug}`}
+          productImage={metaImage}
+        />
         <div>
           <Container className="columns">
             <div className="column is-two-fifths">
               <Spring
                 native
-                from={{ opacity: 0, marginLeft: -100 }}
+                from={{opacity: 0, marginLeft: -100}}
                 to={{
                   opacity: isVisible ? 1 : 0,
                   marginLeft: isVisible ? 0 : -100,
@@ -87,33 +100,30 @@ class Product extends React.Component {
               </Spring>
             </div>
             <div className="column section">
-              {activeStep === 1 && (
+              {activeStep === 1 &&
                 <ProductInfo
                   home={home}
                   product={product}
-                  handleCheckout={() => this.setState({ activeStep: 2 })}
-                />
-              )}
-              {activeStep === 2 && (
+                  handleCheckout={() => this.setState ({activeStep: 2})}
+                />}
+              {activeStep === 2 &&
                 <CheckoutForm
                   product={product}
                   handlePayment={data =>
-                    this.setState({ activeStep: 3, userData: data })
-                  }
-                />
-              )}
-              {activeStep === 3 && (
+                    this.setState ({activeStep: 3, userData: data})}
+                />}
+              {activeStep === 3 &&
                 <PaymentForm
                   product={product}
                   userData={userData}
                   handlePayment={data =>
-                    this.setState({ activeStep: 4, paymentData: data })
-                  }
-                />
-              )}
-              {activeStep === 4 && (
-                <PaymentConfirmed product={product} paymentData={paymentData} />
-              )}
+                    this.setState ({activeStep: 4, paymentData: data})}
+                />}
+              {activeStep === 4 &&
+                <PaymentConfirmed
+                  product={product}
+                  paymentData={paymentData}
+                />}
             </div>
           </Container>
         </div>
@@ -143,6 +153,7 @@ export const productQuery = graphql`
         }
       }
       shortDetails {
+        shortDetails
         childMarkdownRemark {
           html
         }

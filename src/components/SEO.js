@@ -1,8 +1,7 @@
-import path from 'path';
 import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import {isUndefined} from 'lodash';
+
 import config from '../config/index';
 
 const getSchemaOrgJSONLD = ({isProduct, url, title, image, description}) => {
@@ -36,7 +35,7 @@ const getSchemaOrgJSONLD = ({isProduct, url, title, image, description}) => {
         },
         {
           '@context': 'http://schema.org',
-          '@type': 'BlogPosting',
+          '@type': 'Product',
           url,
           name: title,
           alternateName: config.title,
@@ -46,16 +45,6 @@ const getSchemaOrgJSONLD = ({isProduct, url, title, image, description}) => {
             url: image,
           },
           description,
-          author: {
-            '@type': 'Person',
-            name: 'Jason Lengstorf',
-          },
-          publisher: {
-            '@type': 'Organization',
-            url: 'https://lengstorf.com',
-            logo: config.logo,
-            name: 'Jason Lengstorf',
-          },
           mainEntityOfPage: {
             '@type': 'WebSite',
             '@id': config.url,
@@ -65,24 +54,20 @@ const getSchemaOrgJSONLD = ({isProduct, url, title, image, description}) => {
     : schemaOrgJSONLD;
 };
 
-const SEO = ({productData, productImage, isProduct}) => {
-  const productMeta = productData.frontmatter || {};
+const SEO = ({data, productImage, isProduct, isPage, url}) => {
+  const title = isProduct || isPage ? data.title : config.siteName;
+  const description = isProduct || isPage
+    ? data.description
+    : config.description;
+  const image = isProduct ? productImage : `${config.url}${config.logo}`;
 
-  const title = productMeta.title || config.siteName;
-  const description =
-    productMeta.description || productData.excerpt || config.description;
-  const image = `${config.url}${config.logo}`;
-  const url = productMeta.slug
-    ? `${config.url}${path.sep}${productMeta.slug}`
-    : config.url;
-  console.log (image);
-  // const schemaOrgJSONLD = getSchemaOrgJSONLD ({
-  //   isProduct,
-  //   url,
-  //   title,
-  //   image,
-  //   description,
-  // });
+  const schemaOrgJSONLD = getSchemaOrgJSONLD ({
+    isProduct,
+    url,
+    title,
+    image,
+    description,
+  });
 
   return (
     <Helmet>
@@ -91,9 +76,9 @@ const SEO = ({productData, productImage, isProduct}) => {
       <meta name="image" content={image} />
 
       {/* Schema.org tags */}
-      {/* <script type="application/ld+json">
+      <script type="application/ld+json">
         {JSON.stringify (schemaOrgJSONLD)}
-      </script> */}
+      </script>
 
       {/* OpenGraph tags */}
       <meta property="og:url" content={url} />
@@ -114,17 +99,21 @@ const SEO = ({productData, productImage, isProduct}) => {
 };
 
 SEO.propTypes = {
+  url: PropTypes.string,
   isProduct: PropTypes.bool,
-  productData: PropTypes.shape ({
-    frontmatter: PropTypes.any,
-    excerpt: PropTypes.any,
+  isPage: PropTypes.bool,
+  data: PropTypes.shape ({
+    title: PropTypes.any,
+    description: PropTypes.any,
   }).isRequired,
   productImage: PropTypes.string,
 };
 
 SEO.defaultProps = {
   isProduct: false,
+  isPage: false,
   productImage: null,
+  url: null,
 };
 
 export default SEO;

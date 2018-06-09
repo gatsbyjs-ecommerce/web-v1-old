@@ -1,14 +1,14 @@
 module.exports = {
   DEBUG: process.env.NODE_ENV === 'development',
 
-  siteName: 'Sejal Suits',
+  siteName: 'Punjabi designer suits | Sejal Suits',
   author: 'Parminder Klair',
   url: 'https://www.sejalsuits.co.uk',
   logo: '/images/logo.png',
   description: 'Latest Punjabi Traditional Suits',
   twitter: '@sejalsuits',
   fbUserId: '@sejalsuits',
-  fbAppId: '@sejalsuits',
+  fbAppID: '@sejalsuits',
   type: 'website',
 
   GRAPHQL_ENDPOINT: 'https://api.sejalsuits.co.uk/graphql',

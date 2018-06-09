@@ -1,10 +1,10 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 
 import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
 import SEO from '../components/SEO';
+import config from '../config/index';
 
 export default class IndexPage extends React.Component {
   render () {
@@ -12,10 +12,14 @@ export default class IndexPage extends React.Component {
       data: {allContentfulProduct: products, contentfulHome: home},
     } = this.props;
 
+    const metaData = {
+      title: 'New In | Sejal Suits',
+      description: 'Latest Punjabi Traditional Suits',
+    };
+
     return (
       <React.Fragment>
-        <SEO isProduct={false} productData="" />
-        {/* <Helmet title="Punjabi designer suits | Sejal Suits" /> */}
+        <SEO data={metaData} isPage url={config.url} />
         <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} />

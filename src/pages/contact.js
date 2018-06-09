@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import Heading from '../components/Heading';
 import ContactForm from '../components/ContactForm';
 import SocialIcons from '../components/SocialIcons';
+import SEO from '../components/SEO';
+import config from '../config/index';
 
 const Container = styled.div`
   a {
@@ -19,16 +21,21 @@ const Container = styled.div`
   }
 `;
 
-export default ({ data }) => {
+export default ({data}) => {
   const contact = data.contentfulHome;
+  const metaData = {
+    title: 'Contact | Sejal Suits',
+    description: 'Get In Touch',
+  };
   return (
     <Container className="section">
+      <SEO data={metaData} isPage url={`${config.url}/coupons`} />
       <Helmet title="Contact" />
       <Heading>Get In touch</Heading>
       <div className="columns">
         <div
           className="column is-two-fifths"
-          style={{ borderRight: '1px solid #eee' }}
+          style={{borderRight: '1px solid #eee'}}
         >
           <p>
             If you have any question or enquiry, feel free to get in touch with
