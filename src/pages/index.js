@@ -14,7 +14,7 @@ export default class IndexPage extends React.Component {
 
     return (
       <React.Fragment>
-        <SEO isProduct={false} productData="" productImage="" />
+        <SEO isProduct={false} productData="" />
         {/* <Helmet title="Punjabi designer suits | Sejal Suits" /> */}
         <HomeBanner data={home} />
         <ProductsList products={products.edges} />

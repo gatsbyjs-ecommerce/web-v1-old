@@ -3,8 +3,8 @@ module.exports = {
 
   siteName: 'Sejal Suits',
   author: 'Parminder Klair',
-
-  image: '/images/logo.png',
+  url: 'https://www.sejalsuits.co.uk/',
+  logo: '/images/logo.png',
   description: 'Latest Punjabi Traditional Suits',
   twitter: '@sejalsuits',
   fbUserId: '@sejalsuits',
