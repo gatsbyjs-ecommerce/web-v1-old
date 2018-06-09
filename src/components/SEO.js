@@ -71,7 +71,7 @@ const SEO = ({productData, productImage, isProduct}) => {
   const title = productMeta.title || config.siteName;
   const description =
     productMeta.description || productData.excerpt || config.description;
-  const image = config.logo;
+  const image = `${config.url}${config.logo}`;
   const url = productMeta.slug
     ? `${config.url}${path.sep}${productMeta.slug}`
     : config.url;
