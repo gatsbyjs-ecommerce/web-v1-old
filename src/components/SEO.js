@@ -68,14 +68,14 @@ const getSchemaOrgJSONLD = ({isProduct, url, title, image, description}) => {
 const SEO = ({productData, productImage, isProduct}) => {
   const productMeta = productData.frontmatter || {};
 
-  const title = productMeta.title || config.title;
+  const title = productMeta.title || config.siteName;
   const description =
     productMeta.description || productData.excerpt || config.description;
   const image = `${config.url}${productImage}` || config.image;
   const url = productMeta.slug
     ? `${config.url}${path.sep}${productMeta.slug}`
     : config.url;
-
+  console.log (title);
   // const schemaOrgJSONLD = getSchemaOrgJSONLD ({
   //   isProduct,
   //   url,
