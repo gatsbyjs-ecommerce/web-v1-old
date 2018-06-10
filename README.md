@@ -3,9 +3,10 @@
 A minimalist static E-commerce site built using GatsbyJs.
 
 - Site is still in progress, happy for pull requests and issues if you find any.
-- API is still under process, will open source it soon.
 
 [Live Demo](https://www.sejalsuits.co.uk)
+
+More info about this written here for better understanding [Creating Static E-commerce site with GatsbyJs](https://medium.com/@pinku1/creating-static-e-commerce-site-with-gatsbyjs-a349d7e022a)
 
 ## Stack
 
