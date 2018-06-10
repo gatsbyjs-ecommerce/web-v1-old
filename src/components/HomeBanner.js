@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import styles from '../utils/styles';
+import config from '../config';
 
 const Container = styled.section`
   height: 376px;
-  background-image: url(${styles.homeBannerImage});
+  background-image: url(${config.homeBannerImage});
   background-size: 100% auto;
   position: relative;
   margin-bottom: 2rem;

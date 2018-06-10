@@ -1,17 +1,17 @@
 {
-  "name": "kickoff-gatsbyjs",
-  "description": "A react starting point using GatsbyJS",
-  "version": "1.0.0",
+  "name": "gatsbyjs-ecommerce",
+  "description": "Static E-commerce site built using GatsbyJs",
+  "version": "0.8.0",
   "author": "Parminder Klair",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/perminder-klair/kickoff-gatsbyjs.git"
+    "url": "git+https://github.com/perminder-klair/gatsbyjs-ecommerce.git"
   },
   "bugs": {
-    "url": "https://github.com/perminder-klair/kickoff-gatsbyjs/issues"
+    "url": "https://github.com/perminder-klair/gatsbyjs-ecommerce/issues"
   },
-  "homepage": "https://github.com/perminder-klair/kickoff-gatsbyjs#readme",
+  "homepage": "https://github.com/perminder-klair/gatsbyjs-ecommerce#readme",
   "scripts": {
     "start": "npm run develop",
     "develop": "gatsby develop",
@@ -24,6 +24,7 @@
     "alertify.js": "^1.0.12",
     "apollo-boost": "^0.1.7",
     "cleave.js": "^1.3.7",
+    "dotenv": "^6.0.0",
     "formik": "^0.11.11",
     "gatsby": "^1.9.270",
     "gatsby-image": "^1.0.52",
@@ -80,6 +81,8 @@
     "graphql",
     "graphql",
     "reactjs",
-    "boilerplate"
+    "boilerplate",
+    "ecommerce",
+    "static site"
   ]
 }

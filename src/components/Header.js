@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
 import Link from 'gatsby-link';
 
+import config from '../config';
 import SocialIcons from './SocialIcons';
 
 const Container = styled.div`
@@ -97,7 +98,7 @@ class Header extends React.Component {
             </div>
             <div className="column has-text-centered">
               <Link to="/">
-                <img src="/images/logo.png" alt="sejal suits logo" />
+                <img src={config.logo} alt={`${config.siteName} logo`} />
               </Link>
             </div>
             <div className="column has-text-right has-text-weight-semibold	">
@@ -125,7 +126,7 @@ class Header extends React.Component {
           <div className="columns is-mobile">
             <div className="column">
               <Link to="/">
-                <img src="/images/logo.png" alt="sejal suits logo" />
+                <img src={config.logo} alt={`${config.siteName} logo`} />
               </Link>
             </div>
             <div className="column">

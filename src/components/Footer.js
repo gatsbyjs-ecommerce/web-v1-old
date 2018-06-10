@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 
+import config from '../config';
 import SocialIcons from './SocialIcons';
 import SubscribeForm from './SubscribeForm';
 
@@ -67,7 +68,7 @@ const Footer = ({ home }) => (
       <div className="section container">
         <div className="columns has-text-white">
           <div className="column">
-            <p>Copyright © 2018 - SejalSuits.co.uk</p>
+            <p>Copyright © 2018 - {config.siteName}</p>
           </div>
           <div className="column has-text-right is-hidden-mobile">
             <img

@@ -8,13 +8,13 @@ import { isUndefined } from 'underscore';
 import { withFormik } from 'formik';
 import Yup from 'yup';
 
-import styles from '../utils/styles';
+import config from '../config';
 import { formatCurrency } from '../utils/helpers';
 import Heading from '../components/Heading';
 import CheckoutProgress from '../components/CheckoutProgress';
 
 const Price = styled.div`
-  color: ${styles.primaryColor};
+  color: ${config.primaryColor};
   font-size: 1.5rem;
   margin-top: -2rem;
   span {

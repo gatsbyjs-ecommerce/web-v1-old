@@ -2,11 +2,10 @@ import React from 'react';
 import graphql from 'graphql';
 
 import Heading from '../components/Heading';
-import {HTMLContent} from '../utils/helpers';
+import { HTMLContent } from '../utils/helpers';
 
-export default ({data}) => {
-  const {contentfulPages: page} = data;
-  // console.log ('page', page);
+export default ({ data }) => {
+  const { contentfulPages: page } = data;
 
   return (
     <div className="section">

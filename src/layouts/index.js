@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ApolloProvider } from 'react-apollo';
 
-import config from '../config/index';
+import config from '../config';
 import apolloClient from '../utils/apollo';
 import Header from '../components/Header';
 import Footer from '../components/Footer';

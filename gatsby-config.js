@@ -1,3 +1,4 @@
+require('dotenv').config();
 const config = require('./src/config/index.js');
 
 module.exports = {
@@ -31,8 +32,8 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `o6uhtcakujse`,
-        accessToken: `42627fbeb9475a7867204b28243ff40aa2aec93995ecac371eea9957dda734b2`,
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_DELIVERY_API_TOKEN,
       },
     },
     {
@@ -69,12 +70,12 @@ module.exports = {
     //     display: 'minimal-ui',
     //     icons: [
     //       {
-    //         src: '/images/logo-48.png',
+    //         src: config.logo,
     //         sizes: '192x192',
     //         type: 'image/png',
     //       },
     //       {
-    //         src: '/images/logo-1024.png',
+    //         src: config.logo,
     //         sizes: '512x512',
     //         type: 'image/png',
     //       },

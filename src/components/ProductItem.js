@@ -5,7 +5,7 @@ import { animated } from 'react-spring';
 import Link from 'gatsby-link';
 import Img from 'gatsby-image';
 
-import stylesUtils from '../utils/styles';
+import config from '../config';
 import { formatCurrency } from '../utils/helpers';
 
 const Container = styled(animated.div)`
@@ -29,7 +29,7 @@ const Container = styled(animated.div)`
         top: 0.5rem;
       }
       .price {
-        color: ${stylesUtils.primaryColor};
+        color: ${config.primaryColor};
       }
       .old-price {
         text-decoration: line-through;

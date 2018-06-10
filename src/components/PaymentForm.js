@@ -12,14 +12,13 @@ import randomstring from 'randomstring';
 import gql from 'graphql-tag';
 
 import config from '../config';
-import styles from '../utils/styles';
 import apolloClient from '../utils/apollo';
 import { formatCurrency } from '../utils/helpers';
 import Heading from '../components/Heading';
 import CheckoutProgress from '../components/CheckoutProgress';
 
 const Price = styled.div`
-  color: ${styles.primaryColor};
+  color: ${config.primaryColor};
   font-size: 1.5rem;
   margin-top: -2rem;
   span {
@@ -113,7 +112,8 @@ class PaymentForm extends React.Component {
       <React.Fragment>
         <Heading>{product.title}</Heading>
         <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency(product.discountPrice)} <span>+ £2 delivery</span>
+          {formatCurrency(product.discountPrice)}{' '}
+          <span>+ {formatCurrency(config.deliveryCharges)} delivery</span>
         </Price>
         <CheckoutProgress activeStep="two" />
         <Cards className="has-text-centered">

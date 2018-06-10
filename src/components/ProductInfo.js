@@ -11,12 +11,12 @@ import {
 } from 'react-accessible-accordion';
 import { Spring, animated } from 'react-spring';
 
-import styles from '../utils/styles';
+import config from '../config';
 import { formatCurrency, HTMLContent } from '../utils/helpers';
 import Heading from '../components/Heading';
 
 const Price = styled.div`
-  color: ${styles.primaryColor};
+  color: ${config.primaryColor};
   font-size: 1.5rem;
   margin-top: -2rem;
   span {
