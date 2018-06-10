@@ -1,6 +1,6 @@
 # GatsbyJs Ecommerce
 
-Static E-commerce site built using GatsbyJs
+A minimalist static E-commerce site built using GatsbyJs.
 
 - Site is still in progress, happy for pull requests and issues if you find any.
 - API is still under process, will open source it soon.
