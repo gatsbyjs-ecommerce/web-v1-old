@@ -37,6 +37,8 @@ node_modules
 
 # Configuration files
 src/*.json
+deploy.sh
+now.json
 
 # Environment file
 .env
