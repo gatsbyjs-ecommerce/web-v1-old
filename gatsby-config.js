@@ -14,7 +14,6 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    // `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-google-analytics`,
@@ -64,47 +63,19 @@ module.exports = {
         username: `sejal-suits`,
       },
     },
+    `gatsby-plugin-sitemap`,
     {
-      resolve: `gatsby-plugin-favicon`,
-      options: {
-        logo: './static/images/favicon.png',
-        injectHTML: true,
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          twitter: false,
-          yandex: false,
-          windows: false,
-        },
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-plugin-manifest`,
       options: {
         name: config.siteName,
         short_name: config.siteName,
-        description: config.description,
         start_url: config.siteUrl,
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'minimal-ui',
-        icons: [
-          {
-            src: './static/images/logo.png',
-            sizes: '192x192',
-            type: 'image/png',
-          },
-          {
-            src: './static/images/logo.png',
-            sizes: '512x512',
-            type: 'image/png',
-          },
-        ],
+        icon: './static/images/logo.png',
       },
     },
+    `gatsby-plugin-offline`,
   ],
 };

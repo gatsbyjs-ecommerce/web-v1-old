@@ -31,6 +31,7 @@ module.exports = class HTML extends React.Component {
           />
           <meta charSet="UTF-8" />
           <meta name="author" content="Parminder Klair" />
+          <link rel="shortcut icon" href="/images/favicon.png" />
           <base href="/" target="_blank" />
           <script
             defer
