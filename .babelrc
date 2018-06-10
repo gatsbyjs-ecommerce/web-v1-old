@@ -1,0 +1,6 @@
+{
+  "plugins": ["transform-async-to-generator"],
+  "presets": [
+      "es2015", "es2017", "stage-2"
+  ]
+}
