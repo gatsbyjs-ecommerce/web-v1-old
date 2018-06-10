@@ -10,7 +10,7 @@ module.exports = {
   type: 'website',
 
   GRAPHQL_ENDPOINT: 'https://api.sejalsuits.co.uk/graphql',
-  GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000/graphql',
+  GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000',
   siteUrl: 'https://www.sejalsuits.co.uk',
   mediumPublicationUrl: 'https://medium.com/sejal-suits',
   googleAnalytics: 'UA-1390187-40',
