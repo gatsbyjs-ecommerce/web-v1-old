@@ -1,0 +1,85 @@
+{
+  "name": "Coupons",
+  "description": "",
+  "displayField": "name",
+  "fields": [
+    {
+      "id": "name",
+      "name": "Name",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "code",
+      "name": "Code",
+      "type": "Symbol",
+      "localized": false,
+      "required": true,
+      "validations": [
+        {
+          "unique": true
+        },
+        {
+          "size": {
+            "max": 5,
+            "min": 5
+          },
+          "message": "coupon code have five character"
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "status",
+      "name": "Status",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [
+        {
+          "in": [
+            "Active",
+            "Expired"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "details",
+      "name": "Details",
+      "type": "Text",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "discountPercentage",
+      "name": "Discount Percentage",
+      "type": "Integer",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
+      "id": "expiryDate",
+      "name": "Expiry Date",
+      "type": "Date",
+      "localized": false,
+      "required": true,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    }
+  ]
+}
