@@ -6,6 +6,8 @@ A minimalist static E-commerce site built using GatsbyJs.
 
 [Live Demo](https://www.sejalsuits.co.uk)
 
+Required API for mutations can be found in [API branch](https://github.com/perminder-klair/gatsbyjs-ecommerce/tree/api)
+
 More info about this written here for better understanding [Creating Static E-commerce site with GatsbyJs](https://medium.com/@pinku1/creating-static-e-commerce-site-with-gatsbyjs-a349d7e022a)
 
 ## Stack
