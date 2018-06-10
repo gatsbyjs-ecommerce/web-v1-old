@@ -1,12 +1,6 @@
 ## `ecommerce-api`
 
-> A ecommerce API built with KoaJs and Apollo GraphQL
-
-#### Requirements
-```bash
-- Node >=v8.9.4
-- NPM >=v4.1.2
-```
+> A ecommerce API built with Apollo GraphQL Server
 
 ### Setup
 ```bash
