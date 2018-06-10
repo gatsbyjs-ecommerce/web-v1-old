@@ -1,6 +1,7 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 
+import config from '../config/index';
+import Seo from '../components/Seo';
 import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
@@ -13,7 +14,11 @@ export default class IndexPage extends React.Component {
 
     return (
       <React.Fragment>
-        <Helmet title="Punjabi designer suits | Sejal Suits" />
+        <Seo
+          title="Latest punjabi suits collection"
+          description="Latest Punjabi Traditional Suits"
+          url={config.siteUrl}
+        />
         <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} />

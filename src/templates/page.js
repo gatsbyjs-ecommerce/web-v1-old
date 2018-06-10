@@ -1,6 +1,8 @@
 import React from 'react';
 import graphql from 'graphql';
 
+import config from '../config/index';
+import Seo from '../components/Seo';
 import Heading from '../components/Heading';
 import { HTMLContent } from '../utils/helpers';
 
@@ -9,6 +11,11 @@ export default ({ data }) => {
 
   return (
     <div className="section">
+      <Seo
+        title={page.title}
+        description=""
+        url={`${config.siteUrl}/page/${page.slug}`}
+      />
       <Heading>{page.title}</Heading>
       <HTMLContent content={page.content.childMarkdownRemark.html} />
     </div>

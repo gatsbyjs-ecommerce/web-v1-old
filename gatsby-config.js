@@ -58,29 +58,53 @@ module.exports = {
         ],
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-manifest',
-    //   options: {
-    //     name: config.siteName,
-    //     short_name: config.siteName,
-    //     description: config.description,
-    //     start_url: config.siteUrl,
-    //     background_color: config.backgroundColor,
-    //     theme_color: config.themeColor,
-    //     display: 'minimal-ui',
-    //     icons: [
-    //       {
-    //         src: config.logo,
-    //         sizes: '192x192',
-    //         type: 'image/png',
-    //       },
-    //       {
-    //         src: config.logo,
-    //         sizes: '512x512',
-    //         type: 'image/png',
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: `gatsby-source-medium`,
+      options: {
+        username: `sejal-suits`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-favicon`,
+      options: {
+        logo: './static/images/favicon.png',
+        injectHTML: true,
+        icons: {
+          android: true,
+          appleIcon: true,
+          appleStartup: true,
+          coast: false,
+          favicons: true,
+          firefox: true,
+          twitter: false,
+          yandex: false,
+          windows: false,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: config.siteName,
+        short_name: config.siteName,
+        description: config.description,
+        start_url: config.siteUrl,
+        background_color: config.backgroundColor,
+        theme_color: config.themeColor,
+        display: 'minimal-ui',
+        icons: [
+          {
+            src: './static/images/logo.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: './static/images/logo.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+        ],
+      },
+    },
   ],
 };

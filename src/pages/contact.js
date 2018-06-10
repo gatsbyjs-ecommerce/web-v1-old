@@ -1,7 +1,8 @@
 import React from 'react';
-import Helmet from 'react-helmet';
 import styled from 'styled-components';
 
+import config from '../config/index';
+import Seo from '../components/Seo';
 import Heading from '../components/Heading';
 import ContactForm from '../components/ContactForm';
 import SocialIcons from '../components/SocialIcons';
@@ -21,9 +22,14 @@ const Container = styled.div`
 
 export default ({ data }) => {
   const contact = data.contentfulHome;
+
   return (
     <Container className="section">
-      <Helmet title="Contact" />
+      <Seo
+        title="Contact"
+        description="Get In Touch"
+        url={`${config.siteUrl}/contact`}
+      />
       <Heading>Get In touch</Heading>
       <div className="columns">
         <div

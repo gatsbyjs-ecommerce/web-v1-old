@@ -3,8 +3,10 @@
 import React from 'react';
 import graphql from 'graphql';
 import styled from 'styled-components';
-import Helmet from 'react-helmet';
+import { isUndefined, first } from 'underscore';
 
+import Seo from '../components/Seo';
+import config from '../config/index';
 import ProductGallery from '../components/ProductGallery';
 import ProductInfo from '../components/ProductInfo';
 import CheckoutForm from '../components/CheckoutForm';
@@ -39,9 +41,19 @@ class Product extends React.Component {
       },
     } = this.props;
 
+    const metaImage = isUndefined(first(product.otherImages))
+      ? first(product.otherImages).image.sizes.src
+      : `${config.url}${config.logo}`;
+
     return (
       <React.Fragment>
-        <Helmet title={`${product.title} | Sejal Suits`} />
+        <Seo
+          title={product.title}
+          description={product.shortDetails.shortDetails}
+          url={`${config.siteUrl}/product/${product.slug}`}
+          image={metaImage}
+          isProduct
+        />
         <div>
           <Container className="columns">
             <div className="column is-two-fifths">
@@ -104,6 +116,7 @@ export const productQuery = graphql`
         }
       }
       shortDetails {
+        shortDetails
         childMarkdownRemark {
           html
         }

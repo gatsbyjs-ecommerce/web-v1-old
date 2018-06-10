@@ -1,17 +1,18 @@
 module.exports = {
   DEBUG: process.env.NODE_ENV === 'development',
 
-  siteName: 'Sejal Suits',
+  siteName: 'SejalSuits.co.uk',
   author: 'Parminder Klair',
   description: 'Latest Punjabi Traditional Suits',
   twitter: '@sejalsuits',
   fbUserId: '@sejalsuits',
-  fbAppId: '@sejalsuits',
+  fbAppID: '@sejalsuits',
   type: 'website',
 
   GRAPHQL_ENDPOINT: 'https://api.sejalsuits.co.uk/graphql',
   GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000/graphql',
   siteUrl: 'https://www.sejalsuits.co.uk',
+  mediumPublicationUrl: 'https://medium.com/sejal-suits',
   googleAnalytics: 'UA-1390187-40',
   stripePublishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
   deliveryCharges: 2,
