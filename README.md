@@ -3,6 +3,7 @@
 Static E-commerce site built using GatsbyJs
 
 - Site is still in progress, happy for pull requests and issues if you find any.
+- API is still under process, will open source it soon.
 
 [Live Demo](https://www.sejalsuits.co.uk)
 
@@ -10,14 +11,14 @@ Static E-commerce site built using GatsbyJs
 
 - [GatsbyJs](https://www.gatsbyjs.org/)
 - [React.js](https://reactjs.org/)
-- [Apollo GraphQ:](https://www.apollographql.com/)
+- [Apollo GraphQL](https://www.apollographql.com/)
 
 ## To use
 
 - Fork or download this repository
 - Ready!
 
-To change site config `./config/index.js`
+To change site config `./src/config/index.js`
 
 also add `.env` file in the root, with content for example:
 
