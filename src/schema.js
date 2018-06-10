@@ -1,4 +1,6 @@
-const typeDefs = `
+import { gql } from 'apollo-server';
+
+const typeDefs = gql`
   type Query {
     hello: String
   }
@@ -33,18 +35,18 @@ const typeDefs = `
 
   type Mutation {
     createOrder(
-      tokenId: String!,
-      orderId: String!,
-      productId: String!,
-      customerCountry: String!,
-      customerName: String!,
-      customerAddress1: String!,
-      customerAddress2: String,
-      customerCity: String!,
-      customerState: String!,
-      customerPostcode: String!,
-      customerEmail: String!,
-      customerTelephone: String!,
+      tokenId: String!
+      orderId: String!
+      productId: String!
+      customerCountry: String!
+      customerName: String!
+      customerAddress1: String!
+      customerAddress2: String
+      customerCity: String!
+      customerState: String!
+      customerPostcode: String!
+      customerEmail: String!
+      customerTelephone: String!
       customerNotes: String
     ): Order
     subscribe(email: String!): Subscriber

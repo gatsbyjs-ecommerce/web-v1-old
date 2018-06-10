@@ -13,6 +13,7 @@ const transporter = nodemailer.createTransport({
     pass: conf.get('mailer.password'),
   },
 });
+
 export default {
   Query: {
     hello: () => 'Hello world!',
