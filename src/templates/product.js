@@ -41,8 +41,8 @@ class Product extends React.Component {
       },
     } = this.props;
 
-    const metaImage = isUndefined(first(product.otherImages))
-      ? first(product.otherImages).image.sizes.src
+    const metaImage = product.featuredImage
+      ? product.featuredImage.sizes.src
       : `${config.url}${config.logo}`;
 
     return (
@@ -108,6 +108,12 @@ export const productQuery = graphql`
       discountPrice
       shippingCost
       color
+      featuredImage {
+        title
+        sizes(maxWidth: 550) {
+          ...GatsbyContentfulSizes
+        }
+      }
       otherImages {
         id
         title

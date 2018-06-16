@@ -34,7 +34,8 @@ const NavItems = [
   { id: 3, name: 'Terms and Conditions', url: '/page/terms-and-condition' },
   { id: 4, name: 'Privacy Policy', url: '/page/privacy-policy' },
   { id: 5, name: 'Delivery Information', url: '/page/delivery-information' },
-  { id: 6, name: 'Gift Vouchers', url: '/coupons' },
+  { id: 6, name: 'Return Policy', url: '/page/return-policy' },
+  { id: 7, name: 'Gift Vouchers', url: '/coupons' },
 ];
 
 const Footer = ({ home }) => (
