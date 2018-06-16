@@ -107,6 +107,7 @@ class ProductInfo extends React.Component {
     const { isVisible } = this.state;
     const { product, home } = this.props;
 
+    const metaTitle = `Checkout ${product.title} at SejalSuits`;
     const metaImage = product.featuredImage
       ? product.featuredImage.sizes.src
       : `${config.url}${config.logo}`;
@@ -176,6 +177,8 @@ class ProductInfo extends React.Component {
                     <div className="level-item">
                       <FacebookShareButton
                         url={`${config.siteUrl}/${product.slug}`}
+                        quote={metaTitle}
+                        hashtag="#sejalsuits"
                       >
                         <i className="fab fa-facebook-square" />
                       </FacebookShareButton>
@@ -183,6 +186,8 @@ class ProductInfo extends React.Component {
                     <div className="level-item">
                       <TwitterShareButton
                         url={`${config.siteUrl}/${product.slug}`}
+                        title={metaTitle}
+                        hashtags={['sejalsuits', 'punjabisuits']}
                       >
                         <i className="fab fa-twitter-square" />
                       </TwitterShareButton>
@@ -191,6 +196,7 @@ class ProductInfo extends React.Component {
                       <PinterestShareButton
                         url={`${config.siteUrl}/${product.slug}`}
                         media={metaImage}
+                        description={metaTitle}
                       >
                         <i className="fab fa-pinterest-square" />
                       </PinterestShareButton>
@@ -198,6 +204,7 @@ class ProductInfo extends React.Component {
                     <div className="level-item">
                       <EmailShareButton
                         url={`${config.siteUrl}/${product.slug}`}
+                        subject={metaTitle}
                       >
                         <i className="fas fa-envelope" />
                       </EmailShareButton>

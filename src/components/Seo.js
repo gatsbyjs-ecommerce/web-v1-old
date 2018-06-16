@@ -80,7 +80,7 @@ const Seo = ({ title, description, url, image, isProduct }) => {
       {/* OpenGraph tags */}
       <meta property="og:url" content={url} />
       {isProduct ? <meta property="og:type" content="product" /> : null}
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
       <meta property="fb:app_id" content={config.fbAppID} />
@@ -88,7 +88,7 @@ const Seo = ({ title, description, url, image, isProduct }) => {
       {/* Twitter Card tags */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={config.twitter} />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
     </Helmet>
