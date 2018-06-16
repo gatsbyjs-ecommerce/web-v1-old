@@ -107,6 +107,7 @@ class ProductInfo extends React.Component {
     const { isVisible } = this.state;
     const { product, home } = this.props;
 
+    const metaUrl = `${config.siteUrl}/product/${product.slug}`;
     const metaTitle = `Checkout ${product.title} at SejalSuits`;
     const metaImage = product.featuredImage
       ? product.featuredImage.sizes.src
@@ -176,7 +177,7 @@ class ProductInfo extends React.Component {
                   <div className="level">
                     <div className="level-item">
                       <FacebookShareButton
-                        url={`${config.siteUrl}/${product.slug}`}
+                        url={metaUrl}
                         quote={metaTitle}
                         hashtag="#sejalsuits"
                       >
@@ -185,7 +186,7 @@ class ProductInfo extends React.Component {
                     </div>
                     <div className="level-item">
                       <TwitterShareButton
-                        url={`${config.siteUrl}/${product.slug}`}
+                        url={metaUrl}
                         title={metaTitle}
                         hashtags={['sejalsuits', 'punjabisuits']}
                       >
@@ -194,7 +195,7 @@ class ProductInfo extends React.Component {
                     </div>
                     <div className="level-item">
                       <PinterestShareButton
-                        url={`${config.siteUrl}/${product.slug}`}
+                        url={metaUrl}
                         media={metaImage}
                         description={metaTitle}
                       >
@@ -202,10 +203,7 @@ class ProductInfo extends React.Component {
                       </PinterestShareButton>
                     </div>
                     <div className="level-item">
-                      <EmailShareButton
-                        url={`${config.siteUrl}/${product.slug}`}
-                        subject={metaTitle}
-                      >
+                      <EmailShareButton url={metaUrl} subject={metaTitle}>
                         <i className="fas fa-envelope" />
                       </EmailShareButton>
                     </div>
