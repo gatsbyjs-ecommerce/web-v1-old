@@ -3,7 +3,6 @@
 import React from 'react';
 import graphql from 'graphql';
 import styled from 'styled-components';
-import { isUndefined, first } from 'underscore';
 
 import Seo from '../components/Seo';
 import config from '../config/index';

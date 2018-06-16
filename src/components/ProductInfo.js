@@ -3,14 +3,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import {first} from 'underscore';
 import {
   Accordion,
   AccordionItem,
   AccordionItemTitle,
   AccordionItemBody,
 } from 'react-accessible-accordion';
-import {Spring, animated} from 'react-spring';
+import { Spring, animated } from 'react-spring';
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -19,7 +18,7 @@ import {
 } from 'react-share';
 
 import config from '../config';
-import {formatCurrency, HTMLContent} from '../utils/helpers';
+import { formatCurrency, HTMLContent } from '../utils/helpers';
 import Heading from '../components/Heading';
 
 const Price = styled.div`
@@ -39,7 +38,7 @@ const BuyBtn = styled.button`
   margin-top: 3rem;
 `;
 
-const AccordionStyled = styled (Accordion)`
+const AccordionStyled = styled(Accordion)`
   margin-top: 3rem;
   .accordion__title {
     border-bottom: 1px solid #979797;
@@ -80,43 +79,52 @@ const ShareContainer = styled.div`
   svg {
     color: #4a4a4a;
     font-size: 1.5rem;
-    cursor:pointer;
+    cursor: pointer;
   }
 `;
 
 class ProductInfo extends React.Component {
-  constructor (props) {
-    super (props);
+  constructor(props) {
+    super(props);
 
-    this.state = {isVisible: false};
+    this.state = { isVisible: false };
   }
 
-  componentDidMount () {
-    setTimeout (() => {
-      this.setState ({isVisible: true});
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isVisible: true });
     }, 400);
   }
 
   handleSubmit = () => {
-    const {handleCheckout} = this.props;
+    const { handleCheckout } = this.props;
 
-    $ ('.product-info-btn').addClass ('is-loading');
-    setTimeout (handleCheckout, 350);
+    $('.product-info-btn').addClass('is-loading');
+    setTimeout(handleCheckout, 350);
   };
 
-  render () {
-    const {isVisible} = this.state;
-    const {product, home} = this.props;
+  render() {
+    const { isVisible } = this.state;
+    const { product, home } = this.props;
+
+    const metaImage = product.featuredImage
+      ? product.featuredImage.sizes.src
+      : `${config.url}${config.logo}`;
 
     return (
       <React.Fragment>
         <Heading>{product.title}</Heading>
         <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency (product.discountPrice)}{' '}
-          {product.discountPrice < product.originalPrice &&
-            <span>{formatCurrency (product.originalPrice)}</span>}
+          {formatCurrency(product.discountPrice)}{' '}
+          {product.discountPrice < product.originalPrice && (
+            <span>{formatCurrency(product.originalPrice)}</span>
+          )}
         </Price>
-        <Spring native from={{opacity: 0}} to={{opacity: isVisible ? 1 : 0}}>
+        <Spring
+          native
+          from={{ opacity: 0 }}
+          to={{ opacity: isVisible ? 1 : 0 }}
+        >
           {stylesProps => (
             <animated.div style={stylesProps}>
               <BuyBtn
@@ -182,7 +190,7 @@ class ProductInfo extends React.Component {
                     <div className="level-item">
                       <PinterestShareButton
                         url={`${config.siteUrl}/${product.slug}`}
-                        media={`http:${first (product.otherImages).sizes.src}`}
+                        media={metaImage}
                       >
                         <i className="fab fa-pinterest-square" />
                       </PinterestShareButton>
