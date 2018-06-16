@@ -1,5 +1,5 @@
 module.exports = {
-  DEBUG: false, // process.env.NODE_ENV === 'development',
+  DEBUG: process.env.NODE_ENV === 'development',
 
   siteName: 'Sejal Suits',
   author: 'Parminder Klair',

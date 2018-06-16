@@ -130,6 +130,7 @@ export const productQuery = graphql`
     allContentfulProduct(
       filter: { status: { eq: "active" }, slug: { ne: $slug } }
       limit: 3
+      sort: { fields: [createdAt], order: DESC }
     ) {
       edges {
         node {
