@@ -19,13 +19,14 @@ const GRAPHQL_URL = Config.DEBUG
   : Config.GRAPHQL_ENDPOINT;
 
 const cache = new InMemoryCache();
-const persistor = new CachePersistor({
-  cache,
-  storage: window ? window.localStorage : global.localStorage,
-  debug: Config.DEBUG,
-});
-
-persistor.restore();
+if (process.browser) {
+  const persistor = new CachePersistor({
+    cache,
+    storage: global.window.localStorage,
+    debug: Config.DEBUG,
+  });
+  persistor.restore();
+}
 
 const client = new ApolloClient({
   link: ApolloLink.from([

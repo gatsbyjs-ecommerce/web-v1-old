@@ -124,7 +124,8 @@ class Header extends React.Component {
           {({ data }) => (
             <Link to="/cart">
               <i className="fas fa-shopping-cart" />
-              <span>Cart</span> ({data.cart ? data.cart.count : 0})
+              <span>Cart</span>{' '}
+              <small>({data.cart ? data.cart.count : 0})</small>
             </Link>
           )}
         </Query>
