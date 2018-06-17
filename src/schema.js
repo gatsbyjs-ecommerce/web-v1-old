@@ -37,7 +37,7 @@ const typeDefs = gql`
     createOrder(
       tokenId: String!
       orderId: String!
-      productId: String!
+      productIds: [String]!
       customerCountry: String!
       customerName: String!
       customerAddress1: String!
