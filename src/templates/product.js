@@ -1,5 +1,3 @@
-/* global window */
-
 import React from 'react';
 import graphql from 'graphql';
 import styled from 'styled-components';
@@ -8,9 +6,6 @@ import Seo from '../components/Seo';
 import config from '../config/index';
 import ProductGallery from '../components/ProductGallery';
 import ProductInfo from '../components/ProductInfo';
-import CheckoutForm from '../components/CheckoutForm';
-import PaymentForm from '../components/PaymentForm';
-import PaymentConfirmed from '../components/PaymentConfirmed';
 import ProductsList from '../components/ProductsList';
 
 const Container = styled.div`
@@ -21,7 +16,6 @@ const Container = styled.div`
 
 class Product extends React.Component {
   render() {
-    const { activeStep, paymentData, userData } = this.state;
     const {
       data: {
         contentfulProduct: product,
@@ -50,31 +44,7 @@ class Product extends React.Component {
               <ProductGallery product={product} />
             </div>
             <div className="column section">
-              <ProductInfo
-                home={home}
-                product={product}
-                handleCheckout={() => this.setState({ activeStep: 2 })}
-              />
-              {activeStep === 2 && (
-                <CheckoutForm
-                  product={product}
-                  handlePayment={data =>
-                    this.setState({ activeStep: 3, userData: data })
-                  }
-                />
-              )}
-              {activeStep === 3 && (
-                <PaymentForm
-                  product={product}
-                  userData={userData}
-                  handlePayment={data =>
-                    this.setState({ activeStep: 4, paymentData: data })
-                  }
-                />
-              )}
-              {activeStep === 4 && (
-                <PaymentConfirmed product={product} paymentData={paymentData} />
-              )}
+              <ProductInfo home={home} product={product} />
             </div>
           </Container>
         </div>

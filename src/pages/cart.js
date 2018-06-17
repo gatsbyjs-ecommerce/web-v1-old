@@ -1,21 +1,12 @@
 import React from 'react';
-import { Query, ApolloConsumer } from 'react-apollo';
-import gql from 'graphql-tag';
 
 import config from '../config/index';
-import { formatCurrency } from '../utils/helpers';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
-
-const cartQuery = gql`
-  query {
-    cart @client {
-      __typename
-      items
-      count
-    }
-  }
-`;
+import CartItems from '../components/CartItems';
+import CheckoutForm from '../components/CheckoutForm';
+import PaymentForm from '../components/PaymentForm';
+import PaymentConfirmed from '../components/PaymentConfirmed';
 
 class Cart extends React.Component {
   constructor(props) {
@@ -23,38 +14,14 @@ class Cart extends React.Component {
 
     this.state = {
       activeStep: 1,
+      cartData: null,
       userData: null,
       paymentData: null,
-      total: 0,
     };
   }
 
-  calculateTotal(items) {
-    const { total } = this.state;
-    let newTotal = 0;
-    items.forEach(item => {
-      newTotal += item.price;
-    });
-    if (total !== newTotal) {
-      setTimeout(() => this.setState({ total: newTotal }), 300);
-    }
-  }
-
-  handleRemoveItem(client, data, index) {
-    const newCart = { ...data.cart };
-    const items = JSON.parse(newCart.items);
-    items.splice(index, 1);
-    newCart.count = items.length - 1;
-    newCart.items = JSON.stringify(items);
-    return client.writeData({
-      data: {
-        cart: newCart,
-      },
-    });
-  }
-
   render() {
-    const { total, activeStep, paymentData, userData } = this.state;
+    const { activeStep, paymentData, userData } = this.state;
 
     return (
       <div className="section">
@@ -64,63 +31,40 @@ class Cart extends React.Component {
           url={`${config.siteUrl}/cart`}
         />
         <Heading>Cart</Heading>
-        <Query query={cartQuery}>
-          {({ data }) => (
-            <ApolloConsumer>
-              {client => {
-                const items = data.cart ? JSON.parse(data.cart.items) : [];
-                if (!items || items.length === 0) {
-                  return <p>No items in your cart.</p>;
+        <div className="columns">
+          <div className="column is-two-fifths">
+            <CartItems
+              handlePayment={data =>
+                this.setState({ activeStep: 2, cartData: data })
+              }
+            />
+          </div>
+          <div className="column section">
+            {activeStep === 2 && (
+              <CheckoutForm
+                product={{}}
+                handlePayment={data =>
+                  this.setState({ activeStep: 3, userData: data })
                 }
-                this.calculateTotal(items);
-
-                return (
-                  <table className="table">
-                    <thead>
-                      <tr>
-                        <th />
-                        <th>Item code</th>
-                        <th>Title</th>
-                        <th>Price</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {items.map((item, index) => (
-                        <tr key={item.id}>
-                          <th>
-                            <a
-                              onClick={() =>
-                                this.handleRemoveItem(client, data, index)
-                              }
-                            >
-                              x
-                            </a>
-                          </th>
-                          <th>{item.productCode}</th>
-                          <th>{item.title}</th>
-                          <th>{formatCurrency(item.price)}</th>
-                        </tr>
-                      ))}
-                    </tbody>
-                    <tfoot>
-                      <tr>
-                        <th />
-                        <th />
-                        <th />
-                        <th>{formatCurrency(total)}</th>
-                      </tr>
-                    </tfoot>
-                  </table>
-                );
-              }}
-            </ApolloConsumer>
-          )}
-        </Query>
+              />
+            )}
+            {activeStep === 3 && (
+              <PaymentForm
+                product={{}}
+                userData={userData}
+                handlePayment={data =>
+                  this.setState({ activeStep: 4, paymentData: data })
+                }
+              />
+            )}
+            {activeStep === 4 && (
+              <PaymentConfirmed product={{}} paymentData={paymentData} />
+            )}
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 export default Cart;
-
-// export const cartQuery = graphql``;

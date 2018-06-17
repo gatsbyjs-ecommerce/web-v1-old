@@ -113,24 +113,21 @@ class ProductInfo extends React.Component {
     }, 400);
   }
 
-  handleSubmit = () => {
-    const { handleCheckout } = this.props;
-
-    $('.product-info-btn').addClass('is-loading');
-    setTimeout(handleCheckout, 350);
-  };
-
   handleAddToCart(client, data) {
+    $('.product-info-btn').addClass('is-loading');
+
     const { product } = this.props;
     const newCart = { ...data.cart };
     let items = JSON.parse(newCart.items);
     items = items !== null ? items : [];
     newCart.count = items.length + 1;
+    console.log('product', product);
     items.push({
       id: product.id,
       productCode: product.productCode,
       title: product.title,
       price: product.discountPrice,
+      image: product.featuredImage,
       quantity: 1,
     });
     newCart.items = JSON.stringify(items);
@@ -139,7 +136,7 @@ class ProductInfo extends React.Component {
         cart: newCart,
       },
     });
-    setTimeout(() => navigateTo('/cart'), 1200);
+    setTimeout(() => navigateTo('/cart'), 600);
   }
 
   render() {
@@ -269,7 +266,6 @@ class ProductInfo extends React.Component {
 ProductInfo.propTypes = {
   product: PropTypes.object.isRequired,
   home: PropTypes.object.isRequired,
-  handleCheckout: PropTypes.func.isRequired,
 };
 
 export default ProductInfo;
