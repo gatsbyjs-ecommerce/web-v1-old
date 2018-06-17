@@ -56,7 +56,6 @@
     "gatsby-transformer-sharp": "^1.6.26",
     "graphql-tag": "^2.9.2",
     "isomorphic-unfetch": "^2.0.0",
-    "localforage": "^1.7.2",
     "moment": "^2.22.2",
     "prismjs": "^1.14.0",
     "randomstring": "^1.1.5",

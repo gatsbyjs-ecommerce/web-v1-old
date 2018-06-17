@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ApolloProvider } from 'react-apollo';
-// import { InMemoryCache } from 'apollo-cache-inmemory';
-// import { CachePersistor } from 'apollo-cache-persist';
 
 import config from '../config';
 import apolloClient from '../utils/apolloClient';

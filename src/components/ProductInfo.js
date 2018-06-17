@@ -3,6 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Query, ApolloConsumer } from 'react-apollo';
+import { navigateTo } from 'gatsby-link';
+import gql from 'graphql-tag';
 import {
   Accordion,
   AccordionItem,
@@ -20,6 +23,16 @@ import {
 import config from '../config';
 import { formatCurrency, HTMLContent } from '../utils/helpers';
 import Heading from '../components/Heading';
+
+const cartQuery = gql`
+  query {
+    cart @client {
+      __typename
+      items
+      count
+    }
+  }
+`;
 
 const Price = styled.div`
   color: ${config.primaryColor};
@@ -107,6 +120,28 @@ class ProductInfo extends React.Component {
     setTimeout(handleCheckout, 350);
   };
 
+  handleAddToCart(client, data) {
+    const { product } = this.props;
+    const newCart = { ...data.cart };
+    let items = JSON.parse(newCart.items);
+    items = items !== null ? items : [];
+    newCart.count = items.length + 1;
+    items.push({
+      id: product.id,
+      productCode: product.productCode,
+      title: product.title,
+      price: product.discountPrice,
+      quantity: 1,
+    });
+    newCart.items = JSON.stringify(items);
+    client.writeData({
+      data: {
+        cart: newCart,
+      },
+    });
+    setTimeout(() => navigateTo('/cart'), 1200);
+  }
+
   render() {
     const { isVisible } = this.state;
     const { product, home } = this.props;
@@ -133,12 +168,21 @@ class ProductInfo extends React.Component {
         >
           {stylesProps => (
             <animated.div style={stylesProps}>
-              <BuyBtn
-                className="product-info-btn button is-dark is-large is-radiusless is-uppercase"
-                onClick={this.handleSubmit}
-              >
-                Add to bag
-              </BuyBtn>
+              <Query query={cartQuery}>
+                {({ data }) => (
+                  <ApolloConsumer>
+                    {client => (
+                      <BuyBtn
+                        className="product-info-btn button is-dark is-large is-radiusless is-uppercase"
+                        onClick={() => this.handleAddToCart(client, data)}
+                      >
+                        Add to bag
+                      </BuyBtn>
+                    )}
+                  </ApolloConsumer>
+                )}
+              </Query>
+
               <AccordionStyled>
                 <AccordionItem expanded>
                   <AccordionItemTitle>

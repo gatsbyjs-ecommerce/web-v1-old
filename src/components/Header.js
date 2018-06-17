@@ -9,9 +9,11 @@ import gql from 'graphql-tag';
 import config from '../config';
 import SocialIcons from './SocialIcons';
 
-const getNetworkStatus = gql`
-  {
-    isConnected @client
+const cartQuery = gql`
+  query {
+    cart @client {
+      count
+    }
   }
 `;
 
@@ -115,18 +117,12 @@ class Header extends React.Component {
                 <a href={`tel:${home.telephone}`}>{home.telephone}</a>
               </p>
               <p>
-                <Link to="/cart">Cart</Link>
-                <br />
-                <Query query={getNetworkStatus}>
-                  {({ data: clientData }) => {
-                    const data = clientData || {};
-                    return (
-                      <span>
-                        Status:{' '}
-                        {data.isConnected ? 'Connected' : 'Disconnected'}
-                      </span>
-                    );
-                  }}
+                <Query query={cartQuery}>
+                  {({ data }) => (
+                    <Link to="/cart">
+                      Cart ({data.cart ? data.cart.count : 0})
+                    </Link>
+                  )}
                 </Query>
               </p>
             </div>
