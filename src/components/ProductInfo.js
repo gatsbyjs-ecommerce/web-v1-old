@@ -61,6 +61,10 @@ const AccordionStyled = styled(Accordion)`
   }
 `;
 
+const ProductCode = styled.p`
+  color: #b5b5b5 !important;
+`;
+
 const ShareContainer = styled.div`
   padding: 0.9rem 0;
   border-top: 1px solid #979797;
@@ -144,11 +148,17 @@ class ProductInfo extends React.Component {
                     <HTMLContent
                       content={product.shortDetails.childMarkdownRemark.html}
                     />
+                    <p>Color: {product.color}</p>
+                    <p>Made in India</p>
+                    <p>All prices include sales taxes and free UK delivery.</p>
+                    <ProductCode>
+                      Product Code: {product.productCode}
+                    </ProductCode>
                   </AccordionItemBody>
                 </AccordionItem>
                 <AccordionItem>
                   <AccordionItemTitle>
-                    <h3>Delivery information</h3>
+                    <h3>Delivery & Returns</h3>
                   </AccordionItemTitle>
                   <AccordionItemBody>
                     <HTMLContent
@@ -156,13 +166,7 @@ class ProductInfo extends React.Component {
                         home.productDeliveryInfo.childMarkdownRemark.html
                       }
                     />
-                  </AccordionItemBody>
-                </AccordionItem>
-                <AccordionItem>
-                  <AccordionItemTitle>
-                    <h3>Shipping & returns</h3>
-                  </AccordionItemTitle>
-                  <AccordionItemBody>
+                    <br />
                     <HTMLContent
                       content={
                         home.productShippingReturns.childMarkdownRemark.html

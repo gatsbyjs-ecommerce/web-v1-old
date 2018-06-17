@@ -39,6 +39,7 @@ class Product extends React.Component {
         contentfulHome: home,
       },
     } = this.props;
+    console.log('product', product);
 
     const metaImage = product.featuredImage
       ? product.featuredImage.sizes.src
@@ -107,6 +108,7 @@ export const productQuery = graphql`
       discountPrice
       shippingCost
       color
+      productCode
       featuredImage {
         title
         sizes(maxWidth: 550) {
