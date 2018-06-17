@@ -9,6 +9,7 @@ import Heading from '../components/Heading';
 const getNetworkStatus = gql`
   {
     isConnected @client
+    hello
   }
 `;
 
@@ -25,26 +26,29 @@ export default () => {
       <Heading>Cart</Heading>
       <p>table here</p>
       <Query query={getNetworkStatus}>
-        {({ data }) => (
-          <div>
-            <p>Status: {console.log('data', data)}</p>
-            <ApolloConsumer>
-              {client => (
-                <div>
-                  <button
-                    onClick={() =>
-                      client.writeData({
-                        data: { isConnected: !data.isConnected },
-                      })
-                    }
-                  >
-                    Add Todo
-                  </button>
-                </div>
-              )}
-            </ApolloConsumer>
-          </div>
-        )}
+        {({ data: clientData }) => {
+          const data = clientData || {};
+          return (
+            <div>
+              <p>Status: {console.log('data', data)}</p>
+              <ApolloConsumer>
+                {client => (
+                  <div>
+                    <button
+                      onClick={() =>
+                        client.writeData({
+                          data: { isConnected: !data.isConnected },
+                        })
+                      }
+                    >
+                      Add Todo
+                    </button>
+                  </div>
+                )}
+              </ApolloConsumer>
+            </div>
+          );
+        }}
       </Query>
     </div>
   );

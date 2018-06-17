@@ -116,10 +116,17 @@ class Header extends React.Component {
               </p>
               <p>
                 <Link to="/cart">Cart</Link>
+                <br />
                 <Query query={getNetworkStatus}>
-                  {({ data }) => (
-                    <span>Status: {console.log('header data', data)}</span>
-                  )}
+                  {({ data: clientData }) => {
+                    const data = clientData || {};
+                    return (
+                      <span>
+                        Status:{' '}
+                        {data.isConnected ? 'Connected' : 'Disconnected'}
+                      </span>
+                    );
+                  }}
                 </Query>
               </p>
             </div>
