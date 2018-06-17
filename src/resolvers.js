@@ -53,19 +53,23 @@ export default {
         args.total = totalCost.toString();
       } catch (error) {
         console.error('payment error', error);
-        // TODO: throw error
-        return null;
+        throw new Error('Payment failed.');
       }
 
       // add to db
-      if (args.product) {
-        args.product = {
-          sys: { type: 'Link', linkType: 'Entry', id: args.productId },
-        };
+      // send array of products
+      if (args.productIds) {
+        args.products = args.productIds.map(item => ({
+          sys: {
+            type: 'Link',
+            linkType: 'Entry',
+            id: item,
+          },
+        }));
       }
 
       delete args.tokenId;
-      delete args.productId;
+      delete args.productIds;
       const order = await createEntry(args, 'order');
       return order;
     },

@@ -47,11 +47,13 @@ const conf = convict({
       doc: 'Mailer user.',
       format: String,
       default: '',
+      env: 'MAILGUN_USER',
     },
     password: {
       doc: 'Mailer password.',
       format: String,
       default: '',
+      env: 'MAILGUN_PASSWORD',
     },
   },
   mailchimp: {
@@ -59,17 +61,20 @@ const conf = convict({
       doc: 'mailchimp key',
       format: String,
       default: '',
+      env: 'MAILCHIMP_KEY',
     },
     list: {
       doc: 'mailchimp list',
       format: String,
       default: '',
+      env: 'MAILCHIMP_LIST',
     },
   },
   stripeKey: {
     doc: 'Stripe key',
     format: String,
     default: '',
+    env: 'STRIPE_KEY',
   },
 });
 
