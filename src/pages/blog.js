@@ -26,7 +26,7 @@ export default ({ data }) => {
   );
 };
 
-export const pageQuery = graphql`
+export const blogQuery = graphql`
   query Blogs {
     allMediumPost(sort: { fields: [createdAt], order: DESC }) {
       edges {

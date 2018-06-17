@@ -3,9 +3,17 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
 import Link from 'gatsby-link';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
 import config from '../config';
 import SocialIcons from './SocialIcons';
+
+const getNetworkStatus = gql`
+  {
+    isConnected @client
+  }
+`;
 
 const Container = styled.div`
   margin-top: 0.6rem;
@@ -105,6 +113,14 @@ class Header extends React.Component {
               <p>
                 <a href={`mailto:${home.email}`}>{home.email}</a> |{' '}
                 <a href={`tel:${home.telephone}`}>{home.telephone}</a>
+              </p>
+              <p>
+                <Link to="/cart">Cart</Link>
+                <Query query={getNetworkStatus}>
+                  {({ data }) => (
+                    <span>Status: {console.log('header data', data)}</span>
+                  )}
+                </Query>
               </p>
             </div>
           </div>

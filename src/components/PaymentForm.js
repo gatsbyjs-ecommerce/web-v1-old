@@ -12,7 +12,7 @@ import randomstring from 'randomstring';
 import gql from 'graphql-tag';
 
 import config from '../config';
-import apolloClient from '../utils/apollo';
+import apolloClient from '../utils/apolloClient';
 import { formatCurrency } from '../utils/helpers';
 import Heading from '../components/Heading';
 import CheckoutProgress from '../components/CheckoutProgress';

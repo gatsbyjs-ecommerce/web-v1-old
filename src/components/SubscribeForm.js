@@ -4,7 +4,7 @@ import { withFormik } from 'formik';
 import Yup from 'yup';
 import gql from 'graphql-tag';
 
-import apolloClient from '../utils/apollo';
+import apolloClient from '../utils/apolloClient';
 
 const Container = styled.form`
   margin-top: 1rem;

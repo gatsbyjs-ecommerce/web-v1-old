@@ -5,7 +5,7 @@ import Yup from 'yup';
 import { withFormik } from 'formik';
 import gql from 'graphql-tag';
 
-import apolloClient from '../utils/apollo';
+import apolloClient from '../utils/apolloClient';
 
 const contactMutation = gql`
   mutation contact($name: String!, $email: String!, $message: String!) {

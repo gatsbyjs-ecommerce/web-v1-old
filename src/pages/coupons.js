@@ -28,7 +28,7 @@ export default ({ data }) => {
   );
 };
 
-export const pageQuery = graphql`
+export const couponsQuery = graphql`
   query Coupons {
     allContentfulCoupons {
       edges {
