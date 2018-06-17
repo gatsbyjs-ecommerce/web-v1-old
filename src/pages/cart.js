@@ -3,6 +3,7 @@ import { Query, ApolloConsumer } from 'react-apollo';
 import gql from 'graphql-tag';
 
 import config from '../config/index';
+import { formatCurrency } from '../utils/helpers';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
 
@@ -20,16 +21,23 @@ class Cart extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { total: 0 };
+    this.state = {
+      activeStep: 1,
+      userData: null,
+      paymentData: null,
+      total: 0,
+    };
   }
 
   calculateTotal(items) {
-    console.log('items', items);
-    let total = 0;
+    const { total } = this.state;
+    let newTotal = 0;
     items.forEach(item => {
-      total += item.price;
+      newTotal += item.price;
     });
-    // this.setState({ total });
+    if (total !== newTotal) {
+      setTimeout(() => this.setState({ total: newTotal }), 300);
+    }
   }
 
   handleRemoveItem(client, data, index) {
@@ -46,7 +54,7 @@ class Cart extends React.Component {
   }
 
   render() {
-    const { total } = this.state;
+    const { total, activeStep, paymentData, userData } = this.state;
 
     return (
       <div className="section">
@@ -90,7 +98,7 @@ class Cart extends React.Component {
                           </th>
                           <th>{item.productCode}</th>
                           <th>{item.title}</th>
-                          <th>{item.price}</th>
+                          <th>{formatCurrency(item.price)}</th>
                         </tr>
                       ))}
                     </tbody>
@@ -99,7 +107,7 @@ class Cart extends React.Component {
                         <th />
                         <th />
                         <th />
-                        <th>{total}</th>
+                        <th>{formatCurrency(total)}</th>
                       </tr>
                     </tfoot>
                   </table>

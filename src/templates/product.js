@@ -20,16 +20,6 @@ const Container = styled.div`
 `;
 
 class Product extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      activeStep: 1,
-      userData: null,
-      paymentData: null,
-    };
-  }
-
   render() {
     const { activeStep, paymentData, userData } = this.state;
     const {
@@ -39,7 +29,7 @@ class Product extends React.Component {
         contentfulHome: home,
       },
     } = this.props;
-    console.log('product', product);
+    // console.log('product', product);
 
     const metaImage = product.featuredImage
       ? product.featuredImage.sizes.src
@@ -60,13 +50,11 @@ class Product extends React.Component {
               <ProductGallery product={product} />
             </div>
             <div className="column section">
-              {activeStep === 1 && (
-                <ProductInfo
-                  home={home}
-                  product={product}
-                  handleCheckout={() => this.setState({ activeStep: 2 })}
-                />
-              )}
+              <ProductInfo
+                home={home}
+                product={product}
+                handleCheckout={() => this.setState({ activeStep: 2 })}
+              />
               {activeStep === 2 && (
                 <CheckoutForm
                   product={product}
