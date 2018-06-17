@@ -121,9 +121,8 @@ class ProductInfo extends React.Component {
     let items = JSON.parse(newCart.items);
     items = items !== null ? items : [];
     newCart.count = items.length + 1;
-    console.log('product', product);
     items.push({
-      id: product.id,
+      id: product.id.slice(1),
       productCode: product.productCode,
       title: product.title,
       price: product.discountPrice,

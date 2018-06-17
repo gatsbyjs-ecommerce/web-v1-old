@@ -3,31 +3,40 @@ import styled from 'styled-components';
 
 import config from '../config';
 
-const Container = styled.section`
-  height: 376px;
-  background-image: url(${config.homeBannerImage});
-  background-size: 100% auto;
-  position: relative;
-  margin-bottom: 2rem;
-  .main-text {
-    letter-spacing: 0.2rem;
-  }
-  .text {
-    top: 1rem;
-    position: absolute;
-  }
-`;
+// const Container = styled.section`
+//   height: 376px;
+//   background-image: url(${config.homeBannerImage});
+//   background-size: 100% auto;
+//   position: relative;
+//   margin-bottom: 2rem;
+//   .main-text {
+//     letter-spacing: 0.2rem;
+//   }
+//   .text {
+//     top: 1rem;
+//     position: absolute;
+//   }
+// `;
 
-const Strip = styled.div`
-  height: 40px;
-  background-color: #100b0b;
-  bottom: 0;
-  left: 0;
-  position: absolute;
+// const Strip = styled.div`
+//   height: 40px;
+//   background-color: #100b0b;
+//   bottom: 0;
+//   left: 0;
+//   position: absolute;
+//   width: 100%;
+//   opacity: 0.7;
+//   p {
+//     margin-top: 5px;
+//   }
+// `;
+
+const ContainerImage = styled.div`
   width: 100%;
-  opacity: 0.7;
-  p {
-    margin-top: 5px;
+  height: auto;
+  img {
+    width: 100%;
+    height: auto;
   }
 `;
 
@@ -40,7 +49,7 @@ const StripMobile = styled.div`
 
 const HomeBanner = ({ data }) => (
   <React.Fragment>
-    <Container className="section is-hidden-mobile">
+    {/* <Container className="section is-hidden-mobile">
       <div className="text">
         <p className="is-size-3	is-uppercase has-text-white has-text-weight-semibold main-text">
           {data.homeSliderTitle}
@@ -56,8 +65,11 @@ const HomeBanner = ({ data }) => (
           {data.homeSliderSubTitle}
         </p>
       </Strip>
-    </Container>
-    <StripMobile className=" is-hidden-tablet">
+    </Container> */}
+    <ContainerImage className="is-hidden-mobile">
+      <img src={config.homeBannerImage} alt="home banner" />
+    </ContainerImage>
+    <StripMobile className="is-hidden-tablet">
       <p className="is-size-6	is-uppercase has-text-white has-text-centered has-text-weight-semibold">
         {data.homeSliderSubTitle}
       </p>

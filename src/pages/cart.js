@@ -1,8 +1,10 @@
 import React from 'react';
+import { Spring, animated } from 'react-spring';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
+import CheckoutProgress from '../components/CheckoutProgress';
 import CartItems from '../components/CartItems';
 import CheckoutForm from '../components/CheckoutForm';
 import PaymentForm from '../components/PaymentForm';
@@ -21,7 +23,7 @@ class Cart extends React.Component {
   }
 
   render() {
-    const { activeStep, paymentData, userData } = this.state;
+    const { activeStep, paymentData, userData, cartData } = this.state;
 
     return (
       <div className="section">
@@ -31,9 +33,42 @@ class Cart extends React.Component {
           url={`${config.siteUrl}/cart`}
         />
         <Heading>Cart</Heading>
+        <Spring
+          native
+          from={{ opacity: 0 }}
+          to={{
+            opacity: activeStep !== 1 ? 1 : 0,
+          }}
+        >
+          {styles => (
+            <animated.div style={styles}>
+              <CheckoutProgress activeStep={activeStep} />
+            </animated.div>
+          )}
+        </Spring>
         <div className="columns">
-          <div className="column is-two-fifths">
+          <Spring
+            native
+            from={{ marginLeft: '25%' }}
+            to={{ marginLeft: activeStep === 1 ? '25%' : '0%' }}
+          >
+            {stylesProps => (
+              <animated.div
+                style={stylesProps}
+                className="column section is-half is-hidden-mobile"
+              >
+                <CartItems
+                  showCheckoutBtn={activeStep === 1}
+                  handlePayment={data =>
+                    this.setState({ activeStep: 2, cartData: data })
+                  }
+                />
+              </animated.div>
+            )}
+          </Spring>
+          <div className="column section is-hidden-tablet">
             <CartItems
+              showCheckoutBtn={activeStep === 1}
               handlePayment={data =>
                 this.setState({ activeStep: 2, cartData: data })
               }
@@ -42,7 +77,6 @@ class Cart extends React.Component {
           <div className="column section">
             {activeStep === 2 && (
               <CheckoutForm
-                product={{}}
                 handlePayment={data =>
                   this.setState({ activeStep: 3, userData: data })
                 }
@@ -50,16 +84,14 @@ class Cart extends React.Component {
             )}
             {activeStep === 3 && (
               <PaymentForm
-                product={{}}
+                cartData={cartData}
                 userData={userData}
                 handlePayment={data =>
                   this.setState({ activeStep: 4, paymentData: data })
                 }
               />
             )}
-            {activeStep === 4 && (
-              <PaymentConfirmed product={{}} paymentData={paymentData} />
-            )}
+            {activeStep === 4 && <PaymentConfirmed paymentData={paymentData} />}
           </div>
         </div>
       </div>

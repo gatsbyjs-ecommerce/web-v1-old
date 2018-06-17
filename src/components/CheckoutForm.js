@@ -8,21 +8,6 @@ import { isUndefined } from 'underscore';
 import { withFormik } from 'formik';
 import Yup from 'yup';
 
-import config from '../config';
-import { formatCurrency } from '../utils/helpers';
-import Heading from '../components/Heading';
-import CheckoutProgress from '../components/CheckoutProgress';
-
-const Price = styled.div`
-  color: ${config.primaryColor};
-  font-size: 1.5rem;
-  margin-top: -2rem;
-  span {
-    font-size: 1.4rem;
-    font-weight: light;
-  }
-`;
-
 const BuyBtn = styled.button`
   width: 100%;
   margin-top: 3rem;
@@ -57,16 +42,10 @@ class CheckoutForm extends React.Component {
       handleSubmit,
       handleChange,
       handleBlur,
-      product,
     } = this.props;
 
     return (
       <React.Fragment>
-        <Heading>{product.title}</Heading>
-        <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency(product.discountPrice)} <span>+ £2 delivery</span>
-        </Price>
-        <CheckoutProgress activeStep="one" />
         <Spring
           native
           from={{ opacity: 0 }}
@@ -74,7 +53,7 @@ class CheckoutForm extends React.Component {
         >
           {stylesProps => (
             <animated.div style={stylesProps}>
-              <form className="section" onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <div className="field">
                   <label className="label">Full name</label>
                   <div className="control">
@@ -248,7 +227,7 @@ class CheckoutForm extends React.Component {
 }
 
 CheckoutForm.propTypes = {
-  product: PropTypes.object.isRequired,
+  handlePayment: PropTypes.func.isRequired,
 };
 
 export default withFormik({

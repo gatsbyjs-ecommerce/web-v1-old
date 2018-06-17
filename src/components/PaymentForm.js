@@ -13,23 +13,9 @@ import gql from 'graphql-tag';
 
 import config from '../config';
 import apolloClient from '../utils/apolloClient';
-import { formatCurrency } from '../utils/helpers';
-import Heading from '../components/Heading';
-import CheckoutProgress from '../components/CheckoutProgress';
-
-const Price = styled.div`
-  color: ${config.primaryColor};
-  font-size: 1.5rem;
-  margin-top: -2rem;
-  span {
-    font-size: 1.4rem;
-    font-weight: light;
-  }
-`;
 
 const Cards = styled.div`
-  margin-top: 5rem;
-  margin-bottom: -1rem;
+  margin-bottom: 1rem;
   img {
     height: 45px;
   }
@@ -40,11 +26,11 @@ const BuyBtn = styled.button`
   margin-top: 3rem;
 `;
 
-const crateOrder = gql`
+const createOrder = gql`
   mutation createOrder(
     $tokenId: String!
     $orderId: String!
-    $productId: String!
+    $productIds: [String]!
     $fullName: String!
     $address1: String!
     $address2: String
@@ -58,7 +44,7 @@ const crateOrder = gql`
     createOrder(
       tokenId: $tokenId
       orderId: $orderId
-      productId: $productId
+      productIds: $productIds
       customerName: $fullName
       customerAddress1: $address1
       customerAddress2: $address2
@@ -105,17 +91,10 @@ class PaymentForm extends React.Component {
       handleSubmit,
       handleChange,
       handleBlur,
-      product,
     } = this.props;
 
     return (
       <React.Fragment>
-        <Heading>{product.title}</Heading>
-        <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency(product.discountPrice)}{' '}
-          <span>+ {formatCurrency(config.deliveryCharges)} delivery</span>
-        </Price>
-        <CheckoutProgress activeStep="two" />
         <Cards className="has-text-centered">
           <img src="/images/payment-strip.png" alt="payments cards" />
         </Cards>
@@ -126,7 +105,7 @@ class PaymentForm extends React.Component {
         >
           {stylesProps => (
             <animated.div style={stylesProps}>
-              <form className="section" onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit}>
                 <div className="field">
                   <label className="label">Card number</label>
                   <div className="control">
@@ -230,10 +209,11 @@ class PaymentForm extends React.Component {
 
 PaymentForm.defaultProps = {
   userData: {},
+  cartData: {},
 };
 
 PaymentForm.propTypes = {
-  product: PropTypes.object.isRequired,
+  cartData: PropTypes.object,
   userData: PropTypes.object,
 };
 
@@ -256,6 +236,7 @@ export default withFormik({
     const user = userData !== null ? userData : {};
     const orderId = randomstring.generate(6).toUpperCase();
     const alertify = require('alertify.js'); // eslint-disable-line
+    const productIds = props.cartData.items.map(item => item.id);
 
     $('.payment-form-btn').addClass('is-loading');
 
@@ -280,17 +261,24 @@ export default withFormik({
           // console.log('sending data', token.id, orderId);
           apolloClient
             .mutate({
-              mutation: crateOrder,
+              mutation: createOrder,
               variables: {
                 tokenId: token.id,
                 orderId,
-                productId: props.product.id.substr(1),
+                productIds,
                 ...user,
               },
             })
             .then(result => {
               console.log('order result', result);
-              setTimeout(() => props.handlePayment({ orderId }), 250);
+              if (result.data.createOrder === null) {
+                alertify.alert('Payment failed, please try again.');
+                $('.payment-form-btn').removeClass('is-loading');
+              } else {
+                // clear local storage
+                localStorage.removeItem('apollo-cache-persist');
+                setTimeout(() => props.handlePayment({ orderId }), 250);
+              }
             })
             .catch(() => {
               $('.payment-form-btn').removeClass('is-loading');

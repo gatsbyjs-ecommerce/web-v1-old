@@ -8,19 +8,6 @@ import { isUndefined } from 'underscore';
 import Link from 'gatsby-link';
 
 import config from '../config';
-import { formatCurrency } from '../utils/helpers';
-import Heading from '../components/Heading';
-import CheckoutProgress from '../components/CheckoutProgress';
-
-const Price = styled.div`
-  color: ${config.primaryColor};
-  font-size: 1.5rem;
-  margin-top: -2rem;
-  span {
-    font-size: 1.4rem;
-    font-weight: light;
-  }
-`;
 
 const Result = styled.div`
   text-align: center;
@@ -63,16 +50,10 @@ class PaymentConfirmed extends React.Component {
 
   render() {
     const { isVisible } = this.state;
-    const { product, paymentData } = this.props;
+    const { paymentData } = this.props;
 
     return (
       <React.Fragment>
-        <Heading>{product.title}</Heading>
-        <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency(product.discountPrice)}{' '}
-          <span>+ {formatCurrency(config.deliveryCharges)} delivery</span>
-        </Price>
-        <CheckoutProgress activeStep="three" />
         <Spring
           native
           from={{ opacity: 0 }}
@@ -108,7 +89,6 @@ class PaymentConfirmed extends React.Component {
 
 PaymentConfirmed.propTypes = {
   paymentData: PropTypes.object.isRequired,
-  product: PropTypes.object.isRequired,
 };
 
 export default PaymentConfirmed;

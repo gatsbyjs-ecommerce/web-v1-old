@@ -34,31 +34,31 @@ const Progress = styled.div`
   .step.three {
     text-align: right;
     .dot {
-      margin: -9px 0 0 92%;
+      margin: -9px 0 0 97%;
     }
   }
 `;
 
 const CheckoutProgress = ({ activeStep }) => (
   <Progress>
-    <div className={`step one ${activeStep === 'one' ? 'active' : ''}`}>
+    <div className={`step one ${activeStep === 2 ? 'active' : ''}`}>
       <div className="dot" />Billing
     </div>
-    <div className={`step two ${activeStep === 'two' ? 'active' : ''}`}>
+    <div className={`step two ${activeStep === 3 ? 'active' : ''}`}>
       <div className="dot" />Payment
     </div>
-    <div className={`step three ${activeStep === 'three' ? 'active' : ''}`}>
+    <div className={`step three ${activeStep === 4 ? 'active' : ''}`}>
       <div className="dot" />Confirm
     </div>
   </Progress>
 );
 
 CheckoutProgress.defaultProps = {
-  activeStep: 'one',
+  activeStep: 1,
 };
 
 CheckoutProgress.propTypes = {
-  activeStep: PropTypes.string,
+  activeStep: PropTypes.number,
 };
 
 export default CheckoutProgress;

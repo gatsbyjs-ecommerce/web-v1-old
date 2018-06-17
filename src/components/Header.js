@@ -80,9 +80,28 @@ const MobileMenu = styled(animated.div)`
   }
 `;
 
+const Cart = styled.div`
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  a {
+    color: #4a4a4a !important;
+  }
+  span {
+    font-weight: 700;
+    padding: 0 0.1rem 0 0.5rem;
+  }
+`;
+
+const CartMobile = styled.div`
+  width: 8rem;
+  float: right;
+  margin-top: 6rem;
+  margin-right: -1rem;
+`;
+
 const NavItems = [
   { id: 1, name: 'New In', url: '/' },
-  { id: 2, name: 'Sale', url: '/coupons' },
+  { id: 2, name: 'Coupons', url: '/coupons' },
   { id: 3, name: 'Blog', url: '/blog' },
   { id: 4, name: 'About', url: '/page/about' },
   { id: 5, name: 'Contact', url: '/contact' },
@@ -98,6 +117,19 @@ class Header extends React.Component {
   render() {
     const { mobileMenuActive } = this.state;
     const { home } = this.props;
+
+    const cart = (
+      <Cart>
+        <Query query={cartQuery}>
+          {({ data }) => (
+            <Link to="/cart">
+              <i className="fas fa-shopping-cart" />
+              <span>Cart</span> ({data.cart ? data.cart.count : 0})
+            </Link>
+          )}
+        </Query>
+      </Cart>
+    );
 
     return (
       <React.Fragment>
@@ -116,15 +148,7 @@ class Header extends React.Component {
                 <a href={`mailto:${home.email}`}>{home.email}</a> |{' '}
                 <a href={`tel:${home.telephone}`}>{home.telephone}</a>
               </p>
-              <p>
-                <Query query={cartQuery}>
-                  {({ data }) => (
-                    <Link to="/cart">
-                      Cart ({data.cart ? data.cart.count : 0})
-                    </Link>
-                  )}
-                </Query>
-              </p>
+              {cart}
             </div>
           </div>
           <nav
@@ -164,6 +188,7 @@ class Header extends React.Component {
                   <i className="fas fa-bars menu-trigger" />
                 </a>
               )}
+              <CartMobile>{cart}</CartMobile>
             </div>
           </div>
           <Spring
