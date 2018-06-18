@@ -3,7 +3,6 @@ import moment from 'moment';
 
 export default ({ data }) => (
   <div className="card">
-    {console.log('data', data)}
     <header className="card-header">
       <h3 className="card-header-title is-size-5 has-text-centered">
         {data.name}
