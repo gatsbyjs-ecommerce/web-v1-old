@@ -83,6 +83,9 @@ const MobileMenu = styled(animated.div)`
 const Cart = styled.div`
   margin-top: 1rem;
   font-size: 1.2rem;
+  width: 80px;
+  float: right;
+  position: relative;
   a {
     color: #4a4a4a !important;
   }
@@ -90,13 +93,28 @@ const Cart = styled.div`
     font-weight: 700;
     padding: 0 0.1rem 0 0.5rem;
   }
+  .count {
+    background-color: ${config.primaryColor};
+    color: #fff;
+    font-size: 0.6rem;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    border-radius: 8px;
+    position: absolute;
+    top: -3px;
+    left: 22px;
+  }
 `;
 
 const CartMobile = styled.div`
   width: 8rem;
   float: right;
   margin-top: 6rem;
-  margin-right: -1rem;
+  margin-right: 0.3rem;
+  .count {
+    left: 16px;
+  }
 `;
 
 const NavItems = [
@@ -125,7 +143,10 @@ class Header extends React.Component {
             <Link to="/cart">
               <i className="fas fa-shopping-cart" />
               <span>Cart</span>{' '}
-              <small>({data.cart ? data.cart.count : 0})</small>
+              {data.cart &&
+                data.cart.count > 0 && (
+                  <div className="count">{data.cart.count}</div>
+                )}
             </Link>
           )}
         </Query>

@@ -15,7 +15,7 @@ import config from '../config';
 import apolloClient from '../utils/apolloClient';
 
 const Cards = styled.div`
-  margin-bottom: 1rem;
+  margin-bottom: 0rem;
   img {
     height: 45px;
   }
@@ -95,9 +95,6 @@ class PaymentForm extends React.Component {
 
     return (
       <React.Fragment>
-        <Cards className="has-text-centered">
-          <img src="/images/payment-strip.png" alt="payments cards" />
-        </Cards>
         <Spring
           native
           from={{ opacity: 0 }}
@@ -105,6 +102,14 @@ class PaymentForm extends React.Component {
         >
           {stylesProps => (
             <animated.div style={stylesProps}>
+              <Cards className="has-text-centered">
+                <img src="/images/payment-strip.png" alt="payments cards" />
+              </Cards>
+              <p className="has-text-grey is-size-7	has-text-centered">
+                All transactions are secure and encrypted. Credit card
+                information is never stored.
+              </p>
+              <br />
               <form onSubmit={handleSubmit}>
                 <div className="field">
                   <label className="label">Card number</label>

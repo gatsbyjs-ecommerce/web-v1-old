@@ -6,6 +6,7 @@ import Img from 'gatsby-image';
 
 import { formatCurrency } from '../utils/helpers';
 import config from '../config';
+import CouponForm from './CouponForm';
 
 const cartQuery = gql`
   query {
@@ -47,6 +48,8 @@ class CartItems extends React.Component {
     this.state = {
       items: [],
       total: 0,
+      discount: 0,
+      couponCode: null,
     };
   }
 
@@ -74,8 +77,15 @@ class CartItems extends React.Component {
     });
   }
 
-  render() {
+  handleApplyDiscount(data) {
     const { total } = this.state;
+    const { discountPercentage, code } = data;
+
+    const discount = (discountPercentage / 100) * total;
+    this.setState({ discount, couponCode: code });
+  }
+
+  render() {
     const { showCheckoutBtn } = this.props;
 
     return (
@@ -131,13 +141,45 @@ class CartItems extends React.Component {
                       </div>
                     </Item>
                   ))}
-                  <br />
-                  <p className="is-size-4 has-text-dark has-text-centered">
-                    Total:{' '}
-                    <span className="has-text-weight-bold">
-                      {formatCurrency(total)}
-                    </span>
-                  </p>
+                  <hr />
+                  <div className="columns is-multiline">
+                    <div className="column is-6 is-offset-6">
+                      {!showCheckoutBtn && (
+                        <React.Fragment>
+                          <CouponForm
+                            handleSubmit={values =>
+                              this.handleApplyDiscount(values)
+                            }
+                          />
+                          <hr />
+                        </React.Fragment>
+                      )}
+                    </div>
+                    <div className="column is-6 is-offset-6">
+                      <p className="is-size-5 has-text-dark has-text-right">
+                        <small>Shipping:</small>{' '}
+                        <span className="has-text-weight-bold">
+                          {formatCurrency(0)}
+                        </span>
+                      </p>
+                      {this.state.discount > 0 && (
+                        <p className="is-size-5 has-text-dark has-text-right">
+                          <small>Discount:</small>{' '}
+                          <span className="has-text-weight-bold">
+                            -{formatCurrency(this.state.discount)}
+                          </span>
+                        </p>
+                      )}
+                      <p className="is-size-4 has-text-dark has-text-right">
+                        <small>Total:</small>{' '}
+                        <span className="has-text-weight-bold">
+                          {formatCurrency(
+                            this.state.total - this.state.discount,
+                          )}
+                        </span>
+                      </p>
+                    </div>
+                  </div>
                   {showCheckoutBtn && (
                     <BuyBtn
                       className="product-info-btn button is-dark is-large is-radiusless is-uppercase"
