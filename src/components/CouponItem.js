@@ -1,7 +1,9 @@
 import React from 'react';
+import moment from 'moment';
 
 export default ({ data }) => (
   <div className="card">
+    {console.log('data', data)}
     <header className="card-header">
       <h3 className="card-header-title is-size-5 has-text-centered">
         {data.name}
@@ -20,7 +22,9 @@ export default ({ data }) => (
       <div className="level-item has-text-centered">
         <div>
           <p className="heading is-size-7">Exipired Date</p>
-          <p className="title is-size-6">29-11-2018</p>
+          <p className="title is-size-6">
+            {moment(data.expiryDate).format('Do MMM YYYY')}
+          </p>
         </div>
       </div>
     </nav>
