@@ -2,8 +2,9 @@ import Mailchimp from 'mailchimp-api-v3';
 import nodemailer from 'nodemailer';
 import Stripe from 'stripe';
 import async from 'async';
+import { first } from 'underscore';
 
-import { getEntry, createEntry } from './contentful';
+import { getEntry, getEntries, createEntry } from './contentful';
 
 import conf from './config';
 
@@ -72,6 +73,14 @@ export default {
       delete args.productIds;
       const order = await createEntry(args, 'order');
       return order;
+    },
+    validateCoupon: async (parent, args) => {
+      const coupons = await getEntries('coupons', { 'fields.code': args.code });
+      const coupon = first(coupons);
+      if (!coupon) {
+        throw new Error('Invalid coupon.');
+      }
+      return coupon;
     },
     subscribe: async (parent, args) => {
       const mailchimp = new Mailchimp(conf.get('mailchimp.key'));

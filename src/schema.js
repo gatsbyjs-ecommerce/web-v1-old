@@ -33,6 +33,16 @@ const typeDefs = gql`
     customerNotes: String
   }
 
+  type Coupon {
+    id: ID!
+    name: String
+    code: String
+    status: String
+    details: String
+    discountPercentage: Int
+    expiryDate: String
+  }
+
   type Mutation {
     createOrder(
       tokenId: String!
@@ -49,6 +59,7 @@ const typeDefs = gql`
       customerTelephone: String!
       customerNotes: String
     ): Order
+    validateCoupon(code: String!): Coupon
     subscribe(email: String!): Subscriber
     contact(email: String!, name: String!, message: String!): Subscriber
   }
