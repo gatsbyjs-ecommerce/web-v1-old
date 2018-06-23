@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ApolloProvider } from 'react-apollo';
-import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 import config from '../config';
 import apolloClient from '../utils/apolloClient';
@@ -28,10 +27,6 @@ class IndexLayout extends React.Component {
             {children()}
           </div>
           <Footer home={home} />
-          <MessengerCustomerChat
-            pageId="342814819542066"
-            appId="2148643328701680"
-          />
         </div>
       </ApolloProvider>
     );
