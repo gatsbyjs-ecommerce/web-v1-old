@@ -1,5 +1,6 @@
 import React from 'react';
 import { Spring, animated } from 'react-spring';
+import ReactGA from 'react-ga';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -20,6 +21,10 @@ class Cart extends React.Component {
       userData: null,
       paymentData: null,
     };
+  }
+
+  componentDidMount() {
+    ReactGA.pageview('/cart');
   }
 
   render() {

@@ -10,6 +10,7 @@ import Yup from 'yup';
 import Cleave from 'cleave.js/react';
 import randomstring from 'randomstring';
 import gql from 'graphql-tag';
+import ReactGA from 'react-ga';
 
 import config from '../config';
 import apolloClient from '../utils/apolloClient';
@@ -245,6 +246,12 @@ export default withFormik({
 
     $('.payment-form-btn').addClass('is-loading');
 
+    // add to analytics
+    ReactGA.plugin.execute('ecommerce', 'addTransaction', {
+      id: orderId,
+      revenue: props.cartData.total,
+    });
+
     // send data to stripe
     Stripe.setPublishableKey(config.stripePublishableKey);
     Stripe.card.createToken(
@@ -275,7 +282,7 @@ export default withFormik({
               },
             })
             .then(result => {
-              console.log('order result', result);
+              // console.log('order result', result);
               if (result.data.createOrder === null) {
                 alertify.alert('Payment failed, please try again.');
                 $('.payment-form-btn').removeClass('is-loading');

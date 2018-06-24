@@ -5,6 +5,7 @@ import { Spring, animated } from 'react-spring';
 import Link from 'gatsby-link';
 import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
+import ReactGA from 'react-ga';
 
 import config from '../config';
 import SocialIcons from './SocialIcons';
@@ -167,8 +168,19 @@ class Header extends React.Component {
             </div>
             <div className="column has-text-right has-text-weight-semibold	">
               <p>
-                <a href={`mailto:${home.email}`}>{home.email}</a> |{' '}
-                <a href={`tel:${home.telephone}`}>{home.telephone}</a>
+                <ReactGA.OutboundLink
+                  eventLabel="siteEmail"
+                  to={`mailto:${home.email}`}
+                >
+                  {home.email}
+                </ReactGA.OutboundLink>{' '}
+                |{' '}
+                <ReactGA.OutboundLink
+                  eventLabel="siteTelephone"
+                  to={`tel:${home.telephone}`}
+                >
+                  {home.telephone}
+                </ReactGA.OutboundLink>
               </p>
               {cart}
             </div>

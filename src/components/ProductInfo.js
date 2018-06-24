@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { Query, ApolloConsumer } from 'react-apollo';
 import { navigateTo } from 'gatsby-link';
 import gql from 'graphql-tag';
+import ReactGA from 'react-ga';
 import {
   Accordion,
   AccordionItem,
@@ -120,6 +121,16 @@ class ProductInfo extends React.Component {
     const newCart = { ...data.cart };
     let items = JSON.parse(newCart.items);
     items = items !== null ? items : [];
+
+    // log to google analytics
+    ReactGA.plugin.execute('ecommerce', 'addItem', {
+      id: product.id,
+      name: product.title,
+      sku: product.productCode,
+      price: product.discountPrice,
+      quantity: 1,
+    });
+
     newCart.count = items.length + 1;
     items.push({
       id: product.id.slice(1),

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 
 const Container = styled.section`
   width: 120px;
@@ -20,24 +21,40 @@ const Container = styled.section`
 const SocialIcons = ({ inverted, data }) => (
   <Container className="level" inverted={inverted}>
     <div className="level-item">
-      <a href={data.facebook} target="_blank" rel="noopener noreferrer">
+      <ReactGA.OutboundLink
+        eventLabel="siteFacebook"
+        to={data.facebook}
+        target="_blank"
+      >
         <i className="fab fa-facebook-square" />
-      </a>
+      </ReactGA.OutboundLink>
     </div>
     <div className="level-item">
-      <a href={data.twitter} target="_blank" rel="noopener noreferrer">
+      <ReactGA.OutboundLink
+        eventLabel="siteTwitter"
+        to={data.twitter}
+        target="_blank"
+      >
         <i className="fab fa-twitter-square" />
-      </a>
+      </ReactGA.OutboundLink>
     </div>
     <div className="level-item">
-      <a href={data.instagram} target="_blank" rel="noopener noreferrer">
+      <ReactGA.OutboundLink
+        eventLabel="siteInstagram"
+        to={data.instagram}
+        target="_blank"
+      >
         <i className="fab fa-instagram" />
-      </a>
+      </ReactGA.OutboundLink>
     </div>
     <div className="level-item">
-      <a href={data.pinterest} target="_blank" rel="noopener noreferrer">
+      <ReactGA.OutboundLink
+        eventLabel="sitePinterest"
+        to={data.pinterest}
+        target="_blank"
+      >
         <i className="fab fa-pinterest-square" />
-      </a>
+      </ReactGA.OutboundLink>
     </div>
   </Container>
 );

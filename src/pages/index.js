@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactGA from 'react-ga';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -7,6 +8,10 @@ import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
 
 export default class IndexPage extends React.Component {
+  componentDidMount() {
+    ReactGA.pageview('/');
+  }
+
   render() {
     const {
       data: { allContentfulProduct: products, contentfulHome: home },

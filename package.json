@@ -61,6 +61,7 @@
     "randomstring": "^1.1.5",
     "react-accessible-accordion": "^2.4.2",
     "react-apollo": "^2.1.4",
+    "react-ga": "^2.5.3",
     "react-helmet": "^5.2.0",
     "react-image-gallery": "^0.8.8",
     "react-load-script": "^0.0.6",

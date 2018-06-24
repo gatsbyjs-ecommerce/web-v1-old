@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -20,55 +21,62 @@ const Container = styled.div`
   }
 `;
 
-export default ({ data }) => {
-  const contact = data.contentfulHome;
+export default class Contact extends React.Component {
+  componentDidMount() {
+    ReactGA.pageview('/contact');
+  }
 
-  return (
-    <Container className="section">
-      <Seo
-        title="Contact"
-        description="Get In Touch"
-        url={`${config.siteUrl}/contact`}
-      />
-      <Heading>Get In touch</Heading>
-      <div className="columns">
-        <div
-          className="column is-two-fifths"
-          style={{ borderRight: '1px solid #eee' }}
-        >
-          <p>
-            If you have any question or enquiry, feel free to get in touch with
-            us
-          </p>
-          <p>
-            <i className="fas fa-map-marker" />
-            <a href="#" className="is-size-6">
-              {contact.address}
-            </a>
-          </p>
-          <p>
-            <i className="fas fa-mobile" />
-            <a href={`tel:${contact.telephone}`} className="is-size-6">
-              {contact.telephone}
-            </a>
-          </p>
-          <p>
-            <i className="fas fa-envelope-open" />
-            <a href={`mailto:${contact.email}`} className="is-size-6">
-              {contact.email}
-            </a>
-          </p>
-          <br />
-          <br />
-          <SocialIcons data={contact} />
+  render() {
+    const { data } = this.props;
+    const contact = data.contentfulHome;
+
+    return (
+      <Container className="section">
+        <Seo
+          title="Contact"
+          description="Get In Touch"
+          url={`${config.siteUrl}/contact`}
+        />
+        <Heading>Get In touch</Heading>
+        <div className="columns">
+          <div
+            className="column is-two-fifths"
+            style={{ borderRight: '1px solid #eee' }}
+          >
+            <p>
+              If you have any question or enquiry, feel free to get in touch
+              with us
+            </p>
+            <p>
+              <i className="fas fa-map-marker" />
+              <a href="#" className="is-size-6">
+                {contact.address}
+              </a>
+            </p>
+            <p>
+              <i className="fas fa-mobile" />
+              <a href={`tel:${contact.telephone}`} className="is-size-6">
+                {contact.telephone}
+              </a>
+            </p>
+            <p>
+              <i className="fas fa-envelope-open" />
+              <a href={`mailto:${contact.email}`} className="is-size-6">
+                {contact.email}
+              </a>
+            </p>
+            <br />
+            <br />
+            <SocialIcons data={contact} />
+          </div>
+          <div className="column">
+            <ContactForm />
+          </div>
         </div>
-        <div className="column">
-          <ContactForm />
-        </div>
-      </div>
-    </Container>
-  );
-};
+      </Container>
+    );
+  }
+}
 
 export const contactQuery = graphql`
   query Contact {

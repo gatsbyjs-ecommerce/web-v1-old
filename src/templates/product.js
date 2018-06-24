@@ -1,6 +1,7 @@
 import React from 'react';
 import graphql from 'graphql';
 import styled from 'styled-components';
+import ReactGA from 'react-ga';
 
 import Seo from '../components/Seo';
 import config from '../config/index';
@@ -14,7 +15,13 @@ const Container = styled.div`
   }
 `;
 
-class Product extends React.Component {
+export default class Product extends React.Component {
+  componentDidMount() {
+    const { contentfulProduct: product } = this.props.data;
+
+    ReactGA.pageview(`/product/${product.slug}`);
+  }
+
   render() {
     const {
       data: {
@@ -53,8 +60,6 @@ class Product extends React.Component {
     );
   }
 }
-
-export default Product;
 
 export const productQuery = graphql`
   query ProductByPath($slug: String!) {
