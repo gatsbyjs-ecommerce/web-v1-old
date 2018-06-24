@@ -15,12 +15,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: config.googleAnalytics,
-    //   },
-    // },
     {
       resolve: `gatsby-plugin-nprogress`,
       options: {
