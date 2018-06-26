@@ -1,3 +1,8 @@
+html,
+body {
+  overflow-x: hidden !important;
+}
+
 body {
   font-family: 'Muli', sans-serif !important;
 }
@@ -15,6 +20,12 @@ p {
 
 .level-item {
   float: left;
+}
+
+.disable-scroll {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 @media only screen and (max-width: 768px) {

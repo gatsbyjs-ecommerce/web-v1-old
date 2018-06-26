@@ -17,6 +17,10 @@ class ProductGallery extends React.Component {
     }, 400);
   }
 
+  componentWillUnmount() {
+    this.setState({ isVisible: false });
+  }
+
   render() {
     const { isVisible } = this.state;
     const { product } = this.props;
@@ -51,6 +55,7 @@ class ProductGallery extends React.Component {
               showThumbnails={!isMobile}
               showFullscreenButton={!isMobile}
               showBullets={isMobile}
+              lazyLoad
             />
           </animated.div>
         )}

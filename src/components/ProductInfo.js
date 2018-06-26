@@ -183,7 +183,7 @@ class ProductInfo extends React.Component {
                         className="product-info-btn button is-dark is-large is-radiusless is-uppercase"
                         onClick={() => this.handleAddToCart(client, data)}
                       >
-                        Add to bag
+                        Add to cart
                       </BuyBtn>
                     )}
                   </ApolloConsumer>

@@ -1,3 +1,5 @@
+/* global $ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -133,6 +135,16 @@ class Header extends React.Component {
     this.state = { mobileMenuActive: false };
   }
 
+  toggleMobileMenu = () => {
+    const { mobileMenuActive } = this.state;
+    if (mobileMenuActive) {
+      $('html').removeClass('disable-scroll');
+    } else {
+      $('html').addClass('disable-scroll');
+    }
+    this.setState({ mobileMenuActive: !mobileMenuActive });
+  };
+
   render() {
     const { mobileMenuActive } = this.state;
     const { home } = this.props;
@@ -209,16 +221,12 @@ class Header extends React.Component {
             <div className="column">
               {mobileMenuActive ? (
                 <span>
-                  <a
-                    onClick={() =>
-                      this.setState({ mobileMenuActive: !mobileMenuActive })
-                    }
-                  >
+                  <a onClick={this.toggleMobileMenu}>
                     <i className="fas fa-times menu-trigger" />
                   </a>
                 </span>
               ) : (
-                <a onClick={() => this.setState({ mobileMenuActive: true })}>
+                <a onClick={this.toggleMobileMenu}>
                   <i className="fas fa-bars menu-trigger" />
                 </a>
               )}
@@ -239,12 +247,7 @@ class Header extends React.Component {
                 <aside className="menu">
                   <ul className="menu-list is-uppercase has-text-weight-bold is-size-4">
                     {NavItems.map(item => (
-                      <li
-                        key={item.id}
-                        onClick={() =>
-                          this.setState({ mobileMenuActive: false })
-                        }
-                      >
+                      <li key={item.id} onClick={this.toggleMobileMenu}>
                         <Link to={item.url}>{item.name}</Link>
                       </li>
                     ))}

@@ -2,6 +2,7 @@ import React from 'react';
 import graphql from 'graphql';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
+import Link from 'gatsby-link';
 
 import Seo from '../components/Seo';
 import config from '../config/index';
@@ -13,6 +14,11 @@ const Container = styled.div`
   &&& {
     margin-top: 3rem;
   }
+`;
+
+const ViewAllBtn = styled(Link)`
+  padding-right: 2rem;
+  padding-left: 2rem;
 `;
 
 export default class Product extends React.Component {
@@ -56,6 +62,11 @@ export default class Product extends React.Component {
           </Container>
         </div>
         <ProductsList title="We think you'll" products={products.edges} />
+        <div className="has-text-centered	">
+          <ViewAllBtn to="/" className="button is-outlined is-medium">
+            View all
+          </ViewAllBtn>
+        </div>
       </React.Fragment>
     );
   }
@@ -94,7 +105,7 @@ export const productQuery = graphql`
     }
     allContentfulProduct(
       filter: { status: { eq: "active" }, slug: { ne: $slug } }
-      limit: 3
+      limit: 9
       sort: { fields: [createdAt], order: DESC }
     ) {
       edges {
