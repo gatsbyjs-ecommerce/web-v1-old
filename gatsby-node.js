@@ -1,4 +1,17 @@
+const fs = require(`fs`);
 const path = require('path');
+const fetch = require('isomorphic-unfetch');
+
+exports.onPreBootstrap = () => {
+  // fetch currency rates
+  fetch(
+    'http://free.currencyconverterapi.com/api/v5/convert?q=GBP_CAD,GBP_INR&compact=y',
+  )
+    .then(r => r.json())
+    .then(data => {
+      fs.writeFileSync(`./data/currency.json`, JSON.stringify(data, ``, 2));
+    });
+};
 
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
