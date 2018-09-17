@@ -201,7 +201,7 @@ class ProductInfo extends React.Component {
                     />
                     <p>Color: {product.color}</p>
                     <p>Made in India</p>
-                    <p>All prices include sales taxes and free UK delivery.</p>
+                    <p>All prices include sales taxes and free Canada delivery.</p>
                     <ProductCode>
                       Product Code: {product.productCode}
                     </ProductCode>

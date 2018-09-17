@@ -9,9 +9,9 @@ module.exports = {
   fbAppID: '@sejalsuits',
   type: 'website',
 
-  GRAPHQL_ENDPOINT: 'https://api.sejalsuits.co.uk',
+  GRAPHQL_ENDPOINT: 'https://api.sejalsuits.co.ca',
   GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000',
-  siteUrl: 'https://www.sejalsuits.co.uk',
+  siteUrl: 'https://www.sejalsuits.co.ca',
   mediumPublicationUrl: 'https://medium.com/sejal-suits',
   googleAnalytics: 'UA-1390187-40',
   stripePublishableKey:
