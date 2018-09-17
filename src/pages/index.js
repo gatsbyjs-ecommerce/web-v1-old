@@ -7,6 +7,7 @@ import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
 
+
 export default class IndexPage extends React.Component {
   componentDidMount() {
     ReactGA.pageview('/');
