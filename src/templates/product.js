@@ -61,7 +61,7 @@ export default class Product extends React.Component {
             </div>
           </Container>
         </div>
-        <ProductsList title="We think you'll" products={products.edges} />
+        {product.edges && <ProductsList title="We think you'll" products={products.edges} />}
         <div className="has-text-centered	">
           <ViewAllBtn to="/" className="button is-outlined is-medium">
             View all
