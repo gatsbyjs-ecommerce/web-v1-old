@@ -7,19 +7,16 @@ import Seo from '../components/Seo';
 import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
+import ScrollButton from '../components/ScrollButton';
 
 export default class IndexPage extends React.Component {
-  componentDidMount() {
-    ReactGA.pageview('/');
+  componentDidMount () {
+    ReactGA.pageview ('/');
   }
 
-  render() {
+  render () {
     const {
-      data: {
-        allContentfulProduct: products,
-        contentfulHome: home,
-        allDataJson: currency,
-      },
+      data: {allContentfulProduct: products, contentfulHome: home},
     } = this.props;
     const currencies = first(currency.edges).node;
     console.log('currencies', currencies);
