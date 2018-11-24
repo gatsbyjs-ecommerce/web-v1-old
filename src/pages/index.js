@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactGA from 'react-ga';
+import { first } from 'underscore';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -17,6 +18,8 @@ export default class IndexPage extends React.Component {
     const {
       data: {allContentfulProduct: products, contentfulHome: home},
     } = this.props;
+    const currencies = first(currency.edges).node;
+    console.log('currencies', currencies);
 
     return (
       <React.Fragment>
@@ -68,6 +71,18 @@ export const indexQuery = graphql`
       homeIntro {
         childMarkdownRemark {
           html
+        }
+      }
+    }
+    allDataJson {
+      edges {
+        node {
+          GBP_CAD {
+            val
+          }
+          GBP_INR {
+            val
+          }
         }
       }
     }
