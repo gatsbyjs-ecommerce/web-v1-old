@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Trail } from 'react-spring';
+import { filter } from 'underscore';
 
 import ProductItem from './ProductItem';
 import Heading from './Heading';
+import Categories from '../components/Categories';
 
 const Container = styled.section`
   position: relative;
@@ -14,7 +16,7 @@ class ProductsList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { isOpen: false };
+    this.state = { isOpen: false, activeCategory: null };
   }
 
   componentDidMount() {
@@ -23,15 +25,29 @@ class ProductsList extends React.Component {
     }, 200);
   }
 
+  toggleCategory = (category) => (
+    this.setState({ activeCategory:category })
+  )
+
   render() {
     const { title, products } = this.props;
-    const { isOpen } = this.state;
+    const { isOpen, activeCategory } = this.state;
     const keys = products.map(item => item.node.id);
     // console.log('products', products);
+
+    if( activeCategory === null) {
+        const  filterProducts = products
+    } else {
+      const filterProducts = filter(
+        products,
+        item => item.category === activeCategory,
+      );
+    }
 
     return (
       <Container className="section">
         <Heading>{title}</Heading>
+        <Categories toggleCategory={this.toggleCategory} active={activeCategory} />
         <div className="columns is-multiline">
           <Trail
             native

@@ -9,6 +9,7 @@ import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
 import ScrollButton from '../components/ScrollButton';
 
+
 export default class IndexPage extends React.Component {
   componentDidMount () {
     ReactGA.pageview ('/');
