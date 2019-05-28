@@ -1,7 +1,7 @@
 module.exports = {
   DEBUG: process.env.NODE_ENV === 'development',
 
-  siteName: 'Sejal Suits',
+  siteName: 'Smart Home Devices',
   author: 'Parminder Klair',
   description: 'Latest Punjabi Traditional Suits',
   twitter: '@sejalsuits',

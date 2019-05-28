@@ -38,6 +38,12 @@ const Container = styled.div`
       color: #4a4a4a;
     }
   }
+  .navbar-menu .navbar-item:first-child {
+    color: #007bff;
+  }
+  #navbarBasicExample {
+    margin-right: 1rem !important;
+  }
 `;
 
 const ContainerMobile = styled.div`
@@ -109,6 +115,23 @@ const Cart = styled.div`
   }
 `;
 
+const ButtonWrapper = styled.button`
+  padding: 5px 45px;
+  height: 3rem;
+  width: 8rem;
+  background: transparent;
+  color: #222;
+  border-color: #eeeeee;
+  :hover {
+    border: 1px solid #384aeb;
+    transition: all 0.4s ease;
+  }
+`;
+
+const Icons = styled.div`
+  margin-left: 8rem;
+`;
+
 const CartMobile = styled.div`
   width: 8rem;
   float: right;
@@ -167,63 +190,74 @@ class Header extends React.Component {
     return (
       <React.Fragment>
         <Container className="is-hidden-mobile">
-          {/* <div className="column">
+          <div className="container">
+            {/* <div className="column">
               <SocialIcons data={home} />
             </div> */}
-          <nav className="navbar" role="navigation" aria-label="main navigation">
-            <Link to="/">
-              <img src={config} alt={`${config.siteName} logo`} />
-            </Link>
+            <nav
+              className="navbar"
+              role="navigation"
+              aria-label="main navigation"
+            >
+              <Link to="/">
+                <img src={config} alt={`${config.siteName} logo`} />
+              </Link>
+              <div id="navbarBasicExample" className="navbar-menu">
+                <div className="navbar-start has-text-centered">
+                  <a className="navbar-item">
+                    <div className="navbar-menu navigate is-uppercase">
+                      {NavItems.map(item => (
+                        <Link
+                          to={item.url}
+                          className="navbar-item"
+                          key={item.id}
+                        >
+                          {item.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </a>
+                </div>
 
-            <div id="navbarBasicExample" className="navbar-menu">
-              <div className="navbar-start">
-                <a className="navbar-item">
-                  <div className="navbar-menu is-uppercase has-text-weight-bold">
-                    {NavItems.map(item => (
-                      <Link to={item.url} className="navbar-item" key={item.id}>
-                        {item.name}
-                      </Link>
-                        ))}
-                  </div>
-                </a>
-              </div>
-
-              <div className="navbar-end">
-                <div className="navbar-item">
-                  <div className="column has-text-right has-text-weight-semibold">
-                    <p>
-                      <ReactGA.OutboundLink
-                        eventLabel="siteEmail"
-                        to={`mailto:${home.email}`}
-                      >
-                        {home.email}
-                      </ReactGA.OutboundLink>{' '}
-                      <ReactGA.OutboundLink
-                        eventLabel="siteTelephone"
-                        to={`tel:${home.telephone}`}
-                      >
-                        {home.telephone}
-                      </ReactGA.OutboundLink>
-                    </p>
-                    <div>
-                      <span><i className="fas fa-search" /></span>
-                      {cart}
+                <Icons className="navbar-end">
+                  <div className="navbar-item">
+                    <div className="column has-text-right has-text-weight-semibold">
+                      <p>
+                        <ReactGA.OutboundLink
+                          eventLabel="siteEmail"
+                          to={`mailto:${home.email}`}
+                        >
+                          {home.email}
+                        </ReactGA.OutboundLink>{' '}
+                        <ReactGA.OutboundLink
+                          eventLabel="siteTelephone"
+                          to={`tel:${home.telephone}`}
+                        >
+                          {home.telephone}
+                        </ReactGA.OutboundLink>
+                      </p>
+                      <div>
+                        <a>
+                          <i className="fas fa-search" />
+                        </a>
+                        {cart}
+                      </div>
                     </div>
                   </div>
+                </Icons>
+              </div>
+              <div className="buttons">
+                <div className="control">
+                  <ButtonWrapper
+                    type="submit"
+                    className="button is-rounded has-text-weight-bold"
+                  >
+                    Buy Now
+                  </ButtonWrapper>
                 </div>
               </div>
-            </div>
-            <div className="buttons">
-              <div className="control">
-                <button
-                  type="submit"
-                  className="button has-text-weight-bold"
-                >
-                    Buy Now
-                </button>
-              </div>
-            </div>
-          </nav>
+            </nav>
+          </div>
         </Container>
         <ContainerMobile className="is-hidden-tablet">
           <div className="columns is-mobile">

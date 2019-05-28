@@ -30,9 +30,8 @@ export default class IndexPage extends React.Component {
           description="Latest Punjabi Traditional Suits"
           url={config.siteUrl}
         />
-        <HomeBanner />
-        <ProductsList />
-        <HomeAbout />
+        <Hero />
+        cgrg
         {/* <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} /> */}
