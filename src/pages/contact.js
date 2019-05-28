@@ -96,3 +96,16 @@ export default class Contact extends React.Component {
   }
 }
 
+// export const contactQuery = graphql`
+//   query Contact {
+//     contentfulHome {
+//       address
+//       email
+//       telephone
+//       facebook
+//       twitter
+//       instagram
+//       pinterest
+//     }
+//   }
+// `;

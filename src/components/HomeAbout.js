@@ -13,7 +13,7 @@ const HomeAbout = ({ data }) => (
     <Heading>Who we are</Heading>
     <HTMLContent
       className="has-text-centered"
-      content={data.homeIntro.childMarkdownRemark.html}
+      // content={data.homeIntro.childMarkdownRemark.html}
     />
   </Container>
 );
