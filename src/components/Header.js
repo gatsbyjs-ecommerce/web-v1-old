@@ -84,9 +84,8 @@ const MobileMenu = styled(animated.div)`
 `;
 
 const Cart = styled.div`
-  margin-top: 1rem;
   font-size: 1.2rem;
-  width: 80px;
+  width: 40px;
   float: right;
   position: relative;
   a {
@@ -121,10 +120,10 @@ const CartMobile = styled.div`
 `;
 
 const NavItems = [
-  { id: 1, name: 'New In', url: '/' },
-  { id: 2, name: 'Coupons', url: '/coupons' },
+  { id: 1, name: 'Home', url: '/' },
+  { id: 2, name: 'Shop', url: '/coupons' },
   { id: 3, name: 'Blog', url: '/blog' },
-  { id: 4, name: 'About', url: '/page/about' },
+  { id: 4, name: 'Pages', url: '/page/about' },
   { id: 5, name: 'Contact', url: '/contact' },
 ];
 
@@ -167,193 +166,62 @@ class Header extends React.Component {
 
     return (
       <React.Fragment>
-        <nav className="navbar navbar-expand-lg navbar-light">
-          <div className="container">
-            <a className="navbar-brand logo_h" href="index.html">
-              <img src="img/logo.png" alt="" />
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-              <span className="icon-bar" />
-            </button>
-            <div
-              className="collapse navbar-collapse offset"
-              id="navbarSupportedContent"
-            >
-              <ul className="nav navbar-nav menu_nav ml-auto mr-auto">
-                <li className="nav-item active">
-                  <a className="nav-link" href="index.html">
-                    Home
-                  </a>
-                </li>
-                <li className="nav-item submenu dropdown">
-                  <a
-                    href="#"
-                    className="nav-link dropdown-toggle"
-                    data-toggle="dropdown"
-                    role="button"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Shop
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li className="nav-item">
-                      <a className="nav-link" href="category.html">
-                        Shop Category
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="single-product.html">
-                        Product Details
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="checkout.html">
-                        Product Checkout
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="confirmation.html">
-                        Confirmation
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="cart.html">
-                        Shopping Cart
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item submenu dropdown">
-                  <a
-                    href="#"
-                    className="nav-link dropdown-toggle"
-                    data-toggle="dropdown"
-                    role="button"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Blog
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li className="nav-item">
-                      <a className="nav-link" href="blog.html">
-                        Blog
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="single-blog.html">
-                        Blog Details
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item submenu dropdown">
-                  <a
-                    href="#"
-                    className="nav-link dropdown-toggle"
-                    data-toggle="dropdown"
-                    role="button"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Pages
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li className="nav-item">
-                      <a className="nav-link" href="login.html">
-                        Login
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="register.html">
-                        Register
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a className="nav-link" href="tracking-order.html">
-                        Tracking
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="contact.html">
-                    Contact
-                  </a>
-                </li>
-              </ul>
-
-              <ul className="nav-shop">
-                <li className="nav-item">
-                  <button>
-                    <i className="ti-search" />
-                  </button>
-                </li>
-                <li className="nav-item">
-                  <button>
-                    <i className="ti-shopping-cart" />
-                    <span className="nav-shop__circle">3</span>
-                  </button>{' '}
-                </li>
-                <li className="nav-item">
-                  <a className="button button-header" href="#">
-                    Buy Now
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
         <Container className="is-hidden-mobile">
-          <div className="columns">
-            <div className="column">
+          {/* <div className="column">
               <SocialIcons data={home} />
+            </div> */}
+          <nav className="navbar" role="navigation" aria-label="main navigation">
+            <Link to="/">
+              <img src={config} alt={`${config.siteName} logo`} />
+            </Link>
+
+            <div id="navbarBasicExample" className="navbar-menu">
+              <div className="navbar-start">
+                <a className="navbar-item">
+                  <div className="navbar-menu is-uppercase has-text-weight-bold">
+                    {NavItems.map(item => (
+                      <Link to={item.url} className="navbar-item" key={item.id}>
+                        {item.name}
+                      </Link>
+                        ))}
+                  </div>
+                </a>
+              </div>
+
+              <div className="navbar-end">
+                <div className="navbar-item">
+                  <div className="column has-text-right has-text-weight-semibold">
+                    <p>
+                      <ReactGA.OutboundLink
+                        eventLabel="siteEmail"
+                        to={`mailto:${home.email}`}
+                      >
+                        {home.email}
+                      </ReactGA.OutboundLink>{' '}
+                      <ReactGA.OutboundLink
+                        eventLabel="siteTelephone"
+                        to={`tel:${home.telephone}`}
+                      >
+                        {home.telephone}
+                      </ReactGA.OutboundLink>
+                    </p>
+                    <div>
+                      <span><i className="fas fa-search" /></span>
+                      {cart}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="column has-text-centered">
-              <Link to="/">
-                <img src={config.logo} alt={`${config.siteName} logo`} />
-              </Link>
-            </div>
-            <div className="column has-text-right has-text-weight-semibold	">
-              <p>
-                <ReactGA.OutboundLink
-                  eventLabel="siteEmail"
-                  to={`mailto:${home.email}`}
+            <div className="buttons">
+              <div className="control">
+                <button
+                  type="submit"
+                  className="button has-text-weight-bold"
                 >
-                  {home.email}
-                </ReactGA.OutboundLink>{' '}
-                <ReactGA.OutboundLink
-                  eventLabel="siteTelephone"
-                  to={`tel:${home.telephone}`}
-                >
-                  {home.telephone}
-                </ReactGA.OutboundLink>
-              </p>
-              {cart}
-            </div>
-          </div>
-          <nav
-            className="navbar has-background-white-ter"
-            role="navigation"
-            aria-label="main navigation"
-          >
-            <div className="navbar-menu is-uppercase has-text-weight-bold">
-              {NavItems.map(item => (
-                <Link to={item.url} className="navbar-item" key={item.id}>
-                  {item.name}
-                </Link>
-              ))}
+                    Buy Now
+                </button>
+              </div>
             </div>
           </nav>
         </Container>
