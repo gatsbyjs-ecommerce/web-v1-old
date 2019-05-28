@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import { first } from 'underscore';
+// import { first } from 'underscore';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
-import HomeBanner from '../components/HomeBanner';
-import ProductsList from '../components/ProductsList';
-import HomeAbout from '../components/HomeAbout';
+// import HomeBanner from '../components/HomeBanner';
+// import ProductsList from '../components/ProductsList';
+// import HomeAbout from '../components/HomeAbout';
+import Hero from '../components/Hero';
 // import ScrollButton from '../components/ScrollButton';
 
 export default class IndexPage extends React.Component {
@@ -28,9 +29,8 @@ export default class IndexPage extends React.Component {
           description="Latest Punjabi Traditional Suits"
           url={config.siteUrl}
         />
-        <HomeBanner />
-        <ProductsList />
-        <HomeAbout />
+        <Hero />
+        cgrg
         {/* <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} /> */}

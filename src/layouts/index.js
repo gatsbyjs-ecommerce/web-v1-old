@@ -29,7 +29,7 @@ class IndexLayout extends React.Component {
             title={config.siteName}
             meta={[{ name: 'description', content: config.description }]}
           />
-          <div className="container">
+          <div>
             <Header />
             {/* <Header home={home} /> */}
             {children()}
