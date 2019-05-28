@@ -1,8 +1,4 @@
 {
-  "GBP_CAD": {
-    "val": 1.763281
-  },
-  "GBP_INR": {
-    "val": 90.492674
-  }
+  "status": 400,
+  "error": "API Key is required."
 }
