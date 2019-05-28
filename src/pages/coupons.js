@@ -36,20 +36,20 @@ export default class Coupons extends React.Component {
   }
 }
 
-export const couponsQuery = graphql`
-  query Coupons {
-    allContentfulCoupons {
-      edges {
-        node {
-          id
-          name
-          code
-          expiryDate
-          details {
-            details
-          }
-        }
-      }
-    }
-  }
-`;
+// export const couponsQuery = graphql`
+//   query Coupons {
+//     allContentfulCoupons {
+//       edges {
+//         node {
+//           id
+//           name
+//           code
+//           expiryDate
+//           details {
+//             details
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;

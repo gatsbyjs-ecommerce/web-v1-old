@@ -19,7 +19,7 @@ class IndexLayout extends React.Component {
   render() {
     const {
       children,
-      data: { contentfulHome: home },
+      // data: { contentfulHome: home },
     } = this.props;
 
     return (
@@ -30,10 +30,12 @@ class IndexLayout extends React.Component {
             meta={[{ name: 'description', content: config.description }]}
           />
           <div className="container">
-            <Header home={home} />
+            <Header />
+            {/* <Header home={home} /> */}
             {children()}
           </div>
-          <Footer home={home} />
+          <Footer />
+          {/* <Footer home={home} /> */}
         </div>
       </ApolloProvider>
     );
@@ -46,16 +48,16 @@ IndexLayout.propTypes = {
 
 export default IndexLayout;
 
-export const indexLayoutQuery = graphql`
-  query IndexLayout {
-    contentfulHome {
-      telephone
-      email
-      address
-      facebook
-      twitter
-      instagram
-      pinterest
-    }
-  }
-`;
+// export const indexLayoutQuery = graphql`
+//   query IndexLayout {
+//     contentfulHome {
+//       telephone
+//       email
+//       address
+//       facebook
+//       twitter
+//       instagram
+//       pinterest
+//     }
+//   }
+// `;

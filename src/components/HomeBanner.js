@@ -71,7 +71,7 @@ const HomeBanner = ({ data }) => (
     </ContainerImage>
     <StripMobile className="is-hidden-tablet">
       <p className="is-size-6	is-uppercase has-text-white has-text-centered has-text-weight-semibold">
-        {data.homeSliderSubTitle}
+        {/* {data.homeSliderSubTitle} */}
       </p>
     </StripMobile>
   </React.Fragment>

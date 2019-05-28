@@ -28,29 +28,29 @@ export default class NotFoundPage extends React.Component {
   }
 }
 
-export const notFoundQuery = graphql`
-  query notFoundQuery {
-    allContentfulProduct(
-      filter: { status: { eq: "active" } }
-      limit: 6
-      sort: { fields: [createdAt], order: DESC }
-    ) {
-      edges {
-        node {
-          id
-          title
-          slug
-          color
-          originalPrice
-          discountPrice
-          featuredImage {
-            title
-            sizes(maxWidth: 550) {
-              ...GatsbyContentfulSizes
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// export const notFoundQuery = graphql`
+//   query notFoundQuery {
+//     allContentfulProduct(
+//       filter: { status: { eq: "active" } }
+//       limit: 6
+//       sort: { fields: [createdAt], order: DESC }
+//     ) {
+//       edges {
+//         node {
+//           id
+//           title
+//           slug
+//           color
+//           originalPrice
+//           discountPrice
+//           featuredImage {
+//             title
+//             sizes(maxWidth: 550) {
+//               ...GatsbyContentfulSizes
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
