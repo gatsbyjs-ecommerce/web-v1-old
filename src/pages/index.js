@@ -8,6 +8,7 @@ import Seo from '../components/Seo';
 // import ProductsList from '../components/ProductsList';
 // import HomeAbout from '../components/HomeAbout';
 import Hero from '../components/Hero';
+import CarousalProduct from '../components/CarousalProduct';
 // import ScrollButton from '../components/ScrollButton';
 
 export default class IndexPage extends React.Component {
@@ -30,7 +31,7 @@ export default class IndexPage extends React.Component {
           url={config.siteUrl}
         />
         <Hero />
-        cgrg
+        <CarousalProduct />
         {/* <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} /> */}
