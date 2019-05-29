@@ -5,10 +5,15 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import config from '../config/index';
 import Seo from '../components/Seo';
-import Layout from '../components/Layout';
-import HomeBanner from '../components/HomeBanner';
-import ProductsList from '../components/ProductsList';
-import HomeAbout from '../components/HomeAbout';
+// import HomeBanner from '../components/HomeBanner';
+// import ProductsList from '../components/ProductsList';
+// import HomeAbout from '../components/HomeAbout';
+import Hero from '../components/Hero';
+import CarousalSlider from '../components/CarousalSlider';
+import TrendingProducts from '../components/TrendingProduct';
+import ProductsHeader from '../components/ProductsHeader';
+import DiscountOffer from '../components/DiscountOffer';
+
 // import ScrollButton from '../components/ScrollButton';
 
 export default class IndexPage extends React.Component {
@@ -32,7 +37,9 @@ export default class IndexPage extends React.Component {
         />
         <Hero />
         <CarousalSlider />
+        <ProductsHeader />
         <TrendingProducts />
+        <DiscountOffer />
         {/* <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} /> */}

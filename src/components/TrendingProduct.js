@@ -5,9 +5,11 @@ import img from '../../static/images/home/product1.png';
 
 const Container = styled.div`
   width: 16rem;
+  margin-top: 3.5rem;
 `;
 
 const CardWrapper = styled.div`
+  height: 17rem;
   ul {
     display: flex;
     justify-content: center;
@@ -20,6 +22,16 @@ const CardWrapper = styled.div`
     margin-right: 1rem;
     :hover {
       background: #8894ff;
+    }
+  }
+`;
+
+const MediaContent = styled.div`
+  margin-top: 1.5rem;
+  a {
+    color: #000;
+    :hover {
+      color: #007bff;
     }
   }
 `;
@@ -45,7 +57,7 @@ class TrendingProducts extends React.Component {
           <CardWrapper className="card">
             <div className="card-image">
               <img src={img} alt="Placeholder" />
-              <div onMouseOver={this.onMouseHover}>
+              <div>
                 {showIcons ? (
                   <ul>
                     <li>
@@ -63,11 +75,11 @@ class TrendingProducts extends React.Component {
               </div>
             </div>
           </CardWrapper>
-          <div className="media-content has-text-centered">
-            <p className="is-6">Accessories</p>
-            <a className="title is-4">Quartz Belt Watch</a>
+          <MediaContent className="media-content has-text-centered">
+            <p className="is-6 has-text-weight-bold">Accessories</p>
+            <a className="title is-5">Quartz Belt Watch</a>
             <p>$150.00</p>
-          </div>
+          </MediaContent>
         </Container>
       </React.Fragment>
     );
