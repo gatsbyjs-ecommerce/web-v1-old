@@ -36,7 +36,7 @@ const MediaContent = styled.div`
   }
 `;
 
-class TrendingProducts extends React.Component {
+class ProductsDescription extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -57,22 +57,20 @@ class TrendingProducts extends React.Component {
           <CardWrapper className="card">
             <div className="card-image">
               <img src={img} alt="Placeholder" />
-              <div>
-                {showIcons ? (
-                  <ul>
-                    <li>
-                      <button className="icon">
-                        <i className="fas fa-shopping-cart" />
-                      </button>
-                    </li>
-                    <li>
-                      <button className="icon">
-                        <i className="far fa-heart" />
-                      </button>
-                    </li>
-                  </ul>
-                ) : null}
-              </div>
+              {showIcons ? (
+                <ul>
+                  <li>
+                    <button className="icon">
+                      <i className="fas fa-shopping-cart" />
+                    </button>
+                  </li>
+                  <li>
+                    <button className="icon">
+                      <i className="far fa-heart" />
+                    </button>
+                  </li>
+                </ul>
+              ) : null}
             </div>
           </CardWrapper>
           <MediaContent className="media-content has-text-centered">
@@ -86,4 +84,4 @@ class TrendingProducts extends React.Component {
   }
 }
 
-export default TrendingProducts;
+export default ProductsDescription;
