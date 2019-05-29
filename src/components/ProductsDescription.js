@@ -39,21 +39,28 @@ const MediaContent = styled.div`
 class ProductsDescription extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       showIcons: false,
     };
   }
 
-  onMouseHover = () =>
+  onMouseHover = () => {
     this.setState(prevState => ({
       showIcons: !prevState.showIcons,
     }));
+  };
 
   render() {
     const { showIcons } = this.state;
+
     return (
       <React.Fragment>
-        <Container className="has-text-centered">
+        <Container
+          className="has-text-centered"
+          onMouseOver={this.onMouseHover}
+          onMouseOut={this.onMouseHover}
+        >
           <CardWrapper className="card">
             <div className="card-image">
               <img src={img} alt="Placeholder" />
