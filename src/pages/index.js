@@ -31,7 +31,7 @@ export default class IndexPage extends React.Component {
           url={config.siteUrl}
         />
         <Hero />
-        <CarousalProduct />
+        <ProductCarousal />
         {/* <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} /> */}

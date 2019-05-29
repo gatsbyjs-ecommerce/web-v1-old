@@ -10643,10 +10643,24 @@ react-accessible-accordion@^2.4.2:
     consecutive "^5.0.4"
     recompose "^0.30.0"
 
+<<<<<<< HEAD
 react-apollo@^2.5.6:
   version "2.5.6"
   resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.5.6.tgz#98a59d0eea31432ed001e6a033e11a58139ffc31"
   integrity sha512-WWX5UykTtmW6+awjqEsSWSdvVyZv/vsavUgpdI4ddn4CBdz47INC+iTdJBnYaUFMB24GmqjFFSoSd98gu1xqKA==
+=======
+react-alice-carousel@^1.13.11:
+  version "1.13.11"
+  resolved "https://registry.yarnpkg.com/react-alice-carousel/-/react-alice-carousel-1.13.11.tgz#f0b3af202b435a6cc254fcb37582f760c6cbfec7"
+  integrity sha512-0orHSaqkoCQBKJ2oeZ7gx/+nez1DrIG4HLXXsmHDde6wf9PsOI+GPFvI8ha9fEuivgedlmCLZ3zg+z/YPxnexA==
+  dependencies:
+    prop-types "^15.5.10"
+    react-swipeable "4.3.0"
+
+react-apollo@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-2.1.4.tgz#a51059ac56f1a7997cad636a5d36398b9c93ff12"
+>>>>>>> Silder carousel added
   dependencies:
     apollo-utilities "^1.3.0"
     hoist-non-react-statics "^3.3.0"
@@ -10784,9 +10798,20 @@ react-side-effect@^1.1.0:
     shallowequal "^1.0.1"
 
 react-spring@^5.3.8:
+<<<<<<< HEAD
   version "5.9.2"
   resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.9.2.tgz#4c4e048ffce24755eaa60acd2f3fe4a3d686ef16"
   integrity sha512-ZDCBm4OaYuuSER3k7EELn9AKGs98HI23qMRL93zUUw6AlyBmqoU+eAfouGRx47gVkZkH+hArJXBHf4UGYpH9Og==
+=======
+  version "5.3.8"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-5.3.8.tgz#d3895fbd09130f32356f679bf89c2031c0541616"
+  dependencies:
+    "@babel/runtime" "7.0.0-beta.49"
+
+react-swipeable@4.3.0, react-swipeable@^4.2.2:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/react-swipeable/-/react-swipeable-4.3.0.tgz#818c0818ac565f5b169348f442153f343abff8bc"
+>>>>>>> Silder carousel added
   dependencies:
     "@babel/runtime" "^7.0.0"
 
