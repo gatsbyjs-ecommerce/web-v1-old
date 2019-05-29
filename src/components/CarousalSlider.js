@@ -49,7 +49,7 @@ const Container = styled.div`
   }
 `;
 
-const ProductCarousal = () => (
+const CarousalSlider = () => (
   <Container>
     <div className="container">
       <img src={img} alt="Avatar" className="image" />
@@ -63,4 +63,4 @@ const ProductCarousal = () => (
   </Container>
 );
 
-export default ProductCarousal;
+export default CarousalSlider;
