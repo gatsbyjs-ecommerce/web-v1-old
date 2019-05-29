@@ -9,9 +9,10 @@ import Seo from '../components/Seo';
 // import HomeAbout from '../components/HomeAbout';
 import Hero from '../components/Hero';
 import CarousalSlider from '../components/CarousalSlider';
-import TrendingProducts from '../components/TrendingProduct';
+import ProductsDescription from '../components/ProductsDescription';
 import ProductsHeader from '../components/ProductsHeader';
 import DiscountOffer from '../components/DiscountOffer';
+import SubscriptionForm from '../components/SubscriptionForm';
 
 // import ScrollButton from '../components/ScrollButton';
 
@@ -37,8 +38,9 @@ export default class IndexPage extends React.Component {
         <Hero />
         <CarousalSlider />
         <ProductsHeader />
-        <TrendingProducts />
+        <ProductsDescription />
         <DiscountOffer />
+        <SubscriptionForm />
         {/* <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} /> */}
