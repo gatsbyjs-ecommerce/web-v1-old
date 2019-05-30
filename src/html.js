@@ -32,6 +32,10 @@ module.exports = class HTML extends React.Component {
           <meta charSet="UTF-8" />
           <meta name="author" content="Parminder Klair" />
           <link rel="shortcut icon" href="/images/favicon.png" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Oswald:400,500,700&display=swap"
+            rel="stylesheet"
+          />
           <meta
             name="google-site-verification"
             content="_rn-lpJc-1AExvZpQ7W44PwX6N88nIClFNtNwY_IhvM"

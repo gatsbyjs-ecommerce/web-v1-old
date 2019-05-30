@@ -7,14 +7,15 @@ import config from '../config';
 import SocialIcons from './SocialIcons';
 // import SubscribeForm from './SubscribeForm';
 import ScrollButton from './ScrollButton';
+import SubscribeForm from './SubscribeForm';
 
 const Container = styled.footer`
   padding-bottom: 80px;
   background-color: #002347;
   position: relative;
   margin-top: 6rem;
-  .is-3 {
-    padding-right: 2rem;
+  .is-4 {
+    padding-right: 9rem;
   }
 `;
 
@@ -23,7 +24,7 @@ const Heading = styled.p`
 `;
 
 const Bottom = styled.div`
-  background-color: #000000;
+  background-color: #05274b;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -46,7 +47,7 @@ const Footer = ({ home }) => (
   <Container>
     <div className="section container is-hidden-mobile">
       <div className="columns is-multiline">
-        <div className="column is-3 has-text-white">
+        <div className="column is-4 has-text-white">
           <Heading className="is-uppercase is-size-5">Our Mission</Heading>
           <p>
             So seed seed green that winged cattle in. Gathering thing made fly
@@ -69,6 +70,23 @@ const Footer = ({ home }) => (
               </li>
             ))}
           </ul>
+        </div>
+        <div className="column has-text-white">
+          <Heading className="is-uppercase is-size-5">Contact Us</Heading>
+          <div>
+            <h1 className="has-text-white has-text-weight-bold">Head Office</h1>
+            <p className="has-text-grey-light">123, Main Office</p>
+          </div>
+          <div>
+            <h1 className="has-text-white has-text-weight-bold">
+              Phone Number
+            </h1>
+            <p className="has-text-grey-light">123456789</p>
+          </div>
+          <div>
+            <h1 className="has-text-white has-text-weight-bold">Email</h1>
+            <p className="has-text-grey-light">abc@gmail.com</p>
+          </div>
         </div>
         <div className="column has-text-white">
           <Heading className="is-uppercase is-size-5">Connect</Heading>
