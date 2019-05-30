@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import img from '../../static/images/home/hero-banner.png';
+import Button from './Button';
 
 const Wrapper = styled.div`
   height: 47.5rem;
@@ -42,21 +43,6 @@ const Content = styled.div`
       margin-bottom: 0rem;
     }
   }
-  .button {
-    border: 1px solid #384aeb;
-    padding: 12px 41px;
-    height: 3.5rem;
-    background: #384aeb;
-    transition: all 0.4s ease;
-    color: #fff;
-    :hover {
-      background: #f1f6f7;
-      color: #000;
-    }
-    @media only screen and (max-width: 768px) {
-      margin-top: 1rem;
-    }
-  }
 `;
 
 const Hero = () => (
@@ -77,7 +63,7 @@ const Hero = () => (
           beho upon own earth without morning over third. Their male dry. They
           are great appear whose land fly grass.
         </p>
-        <a className="button is-rounded has-text-weight-bold">Browse Now</a>
+        <Button text="Browse Now" />
       </Content>
     </div>
   </Wrapper>

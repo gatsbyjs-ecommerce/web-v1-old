@@ -12,7 +12,7 @@ const Container = styled.div`
   .image {
     opacity: 1;
     display: block;
-    width: 60%;
+    width: 100%;
     height: auto;
     transition: 0.5s ease;
     backface-visibility: hidden;
