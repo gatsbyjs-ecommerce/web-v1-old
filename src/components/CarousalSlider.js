@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import img from '../../static/images/favicon.png';
+import img from '../../static/images/home/hero-slide1.png';
 
 const Container = styled.div`
   .container {
@@ -12,7 +12,7 @@ const Container = styled.div`
   .image {
     opacity: 1;
     display: block;
-    width: 30%;
+    width: 60%;
     height: auto;
     transition: 0.5s ease;
     backface-visibility: hidden;
@@ -26,6 +26,7 @@ const Container = styled.div`
     -ms-transform: translate(-50%, -50%);
     text-align: center;
     top: 80%;
+    left: 14%;
   }
 
   .container:hover .image {

@@ -3,7 +3,7 @@ import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
 import imgFirst from '../../static/images/home-bg-1.jpg';
-import imgSecond from '../../static/images/home-bg-2.jpg';
+// import imgSecond from '../../static/images/home-bg-2.jpg';s
 import imgThird from '../../static/images/home-bg-3.jpg';
 
 const Gallery = () => {
