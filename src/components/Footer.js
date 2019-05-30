@@ -7,13 +7,15 @@ import config from '../config';
 import SocialIcons from './SocialIcons';
 // import SubscribeForm from './SubscribeForm';
 import ScrollButton from './ScrollButton';
-import SubscriptionForm from './SubscriptionForm';
 
 const Container = styled.footer`
   padding-bottom: 80px;
-  background-color: #2f2f2f;
+  background-color: #002347;
   position: relative;
   margin-top: 6rem;
+  .is-3 {
+    padding-right: 2rem;
+  }
 `;
 
 const Heading = styled.p`
@@ -30,10 +32,6 @@ const Bottom = styled.div`
   }
 `;
 
-const FormConatainer = styled.div`
-  margin-top: -26rem;
-`;
-
 const NavItems = [
   { id: 2, name: 'Customer Care 24/7', url: '/contact' },
   { id: 5, name: 'Delivery Information', url: '/page/delivery-information' },
@@ -48,6 +46,18 @@ const Footer = ({ home }) => (
   <Container>
     <div className="section container is-hidden-mobile">
       <div className="columns is-multiline">
+        <div className="column is-3 has-text-white">
+          <Heading className="is-uppercase is-size-5">Our Mission</Heading>
+          <p>
+            So seed seed green that winged cattle in. Gathering thing made fly
+            you're no divided deep moved us lan Gathering thing us land years
+            living.
+          </p>
+          <p>
+            So seed seed green that winged cattle in. Gathering thing made fly
+            you're no divided deep moved
+          </p>
+        </div>
         <div className="column has-text-white">
           <Heading className="is-uppercase is-size-5">Customer service</Heading>
           <ul>
@@ -61,26 +71,16 @@ const Footer = ({ home }) => (
           </ul>
         </div>
         <div className="column has-text-white">
-          <Heading className="is-uppercase is-size-5">Subscribe</Heading>
-          <p>Receive special offers when you signup our mailing list</p>
-          {/* <SubscribeForm /> */}
-        </div>
-        <div className="column has-text-white">
           <Heading className="is-uppercase is-size-5">Connect</Heading>
           <SocialIcons data={home} inverted />
         </div>
       </div>
     </div>
     <Bottom>
-      {/* <FormConatainer className="columns">
-        <div className="column">
-          <SubscriptionForm />
-        </div>
-      </FormConatainer> */}
       <div className="section container">
         <div className="columns has-text-white">
           <div className="column">
-            <p>Copyright © 2018 - {config.siteName}</p>
+            <p>Copyright © 2019 - {config.siteName}</p>
           </div>
           <div className="column has-text-right is-hidden-mobile">
             <img

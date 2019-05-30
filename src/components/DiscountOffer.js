@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Button from './Button';
 
 const Container = styled.div`
   margin-top: 3rem;
@@ -33,20 +34,6 @@ const Container = styled.div`
       margin-top: 0.5rem;
     }
   }
-
-  .button {
-    margin-top: 2.5rem;
-    border: 1px solid #384aeb;
-    padding: 12px 41px;
-    height: 3.5rem;
-    background: #384aeb;
-    transition: all 0.4s ease;
-    color: #fff;
-    :hover {
-      background: #99c7d7;
-      color: #000;
-    }
-  }
 `;
 
 const DiscountOffer = () => (
@@ -57,7 +44,7 @@ const DiscountOffer = () => (
         Winter Sale
       </p>
       <p className="has-text-black">Him she'd let them sixth saw light</p>
-      <a className="button is-rounded has-text-weight-bold">Shop Now</a>
+      <Button text="Shop Now" />
     </div>
   </Container>
 );
