@@ -10,20 +10,6 @@ const Container = styled.div`
 
 const CardWrapper = styled.div`
   height: 17rem;
-  ul {
-    display: flex;
-    justify-content: center;
-  }
-  button {
-    width: 2.5rem;
-    height: 2.5rem;
-    background: #384aeb;
-    color: white;
-    margin-right: 1rem;
-    :hover {
-      background: #8894ff;
-    }
-  }
 `;
 
 const MediaContent = styled.div`
@@ -32,6 +18,30 @@ const MediaContent = styled.div`
     color: #000;
     :hover {
       color: #007bff;
+    }
+  }
+`;
+
+const IconContainer = styled.div`
+  margin-top: -3rem;
+
+  ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: #384aeb;
+    color: white;
+    margin-right: 1rem;
+    opacity: 0.6;
+    transition: 0.3s;
+    :hover {
+      background: #8894ff;
+      transition: 0.8s;
+      opacity: 1;
     }
   }
 `;
@@ -64,20 +74,22 @@ class ProductsDescription extends React.Component {
           <CardWrapper className="card">
             <div className="card-image">
               <img src={img} alt="Placeholder" />
-              {showIcons ? (
-                <ul>
-                  <li>
-                    <button className="icon">
-                      <i className="fas fa-shopping-cart" />
-                    </button>
-                  </li>
-                  <li>
-                    <button className="icon">
-                      <i className="far fa-heart" />
-                    </button>
-                  </li>
-                </ul>
-              ) : null}
+              <IconContainer>
+                {showIcons ? (
+                  <ul>
+                    <li>
+                      <button className="icon">
+                        <i className="fas fa-shopping-cart" />
+                      </button>
+                    </li>
+                    <li>
+                      <button className="icon">
+                        <i className="far fa-heart" />
+                      </button>
+                    </li>
+                  </ul>
+                ) : null}
+              </IconContainer>
             </div>
           </CardWrapper>
           <MediaContent className="media-content has-text-centered">

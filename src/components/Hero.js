@@ -21,13 +21,26 @@ const ImageWrapper = styled.div`
 
 const Content = styled.div`
   padding: 11rem 19rem;
+  @media only screen and (max-width: 768px) {
+    padding: 2.5rem;
+  }
   h1 {
     margin-right: 6rem;
     margin-top: 1rem;
+    font-size: 3rem;
+    @media only screen and (max-width: 768px) {
+      font-size: 1.5rem;
+      margin-right: 0rem;
+      margin-top: 1rem;
+    }
   }
   p {
     margin-right: 9rem;
     margin-bottom: 2rem;
+    @media only screen and (max-width: 768px) {
+      margin-right: 0rem;
+      margin-bottom: 0rem;
+    }
   }
   .button {
     border: 1px solid #384aeb;
@@ -40,12 +53,15 @@ const Content = styled.div`
       background: #f1f6f7;
       color: #000;
     }
+    @media only screen and (max-width: 768px) {
+      margin-top: 1rem;
+    }
   }
 `;
 
 const Hero = () => (
   <Wrapper className="columns">
-    <div className="column is-4">
+    <div className="column is-4 is-hidden-mobile">
       <ImageWrapper>
         <img src={img} alt="Cart With Things" />
       </ImageWrapper>
@@ -53,7 +69,7 @@ const Hero = () => (
     <div className="column is-8">
       <Content>
         <h2 className="is-size-3">Shop is fun</h2>
-        <h1 className="title is-size-1 has-text-dark has-text-weight-bold is-uppercase">
+        <h1 className="title has-text-dark has-text-weight-bold is-uppercase">
           Browse our premium product
         </h1>
         <p className="has-text-weight-semibold">
