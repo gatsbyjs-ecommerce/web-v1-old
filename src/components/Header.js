@@ -44,6 +44,16 @@ const Container = styled.div`
   #navbarBasicExample {
     margin-right: 1rem !important;
   }
+  .navbar-start {
+    background-color: transparent !important;
+  }
+  .navbar-item {
+    background-color: transparent !important;
+  }
+  img {
+    width: 21%;
+    height: 7rem;
+  }
 `;
 
 const ContainerMobile = styled.div`
@@ -200,7 +210,7 @@ class Header extends React.Component {
               aria-label="main navigation"
             >
               <Link to="/">
-                <img src={config} alt={`${config.siteName} logo`} />
+                <img src={config.logo} alt={`${config.siteName} logo`} />
               </Link>
               <div id="navbarBasicExample" className="navbar-menu">
                 <div className="navbar-start has-text-centered">
