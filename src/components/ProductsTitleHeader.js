@@ -12,7 +12,7 @@ const Container = styled.div`
   }
 `;
 
-const ProductsHeader = () => (
+const ProductsTitleHeader = () => (
   <Container>
     <p>Popular Item in the market</p>
     <p className="is-size-3 has-text-weight-bold has-text-black-bis">
@@ -21,4 +21,4 @@ const ProductsHeader = () => (
   </Container>
 );
 
-export default ProductsHeader;
+export default ProductsTitleHeader;

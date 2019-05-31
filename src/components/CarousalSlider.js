@@ -6,7 +6,7 @@ import img from '../../static/images/home/hero-slide1.png';
 const Container = styled.div`
   .container {
     position: relative;
-    width: 50%;
+    width: 98%;
   }
 
   .image {
@@ -25,8 +25,8 @@ const Container = styled.div`
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
-    top: 80%;
-    left: 14%;
+    top: 87%;
+    left: 24%;
   }
 
   .container:hover .image {

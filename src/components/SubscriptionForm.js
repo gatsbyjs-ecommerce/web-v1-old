@@ -11,6 +11,7 @@ import Button from './Button';
 const Card = styled.div`
   justify-content: center;
   display: flex;
+  margin-top: 5rem;
 `;
 
 const Container = styled.div`
@@ -88,33 +89,6 @@ class SubscriptionForm extends React.Component {
               </div>
             </div>
             <div className="content">
-              {/* <Container onSubmit={handleSubmit}>
-        <div className="field">
-          <div className="control">
-            <input
-              className="input is-shadowless"
-              name="email"
-              value={values.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              placeholder="Your email"
-            />
-            {errors.email && touched.email && (
-              <p className="help is-danger">{errors.email}</p>
-            )}
-          </div>
-        </div>
-        <div className="field">
-          <div className="control">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="button is-light"
-            >
-              Subscribe
-            </button>
-          </div>
-        </div> */}
               <input
                 className="input is-rounded"
                 name="email"

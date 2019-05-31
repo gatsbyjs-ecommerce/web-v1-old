@@ -46,7 +46,7 @@ const IconContainer = styled.div`
   }
 `;
 
-class ProductsDescription extends React.Component {
+class ShoppingItems extends React.Component {
   constructor(props) {
     super(props);
 
@@ -103,4 +103,4 @@ class ProductsDescription extends React.Component {
   }
 }
 
-export default ProductsDescription;
+export default ShoppingItems;
