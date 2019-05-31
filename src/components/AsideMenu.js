@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Container = styled.aside`
   background-color: #f1f6f7;
-  width: 15%;
+  width: 20%;
   @media only screen and (max-width: 768px) {
     background-color: #f1f6f7;
     width: 100%;
@@ -18,7 +18,7 @@ const Container = styled.aside`
     margin-bottom: 1.5rem;
   }
 
-  spn {
+  span {
     margin-left: 5px;
   }
 `;
