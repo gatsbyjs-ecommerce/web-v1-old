@@ -26,7 +26,7 @@ const Container = styled.div`
     -ms-transform: translate(-50%, -50%);
     text-align: center;
     top: 87%;
-    left: 24%;
+    left: 28%;
   }
 
   .container:hover .image {
@@ -42,7 +42,7 @@ const Container = styled.div`
     background-color: #384aeb;
     color: white;
     font-size: 16px;
-    padding: 16px 32px;
+    padding: 11px 16px;
   }
 
   h6 {
