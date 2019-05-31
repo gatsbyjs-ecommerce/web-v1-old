@@ -21,7 +21,7 @@ const ImageWrapper = styled.div`
 `;
 
 const Content = styled.div`
-  padding: 11rem 19rem;
+  padding: 10rem 5rem;
   @media only screen and (max-width: 768px) {
     padding: 2.5rem;
   }
@@ -49,7 +49,7 @@ const Hero = () => (
   <Wrapper className="columns">
     <div className="column is-4 is-hidden-mobile">
       <ImageWrapper>
-        <img src={img} alt="Cart With Things" />
+        {/* <img src={img} alt="Cart With Things" /> */}
       </ImageWrapper>
     </div>
     <div className="column is-8">
