@@ -2,10 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  display: inline-table;
   width: 60%;
   height: 4rem;
   background-color: #f1f6f7;
+  padding: 1.2%;
+  margin-left: 2%;
+
+  .dropdown {
+    margin-right: 3%;
+  }
+
+  .filed {
+    margin-left: 15%;
+  }
 `;
 
 const FilterBar = () => (
@@ -14,7 +23,7 @@ const FilterBar = () => (
       <div className="dropdown is-hoverable">
         <div className="dropdown-trigger">
           <button
-            className="button"
+            className="button is-radiusless"
             aria-haspopup="true"
             aria-controls="dropdown-menu4"
           >
@@ -38,7 +47,7 @@ const FilterBar = () => (
       <div className="dropdown is-hoverable">
         <div className="dropdown-trigger">
           <button
-            className="button"
+            className="button is-radiusless"
             aria-haspopup="true"
             aria-controls="dropdown-menu4"
           >
@@ -59,13 +68,16 @@ const FilterBar = () => (
           </div>
         </div>
       </div>
-      <div className="field is-grouped">
-        <p className="control is-expanded">
+      <div className="field">
+        <p className="control has-icons-left has-icons-right">
           <input
-            className="input"
+            className="input is-radiusless"
             type="text"
-            placeholder="Find a repository"
+            placeholder="Search"
           />
+          <span className="icon is-small is-right">
+            <i className="fas fa-search" />
+          </span>
         </p>
       </div>
     </Container>

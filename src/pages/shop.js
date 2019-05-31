@@ -6,6 +6,8 @@ import config from '../config/index';
 import Seo from '../components/Seo';
 import AsideMenu from '../components/AsideMenu';
 import FilterBar from '../components/FilterBar';
+import TopProductsCard from '../components/TopProductsCard';
+import AddToCart from '../components/productDetails/AddToCart';
 // import Heading from '../components/Heading';
 // import CouponItem from '../components/CouponItem';
 
@@ -29,6 +31,8 @@ export default class Coupons extends React.Component {
           <AsideMenu />
           <FilterBar />
         </div>
+        <TopProductsCard />
+        <AddToCart />
         {/* <Heading>Coupons</Heading> */}
         {/* {coupons.map(coupon => (
           <div key={coupon.node.id} className="columns  is-multiline">

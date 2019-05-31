@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const ButtonWrapper = styled.div`
   .button {
+    width: ${props => props.width};
     border: 1px solid #384aeb;
     padding: 12px 41px;
     height: 3.5rem;
@@ -19,8 +20,8 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const Button = ({ text }) => (
-  <ButtonWrapper>
+const Button = ({ text, width }) => (
+  <ButtonWrapper width={width}>
     <a className="button is-rounded has-text-weight-bold">{text}</a>
   </ButtonWrapper>
 );
