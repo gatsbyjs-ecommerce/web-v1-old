@@ -14,24 +14,28 @@ export default class Coupons extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
-    const coupons = data.allContentfulCoupons.edges;
+    // const { data } = this.props;
+    // const coupons = data.allContentfulCoupons.edges;
 
     return (
       <div className="section">
         <Seo
-          title="Coupons"
-          description="Get a best detals"
-          url={`${config.siteUrl}/coupons`}
+          title="shop"
+          description="Get the best details"
+          url={`${config.siteUrl}/shop`}
         />
-        <Heading>Coupons</Heading>
-        {coupons.map(coupon => (
+        <div className="is-flex">
+          <AsideMenu />
+          <FilterBar />
+        </div>
+        {/* <Heading>Coupons</Heading> */}
+        {/* {coupons.map(coupon => (
           <div key={coupon.node.id} className="columns  is-multiline">
             <div className="column is-one-third">
               <CouponItem data={coupon.node} />
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     );
   }

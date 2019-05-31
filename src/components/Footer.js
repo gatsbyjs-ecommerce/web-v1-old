@@ -7,7 +7,6 @@ import config from '../config';
 import SocialIcons from './SocialIcons';
 // import SubscribeForm from './SubscribeForm';
 import ScrollButton from './ScrollButton';
-import SubscribeForm from './SubscribeForm';
 
 const Container = styled.footer`
   padding-bottom: 80px;

@@ -5,7 +5,7 @@ import img from '../../static/images/home/hero-banner.png';
 import Button from './Button';
 
 const Wrapper = styled.div`
-  height: 47.5rem;
+  height: 49.5rem;
   .is-4 {
     background-color: #384aeb;
   }
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 const ImageWrapper = styled.div`
   margin-left: 23rem;
   position: absolute;
-  margin-top: 7px;
+  margin-top: 39px;
 `;
 
 const Content = styled.div`
