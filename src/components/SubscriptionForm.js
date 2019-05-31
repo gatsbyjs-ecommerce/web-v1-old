@@ -15,7 +15,7 @@ const Card = styled.div`
 `;
 
 const Container = styled.div`
-  width: 59%;
+  width: 85%;
   height: 22.2rem;
   box-shadow: 0px 2px 2px rgba(10, 10, 10, 0.1),
     8px -6px 12px 1px rgba(10, 10, 10, 0.1);
@@ -36,7 +36,7 @@ const Container = styled.div`
     font-size: 1.19rem;
   }
   .content {
-    padding: 3rem 11rem;
+    padding: 5% 20%;
     display: flex;
     @media only screen and (max-width: 768px) {
       display: inline;

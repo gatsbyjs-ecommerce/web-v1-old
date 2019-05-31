@@ -4,7 +4,6 @@ import Button from './Button';
 
 const Container = styled.div`
   margin-top: 3rem;
-  height: 30rem;
   background-image: url('/images/home/parallax-bg.png');
   background-repeat: no-repeat;
   background-size: 100%;
@@ -14,14 +13,14 @@ const Container = styled.div`
   }
 
   .column {
-    margin-left: 7rem;
+    margin-left: 7%;
     @media only screen and (max-width: 768px) {
-      margin-left: 0rem;
+      margin-left: 0;
     }
   }
 
   h1 {
-    margin-top: 5rem;
+    margin-top: 5%;
     font-size: 3rem;
     @media only screen and (max-width: 768px) {
       font-size: 2rem;
@@ -29,10 +28,12 @@ const Container = styled.div`
   }
 
   .is-size-3 {
-    margin-top: 1rem;
     @media only screen and (max-width: 768px) {
       margin-top: 0.5rem;
     }
+  }
+  .btn {
+    margin: 7%;
   }
 `;
 
@@ -44,7 +45,9 @@ const DiscountOffer = () => (
         Winter Sale
       </p>
       <p className="has-text-black">Him she'd let them sixth saw light</p>
-      <Button text="Shop Now" />
+      <div className="btn">
+        <Button text="Shop Now" />
+      </div>
     </div>
   </Container>
 );
