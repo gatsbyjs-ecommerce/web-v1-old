@@ -14,7 +14,7 @@ export default class NotFoundPage extends React.Component {
   }
 
   render() {
-    const { allContentfulProduct: products } = this.props.data;
+    // const { allContentfulProduct: products } = this.props.data;
 
     return (
       <div>
@@ -24,7 +24,7 @@ export default class NotFoundPage extends React.Component {
           You just hit a route that doesn&#39;t exist... the sadness.
         </p>
         <br />
-        <ProductsList title="We think you'll" products={products.edges} />
+        {/* <ProductsList title="We think you'll" products={products.edges} /> */}
       </div>
     );
   }

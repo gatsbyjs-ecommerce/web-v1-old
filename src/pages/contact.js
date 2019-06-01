@@ -43,8 +43,9 @@ export default class Contact extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
-    const contact = data.contentfulHome;
+    // const { data } = this.props;
+    // const contact = data.contentfulHome;
+    const contact = {};
 
     return (
       <Layout>
