@@ -13,6 +13,7 @@ const AsideMenu = () => (
   <React.Fragment>
     <div>
       <AsideTitle title="Browse Categories" />
+      <AsideLabel />
       <AsideOptions name="Men" number="(3600)" />
       <AsideOptions name="Women" number="(3600)" />
       <AsideOptions name="Accessories" number="(3600)" />
