@@ -29,7 +29,7 @@ const FilterBar = () => (
             aria-haspopup="true"
             aria-controls="dropdown-menu4"
           >
-            <span>Hover me</span>
+            <span>Default Sorting</span>
             <span className="icon is-small">
               <i className="fas fa-angle-down" aria-hidden="true" />
             </span>
@@ -38,10 +38,13 @@ const FilterBar = () => (
         <div className="dropdown-menu" id="dropdown-menu4" role="menu">
           <div className="dropdown-content">
             <div className="dropdown-item">
-              <p>
-                You can insert any type of content within the
-                dropdown menu.
-              </p>
+              <a>Default Sorting</a>
+            </div>
+            <div className="dropdown-item">
+              <a>Default Sorting</a>
+            </div>
+            <div className="dropdown-item">
+              <a>Default Sorting</a>
             </div>
           </div>
         </div>
@@ -53,7 +56,7 @@ const FilterBar = () => (
             aria-haspopup="true"
             aria-controls="dropdown-menu4"
           >
-            <span>Hover me</span>
+            <span>Show 12</span>
             <span className="icon is-small">
               <i className="fas fa-angle-down" aria-hidden="true" />
             </span>
@@ -62,10 +65,13 @@ const FilterBar = () => (
         <div className="dropdown-menu" id="dropdown-menu4" role="menu">
           <div className="dropdown-content">
             <div className="dropdown-item">
-              <p>
-                You can insert any type of content within the
-                dropdown menu.
-              </p>
+              <a>Show 12</a>
+            </div>
+            <div className="dropdown-item">
+              <a>Show 12</a>
+            </div>
+            <div className="dropdown-item">
+              <a>Show 12</a>
             </div>
           </div>
         </div>
