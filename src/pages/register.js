@@ -5,7 +5,7 @@ import ReactGA from 'react-ga';
 import config from '../config/index';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
-import LoginForm from '../components/LoginForm';
+import RegisterForm from '../components/RegisterForm';
 
 const Container = styled.div`
   a {
@@ -23,7 +23,7 @@ const Container = styled.div`
   }
 `;
 
-export default class Login extends React.Component {
+export default class Register extends React.Component {
   componentDidMount() {
     ReactGA.pageview('/contact');
   }
@@ -38,14 +38,11 @@ export default class Login extends React.Component {
             description="Get In Touch"
             url={`${config.siteUrl}/Login`}
           />
-          <Heading>Login</Heading>
+          <Heading>Register</Heading>
           <div className="columns">
             <div className="column is-half">
-              <LoginForm />
+              <RegisterForm />
             </div>
-          </div>
-          <div className="columns">
-            <p>Don't have an account?<a><strong>Register Here</strong></a></p>
           </div>
         </div>
       </Container>

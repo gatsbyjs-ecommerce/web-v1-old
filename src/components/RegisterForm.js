@@ -8,8 +8,8 @@ import gql from 'graphql-tag';
 import apolloClient from '../utils/apolloClient';
 
 const contactMutation = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+  mutation register($name: String!, $email:String!, $password: String!) {
+    register(name: $name, email: $email, password: $password) {
       email
     }
   }
@@ -20,7 +20,7 @@ const Submit = styled.button`
   margin-top: 2rem;
 `;
 
-const LoginForm = props => {
+const RegisterForm = props => {
   const {
     values,
     touched,
@@ -33,6 +33,21 @@ const LoginForm = props => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <div className="field">
+        <label className="label has-text-weight-semibold">Name</label>
+        <div className="control">
+          <input
+            className="input is-shadowless"
+            type="text"
+            name="name"
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+          />
+          {errors.name &&
+            touched.name && <p className="help is-danger">{errors.name}</p>}
+        </div>
+      </div>
       <div className="field">
         <label className="label has-text-weight-semibold">Your email</label>
         <div className="control">
@@ -76,7 +91,7 @@ const LoginForm = props => {
   );
 };
 
-LoginForm.propTypes = {
+RegisterForm.propTypes = {
   values: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
@@ -88,11 +103,13 @@ LoginForm.propTypes = {
 
 export default withFormik({
   mapPropsToValues: () => ({
-    email: '',
+    name: '',
+    email:'',
     password: '',
   }),
   validationSchema: Yup.object().shape({
-    email: Yup.string().required('Email is required!'),
+    name: Yup.string().required('Full name is required!'),
+    email: Yup.string().email('Email is required!'),
     password: Yup.string().required('Password is required'),
   }),
   handleSubmit: (values, { setSubmitting }) => {
@@ -101,7 +118,7 @@ export default withFormik({
 
     apolloClient
       .mutate({
-        mutation: contactMutation, // connect it to login mutation
+        mutation: contactMutation, // connect it to register mutation
         variables: values,
       })
       .then(() => {
@@ -115,5 +132,5 @@ export default withFormik({
         alertify.alert('Please check your credentials.');
       });
   },
-  displayName: 'LoginForm', // helps with React DevTools
-})(LoginForm);
+  displayName: 'RegisterForm', // helps with React DevTools
+})(RegisterForm);
