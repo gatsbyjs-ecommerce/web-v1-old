@@ -19,9 +19,9 @@ const Title = styled.p`
   padding: 1rem;
 `;
 
-const AsideTitle = ({ title, label }) => (
+const AsideTitle = ({ title }) => (
   <Container className="menu">
-    <Title className="menu-label has-text-white">{title}</Title>
+    <Title className="menu-label has-text-white is-capitalized">{title}</Title>
   </Container>
 );
 

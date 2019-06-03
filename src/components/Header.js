@@ -156,7 +156,7 @@ const NavItems = [
   { id: 1, name: 'Home', url: '/' },
   { id: 2, name: 'Shop', url: '/shop' },
   { id: 3, name: 'Blog', url: '/blog' },
-  { id: 4, name: 'Pages', url: '/page/about' },
+  { id: 4, name: 'Pages', url: '/login' },
   { id: 5, name: 'Contact', url: '/contact' },
 ];
 
