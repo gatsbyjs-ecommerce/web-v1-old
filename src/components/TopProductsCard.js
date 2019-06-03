@@ -2,24 +2,23 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CardWrapper = styled.div`
-    width: 21.1%;
+  margin-top: 3rem;
+  .media-content {
+      margin-top: 3%;
+  }
 
-    .media-content {
-        margin-top: 3%;
-    }
+  a {
+      font-size: 13px;
+      color: #222;
+      :hover {
+          color: #4E5DEC;
+      }
+  }
 
-    a {
-        font-size: 13px;
-        color: #222;
-        :hover {
-            color: #4E5DEC;
-        }
-    }
-
-    p {
-        color: #777777;
-        font-weight: bold;
-    }
+  p {
+      color: #777777;
+      font-weight: bold;
+  }
 `;
 
 const TopProductsCard = () => (

@@ -2,18 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  width: 60%;
   height: 4rem;
   background-color: #f1f6f7;
   padding: 1.2%;
-  margin-left: 2%;
 
   .dropdown {
     margin-right: 3%;
   }
 
-  .filed {
-    margin-left: 15%;
+  .field {
+    padding-left: 30%;
+  }
+
+  button, input {
+    border: transparent;
   }
 `;
 
@@ -37,7 +39,7 @@ const FilterBar = () => (
           <div className="dropdown-content">
             <div className="dropdown-item">
               <p>
-                You can insert <strong>any type of content</strong> within the
+                You can insert any type of content within the
                 dropdown menu.
               </p>
             </div>
@@ -61,7 +63,7 @@ const FilterBar = () => (
           <div className="dropdown-content">
             <div className="dropdown-item">
               <p>
-                You can insert <strong>any type of content</strong> within the
+                You can insert any type of content within the
                 dropdown menu.
               </p>
             </div>

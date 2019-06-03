@@ -12,11 +12,11 @@ const Container = styled.div`
   }
 `;
 
-const ProductsTitleHeader = () => (
+const ProductsTitleHeader = ({ desc, text, label }) => (
   <Container>
-    <p>Popular Item in the market</p>
+    <p>{desc}</p>
     <p className="is-size-3 has-text-weight-bold has-text-black-bis">
-      Trending <span className="product">Product</span>
+      {text} <span className="product">{label}</span>
     </p>
   </Container>
 );

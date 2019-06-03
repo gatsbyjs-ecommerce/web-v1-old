@@ -1,38 +1,38 @@
 import React from 'react';
 
 import ProductsTitleHeader from './ProductsTitleHeader';
-import ProductsDescription from '../components/ShoppingItems';
+import ShoppingItems from '../components/ShoppingItems';
 
 const TrendingItems = () => (
   <section className="section">
     <div className="container">
-      <ProductsTitleHeader />
+      <ProductsTitleHeader desc="Popular Item in the market" text="Trending" label="Products" />
       <div className="columns">
         <div className="column">
-          <ProductsDescription />
+          <ShoppingItems />
         </div>
         <div className="column">
-          <ProductsDescription />
+          <ShoppingItems />
         </div>
         <div className="column">
-          <ProductsDescription />
+          <ShoppingItems />
         </div>
         <div className="column">
-          <ProductsDescription />
+          <ShoppingItems />
         </div>
       </div>
       <div className="columns">
         <div className="column">
-          <ProductsDescription />
+          <ShoppingItems />
         </div>
         <div className="column">
-          <ProductsDescription />
+          <ShoppingItems />
         </div>
         <div className="column">
-          <ProductsDescription />
+          <ShoppingItems />
         </div>
         <div className="column">
-          <ProductsDescription />
+          <ShoppingItems />
         </div>
       </div>
     </div>
