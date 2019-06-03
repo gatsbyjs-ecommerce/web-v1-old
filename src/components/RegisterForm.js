@@ -7,7 +7,7 @@ import gql from 'graphql-tag';
 
 import apolloClient from '../utils/apolloClient';
 
-const contactMutation = gql`
+const registerMutation = gql`
   mutation register($name: String!, $email:String!, $password: String!) {
     register(name: $name, email: $email, password: $password) {
       email
@@ -118,7 +118,7 @@ export default withFormik({
 
     apolloClient
       .mutate({
-        mutation: contactMutation, // connect it to register mutation
+        mutation: registerMutation, // connect it to register mutation
         variables: values,
       })
       .then(() => {
