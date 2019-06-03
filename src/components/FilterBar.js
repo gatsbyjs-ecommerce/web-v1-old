@@ -4,7 +4,8 @@ import styled from 'styled-components';
 const Container = styled.div`
   height: 4rem;
   background-color: #f1f6f7;
-  padding: 1.2%;
+  padding: 1.5%;
+  width: 98.5%;
 
   .dropdown {
     margin-right: 3%;
