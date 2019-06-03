@@ -187,7 +187,6 @@ class Header extends React.Component {
           {({ data }) => (
             <Link to="/cart">
               <i className="fas fa-shopping-cart" />
-              {/* <span>Cart</span>{' '} */}
               {data.cart && data.cart.count > 0 && (
                 <div className="count">{data.cart.count}</div>
               )}
@@ -247,9 +246,6 @@ class Header extends React.Component {
                         </ReactGA.OutboundLink>
                       </p>
                       <div>
-                        <a>
-                          <i className="fas fa-search" />
-                        </a>
                         {cart}
                       </div>
                     </div>
@@ -288,6 +284,7 @@ class Header extends React.Component {
                   <i className="fas fa-bars menu-trigger" />
                 </a>
               )}
+              
               <CartMobile>{cart}</CartMobile>
             </div>
           </div>
