@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import ProductsTitleHeader from './ProductsTitleHeader';
-import ShoppingItems from '../components/ShoppingItems';
+import ShoppingItems from './ShoppingItems';
 
 const Container = styled.div`
 .columns {
@@ -13,24 +13,10 @@ const Container = styled.div`
 }
 `;
 
-const TrendingItems = () => (
+const BestSeller = () => (
   <Container className="section">
     <div className="container">
-      <ProductsTitleHeader desc="Popular Item in the market" text="Trending" label="Products" />
-      <div className="columns">
-        <div className="column">
-          <ShoppingItems />
-        </div>
-        <div className="column">
-          <ShoppingItems />
-        </div>
-        <div className="column">
-          <ShoppingItems />
-        </div>
-        <div className="column">
-          <ShoppingItems />
-        </div>
-      </div>
+      <ProductsTitleHeader desc="Popular Item in the market" text="Best" label="Sellers" />
       <div className="columns">
         <div className="column">
           <ShoppingItems />
@@ -49,4 +35,4 @@ const TrendingItems = () => (
   </Container>
 );
 
-export default TrendingItems;
+export default BestSeller;

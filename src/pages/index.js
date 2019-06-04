@@ -13,6 +13,7 @@ import DiscountOffer from '../components/DiscountOffer';
 import SubscriptionForm from '../components/SubscriptionForm';
 import Slider from '../components/Slider';
 import TrendingItems from '../components/TrendingItems';
+import BestSeller from '../components/BestSeller';
 
 // import ScrollButton from '../components/ScrollButton';
 
@@ -39,6 +40,7 @@ export default class IndexPage extends React.Component {
         <Slider />
         <TrendingItems />
         <DiscountOffer />
+        <BestSeller />
         <SubscriptionForm />
         {/* <HomeBanner data={home} />
         <ProductsList products={products.edges} />

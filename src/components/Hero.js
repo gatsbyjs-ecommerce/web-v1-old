@@ -6,6 +6,9 @@ import Button from './Button';
 
 const Wrapper = styled.div`
   height: 49.5rem;
+  @media only screen and (max-width: 768px) {
+    height: 26rem;
+  }
   .is-4 {
     background-color: #384aeb;
   }
@@ -18,12 +21,17 @@ const ImageWrapper = styled.div`
   margin-left: 4rem;
   position: absolute;
   margin-top: 39px;
+  @media screen and (max-width: 2500px) and (min-width: 1928px) {
+    margin-left: 25rem;
+    position: absolute;
+    margin-top: 39px;
+  }
 `;
 
 const Content = styled.div`
-    margin: 18% 10% 0 21%;
+  margin: 18% 10% 0 21%;
   @media only screen and (max-width: 768px) {
-    padding: 2.5rem;
+    margin: 8% 4% 0 9%;
   }
   h1 {
     margin-right: 6rem;

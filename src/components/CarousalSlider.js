@@ -7,6 +7,7 @@ const Container = styled.div`
   .container {
     position: relative;
     width: 98%;
+    margin-top: 5px;
   }
   .container:hover .image {
     opacity: 0.3;
@@ -22,7 +23,6 @@ const Container = styled.div`
     transition: 0.5s ease;
     backface-visibility: hidden;
   }
-
   .middle {
     transition: 0.5s ease;
     opacity: 0;
@@ -50,7 +50,7 @@ const CarousalSlider = () => (
       <img src={img} alt="Avatar" className="image" />
       <div className="middle">
         <div className="text">
-          <h6 className="has=text-weight-bold">Wireless Headphone</h6>
+          <h6 className="has-text-weight-bold">Wireless Headphone</h6>
           <p>Accessories Item</p>
         </div>
       </div>
