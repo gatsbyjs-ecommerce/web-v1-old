@@ -1,8 +1,16 @@
 import React from 'react';
+import styled from 'styled-components';
+
 import CarousalSlider from './CarousalSlider';
 
+const Container = styled.div`
+  .column {
+    justify-content: center;
+  }
+`;
+
 const Slider = () => (
-  <div className="columns">
+  <Container className="columns">
     <div className="column is-flex is-hidden-mobile">
       <CarousalSlider />
       <CarousalSlider />
@@ -13,7 +21,7 @@ const Slider = () => (
       <CarousalSlider />
       <CarousalSlider />
     </div>
-  </div>
+  </Container>
 );
 
 export default Slider;
