@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   .is-4 {
     background-color: #384aeb;
   }
-  .is-8 {
+  .content {
     background-color: #f1f6f7;
   }
 `;
@@ -52,7 +52,7 @@ const Hero = () => (
         <img src={img} alt="Cart With Things" />
       </ImageWrapper>
     </div>
-    <div className="column is-8">
+    <div className="column content">
       <Content>
         <h2 className="is-size-3">Shop is fun</h2>
         <h1 className="title has-text-dark has-text-weight-bold is-uppercase">

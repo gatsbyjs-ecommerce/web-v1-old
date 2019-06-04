@@ -21,12 +21,11 @@ const cartQuery = gql`
 `;
 
 const Container = styled.div`
-  margin-top: 0.6rem;
   a {
     color: #4a4a4a;
   }
   .navbar {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
   }
   .navbar-menu {
     flex-grow: unset;
@@ -51,8 +50,8 @@ const Container = styled.div`
     background-color: transparent !important;
   }
   img {
-    width: 21%;
-    height: 7rem;
+    width: 23%;
+    height: auto;
   }
 `;
 
