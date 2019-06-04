@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
+import Link from 'gatsby-link';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -45,7 +46,7 @@ export default class Login extends React.Component {
             </div>
           </div>
           <div className="columns">
-            <p>Don't have an account?<a><strong>Register Here</strong></a></p>
+            <p>Don't have an account?<Link to="/register"><strong>Register Here</strong></Link></p>
           </div>
         </div>
       </Container>
