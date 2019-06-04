@@ -3,7 +3,7 @@ module.exports = {
 
   siteName: 'Smart Home Devices',
   author: 'Parminder Klair',
-  description: 'Latest Smart Home Device Collection',
+  description: 'Latest Smart Home Devices Collection',
   twitter: '@sejalsuits',
   fbUserId: '@sejalsuits',
   fbAppID: '@sejalsuits',
