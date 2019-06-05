@@ -1,69 +1,88 @@
 import React from 'react';
 import styled from 'styled-components';
+import ReactImageMagnify from 'react-image-magnify';
+// import Magnifier from 'react-magnifier';
 
 import Button from '../Button';
 import img from '../../../static/images/home/product1.png';
 
 const Container = styled.div`
-img {
-  width: 90%;
-  height: auto;
-}
+  img {
+    width: 90%;
+    height: auto;
+  }
 
-.col {
-  margin-top: 7%;
-}
+  .col {
+    margin-top: 2.5%;
+  }
 
-h1 {
-  font-size: 24px;
-}
+  h1 {
+    font-size: 24px;
+  }
 
-.cost {
-  font-size: 24px;
-  font-weight: 700;
-  color: #384aeb;
-}
+  .cost {
+    font-size: 24px;
+    font-weight: 700;
+    color: #384aeb;
+  }
 
-ul li a {
+  ul li a {
     color: #555;
-}
+  }
 
-.category {
+  .category {
     margin-right: 6%;
-}
+  }
 
-.household {
+  .household {
     margin-right: 3.6%;
-}
+  }
 
-.description {
+  .description {
     margin-top: 8%;
     margin-right: 18%;
-}
+  }
 
-.control {
+  .control {
     width: 15% !important;
-}
+  }
 
-.margin {
-  margin-top: 12px;
-  margin-right: 1rem;
-}
+  .margin {
+    margin-top: 12px;
+    margin-right: 1rem;
+  }
 
-.is-flex {
-  margin-top: 2.5rem;
-}
+  .is-flex {
+    margin-top: 2.5rem;
+    justify-content: center;
+  }
 `;
 
 const AddToCart = () => (
   <Container className="columns">
-    <div className="column">
-      <figure>
-        <img src={img} alt="items" />
-      </figure>
+    <div className="column is-4">
+      <ReactImageMagnify
+        {...{
+          smallImage: {
+            alt: 'Wristwatch by Ted Baker London',
+            isFluidWidth: true,
+            src: img,
+          },
+          largeImage: {
+            src: img,
+            width: 1200,
+            height: 1800,
+          },
+        }}
+      />
+      {/* <figure>
+        <Magnifier src={img} width={500} />;
+      </figure> */}
     </div>
     <div className="column col">
-      <h1 className="has-text-black has-text-weight-bold">Faded SkyBlu Denim Jeans</h1>
+      <h1 className="has-text-black has-text-weight-bold">
+        Faded SkyBlu Denim Jeans
+      </h1>
       <p className="cost">$149.99</p>
       <ul>
         <li>
@@ -77,7 +96,12 @@ const AddToCart = () => (
           <span>:In Stock</span>
         </li>
       </ul>
-      <p className="description">Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for something that can make your interior look awesome, and at the same time give you the pleasant warm feeling during the winter.</p>
+      <p className="description">
+        Mill Oil is an innovative oil filled radiator with the most modern
+        technology. If you are looking for something that can make your interior
+        look awesome, and at the same time give you the pleasant warm feeling
+        during the winter.
+      </p>
       <div className="is-flex">
         <p className="margin">Quantity:</p>
         <div className="control margin">
