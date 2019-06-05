@@ -10,6 +10,14 @@ const Container = styled.div`
 
 const CardWrapper = styled.div`
   height: 17rem;
+  /* transition: transform 0.4s;
+  :hover {
+    margin-top: 2.55rem;
+    margin-left: 0.85rem;
+    transform: scale(1.3);
+    width: 100%;
+    height: 100%; */
+  }
 `;
 
 const MediaContent = styled.div`
