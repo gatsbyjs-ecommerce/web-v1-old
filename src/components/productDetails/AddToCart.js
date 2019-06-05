@@ -71,7 +71,7 @@ const AddToCart = () => (
           largeImage: {
             src: img,
             width: 1200,
-            height: 1800,
+            height: 600,
           },
         }}
       />

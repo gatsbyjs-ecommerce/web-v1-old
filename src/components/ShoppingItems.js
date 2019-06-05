@@ -5,19 +5,13 @@ import img from '../../static/images/home/product1.png';
 
 const Container = styled.div`
   width: 16rem;
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
 `;
 
 const CardWrapper = styled.div`
-  height: 17rem;
-  /* transition: transform 0.4s;
-  :hover {
-    margin-top: 2.55rem;
-    margin-left: 0.85rem;
-    transform: scale(1.3);
-    width: 100%;
-    height: 100%; */
-  }
+  height: 14.5rem;
+  max-width: 85%;
+  margin-left: 20px !important;
 `;
 
 const MediaContent = styled.div`

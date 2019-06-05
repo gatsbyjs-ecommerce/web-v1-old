@@ -8,7 +8,7 @@ import gql from 'graphql-tag';
 import apolloClient from '../utils/apolloClient';
 
 const registerMutation = gql`
-  mutation register($name: String!, $email:String!, $password: String!) {
+  mutation register($name: String!, $email: String!, $password: String!) {
     register(name: $name, email: $email, password: $password) {
       email
     }
@@ -44,8 +44,9 @@ const RegisterForm = props => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.name &&
-            touched.name && <p className="help is-danger">{errors.name}</p>}
+          {errors.name && touched.name && (
+            <p className="help is-danger">{errors.name}</p>
+          )}
         </div>
       </div>
       <div className="field">
@@ -59,10 +60,9 @@ const RegisterForm = props => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.email &&
-            touched.email && (
-              <p className="help is-danger is-capitalized">{errors.email}</p>
-            )}
+          {errors.email && touched.email && (
+            <p className="help is-danger is-capitalized">{errors.email}</p>
+          )}
         </div>
       </div>
       <div className="field">
@@ -76,8 +76,9 @@ const RegisterForm = props => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.password &&
-            touched.password && <p className="help is-danger">{errors.password}</p>}
+          {errors.password && touched.password && (
+            <p className="help is-danger">{errors.password}</p>
+          )}
         </div>
       </div>
       <Submit
@@ -104,12 +105,12 @@ RegisterForm.propTypes = {
 export default withFormik({
   mapPropsToValues: () => ({
     name: '',
-    email:'',
+    email: '',
     password: '',
   }),
   validationSchema: Yup.object().shape({
     name: Yup.string().required('Full name is required!'),
-    email: Yup.string().email('Email is required!'),
+    email: Yup.string().required('Email is required!'),
     password: Yup.string().required('Password is required'),
   }),
   handleSubmit: (values, { setSubmitting }) => {
@@ -122,9 +123,7 @@ export default withFormik({
         variables: values,
       })
       .then(() => {
-        alertify.alert(
-          'Your are successfully logged in.',
-        );
+        alertify.alert('Your are successfully logged in.');
         setSubmitting(false);
       })
       .catch(() => {
