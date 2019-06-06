@@ -4,7 +4,7 @@ import ReactGA from 'react-ga';
 
 import config from '../config';
 import Heading from '../components/Heading';
-import ProductsList from '../components/ProductsList';
+// import ProductsList from '../components/ProductsList';
 
 export default class NotFoundPage extends React.Component {
   componentDidMount() {

@@ -14,7 +14,7 @@ const Container = styled.footer`
   position: relative;
   margin-top: 6rem;
   .is-4 {
-    padding-right: 9rem;
+    padding-right: 5rem;
   }
 `;
 

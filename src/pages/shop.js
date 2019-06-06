@@ -1,6 +1,6 @@
 import React from 'react';
 // import graphql from 'graphql';
-// import ReactGA from 'react-ga';
+import ReactGA from 'react-ga';
 import styled from 'styled-components';
 
 import config from '../config/index';
@@ -16,9 +16,9 @@ const Container = styled.section`
 `;
 
 export default class Shop extends React.Component {
-  // componentDidMount() {
-  //   ReactGA.pageview('/coupons');
-  // }
+  componentDidMount() {
+    ReactGA.pageview('/shop');
+  }
 
   render() {
     // const { data } = this.props;

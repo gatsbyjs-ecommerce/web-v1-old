@@ -21,9 +21,9 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const Button = ({ text, width }) => (
+const Button = ({ text, width, link }) => (
   <ButtonWrapper width={width}>
-    <Link to="/" className="button is-rounded has-text-weight-bold">
+    <Link to={`${link}`} className="button is-rounded has-text-weight-bold">
       {text}
     </Link>
   </ButtonWrapper>

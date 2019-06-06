@@ -92,7 +92,7 @@ class SubscriptionForm extends React.Component {
               <input
                 className="input is-rounded"
                 name="email"
-                // value={values.email}
+                value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 placeholder="Your email"
