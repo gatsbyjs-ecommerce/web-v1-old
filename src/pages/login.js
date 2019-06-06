@@ -26,11 +26,10 @@ const Container = styled.div`
 
 export default class Login extends React.Component {
   componentDidMount() {
-    ReactGA.pageview('/contact');
+    ReactGA.pageview('/login');
   }
 
   render() {
-
     return (
       <Container className="section">
         <div className="container">
@@ -46,7 +45,12 @@ export default class Login extends React.Component {
             </div>
           </div>
           <div className="columns">
-            <p>Don't have an account?<Link to="/register"><strong>Register Here</strong></Link></p>
+            <p>
+              Don't have an account?
+              <Link to="/register">
+                <strong>Register Here</strong>
+              </Link>
+            </p>
           </div>
         </div>
       </Container>

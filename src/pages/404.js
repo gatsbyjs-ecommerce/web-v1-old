@@ -6,7 +6,7 @@ import { graphql } from 'gatsby'
 import config from '../config';
 import Layout from '../components/Layout';
 import Heading from '../components/Heading';
-import ProductsList from '../components/ProductsList';
+// import ProductsList from '../components/ProductsList';
 
 export default class NotFoundPage extends React.Component {
   componentDidMount() {
