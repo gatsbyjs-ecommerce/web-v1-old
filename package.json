@@ -61,11 +61,21 @@
     "randomstring": "^1.1.5",
     "react": "^16.8.6",
     "react-accessible-accordion": "^2.4.2",
+<<<<<<< HEAD
     "react-apollo": "^2.5.6",
     "react-dom": "^16.8.6",
     "react-ga": "^2.5.7",
     "react-helmet": "^5.2.1",
     "react-image-gallery": "^0.8.17",
+=======
+    "react-alice-carousel": "^1.13.11",
+    "react-apollo": "^2.1.4",
+    "react-ga": "^2.5.3",
+    "react-helmet": "^5.2.0",
+    "react-image-gallery": "^0.8.8",
+    "react-image-magnify": "^2.7.4",
+    "react-image-zoom": "^0.7.0",
+>>>>>>> Minor fixes
     "react-load-script": "^0.0.6",
     "react-share": "^3.0.0",
     "react-spring": "^5.3.8",
