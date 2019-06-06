@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReactImageMagnify from 'react-image-magnify';
+// import ReactImageMagnify from 'react-image-magnify';
 // import Magnifier from 'react-magnifier';
+import ReactImageZoom from 'react-image-zoom';
 
 import Button from '../Button';
-import img from '../../../static/images/home/product1.png';
+// import img from '../../../static/images/home/product1.png';
 
 const Container = styled.div`
   img {
@@ -58,10 +59,17 @@ const Container = styled.div`
   }
 `;
 
-const AddToCart = () => (
+const props = {
+  width: 400,
+  zoomWidth: 500,
+  img: '/images/home/product1.png',
+};
+
+const ItemDescription = () => (
   <Container className="columns">
     <div className="column is-4">
-      <ReactImageMagnify
+      <ReactImageZoom {...props} />
+      {/* <ReactImageMagnify  // This is Another method to magnify image
         {...{
           smallImage: {
             alt: 'Wristwatch by Ted Baker London',
@@ -74,10 +82,7 @@ const AddToCart = () => (
             height: 600,
           },
         }}
-      />
-      {/* <figure>
-        <Magnifier src={img} width={500} />;
-      </figure> */}
+      /> */}
     </div>
     <div className="column col">
       <h1 className="has-text-black has-text-weight-bold">
@@ -113,4 +118,4 @@ const AddToCart = () => (
   </Container>
 );
 
-export default AddToCart;
+export default ItemDescription;

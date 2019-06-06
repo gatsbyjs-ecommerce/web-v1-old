@@ -67,6 +67,7 @@
     "react-helmet": "^5.2.0",
     "react-image-gallery": "^0.8.8",
     "react-image-magnify": "^2.7.4",
+    "react-image-zoom": "^0.7.0",
     "react-load-script": "^0.0.6",
     "react-magnifier": "^3.0.1",
     "react-share": "^2.2.0",
