@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import img from '../../static/images/home/hero-banner.png';
+import img from '../../static/images/home/hero-banner1.png';
 import Button from './Button';
 
 const Wrapper = styled.div`
-  height: 49.5rem;
+  height: 40.5rem;
   @media only screen and (max-width: 768px) {
     height: 26rem;
   }
@@ -20,16 +20,16 @@ const Wrapper = styled.div`
 const ImageWrapper = styled.div`
   margin-left: 4rem;
   position: absolute;
-  margin-top: 39px;
+  margin-top: 12px;
   @media screen and (max-width: 2500px) and (min-width: 1928px) {
     margin-left: 25rem;
     position: absolute;
-    margin-top: 39px;
+    margin-top: 12px;
   }
 `;
 
 const Content = styled.div`
-  margin: 18% 10% 0 21%;
+  margin: 13% 10% 0 21%;
   @media only screen and (max-width: 768px) {
     margin: 8% 4% 0 9%;
   }

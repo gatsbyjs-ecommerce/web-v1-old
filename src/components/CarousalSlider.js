@@ -47,7 +47,7 @@ const Container = styled.div`
 const CarousalSlider = () => (
   <Container>
     <div className="container">
-      <img src={img} alt="Avatar" className="image" />>
+      <img src={img} alt="Avatar" className="image" />
       <div className="middle">
         <div className="text">
           <h6 className="has-text-weight-bold">Wireless Headphone</h6>
