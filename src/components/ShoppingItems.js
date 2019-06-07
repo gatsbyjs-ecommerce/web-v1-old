@@ -46,7 +46,7 @@ const IconContainer = styled.div`
   }
 `;
 
-class ShoppingItems extends React.Component {
+export default class ShoppingItems extends React.Component {
   constructor(props) {
     super(props);
 
@@ -103,4 +103,20 @@ class ShoppingItems extends React.Component {
   }
 }
 
-export default ShoppingItems;
+// export const indexQuery = graphql`
+// query Shopping {
+//   allContentfulShoppingItems {
+//     edges {
+//       node {
+//         id
+//         productImage {
+//           id
+//         }
+//         productCategory
+//         productName
+//         productPrice
+//       }
+//     }
+//   }
+// }
+// `;

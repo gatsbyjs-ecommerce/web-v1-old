@@ -25,7 +25,7 @@ const TrendingItems = () => (
         <div className="column">
           <ShoppingItems />
         </div>
-        <div className="column">
+        {/* <div className="column">
           <ShoppingItems />
         </div>
         <div className="column">
@@ -33,9 +33,9 @@ const TrendingItems = () => (
         </div>
         <div className="column">
           <ShoppingItems />
-        </div>
+        </div> */}
       </div>
-      <div className="columns">
+      {/* <div className="columns">
         <div className="column">
           <ShoppingItems />
         </div>
@@ -48,9 +48,27 @@ const TrendingItems = () => (
         <div className="column">
           <ShoppingItems />
         </div>
-      </div>
+      </div> */}
     </div>
   </Container>
 );
 
 export default TrendingItems;
+
+// export const trendingItemsQuery = graphql`
+// query Shopping {
+//   allContentfulShoppingItems {
+//     edges {
+//       node {
+//         id
+//         productImage {
+//           id
+//         }
+//         productCategory
+//         productName
+//         productPrice
+//       }
+//     }
+//   }
+// }
+// `;
