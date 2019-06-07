@@ -15,8 +15,8 @@ const Container = styled.div`
     border: transparent;
   }
 
-  .search-bar {
-    padding-left: 12%;
+  div p input {
+    padding-left: 18%;
   }
 
   button,
@@ -24,12 +24,8 @@ const Container = styled.div`
     border: transparent;
   }
 
-  input {
-    padding-right: 4.5rem !important;
-  }
-
-  .control {
-    padding-right: 4.5rem !important;
+  .search-bar {
+    margin-left: 22%;
   }
 `;
 
@@ -70,7 +66,7 @@ const FilterBar = () => (
       </div>
     </div>
     <div className="field search-bar">
-      <p className="control has-icons-left has-icons-right">
+      <p className="control has-icons-right">
         <input
           className="input is-radiusless"
           type="text"
