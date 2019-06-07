@@ -14,7 +14,8 @@ import SubscriptionForm from '../components/SubscriptionForm';
 import Slider from '../components/Slider';
 import TrendingItems from '../components/TrendingItems';
 import BestSeller from '../components/BestSeller';
-import CartItem from '../components/productDetails/ItemDescription';
+// import ProductsList from '../components/ProductsList';
+// import CartItem from '../components/productDetails/ItemDescription';
 
 // import ScrollButton from '../components/ScrollButton';
 
