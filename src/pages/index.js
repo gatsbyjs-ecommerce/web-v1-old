@@ -43,7 +43,6 @@ export default class IndexPage extends React.Component {
         <DiscountOffer />
         <BestSeller />
         <SubscriptionForm />
-        <CartItem />
         {/* <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} /> */}
