@@ -62,7 +62,11 @@ const Container = styled.div`
 const props = {
   width: 400,
   zoomWidth: 500,
+  scale: 1.5,
   img: '/images/home/product1.png',
+  offset: { vertical: 0, horizontal: 10 },
+  zoomStyle: 'border: 1px solid grey;',
+  zoomLensStyle: { opacity: 0.5 },
 };
 
 const ItemDescription = () => (

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
-import ShopHeader from '../components/ShopHeader';
+import ShopBodyItems from '../components/ShopBodyItems';
 import ShopProducts from '../components/ShopProducts';
 
 // import Heading from '../components/Heading';
@@ -32,16 +32,13 @@ export default class Shop extends React.Component {
             description="Get the best details"
             url={`${config.siteUrl}/shop`}
           />
-          <ShopHeader />
+          <ShopBodyItems />
           <ShopProducts />
           {/* <Heading>Coupons</Heading> */}
           {/* {coupons.map(coupon => (
             <div key={coupon.node.id} className="columns  is-multiline">
               <div className="column is-one-third">
-                <CouponItem data={coupon.node} />
-              </div>
-            </Container>
-          ))} */}
+                <CouponItem data={coupon.node} /> */}
         </div>
       </Container>
     );

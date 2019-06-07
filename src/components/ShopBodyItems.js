@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import AsideMenu from '../components/AsideMenu';
-import FilterBar from '../components/FilterBar';
-import ShoppingItems from '../components/ShoppingItems';
+import AsideMenu from './AsideMenu';
+import FilterBar from './FilterBar';
+import ShoppingItems from './ShoppingItems';
 
 const Items = styled.div`
   justify-content: center;
   display: grid;
 `;
 
-const ShopHeader = () => (
+const ShopBodyItems = () => (
   <div className="columns">
     <div className="column is-3">
       <AsideMenu />
@@ -51,4 +51,4 @@ const ShopHeader = () => (
   </div>
 );
 
-export default ShopHeader;
+export default ShopBodyItems;

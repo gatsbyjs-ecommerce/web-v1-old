@@ -19,7 +19,7 @@ const MediaContent = styled.div`
   a {
     color: #000;
     :hover {
-      color: #007bff;
+      color: #3c5beb;
     }
   }
 `;
