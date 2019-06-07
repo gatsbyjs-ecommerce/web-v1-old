@@ -11,7 +11,7 @@ const Container = styled.div`
     margin-right: 3%;
   }
 
-  select{
+  select {
     border: transparent;
   }
 
@@ -23,53 +23,65 @@ const Container = styled.div`
   input {
     border: transparent;
   }
+
+  input {
+    padding-right: 4.5rem !important;
+  }
+
+  .control {
+    padding-right: 4.5rem !important;
+  }
 `;
 
 const FilterBar = () => (
-  <React.Fragment>
-    <Container className="is-flex">
-      <div className="dropdown is-hoverable">
-        <div className="dropdown-trigger">
-          <div className="field">
-            <div className="control">
-              <div className="select">
-                <select className="is-radiusless">
-                  <option>Select dropdown</option>
-                  <option>With options</option>
-                </select>
-              </div>
+  <Container className="is-flex">
+    <div className="dropdown is-hoverable">
+      <div className="dropdown-trigger">
+        <div className="field">
+          <div className="control">
+            <div className="select">
+              <select className="is-radiusless">
+                <option>Select Items</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
+              </select>
             </div>
           </div>
         </div>
       </div>
-      <div className="dropdown is-hoverable">
-        <div className="dropdown-trigger">
-          <div className="field">
-            <div className="control">
-              <div className="select">
-                <select className="is-radiusless">
-                  <option>Select dropdown</option>
-                  <option>With options</option>
-                </select>
-              </div>
+    </div>
+    <div className="dropdown is-hoverable">
+      <div className="dropdown-trigger">
+        <div className="field">
+          <div className="control">
+            <div className="select">
+              <select className="is-radiusless">
+                <option>Select Items</option>
+                <option>Option 1</option>
+                <option>Option 2</option>
+                <option>Option 3</option>
+                <option>Option 4</option>
+              </select>
             </div>
           </div>
         </div>
       </div>
-      <div className="field search-bar">
-        <p className="control has-icons-left has-icons-right">
-          <input
-            className="input is-radiusless"
-            type="text"
-            placeholder="Search"
-          />
-          <span className="icon is-small is-right">
-            <i className="fas fa-search" />
-          </span>
-        </p>
-      </div>
-    </Container>
-  </React.Fragment>
+    </div>
+    <div className="field search-bar">
+      <p className="control has-icons-left has-icons-right">
+        <input
+          className="input is-radiusless"
+          type="text"
+          placeholder="Search"
+        />
+        <span className="icon is-small is-right">
+          <i className="fas fa-search" />
+        </span>
+      </p>
+    </div>
+  </Container>
 );
 
 export default FilterBar;
