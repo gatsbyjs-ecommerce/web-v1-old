@@ -4,8 +4,9 @@ const fetch = require('isomorphic-unfetch');
 
 exports.onPreBootstrap = () => {
   // fetch currency rates
+  const currencyApiKey = '57a4c3e89637843f3d22';
   fetch(
-    'http://free.currencyconverterapi.com/api/v5/convert?q=GBP_CAD,GBP_INR&compact=y',
+    `http://free.currconv.com/api/v7/convert?q=GBP_CAD,GBP_INR&compact=y&apiKey=${currencyApiKey}`,
   )
     .then(r => r.json())
     .then(data => {
