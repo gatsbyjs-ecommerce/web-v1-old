@@ -13,15 +13,17 @@ import Footer from './Footer';
 class IndexLayout extends React.Component {
   componentWillMount() {
     ReactGA.initialize(config.googleAnalytics, {
-      debug: config.DEBUG,
+      // debug: config.DEBUG,
     });
   }
 
   render() {
     const {
       children,
-      data: { contentfulHome: home },
+      // data: { contentfulHome: home },
     } = this.props;
+    // TODO: fix this
+    const home = {};
 
     return (
       <ApolloProvider client={apolloClient}>
@@ -32,7 +34,7 @@ class IndexLayout extends React.Component {
           />
           <div className="container">
             <Header home={home} />
-            {children()}
+            {children}
           </div>
           <Footer home={home} />
         </div>
@@ -42,7 +44,7 @@ class IndexLayout extends React.Component {
 }
 
 IndexLayout.propTypes = {
-  children: PropTypes.func.isRequired,
+  children: PropTypes.array.isRequired,
 };
 
 export default IndexLayout;

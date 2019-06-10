@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
 import { isUndefined } from 'underscore';
 import { withFormik } from 'formik';
-import Yup from 'yup';
+import * as Yup from 'yup';
 import Cleave from 'cleave.js/react';
 import randomstring from 'randomstring';
 import gql from 'graphql-tag';

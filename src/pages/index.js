@@ -20,6 +20,7 @@ export default class IndexPage extends React.Component {
     const {
       data: {allContentfulProduct: products, contentfulHome: home},
     } = this.props;
+    const currency = {edges: [{node:{}}]}; // TODO: fix this
     const currencies = first(currency.edges).node;
     console.log('currencies', currencies);
 
