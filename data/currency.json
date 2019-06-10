@@ -1,0 +1,4 @@
+{
+  "status": 400,
+  "error": "API Key is required."
+}
