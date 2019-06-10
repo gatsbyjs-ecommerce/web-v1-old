@@ -68,7 +68,7 @@
     "react-image-gallery": "^0.8.17",
     "react-load-script": "^0.0.6",
     "react-share": "^3.0.0",
-    "react-spring": "^8.0.23",
+    "react-spring": "^5.3.8",
     "react-truncate": "^2.4.0",
     "styled-components": "^4.3.1",
     "underscore": "^1.9.1",
