@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import { first } from 'underscore';
-import { graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -9,35 +9,6 @@ import Layout from '../components/Layout';
 import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
-
-
-export default class IndexPage extends React.Component {
-  componentDidMount() {
-    ReactGA.pageview('/');
-  }
-
-  render() {
-    const {
-      data: { allContentfulProduct: products, contentfulHome: home },
-    } = this.props;
-    const currency = { edges: [{ node: {} }] }; // TODO: fix this
-    const currencies = first(currency.edges).node;
-    console.log('currencies', currencies);
-
-    return (
-      <Layout>
-        <Seo
-          title="Latest punjabi suits collection"
-          description="Latest Punjabi Traditional Suits"
-          url={config.siteUrl}
-        />
-        <HomeBanner data={home} />
-        <ProductsList products={products.edges} />
-        <HomeAbout data={home} />
-      </Layout>
-    );
-  }
-}
 
 export const indexQuery = graphql`
   query Products {
@@ -61,6 +32,7 @@ export const indexQuery = graphql`
           }
         }
       }
+    
     }
     contentfulHome {
       homeSliderTitle
@@ -91,3 +63,39 @@ export const indexQuery = graphql`
     }
   }
 `;
+
+
+export default class IndexPage extends React.Component {
+  componentDidMount() {
+    ReactGA.pageview('/');
+  }
+
+  render() {
+    const {
+      data: { allContentfulProduct: products, contentfulHome: home },
+    } = this.props;
+    const currency = { edges: [{ node: {} }] }; // TODO: fix this
+    const currencies = first(currency.edges).node;
+    console.log('currencies', currencies);
+
+    return (
+      <Layout>
+        <Seo
+          title="Latest punjabi suits collection"
+          description="Latest Punjabi Traditional Suits"
+          url={config.siteUrl}
+        />
+        <StaticQuery
+          query={indexQuery}
+          render={() => (
+            <React.Fragment>
+              <HomeBanner data={home} />
+              <ProductsList products={products.edges} />
+              <HomeAbout data={home} />
+            </React.Fragment>
+          )}
+        />
+      </Layout>
+    );
+  }
+}

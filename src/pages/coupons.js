@@ -32,8 +32,8 @@ export default class Coupons extends React.Component {
   }
 
   render() {
-    // const { data } = this.props;
-    // const coupons = data.allContentfulCoupons.edges;
+    const { data } = this.props;
+    const coupons = data.allContentfulCoupons.edges;
 
     return (
       <Layout>
@@ -44,11 +44,13 @@ export default class Coupons extends React.Component {
             url={`${config.siteUrl}/coupons`}
           />
           <Heading>Coupons</Heading>
-          <div className="columns  is-multiline">
-            <div className="column is-one-third">
-              <CouponItem />
+          {coupons.map(coupon => (
+            <div key={coupon.node.id} className="columns  is-multiline">
+              <div className="column is-one-third">
+                <CouponItem data={coupon.node} />
+              </div>
             </div>
-          </div>
+          ))}
         </div>
       </Layout>
     );
