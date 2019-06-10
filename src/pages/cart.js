@@ -44,14 +44,14 @@ class Cart extends React.Component {
             native
             from={{ opacity: 0 }}
             to={{
-            opacity: activeStep !== 1 ? 1 : 0,
-          }}
+              opacity: activeStep !== 1 ? 1 : 0,
+            }}
           >
             {styles => (
               <animated.div style={styles}>
                 <CheckoutProgress activeStep={activeStep} />
               </animated.div>
-          )}
+            )}
           </Spring>
           <div className="columns">
             <Spring
@@ -67,37 +67,37 @@ class Cart extends React.Component {
                   <CartItems
                     showCheckoutBtn={activeStep === 1}
                     handlePayment={data =>
-                    this.setState({ activeStep: 2, cartData: data })
-                  }
+                      this.setState({ activeStep: 2, cartData: data })
+                    }
                   />
                 </animated.div>
-            )}
+              )}
             </Spring>
             <div className="column section is-hidden-tablet">
               <CartItems
                 showCheckoutBtn={activeStep === 1}
                 handlePayment={data =>
-                this.setState({ activeStep: 2, cartData: data })
-              }
+                  this.setState({ activeStep: 2, cartData: data })
+                }
               />
             </div>
             <div className="column section">
               {activeStep === 2 && (
-              <CheckoutForm
-                handlePayment={data =>
-                  this.setState({ activeStep: 3, userData: data })
-                }
-              />
-            )}
+                <CheckoutForm
+                  handlePayment={data =>
+                    this.setState({ activeStep: 3, userData: data })
+                  }
+                />
+              )}
               {activeStep === 3 && (
-              <PaymentForm
-                cartData={cartData}
-                userData={userData}
-                handlePayment={data =>
-                  this.setState({ activeStep: 4, paymentData: data })
-                }
-              />
-            )}
+                <PaymentForm
+                  cartData={cartData}
+                  userData={userData}
+                  handlePayment={data =>
+                    this.setState({ activeStep: 4, paymentData: data })
+                  }
+                />
+              )}
               {activeStep === 4 && <PaymentConfirmed paymentData={paymentData} />}
             </div>
           </div>
