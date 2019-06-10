@@ -4,6 +4,7 @@ import ReactGA from 'react-ga';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
+import Layout from '../components/Layout';
 import Heading from '../components/Heading';
 import CheckoutProgress from '../components/CheckoutProgress';
 import CartItems from '../components/CartItems';
@@ -31,63 +32,64 @@ class Cart extends React.Component {
     const { activeStep, paymentData, userData, cartData } = this.state;
 
     return (
-      <div className="section">
-        <Seo
-          title="Cart"
-          description="Your order items"
-          url={`${config.siteUrl}/cart`}
-        />
-        <Heading>Cart</Heading>
-        <Spring
-          native
-          from={{ opacity: 0 }}
-          to={{
-            opacity: activeStep !== 1 ? 1 : 0,
-          }}
-        >
-          {styles => (
-            <animated.div style={styles}>
-              <CheckoutProgress activeStep={activeStep} />
-            </animated.div>
-          )}
-        </Spring>
-        <div className="columns">
+      <Layout>
+        <div className="section">
+          <Seo
+            title="Cart"
+            description="Your order items"
+            url={`${config.siteUrl}/cart`}
+          />
+          <Heading>Cart</Heading>
           <Spring
             native
-            from={{ marginLeft: '25%' }}
-            to={{ marginLeft: activeStep === 1 ? '25%' : '0%' }}
+            from={{ opacity: 0 }}
+            to={{
+            opacity: activeStep !== 1 ? 1 : 0,
+          }}
           >
-            {stylesProps => (
-              <animated.div
-                style={stylesProps}
-                className="column section is-half is-hidden-mobile"
-              >
-                <CartItems
-                  showCheckoutBtn={activeStep === 1}
-                  handlePayment={data =>
+            {styles => (
+              <animated.div style={styles}>
+                <CheckoutProgress activeStep={activeStep} />
+              </animated.div>
+          )}
+          </Spring>
+          <div className="columns">
+            <Spring
+              native
+              from={{ marginLeft: '25%' }}
+              to={{ marginLeft: activeStep === 1 ? '25%' : '0%' }}
+            >
+              {stylesProps => (
+                <animated.div
+                  style={stylesProps}
+                  className="column section is-half is-hidden-mobile"
+                >
+                  <CartItems
+                    showCheckoutBtn={activeStep === 1}
+                    handlePayment={data =>
                     this.setState({ activeStep: 2, cartData: data })
                   }
-                />
-              </animated.div>
+                  />
+                </animated.div>
             )}
-          </Spring>
-          <div className="column section is-hidden-tablet">
-            <CartItems
-              showCheckoutBtn={activeStep === 1}
-              handlePayment={data =>
+            </Spring>
+            <div className="column section is-hidden-tablet">
+              <CartItems
+                showCheckoutBtn={activeStep === 1}
+                handlePayment={data =>
                 this.setState({ activeStep: 2, cartData: data })
               }
-            />
-          </div>
-          <div className="column section">
-            {activeStep === 2 && (
+              />
+            </div>
+            <div className="column section">
+              {activeStep === 2 && (
               <CheckoutForm
                 handlePayment={data =>
                   this.setState({ activeStep: 3, userData: data })
                 }
               />
             )}
-            {activeStep === 3 && (
+              {activeStep === 3 && (
               <PaymentForm
                 cartData={cartData}
                 userData={userData}
@@ -96,10 +98,11 @@ class Cart extends React.Component {
                 }
               />
             )}
-            {activeStep === 4 && <PaymentConfirmed paymentData={paymentData} />}
+              {activeStep === 4 && <PaymentConfirmed paymentData={paymentData} />}
+            </div>
           </div>
         </div>
-      </div>
+      </Layout>
     );
   }
 }

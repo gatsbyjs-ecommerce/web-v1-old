@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import { first } from 'underscore';
+import { graphql } from 'gatsby'
 
 import config from '../config/index';
 import Seo from '../components/Seo';
+import Layout from '../components/Layout';
 import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
-import ScrollButton from '../components/ScrollButton';
 
 
 export default class IndexPage extends React.Component {
@@ -23,7 +24,7 @@ export default class IndexPage extends React.Component {
     console.log('currencies', currencies);
 
     return (
-      <React.Fragment>
+      <Layout>
         <Seo
           title="Latest punjabi suits collection"
           description="Latest Punjabi Traditional Suits"
@@ -32,7 +33,7 @@ export default class IndexPage extends React.Component {
         <HomeBanner data={home} />
         <ProductsList products={products.edges} />
         <HomeAbout data={home} />
-      </React.Fragment>
+      </Layout>
     );
   }
 }

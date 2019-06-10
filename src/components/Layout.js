@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ApolloProvider } from 'react-apollo';
 import ReactGA from 'react-ga';
+import { graphql } from 'gatsby'
 
 import config from '../config';
 import apolloClient from '../utils/apolloClient';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from './Header';
+import Footer from './Footer';
 
 class IndexLayout extends React.Component {
   componentWillMount() {
