@@ -26,7 +26,7 @@ class ProductsList extends React.Component {
   }
 
   toggleCategory = (category) => (
-    this.setState({ activeCategory:category })
+    this.setState({ activeCategory: category })
   )
 
   render() {
@@ -35,8 +35,8 @@ class ProductsList extends React.Component {
     const keys = products.map(item => item.node.id);
     // console.log('products', products);
 
-    if( activeCategory === null) {
-        const  filterProducts = products
+    if (activeCategory === null) {
+      const filterProducts = products
     } else {
       const filterProducts = filter(
         products,

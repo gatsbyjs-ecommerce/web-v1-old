@@ -28,7 +28,7 @@ export default ({ data }) => {
           <Image
             src={`https://cdn-images-1.medium.com/max/800/${
               data.virtuals.previewImage.imageId
-            }`}
+              }`}
           />
         </a>
       </div>

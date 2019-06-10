@@ -3,12 +3,26 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ApolloProvider } from 'react-apollo';
 import ReactGA from 'react-ga';
-import { graphql } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby';
 
 import config from '../config';
 import apolloClient from '../utils/apolloClient';
 import Header from './Header';
 import Footer from './Footer';
+
+const indexLayoutQuery = graphql`
+query {
+  contentfulHome {
+    telephone
+    email
+    address
+    facebook
+    twitter
+    instagram
+    pinterest
+  }
+}
+`;
 
 class IndexLayout extends React.Component {
   componentWillMount() {
@@ -32,6 +46,18 @@ class IndexLayout extends React.Component {
             title={config.siteName}
             meta={[{ name: 'description', content: config.description }]}
           />
+          {/* <StaticQuery
+            query={indexLayoutQuery}
+            render={data => {
+              const layout = data.contentfulHome;
+              console.log(layout)
+              return (
+                layout.map(item =>
+                )
+              )
+            }
+            }
+          /> */}
           <div className="container">
             <Header home={home} />
             {children}
@@ -49,16 +75,16 @@ IndexLayout.propTypes = {
 
 export default IndexLayout;
 
-export const indexLayoutQuery = graphql`
-  query IndexLayout {
-    contentfulHome {
-      telephone
-      email
-      address
-      facebook
-      twitter
-      instagram
-      pinterest
-    }
-  }
-`;
+// # export const indexLayoutQuery = graphql`
+// #   query IndexLayout {
+// #     contentfulHome {
+// #       telephone
+// #       email
+// #       address
+// #       facebook
+// #       twitter
+// #       instagram
+// #       pinterest
+// #     }
+// #   }
+// # `;

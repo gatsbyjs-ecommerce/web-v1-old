@@ -8,6 +8,32 @@ import Heading from '../components/Heading';
 import BlogItem from '../components/BlogItem';
 import Seo from '../components/Seo';
 
+export const blogQuery = graphql`
+  query Blogs {
+    allMediumPost(sort: { fields: [createdAt], order: DESC }) {
+      edges {
+        node {
+          id
+          title
+          uniqueSlug
+          virtuals {
+            subtitle
+            totalClapCount
+            previewImage {
+              imageId
+            }
+          }
+          author {
+            name
+          }
+          createdAt
+          updatedAt
+        }
+      }
+    }
+  }
+`;
+
 export default class Blog extends React.Component {
   componentDidMount() {
     ReactGA.pageview('/blog');
@@ -36,29 +62,3 @@ export default class Blog extends React.Component {
     );
   }
 }
-
-export const blogQuery = graphql`
-  query Blogs {
-    allMediumPost(sort: { fields: [createdAt], order: DESC }) {
-      edges {
-        node {
-          id
-          title
-          uniqueSlug
-          virtuals {
-            subtitle
-            totalClapCount
-            previewImage {
-              imageId
-            }
-          }
-          author {
-            name
-          }
-          createdAt
-          updatedAt
-        }
-      }
-    }
-  }
-`;

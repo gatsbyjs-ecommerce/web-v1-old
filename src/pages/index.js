@@ -12,15 +12,15 @@ import HomeAbout from '../components/HomeAbout';
 
 
 export default class IndexPage extends React.Component {
-  componentDidMount () {
-    ReactGA.pageview ('/');
+  componentDidMount() {
+    ReactGA.pageview('/');
   }
 
-  render () {
+  render() {
     const {
-      data: {allContentfulProduct: products, contentfulHome: home},
+      data: { allContentfulProduct: products, contentfulHome: home },
     } = this.props;
-    const currency = {edges: [{node:{}}]}; // TODO: fix this
+    const currency = { edges: [{ node: {} }] }; // TODO: fix this
     const currencies = first(currency.edges).node;
     console.log('currencies', currencies);
 
