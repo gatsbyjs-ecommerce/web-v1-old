@@ -70,7 +70,7 @@ class IndexLayout extends React.Component {
 }
 
 IndexLayout.propTypes = {
-  children: PropTypes.array.isRequired,
+  children: PropTypes.any.isRequired,
 };
 
 export default IndexLayout;

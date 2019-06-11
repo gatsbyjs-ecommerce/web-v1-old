@@ -44,13 +44,13 @@ export default class Coupons extends React.Component {
             url={`${config.siteUrl}/coupons`}
           />
           <Heading>Coupons</Heading>
-          {coupons.map(coupon => (
-            <div key={coupon.node.id} className="columns  is-multiline">
-              <div className="column is-one-third">
+          <div className="columns is-multiline">
+            {coupons.map(coupon => (
+              <div key={coupon.node.id} className="column is-one-third">
                 <CouponItem data={coupon.node} />
               </div>
-            </div>
           ))}
+          </div>
         </div>
       </Layout>
     );

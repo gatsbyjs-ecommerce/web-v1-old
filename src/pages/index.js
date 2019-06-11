@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import { first } from 'underscore';
+// import { first } from 'underscore';
 import { StaticQuery, graphql } from 'gatsby'
 
 import config from '../config/index';
@@ -32,7 +32,6 @@ export const indexQuery = graphql`
           }
         }
       }
-    
     }
     contentfulHome {
       homeSliderTitle
@@ -64,20 +63,12 @@ export const indexQuery = graphql`
   }
 `;
 
-
 export default class IndexPage extends React.Component {
   componentDidMount() {
     ReactGA.pageview('/');
   }
 
   render() {
-    const {
-      data: { allContentfulProduct: products, contentfulHome: home },
-    } = this.props;
-    const currency = { edges: [{ node: {} }] }; // TODO: fix this
-    const currencies = first(currency.edges).node;
-    console.log('currencies', currencies);
-
     return (
       <Layout>
         <Seo
@@ -87,13 +78,21 @@ export default class IndexPage extends React.Component {
         />
         <StaticQuery
           query={indexQuery}
-          render={() => (
-            <React.Fragment>
-              <HomeBanner data={home} />
-              <ProductsList products={products.edges} />
-              <HomeAbout data={home} />
-            </React.Fragment>
-          )}
+          render={(data) => {
+          const {
+            allContentfulProduct: products, contentfulHome: home,
+          } = data;
+          // const currency = { edges: [{ node: {} }] }; // TODO: fix this
+          // const currencies = first(currency.edges).node;
+
+            return (
+              <React.Fragment>
+                <HomeBanner data={home} />
+                <ProductsList products={products.edges} />
+                <HomeAbout data={home} />
+              </React.Fragment>
+            );
+          }}
         />
       </Layout>
     );
