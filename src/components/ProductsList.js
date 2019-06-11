@@ -6,7 +6,7 @@ import { filter } from 'underscore';
 
 import ProductItem from './ProductItem';
 import Heading from './Heading';
-import Categories from '../components/Categories';
+import Categories from './Categories';
 
 const Container = styled.section`
   position: relative;

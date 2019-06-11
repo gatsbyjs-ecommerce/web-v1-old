@@ -23,7 +23,7 @@ import {
 
 import config from '../config';
 import { formatCurrency, HTMLContent } from '../utils/helpers';
-import Heading from '../components/Heading';
+import Heading from './Heading';
 
 const cartQuery = gql`
   query {
