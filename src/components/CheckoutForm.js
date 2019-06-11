@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
 import { isUndefined } from 'underscore';
 import { withFormik } from 'formik';
-import Yup from 'yup';
+import * as Yup from 'yup';
 
 const BuyBtn = styled.button`
   width: 100%;

@@ -1,32 +1,12 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import ReactGA from 'react-ga';
+import { graphql } from 'gatsby'
 
 import config from '../config';
+import Layout from '../components/Layout';
 import Heading from '../components/Heading';
 import ProductsList from '../components/ProductsList';
-
-export default class NotFoundPage extends React.Component {
-  componentDidMount() {
-    ReactGA.pageview('/404');
-  }
-
-  render() {
-    const { allContentfulProduct: products } = this.props.data;
-
-    return (
-      <div>
-        <Helmet title={`Not found - ${config.siteName}`} />
-        <Heading>NOT FOUND</Heading>
-        <p className="has-text-centered is-size-5">
-          You just hit a route that doesn&#39;t exist... the sadness.
-        </p>
-        <br />
-        <ProductsList title="We think you'll" products={products.edges} />
-      </div>
-    );
-  }
-}
 
 export const notFoundQuery = graphql`
   query notFoundQuery {
@@ -54,3 +34,25 @@ export const notFoundQuery = graphql`
     }
   }
 `;
+
+export default class NotFoundPage extends React.Component {
+  componentDidMount() {
+    ReactGA.pageview('/404');
+  }
+
+  render() {
+    const { allContentfulProduct: products } = this.props.data;
+
+    return (
+      <Layout>
+        <Helmet title={`Not found - ${config.siteName}`} />
+        <Heading>NOT FOUND</Heading>
+        <p className="has-text-centered is-size-5">
+          You just hit a route that doesn&#39;t exist... the sadness.
+        </p>
+        <br />
+        <ProductsList title="We think you'll" products={products.edges} />
+      </Layout>
+    );
+  }
+}
