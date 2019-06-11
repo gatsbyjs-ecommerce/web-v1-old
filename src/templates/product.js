@@ -1,11 +1,12 @@
 import React from 'react';
-import graphql from 'graphql';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
 import Link from 'gatsby-link';
 
 import Seo from '../components/Seo';
 import config from '../config/index';
+import Layout from '../components/Layout';
 import ProductGallery from '../components/ProductGallery';
 import ProductInfo from '../components/ProductInfo';
 import ProductsList from '../components/ProductsList';
@@ -43,7 +44,7 @@ export default class Product extends React.Component {
       : `${config.url}${config.logo}`;
 
     return (
-      <React.Fragment>
+      <Layout>
         <Seo
           title={product.title}
           description={product.shortDetails.shortDetails}
@@ -67,7 +68,7 @@ export default class Product extends React.Component {
             View all
           </ViewAllBtn>
         </div>
-      </React.Fragment>
+      </Layout>
     );
   }
 }

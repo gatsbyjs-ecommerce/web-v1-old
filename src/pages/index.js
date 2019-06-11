@@ -1,41 +1,14 @@
 import React from 'react';
 import ReactGA from 'react-ga';
-import { first } from 'underscore';
+// import { first } from 'underscore';
+import { StaticQuery, graphql } from 'gatsby'
 
 import config from '../config/index';
 import Seo from '../components/Seo';
+import Layout from '../components/Layout';
 import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
-import ScrollButton from '../components/ScrollButton';
-
-
-export default class IndexPage extends React.Component {
-  componentDidMount () {
-    ReactGA.pageview ('/');
-  }
-
-  render () {
-    const {
-      data: {allContentfulProduct: products, contentfulHome: home},
-    } = this.props;
-    const currencies = first(currency.edges).node;
-    console.log('currencies', currencies);
-
-    return (
-      <React.Fragment>
-        <Seo
-          title="Latest punjabi suits collection"
-          description="Latest Punjabi Traditional Suits"
-          url={config.siteUrl}
-        />
-        <HomeBanner data={home} />
-        <ProductsList products={products.edges} />
-        <HomeAbout data={home} />
-      </React.Fragment>
-    );
-  }
-}
 
 export const indexQuery = graphql`
   query Products {
@@ -89,3 +62,39 @@ export const indexQuery = graphql`
     }
   }
 `;
+
+export default class IndexPage extends React.Component {
+  componentDidMount() {
+    ReactGA.pageview('/');
+  }
+
+  render() {
+    return (
+      <Layout>
+        <Seo
+          title="Latest punjabi suits collection"
+          description="Latest Punjabi Traditional Suits"
+          url={config.siteUrl}
+        />
+        <StaticQuery
+          query={indexQuery}
+          render={(data) => {
+          const {
+            allContentfulProduct: products, contentfulHome: home,
+          } = data;
+          // const currency = { edges: [{ node: {} }] }; // TODO: fix this
+          // const currencies = first(currency.edges).node;
+
+            return (
+              <React.Fragment>
+                <HomeBanner data={home} />
+                <ProductsList products={products.edges} />
+                <HomeAbout data={home} />
+              </React.Fragment>
+            );
+          }}
+        />
+      </Layout>
+    );
+  }
+}

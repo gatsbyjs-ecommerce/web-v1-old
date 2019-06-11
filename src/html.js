@@ -1,25 +1,10 @@
+/* eslint react/destructuring-assignment: 0 */
+
 import React from 'react';
+import PropTypes from 'prop-types';
 
-let stylesStr;
-if (process.env.NODE_ENV === `production`) {
-  try {
-    stylesStr = require(`!raw-loader!../public/styles.css`); // eslint-disable-line
-  } catch (e) {
-    console.log(e); // eslint-disable-line
-  }
-}
-
-module.exports = class HTML extends React.Component {
+export default class HTML extends React.Component {
   render() {
-    let css;
-    if (process.env.NODE_ENV === `production`) {
-      css = (
-        <style
-          id="gatsby-inlined-css"
-          dangerouslySetInnerHTML={{ __html: stylesStr }}
-        />
-      );
-    }
     return (
       <html lang="en" {...this.props.htmlAttributes}>
         <head>
@@ -27,9 +12,8 @@ module.exports = class HTML extends React.Component {
           <meta httpEquiv="x-ua-compatible" content="ie=edge" />
           <meta
             name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
-          <meta charSet="UTF-8" />
           <meta name="author" content="Parminder Klair" />
           <link rel="shortcut icon" href="/images/favicon.png" />
           <meta
@@ -37,6 +21,8 @@ module.exports = class HTML extends React.Component {
             content="_rn-lpJc-1AExvZpQ7W44PwX6N88nIClFNtNwY_IhvM"
           />
           <base href="/" target="_blank" />
+
+          {/* Add custom css or scripts here */}
           <script
             defer
             src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"
@@ -57,8 +43,9 @@ module.exports = class HTML extends React.Component {
             rel="stylesheet"
           />
           <link rel="stylesheet" type="text/css" href="/styles/style.css" />
+          {/* Add custom css or scripts here */}
+
           {this.props.headComponents}
-          {css}
         </head>
         <body {...this.props.bodyAttributes}>
           {this.props.preBodyComponents}
@@ -72,4 +59,13 @@ module.exports = class HTML extends React.Component {
       </html>
     );
   }
+}
+
+HTML.propTypes = {
+  htmlAttributes: PropTypes.object.isRequired,
+  headComponents: PropTypes.array.isRequired,
+  bodyAttributes: PropTypes.object.isRequired,
+  preBodyComponents: PropTypes.array.isRequired,
+  body: PropTypes.string.isRequired,
+  postBodyComponents: PropTypes.array.isRequired,
 };

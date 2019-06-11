@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { withFormik } from 'formik';
-import Yup from 'yup';
+import * as Yup from 'yup';
 import gql from 'graphql-tag';
 
 import apolloClient from '../utils/apolloClient';

@@ -10,8 +10,6 @@ module.exports = {
     siteUrl: config.siteUrl,
   },
   plugins: [
-    `gatsby-plugin-netlify`,
-    `gatsby-plugin-react-next`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
@@ -23,19 +21,17 @@ module.exports = {
         showSpinner: false,
       },
     },
-    `gatsby-transformer-json`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `data`,
-        path: path.join(__dirname, `data`),
-      },
-    },
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_DELIVERY_API_TOKEN,
+        spaceId: `o6uhtcakujse`,
+        accessToken: `42627fbeb9475a7867204b28243ff40aa2aec93995ecac371eea9957dda734b2`,
+      },
+    },
+    {
+      resolve: `gatsby-source-medium`,
+      options: {
+        username: `sejal-suits`,
       },
     },
     {
@@ -60,10 +56,12 @@ module.exports = {
         ],
       },
     },
+    `gatsby-transformer-json`,
     {
-      resolve: `gatsby-source-medium`,
+      resolve: `gatsby-source-filesystem`,
       options: {
-        username: `sejal-suits`,
+        name: `data`,
+        path: path.join(__dirname, `data`),
       },
     },
     `gatsby-plugin-sitemap`,

@@ -23,7 +23,7 @@ import {
 
 import config from '../config';
 import { formatCurrency, HTMLContent } from '../utils/helpers';
-import Heading from '../components/Heading';
+import Heading from './Heading';
 
 const cartQuery = gql`
   query {
@@ -163,7 +163,8 @@ class ProductInfo extends React.Component {
       <React.Fragment>
         <Heading>{product.title}</Heading>
         <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency(product.discountPrice)}{' '}
+          {formatCurrency(product.discountPrice)}
+          {' '}
           {product.discountPrice < product.originalPrice && (
             <span>{formatCurrency(product.originalPrice)}</span>
           )}
@@ -199,11 +200,17 @@ class ProductInfo extends React.Component {
                     <HTMLContent
                       content={product.shortDetails.childMarkdownRemark.html}
                     />
-                    <p>Color: {product.color}</p>
+                    <p>
+                      Color:
+                      {' '}
+                      {product.color}
+                    </p>
                     <p>Made in India</p>
                     <p>All prices include sales taxes and free UK delivery.</p>
                     <ProductCode>
-                      Product Code: {product.productCode}
+                      Product Code:
+                      {' '}
+                      {product.productCode}
                     </ProductCode>
                   </AccordionItemBody>
                 </AccordionItem>
