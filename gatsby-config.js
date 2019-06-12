@@ -32,6 +32,8 @@ module.exports = {
       resolve: `gatsby-source-medium`,
       options: {
         username: `sejal-suits`,
+        spaceId: `yr1r2ttzfczz`,
+        accessToken: `IZJ9XnBo-K3zYhfTr1rzOTcIkiRMXfgwJZb_Lcnm_8g`,
       },
     },
     {
