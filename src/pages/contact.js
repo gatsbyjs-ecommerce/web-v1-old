@@ -10,7 +10,7 @@ import Heading from '../components/Heading';
 import ContactForm from '../components/ContactForm';
 import SocialIcons from '../components/SocialIcons';
 
-const Container = styled.div`
+const Container = styled.section`
   a {
     padding: 1rem;
     color: #4a4a4a;
@@ -49,45 +49,47 @@ export default class Contact extends React.Component {
     return (
       <Layout>
         <Container className="section">
-          <Seo
-            title="Contact"
-            description="Get In Touch"
-            url={`${config.siteUrl}/contact`}
-          />
-          <Heading>Get In touch</Heading>
-          <div className="columns">
-            <div
-              className="column is-two-fifths"
-              style={{ borderRight: '1px solid #eee' }}
-            >
-              <p>
-                If you have any question or enquiry, feel free to get in touch
-                with us
-              </p>
-              <p>
-                <i className="fas fa-map-marker" />
-                <a href="#" className="is-size-6">
-                  {contact.address}
-                </a>
-              </p>
-              <p>
-                <i className="fas fa-mobile" />
-                <a href={`tel:${contact.telephone}`} className="is-size-6">
-                  {contact.telephone}
-                </a>
-              </p>
-              <p>
-                <i className="fas fa-envelope-open" />
-                <a href={`mailto:${contact.email}`} className="is-size-6">
-                  {contact.email}
-                </a>
-              </p>
-              <br />
-              <br />
-              <SocialIcons data={contact} />
-            </div>
-            <div className="column">
-              <ContactForm />
+          <div className="container">
+            <Seo
+              title="Contact"
+              description="Get In Touch"
+              url={`${config.siteUrl}/contact`}
+            />
+            <Heading>Get In touch</Heading>
+            <div className="columns">
+              <div
+                className="column is-two-fifths"
+                style={{ borderRight: '1px solid #eee' }}
+              >
+                <p>
+                  If you have any question or enquiry, feel free to get in touch
+                  with us
+                </p>
+                <p>
+                  <i className="fas fa-map-marker" />
+                  <a href="#" className="is-size-6">
+                    {contact.address}
+                  </a>
+                </p>
+                <p>
+                  <i className="fas fa-mobile" />
+                  <a href={`tel:${contact.telephone}`} className="is-size-6">
+                    {contact.telephone}
+                  </a>
+                </p>
+                <p>
+                  <i className="fas fa-envelope-open" />
+                  <a href={`mailto:${contact.email}`} className="is-size-6">
+                    {contact.email}
+                  </a>
+                </p>
+                <br />
+                <br />
+                <SocialIcons data={contact} />
+              </div>
+              <div className="column">
+                <ContactForm />
+              </div>
             </div>
           </div>
         </Container>

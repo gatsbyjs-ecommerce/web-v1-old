@@ -24,16 +24,14 @@ module.exports = {
     {
       resolve: `gatsby-source-contentful`,
       options: {
-        spaceId: `o6uhtcakujse`,
-        accessToken: `42627fbeb9475a7867204b28243ff40aa2aec93995ecac371eea9957dda734b2`,
+        spaceId: `j0tc6s27591e`,
+        accessToken: `sbbWvYoF9ii5yrjytZ8XdxgW4qRe0-Dz6MY7QEe6HPU`,
       },
     },
     {
       resolve: `gatsby-source-medium`,
       options: {
         username: `sejal-suits`,
-        spaceId: `yr1r2ttzfczz`,
-        accessToken: `IZJ9XnBo-K3zYhfTr1rzOTcIkiRMXfgwJZb_Lcnm_8g`,
       },
     },
     {

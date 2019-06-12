@@ -9,9 +9,6 @@ import Seo from '../components/Seo';
 import ShopBodyItems from '../components/ShopBodyItems';
 import ShopProducts from '../components/ShopProducts';
 
-// import Heading from '../components/Heading';
-// import CouponItem from '../components/CouponItem';
-
 const Container = styled.section`
   padding: 0rem 1.5rem !important;
 `;
@@ -47,21 +44,3 @@ export default class Shop extends React.Component {
     );
   }
 }
-
-// export const couponsQuery = graphql`
-//   query Coupons {
-//     allContentfulCoupons {
-//       edges {
-//         node {
-//           id
-//           name
-//           code
-//           expiryDate
-//           details {
-//             details
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;
