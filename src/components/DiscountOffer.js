@@ -46,7 +46,7 @@ const DiscountOffer = () => (
       </p>
       <p className="has-text-black">Him she'd let them sixth saw light</p>
       <div className="btn">
-        <Button text="Shop Now" link="/shop" />
+        <Button text="Shop Now" link="/coupons" />
       </div>
     </div>
   </Container>

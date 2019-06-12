@@ -5,19 +5,67 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import config from '../config/index';
 import Seo from '../components/Seo';
-// import HomeBanner from '../components/HomeBanner';
-// import ProductsList from '../components/ProductsList';
-// import HomeAbout from '../components/HomeAbout';
+import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import DiscountOffer from '../components/DiscountOffer';
 import SubscriptionForm from '../components/SubscriptionForm';
-import Slider from '../components/Slider';
 import TrendingItems from '../components/TrendingItems';
-import BestSeller from '../components/BestSeller';
-// import ProductsList from '../components/ProductsList';
-// import CartItem from '../components/productDetails/ItemDescription';
+// import Slider from '../components/Slider';
+// import BestSeller from '../components/BestSeller';
+// import HomeBanner from '../components/HomeBanner';
 
-// import ScrollButton from '../components/ScrollButton';
+export const indexQuery = graphql`
+  query Products {
+    allContentfulProduct(
+      filter: { status: { eq: "active" } }
+      sort: { fields: [listingOrder], order: ASC }
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug
+          color
+          originalPrice
+          discountPrice
+          featuredImage {
+            title
+            sizes(maxWidth: 550) {
+              ...GatsbyContentfulSizes
+            }
+          }
+        }
+      }
+    }
+    contentfulHome {
+      homeSliderTitle
+      homeSliderSubTitle
+      homeSliderImage {
+        title
+        sizes(maxWidth: 550) {
+          ...GatsbyContentfulSizes
+        }
+      }
+      homeIntro {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+    allDataJson {
+      edges {
+        node {
+          GBP_CAD {
+            val
+          }
+          GBP_INR {
+            val
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default class IndexPage extends React.Component {
   componentDidMount() {
@@ -25,82 +73,34 @@ export default class IndexPage extends React.Component {
   }
 
   render() {
-    // const {
-    //   data: { allContentfulProduct: products, contentfulHome: home },
-    // } = this.props;
-    // const currencies = first(currency.edges).node;
-    // console.log('currencies', currencies);
-
     return (
-      <React.Fragment>
+      <Layout>
         <Seo
           title="Latest punjabi suits collection"
           description="Latest Punjabi Traditional Suits"
           url={config.siteUrl}
         />
-        <Hero />
-        <Slider />
-        <TrendingItems />
-        <DiscountOffer />
-        <BestSeller />
-        <SubscriptionForm />
-        {/* <HomeBanner data={home} />
-        <ProductsList products={products.edges} />
-        <HomeAbout data={home} /> */}
-      </React.Fragment>
+        <StaticQuery
+          query={indexQuery}
+          render={(data) => {
+            const {
+              allContentfulProduct: products, contentfulHome: home,
+            } = data;
+
+            return (
+              <React.Fragment>
+                <Hero />
+                {/* <Slider /> ) */}
+                <TrendingItems products={products.edges} />
+                <DiscountOffer />
+                {/* <BestSeller /> */}
+                <SubscriptionForm />
+                {/* <HomeBanner data={home} /> */}
+              </React.Fragment>
+            );
+          }}
+        />
+      </Layout>
     );
   }
 }
-
-// export const indexQuery = graphql`
-//   query Products {
-//     allContentfulProduct(
-//       filter: { status: { eq: "active" } }
-//       sort: { fields: [listingOrder], order: ASC }
-//     ) {
-//       edges {
-//         node {
-//           id
-//           title
-//           slug
-//           color
-//           originalPrice
-//           discountPrice
-//           featuredImage {
-//             title
-//             sizes(maxWidth: 550) {
-//               ...GatsbyContentfulSizes
-//             }
-//           }
-//         }
-//       }
-//     }
-//     contentfulHome {
-//       homeSliderTitle
-//       homeSliderSubTitle
-//       homeSliderImage {
-//         title
-//         sizes(maxWidth: 550) {
-//           ...GatsbyContentfulSizes
-//         }
-//       }
-//       homeIntro {
-//         childMarkdownRemark {
-//           html
-//         }
-//       }
-//     }
-//     allDataJson {
-//       edges {
-//         node {
-//           GBP_CAD {
-//             val
-//           }
-//           GBP_INR {
-//             val
-//           }
-//         }
-//       }
-//     }
-//   }
-// `;

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ReactGA from 'react-ga';
 import Link from 'gatsby-link';
 
+import Layout from '../components/Layout';
 import config from '../config/index';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
@@ -20,7 +21,8 @@ const Container = styled.div`
     color: #494949;
   }
   .columns {
-    justify-content: center;
+    justify-content: center !important;
+    display: -webkit-box !important;
   }
 `;
 
@@ -31,29 +33,33 @@ export default class Register extends React.Component {
 
   render() {
     return (
-      <Container className="section">
-        <div className="container">
-          <Seo
-            title="Login"
-            description="Get In Touch"
-            url={`${config.siteUrl}/Login`}
-          />
-          <Heading>Register</Heading>
-          <div className="columns">
-            <div className="column is-half">
-              <RegisterForm />
+      <Layout>
+        <Container className="section">
+          <div className="container">
+            <Seo
+              title="Login"
+              description="Get In Touch"
+              url={`${config.siteUrl}/Login`}
+            />
+            <Heading>Register</Heading>
+            <div className="columns">
+              <div className="column is-half">
+                <RegisterForm />
+              </div>
+            </div>
+            <div className="columns">
+              <div className="column">
+                <p>
+                  Already have an account?
+                  <Link to="/login">
+                    <strong>Login Here</strong>
+                  </Link>
+                </p>
+              </div>
             </div>
           </div>
-          <div className="columns">
-            <p>
-              Already have an account?
-              <Link to="/login">
-                <strong>Login Here</strong>
-              </Link>
-            </p>
-          </div>
-        </div>
-      </Container>
+        </Container>
+      </Layout>
     );
   }
 }

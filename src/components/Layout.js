@@ -58,7 +58,7 @@ class IndexLayout extends React.Component {
             }
             }
           /> */}
-          <div className="container">
+          <div>
             <Header home={home} />
             {children}
           </div>

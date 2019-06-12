@@ -154,9 +154,10 @@ const CartMobile = styled.div`
 const NavItems = [
   { id: 1, name: 'Home', url: '/' },
   { id: 2, name: 'Shop', url: '/shop' },
-  { id: 3, name: 'Blog', url: '/blog' },
-  { id: 4, name: 'Pages', url: '/login' },
-  { id: 5, name: 'Contact', url: '/contact' },
+  { id: 3, name: 'Coupons', url: '/coupons' },
+  { id: 4, name: 'Blog', url: '/blog' },
+  { id: 5, name: 'Pages', url: '/login' },
+  { id: 6, name: 'Contact', url: '/contact' },
 ];
 
 class Header extends React.Component {
@@ -279,11 +280,11 @@ class Header extends React.Component {
                   </a>
                 </span>
               ) : (
-                <a onClick={this.toggleMobileMenu}>
-                  <i className="fas fa-bars menu-trigger" />
-                </a>
-              )}
-              
+                  <a onClick={this.toggleMobileMenu}>
+                    <i className="fas fa-bars menu-trigger" />
+                  </a>
+                )}
+
               <CartMobile>{cart}</CartMobile>
             </div>
           </div>

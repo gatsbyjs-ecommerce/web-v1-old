@@ -3,6 +3,7 @@ import React from 'react';
 import ReactGA from 'react-ga';
 import styled from 'styled-components';
 
+import Layout from '../components/Layout';
 import config from '../config/index';
 import Seo from '../components/Seo';
 import ShopBodyItems from '../components/ShopBodyItems';
@@ -25,22 +26,24 @@ export default class Shop extends React.Component {
     // const coupons = data.allContentfulCoupons.edges;
 
     return (
-      <Container className="section">
-        <div className="container">
-          <Seo
-            title="shop"
-            description="Get the best details"
-            url={`${config.siteUrl}/shop`}
-          />
-          <ShopBodyItems />
-          <ShopProducts />
-          {/* <Heading>Coupons</Heading> */}
-          {/* {coupons.map(coupon => (
+      <Layout>
+        <Container className="section">
+          <div className="container">
+            <Seo
+              title="shop"
+              description="Get the best details"
+              url={`${config.siteUrl}/shop`}
+            />
+            <ShopBodyItems />
+            <ShopProducts />
+            {/* <Heading>Coupons</Heading> */}
+            {/* {coupons.map(coupon => (
             <div key={coupon.node.id} className="columns  is-multiline">
               <div className="column is-one-third">
                 <CouponItem data={coupon.node} /> */}
-        </div>
-      </Container>
+          </div>
+        </Container>
+      </Layout>
     );
   }
 }

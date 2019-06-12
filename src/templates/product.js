@@ -45,98 +45,102 @@ export default class Product extends React.Component {
 
     return (
       <Layout>
-        <Seo
-          title={product.title}
-          description={product.shortDetails.shortDetails}
-          url={`${config.siteUrl}/product/${product.slug}`}
-          image={metaImage}
-          isProduct
-        />
-        <div>
-          <Container className="columns">
-            <div className="column is-two-fifths">
-              <ProductGallery product={product} />
+        <section className="section">
+          <div className="container">
+            <Seo
+              title={product.title}
+              description={product.shortDetails.shortDetails}
+              url={`${config.siteUrl}/product/${product.slug}`}
+              image={metaImage}
+              isProduct
+            />
+            <div>
+              <Container className="columns">
+                <div className="column is-two-fifths">
+                  <ProductGallery product={product} />
+                </div>
+                <div className="column section">
+                  <ProductInfo home={home} product={product} />
+                </div>
+              </Container>
             </div>
-            <div className="column section">
-              <ProductInfo home={home} product={product} />
-            </div>
-          </Container>
-        </div>
-        <ProductsList title="We think you'll" products={products.edges} />
-        <div className="has-text-centered	">
-          <ViewAllBtn to="/" className="button is-outlined is-medium">
-            View all
+            <ProductsList title="We think you'll" products={products.edges} />
+            <div className="has-text-centered	">
+              <ViewAllBtn to="/" className="button is-outlined is-medium">
+                View all
           </ViewAllBtn>
-        </div>
+            </div>
+          </div>
+        </section>
       </Layout>
     );
   }
 }
 
-// export const productQuery = graphql`
-//   query ProductByPath($slug: String!) {
-//     contentfulProduct(slug: { eq: $slug }) {
-//       id
-//       title
-//       slug
-//       originalPrice
-//       discountPrice
-//       shippingCost
-//       color
-//       productCode
-//       featuredImage {
-//         title
-//         sizes(maxWidth: 550) {
-//           ...GatsbyContentfulSizes
-//         }
-//       }
-//       otherImages {
-//         id
-//         title
-//         sizes(maxWidth: 1200) {
-//           ...GatsbyContentfulSizes
-//         }
-//       }
-//       shortDetails {
-//         shortDetails
-//         childMarkdownRemark {
-//           html
-//         }
-//       }
-//     }
-//     allContentfulProduct(
-//       filter: { status: { eq: "active" }, slug: { ne: $slug } }
-//       limit: 9
-//       sort: { fields: [createdAt], order: DESC }
-//     ) {
-//       edges {
-//         node {
-//           id
-//           title
-//           slug
-//           color
-//           originalPrice
-//           discountPrice
-//           featuredImage {
-//             title
-//             sizes(maxWidth: 550) {
-//               ...GatsbyContentfulSizes
-//             }
-//           }
-//         }
-//       }
-//     }
-//     contentfulHome {
-//       productDeliveryInfo {
-//         childMarkdownRemark {
-//           html
-//         }
-//       }
-//       productShippingReturns {
-//         childMarkdownRemark {
-//           html
-//         }
-//       }
-//     }
-//   }
-// `;
+export const productQuery = graphql`
+  query ProductByPath($slug: String!) {
+    contentfulProduct(slug: { eq: $slug }) {
+      id
+      title
+      slug
+      originalPrice
+      discountPrice
+      shippingCost
+      color
+      productCode
+      featuredImage {
+        title
+        sizes(maxWidth: 550) {
+          ...GatsbyContentfulSizes
+        }
+      }
+      otherImages {
+        id
+        title
+        sizes(maxWidth: 1200) {
+          ...GatsbyContentfulSizes
+        }
+      }
+      shortDetails {
+        shortDetails
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+    allContentfulProduct(
+      filter: { status: { eq: "active" }, slug: { ne: $slug } }
+      limit: 9
+      sort: { fields: [createdAt], order: DESC }
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug
+          color
+          originalPrice
+          discountPrice
+          featuredImage {
+            title
+            sizes(maxWidth: 550) {
+              ...GatsbyContentfulSizes
+            }
+          }
+        }
+      }
+    }
+    contentfulHome {
+      productDeliveryInfo {
+        childMarkdownRemark {
+          html
+        }
+      }
+      productShippingReturns {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+  }
+`;

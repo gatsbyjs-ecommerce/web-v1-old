@@ -43,9 +43,8 @@ export default class Contact extends React.Component {
   }
 
   render() {
-    // const { data } = this.props;
-    // const contact = data.contentfulHome;
-    const contact = {};
+    const { data } = this.props;
+    const contact = data.contentfulHome;
 
     return (
       <Layout>
@@ -62,8 +61,8 @@ export default class Contact extends React.Component {
               style={{ borderRight: '1px solid #eee' }}
             >
               <p>
-              If you have any question or enquiry, feel free to get in touch
-              with us
+                If you have any question or enquiry, feel free to get in touch
+                with us
               </p>
               <p>
                 <i className="fas fa-map-marker" />
@@ -96,17 +95,3 @@ export default class Contact extends React.Component {
     );
   }
 }
-
-// export const contactQuery = graphql`
-//   query Contact {
-//     contentfulHome {
-//       address
-//       email
-//       telephone
-//       facebook
-//       twitter
-//       instagram
-//       pinterest
-//     }
-//   }
-// `;

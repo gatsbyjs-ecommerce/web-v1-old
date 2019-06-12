@@ -11,7 +11,7 @@ const Categories = ({ toggleCategory, active }) => (
           </a>
         </li>
       ))} */}
-      <li className="is-active">
+      {/* <li className="is-active">
         <a>
           <span className="icon is-small"><i className="fas fa-image" /></span>
           <span>All</span>
@@ -34,7 +34,7 @@ const Categories = ({ toggleCategory, active }) => (
           <span className="icon is-small"><i className="fas fa-file-alt" /></span>
           <span>Documents</span>
         </a>
-      </li>
+    </li> */}
     </ul>
   </div>
 )

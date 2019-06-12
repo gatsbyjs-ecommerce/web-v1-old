@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import ReactGA from 'react-ga';
 import Link from 'gatsby-link';
 
+import Layout from '../components/Layout';
 import config from '../config/index';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
@@ -31,29 +32,31 @@ export default class Login extends React.Component {
 
   render() {
     return (
-      <Container className="section">
-        <div className="container">
-          <Seo
-            title="Login"
-            description="Get In Touch"
-            url={`${config.siteUrl}/Login`}
-          />
-          <Heading>Login</Heading>
-          <div className="columns">
-            <div className="column is-half">
-              <LoginForm />
+      <Layout>
+        <Container className="section">
+          <div className="container">
+            <Seo
+              title="Login"
+              description="Get In Touch"
+              url={`${config.siteUrl}/Login`}
+            />
+            <Heading>Login</Heading>
+            <div className="columns">
+              <div className="column is-half">
+                <LoginForm />
+              </div>
+            </div>
+            <div className="columns">
+              <p>
+                Don't have an account?
+                <Link to="/register">
+                  <strong>Register Here</strong>
+                </Link>
+              </p>
             </div>
           </div>
-          <div className="columns">
-            <p>
-              Don't have an account?
-              <Link to="/register">
-                <strong>Register Here</strong>
-              </Link>
-            </p>
-          </div>
-        </div>
-      </Container>
+        </Container>
+      </Layout>
     );
   }
 }
