@@ -19,9 +19,6 @@ export default class Shop extends React.Component {
   }
 
   render() {
-    // const { data } = this.props;
-    // const coupons = data.allContentfulCoupons.edges;
-
     return (
       <Layout>
         <Container className="section">
@@ -33,11 +30,6 @@ export default class Shop extends React.Component {
             />
             <ShopBodyItems />
             <ShopProducts />
-            {/* <Heading>Coupons</Heading> */}
-            {/* {coupons.map(coupon => (
-            <div key={coupon.node.id} className="columns  is-multiline">
-              <div className="column is-one-third">
-                <CouponItem data={coupon.node} /> */}
           </div>
         </Container>
       </Layout>

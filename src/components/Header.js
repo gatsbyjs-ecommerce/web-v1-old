@@ -254,12 +254,12 @@ class Header extends React.Component {
               </div>
               <div className="buttons">
                 <div className="control">
-                  <ButtonWrapper
+                  {/* <ButtonWrapper
                     type="submit"
                     className="button is-rounded has-text-weight-bold"
                   >
                     Buy Now
-                  </ButtonWrapper>
+                  </ButtonWrapper> */}
                 </div>
               </div>
             </nav>

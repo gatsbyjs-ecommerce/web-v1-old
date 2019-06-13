@@ -68,7 +68,7 @@ export default class Product extends React.Component {
             <div className="has-text-centered	">
               <ViewAllBtn to="/" className="button is-outlined is-medium">
                 View all
-          </ViewAllBtn>
+              </ViewAllBtn>
             </div>
           </div>
         </section>
