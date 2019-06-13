@@ -43,7 +43,11 @@ export default ({ data }) => {
           <br />
           <br />
           <time dateTime={data.createdAt}>
-            <small>Posted {moment(data.createdAt).fromNow()}</small>
+            <small>
+              Posted
+              {` `}
+              {moment(data.createdAt).fromNow()}
+            </small>
           </time>
         </div>
       </div>

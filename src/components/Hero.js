@@ -22,7 +22,7 @@ const ImageWrapper = styled.div`
   position: absolute;
   margin-top: 12px;
   @media screen and (max-width: 1510px) and (min-width: 769px) {
-    margin-left: 8rem;
+    margin-left: 2rem;
     position: absolute;
     margin-top: 12px;
   }

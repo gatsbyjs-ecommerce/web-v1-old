@@ -12,7 +12,7 @@ const Container = styled(animated.div)`
   .card {
     border: none;
     box-shadow: none;
-    .image.is-4by5 {
+    .image.is-4by3 {
       padding-top: 0;
     }
     .card-content {
@@ -40,8 +40,11 @@ const Container = styled(animated.div)`
 
 const Image = styled(Img)`
   object-fit: cover;
-  height: 540px;
+  height: 460px;
   width: 100%;
+  @media only screen and (max-width: 768px) {
+    height: 75%;
+  }
 `;
 
 const ProductItem = ({ item, styles }) => (
@@ -49,7 +52,7 @@ const ProductItem = ({ item, styles }) => (
     <div className="card">
       <div className="card-image">
         <Link to={`/product/${item.slug}`}>
-          <figure className="image is-4by5">
+          <figure className="image is-4by3">
             <Image
               sizes={item.featuredImage.sizes}
               alt={item.featuredImage.title}

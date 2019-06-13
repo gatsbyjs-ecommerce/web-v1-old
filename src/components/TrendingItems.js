@@ -6,13 +6,11 @@ import { filter } from 'underscore';
 
 import ProductsTitleHeader from './ProductsTitleHeader';
 import ProductItem from './ProductItem';
-import ShoppingItems from '../components/ShoppingItems';
 
 const Container = styled.div`
   .columns {
     @media only screen and (max-width: 768px) {
       justify-content: center;
-      display: grid;
     }
   }
 `;
