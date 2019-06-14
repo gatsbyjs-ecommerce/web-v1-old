@@ -64,12 +64,13 @@ class PaymentConfirmed extends React.Component {
               <Result>
                 <i className="fas fa-check-circle" />
                 <h3 className="is-size-5 is-uppercase	has-text-weight-bold">
-                  Payment complete
+                  Payment completed
                 </h3>
                 <p className="info">
                   Order code is <OrderId>#{paymentData.orderId}</OrderId>
                   <br />
-                  Please check your email<br />
+                  Please check your email
+                  <br />
                   for delivery updates.
                 </p>
               </Result>

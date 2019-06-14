@@ -6,7 +6,7 @@ import config from '../config';
 
 const Line = styled.div`
   height: 3px;
-  width: 50px;
+  width: 80px;
   background-color: ${config.primaryColor};
   margin: 0.6rem auto 3rem auto;
 `;

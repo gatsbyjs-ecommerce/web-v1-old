@@ -1,10 +1,24 @@
 import React from 'react';
 import moment from 'moment';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  height: 100%;
+  header {
+    border-bottom: 1px solid rgba(10,10,10, .1)
+  }
+  .card-header {
+    box-shadow: none !important;
+  }
+  h3 {
+    justify-content: center;
+  }
+`;
 
 export default ({ data }) => (
-  <div className="card">
+  <Container className="card">
     <header className="card-header">
-      <h3 className="card-header-title is-size-5 has-text-centered">
+      <h3 className="card-header-title is-size-5">
         {data.name}
       </h3>
     </header>
@@ -27,5 +41,5 @@ export default ({ data }) => (
         </div>
       </div>
     </nav>
-  </div>
+  </Container>
 );

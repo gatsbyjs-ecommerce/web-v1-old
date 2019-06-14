@@ -27,34 +27,34 @@ export const couponsQuery = graphql`
 `;
 
 export default class Coupons extends React.Component {
-    componentDidMount() {
-        ReactGA.pageview('/coupons');
-    }
+  componentDidMount() {
+    ReactGA.pageview('/coupons');
+  }
 
-    render() {
-        const { data } = this.props;
-        const coupons = data.allContentfulCoupons.edges;
+  render() {
+    const { data } = this.props;
+    const coupons = data.allContentfulCoupons.edges;
 
-        return (
-            <Layout>
-                <section className="section">
-                    <div className="container">
-                        <Seo
-                            title="Coupons"
-                            description="Get a best detals"
-                            url={`${config.siteUrl}/coupons`}
-                        />
-                        <Heading>Coupons</Heading>
-                        <div className="columns is-multiline">
-                            {coupons.map(coupon => (
-                                <div key={coupon.node.id} className="column is-one-third">
-                                    <CouponItem data={coupon.node} />
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </section>
-            </Layout>
-        );
-    }
+    return (
+      <Layout>
+        <section className="section">
+          <div className="container">
+            <Seo
+              title="Coupons"
+              description="Get a best detals"
+              url={`${config.siteUrl}/coupons`}
+            />
+            <Heading>Coupons</Heading>
+            <div className="columns is-multiline">
+              {coupons.map(coupon => (
+                <div key={coupon.node.id} className="column is-one-third">
+                  <CouponItem data={coupon.node} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </Layout>
+    );
+  }
 }

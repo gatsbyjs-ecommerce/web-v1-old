@@ -22,7 +22,7 @@ module.exports = {
 
   backgroundColor: '#e0e0e0',
   themeColor: '#c62828',
-  primaryColor: '#ef4566',
+  primaryColor: '#394AEB',
   secondaryColor: '#2876C4',
   logo: '/images/logo.png',
   homeBannerImage: '/images/home-bg-3.jpg',

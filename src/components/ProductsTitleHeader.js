@@ -17,7 +17,7 @@ const ProductsTitleHeader = ({ desc, text, label }) => (
   <Container>
     <p>{desc}</p>
     <p className="is-size-3 has-text-weight-bold has-text-black-bis">
-      {text}
+      {text}{` `}
       <span className="product">{label}</span>
     </p>
   </Container>
