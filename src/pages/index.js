@@ -55,10 +55,10 @@ export const indexQuery = graphql`
     allDataJson {
       edges {
         node {
-          GBP_CAD {
+          CAD_USD {
             val
           }
-          GBP_INR {
+          CAD_INR {
             val
           }
         }

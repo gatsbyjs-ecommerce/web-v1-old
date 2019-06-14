@@ -6,6 +6,7 @@ import { withFormik } from 'formik';
 import gql from 'graphql-tag';
 
 import apolloClient from '../utils/apolloClient';
+import Button from './Button';
 
 const contactMutation = gql`
   mutation contact($name: String!, $email: String!, $message: String!) {
@@ -82,13 +83,14 @@ const ContactForm = props => {
             )}
         </div>
       </div>
-      <Submit
+      <Button
         type="submit"
         disabled={isSubmitting}
-        className="checkout-form-btn button is-dark is-large is-radiusless is-uppercase"
-      >
-        Submit
-      </Submit>
+        className="checkout-form-btn button is-large is-radiusless is-uppercase"
+        text="Submit"
+        width="100%"
+        margin="2rem"
+      />
     </form>
   );
 };

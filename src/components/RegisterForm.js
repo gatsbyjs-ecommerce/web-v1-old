@@ -6,6 +6,7 @@ import { withFormik } from 'formik';
 import gql from 'graphql-tag';
 
 import apolloClient from '../utils/apolloClient';
+import Button from './Button';
 
 const registerMutation = gql`
   mutation register($name: String!, $email: String!, $password: String!) {
@@ -13,11 +14,6 @@ const registerMutation = gql`
       email
     }
   }
-`;
-
-const Submit = styled.button`
-  width: 100%;
-  margin-top: 2rem;
 `;
 
 const RegisterForm = props => {
@@ -81,13 +77,14 @@ const RegisterForm = props => {
           )}
         </div>
       </div>
-      <Submit
+      <Button
         type="submit"
         disabled={isSubmitting}
-        className="checkout-form-btn button is-dark is-large is-radiusless is-uppercase"
-      >
-        Submit
-      </Submit>
+        className="checkout-form-btn button is-fullwidth is-radiusless is-uppercase"
+        text="Register"
+        width="100%"
+        margin="2rem"
+      />
     </form>
   );
 };

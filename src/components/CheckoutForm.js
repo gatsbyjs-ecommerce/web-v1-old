@@ -11,6 +11,14 @@ import * as Yup from 'yup';
 const BuyBtn = styled.button`
   width: 100%;
   margin-top: 3rem;
+  border: 1px solid #384aeb;
+  background: #384aeb;
+  color: #fff;
+  :hover {
+    border: 2px solid #384aeb;
+    background: transparent;
+    color: #000;
+  }
 `;
 
 class CheckoutForm extends React.Component {
@@ -210,7 +218,7 @@ class CheckoutForm extends React.Component {
                 <BuyBtn
                   type="submit"
                   disabled={isSubmitting}
-                  className="checkout-form-btn button is-dark is-large is-radiusless is-uppercase"
+                  className="checkout-form-btn button is-large is-rounded is-uppercase"
                 >
                   <span className="icon">
                     <i className="far fa-credit-card" />

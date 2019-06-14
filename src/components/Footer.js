@@ -10,7 +10,7 @@ import ScrollButton from './ScrollButton';
 
 const Container = styled.footer`
   padding-bottom: 80px;
-  background-color: #002347;
+  background-color: #394AEB;
   position: relative;
   margin-top: 6rem;
   .is-4 {
@@ -23,7 +23,7 @@ const Heading = styled.p`
 `;
 
 const Bottom = styled.div`
-  background-color: #05274b;
+  background-color: #5b69ef;
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -84,7 +84,7 @@ const Footer = ({ home }) => (
           </div>
           <div>
             <h1 className="has-text-white has-text-weight-bold">Email</h1>
-            <p className="has-text-grey-light">abc@gmail.com</p>
+            <p className="has-text-grey-light">smarthomedevices@hotmail.com</p>
           </div>
         </div>
         <div className="column has-text-white">

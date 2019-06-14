@@ -23,6 +23,16 @@ const Container = styled.div`
   .columns {
     justify-content: center;
   }
+  .link-column {
+    justify-content: center;
+    display: grid;
+  }
+`;
+
+const RegisterLink = styled(Link)`
+  :hover {
+    color: #394AEB;
+  }
 `;
 
 export default class Login extends React.Component {
@@ -42,16 +52,19 @@ export default class Login extends React.Component {
             />
             <Heading>Login</Heading>
             <div className="columns">
-              <div className="column is-half">
+              <div className="column is-half is-hidden-mobile">
+                <LoginForm />
+              </div>
+              <div className="column is-hidden-tablet">
                 <LoginForm />
               </div>
             </div>
-            <div className="columns">
+            <div className="columns link-column">
               <p>
                 Don't have an account?
-                <Link to="/register">
+                <RegisterLink to="/register">
                   <strong>Register Here</strong>
-                </Link>
+                </RegisterLink>
               </p>
             </div>
           </div>

@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import * as Yup from 'yup';
 import { withFormik } from 'formik';
 import gql from 'graphql-tag';
 
 import apolloClient from '../utils/apolloClient';
+import Button from './Button';
 
 const loginMutation = gql`
   mutation login($email: String!, $password: String!) {
@@ -13,11 +13,6 @@ const loginMutation = gql`
       email
     }
   }
-`;
-
-const Submit = styled.button`
-  width: 100%;
-  margin-top: 2rem;
 `;
 
 const LoginForm = props => {
@@ -65,13 +60,14 @@ const LoginForm = props => {
             touched.password && <p className="help is-danger">{errors.password}</p>}
         </div>
       </div>
-      <Submit
+      <Button
         type="submit"
         disabled={isSubmitting}
-        className="checkout-form-btn button is-dark is-large is-radiusless is-uppercase"
-      >
-        Submit
-      </Submit>
+        className="checkout-form-btn button is-fullwidth is-radiusless is-uppercase"
+        text="Submit"
+        width="100%"
+        margin="2rem"
+      />
     </form>
   );
 };

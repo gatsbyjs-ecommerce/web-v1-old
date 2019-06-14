@@ -6,7 +6,7 @@ exports.onPreBootstrap = () => {
   // fetch currency rates
   const currencyApiKey = '57a4c3e89637843f3d22';
   fetch(
-    `http://free.currconv.com/api/v7/convert?q=GBP_CAD,GBP_INR&compact=y&apiKey=${currencyApiKey}`,
+    `http://free.currconv.com/api/v7/convert?q=CAD_USD,CAD_INR&compact=y&apiKey=${currencyApiKey}`,
   )
     .then(r => r.json())
     .then(data => {

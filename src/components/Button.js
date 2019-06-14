@@ -5,6 +5,7 @@ import Link from 'gatsby-link';
 const ButtonWrapper = styled.div`
   .button {
     width: ${props => props.width};
+    margin-top: ${props => props.margin};
     border: 1px solid #384aeb;
     padding: 12px 41px;
     height: 3.5rem;
@@ -21,8 +22,8 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const Button = ({ width, link, text }) => (
-  <ButtonWrapper width={width}>
+const Button = ({ width, link, text, margin }) => (
+  <ButtonWrapper width={width} margin={margin}>
     <Link to={`${link}`} className="button is-rounded has-text-weight-bold">
       {text}
     </Link>
