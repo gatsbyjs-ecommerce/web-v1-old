@@ -31,14 +31,14 @@ const Container = styled.div`
     flex-grow: unset;
     margin: 0 auto;
     .navbar-item {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
     .navbar-item:hover {
-      color: #4a4a4a;
+      color: #384AEB;
     }
   }
   .navbar-menu .navbar-item:first-child {
-    color: #007bff;
+    color: #384AEB;
   }
   #navbarBasicExample {
     margin-right: 1rem !important;

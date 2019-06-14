@@ -76,8 +76,8 @@ export default class IndexPage extends React.Component {
     return (
       <Layout>
         <Seo
-          title="Latest punjabi suits collection"
-          description="Latest Punjabi Traditional Suits"
+          title="home"
+          description="Your Smart Home Solutions"
           url={config.siteUrl}
         />
         <StaticQuery
