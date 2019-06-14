@@ -41,6 +41,7 @@ const BuyBtn = styled.button`
   margin-top: 3rem;
   border: 1px solid #384aeb;
   background: #384aeb;
+  transition: all 0.4s ease;
   color: #fff;
   :hover {
     border: 2px solid #384aeb;

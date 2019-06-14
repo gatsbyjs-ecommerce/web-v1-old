@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withFormik } from 'formik';
 import gql from 'graphql-tag';
+import styled from 'styled-components';
 
 import apolloClient from '../utils/apolloClient';
 
@@ -14,6 +15,18 @@ const couponMutation = gql`
       details
       discountPercentage
     }
+  }
+`;
+
+const ApplyBtn = styled.button`
+  border: 1px solid #384aeb;
+  background: #384aeb;
+  color: #fff;
+  transition: all 0.4s ease;
+  :hover {
+    border: 2px solid #384aeb;
+    background: transparent;
+    color: #000;
   }
 `;
 
@@ -41,13 +54,13 @@ class CouponForm extends React.Component {
             />
           </div>
           <div className="control">
-            <button
+            <ApplyBtn
               type="submit"
-              className="button coupon-form-btn is-dark"
+              className="button coupon-form-btn"
               disabled={isSubmitting}
             >
               Apply
-            </button>
+            </ApplyBtn>
           </div>
         </div>
       </form>

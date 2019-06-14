@@ -50,6 +50,15 @@ const Price = styled.div`
 const BuyBtn = styled.button`
   width: 100%;
   margin-top: 3rem;
+  border: 1px solid #384aeb;
+  background: #384aeb;
+  transition: all 0.4s ease;
+  color: #fff;
+  :hover {
+    border: 2px solid #384aeb;
+    background: transparent;
+    color: #000;
+  }
 `;
 
 const AccordionStyled = styled(Accordion)`
@@ -181,7 +190,7 @@ class ProductInfo extends React.Component {
                   <ApolloConsumer>
                     {client => (
                       <BuyBtn
-                        className="product-info-btn button is-dark is-large is-radiusless is-uppercase"
+                        className="product-info-btn button is-large is-rounded is-uppercase"
                         onClick={() => this.handleAddToCart(client, data)}
                       >
                         Add to cart
