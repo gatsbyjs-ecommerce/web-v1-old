@@ -50,16 +50,17 @@ const Container = styled.div`
     background-color: transparent !important;
   }
   img {
-    width: 66%;
+    width: 61%;
     height: auto;
+    margin-top: 11px;
   }
 `
 
 const ContainerMobile = styled.div`
   position: relative;
   img {
-    width: 100px;
-    margin-top: 1rem;
+    width: 88%;
+    margin-top: 3rem;
     margin-left: 1rem;
   }
   .menu-trigger {
@@ -278,10 +279,10 @@ class Header extends React.Component {
                   </a>
                 </span>
               ) : (
-                <a onClick={this.toggleMobileMenu}>
-                  <i className="fas fa-bars menu-trigger" />
-                </a>
-              )}
+                  <a onClick={this.toggleMobileMenu}>
+                    <i className="fas fa-bars menu-trigger" />
+                  </a>
+                )}
 
               <CartMobile>{cart}</CartMobile>
             </div>
