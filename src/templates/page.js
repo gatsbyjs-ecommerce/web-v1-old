@@ -1,5 +1,5 @@
 import React from 'react';
-// import graphql from 'graphql';
+// import { graphql } from 'graphql';
 import ReactGA from 'react-ga';
 
 import config from '../config/index';
@@ -34,17 +34,17 @@ export default class Page extends React.Component {
   }
 }
 
-export const pageQuery = graphql`
-  query PageByPath($slug: String!) {
-    contentfulPages(slug: { eq: $slug }) {
-      id
-      title
-      slug
-      content {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
-  }
-`;
+// export const pageQuery = graphql`
+//   query PageByPath($slug: String!) {
+//     contentfulPages(slug: { eq: $slug }) {
+//       id
+//       title
+//       slug
+//       content {
+//         childMarkdownRemark {
+//           html
+//         }
+//       }
+//     }
+//   }
+// `;
