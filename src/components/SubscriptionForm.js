@@ -1,24 +1,25 @@
-import React from 'react';
-import styled from 'styled-components';
-import { withFormik } from 'formik';
-import * as Yup from 'yup';
-import gql from 'graphql-tag';
+import React from 'react'
+import styled from 'styled-components'
+import { withFormik } from 'formik'
+import * as Yup from 'yup'
+import gql from 'graphql-tag'
 
-import apolloClient from '../utils/apolloClient';
+import apolloClient from '../utils/apolloClient'
 
-import Button from './Button';
+import Button from './Button'
 
 const Card = styled.div`
   justify-content: center;
   display: flex;
   margin-top: 5rem;
-`;
+`
 
 const Container = styled.div`
-  width: 60%;
+  width: 85%;
   height: 24.2rem;
-  box-shadow: 0px 3px 2px rgba(10,10,10,0.1), 8px 0px 30px 1px rgba(10,10,10,0.1);
-  font-family: 'Oswald',sans-serif;
+  box-shadow: 0px 3px 2px rgba(10, 10, 10, 0.1),
+    8px 0px 30px 1px rgba(10, 10, 10, 0.1);
+  font-family: 'Oswald', sans-serif;
   border-radius: 10px;
   @media only screen and (max-width: 768px) {
     width: 90%;
@@ -29,7 +30,7 @@ const Container = styled.div`
     font-size: 2.2rem;
     color: #000;
     @media only screen and (max-width: 768px) {
-      margin-top: 0rem;
+      margin-top: 2rem;
     }
   }
   p {
@@ -52,7 +53,7 @@ const Container = styled.div`
       margin-right: 0rem;
     }
   }
-`;
+`
 
 const subscribeMutation = gql`
   mutation subscribe($email: String!) {
@@ -60,7 +61,7 @@ const subscribeMutation = gql`
       email
     }
   }
-`;
+`
 
 class SubscriptionForm extends React.Component {
   render() {
@@ -70,7 +71,7 @@ class SubscriptionForm extends React.Component {
       handleSubmit,
       handleChange,
       handleBlur,
-    } = this.props;
+    } = this.props
     return (
       <Card>
         <Container className="card" onSubmit={handleSubmit}>
@@ -103,12 +104,13 @@ class SubscriptionForm extends React.Component {
                 type="submit"
                 disabled={isSubmitting}
                 className="button"
+                widthMobile="100%"
               />
             </div>
           </div>
         </Container>
       </Card>
-    );
+    )
   }
 }
 
@@ -123,7 +125,7 @@ export default withFormik({
   }),
   handleSubmit: (values, { setSubmitting }) => {
     // console.log('handle submit', values, props);
-    const alertify = require('alertify.js'); // eslint-disable-line
+    const alertify = require('alertify.js') // eslint-disable-line
 
     apolloClient
       .mutate({
@@ -131,13 +133,13 @@ export default withFormik({
         variables: values,
       })
       .then(() => {
-        alertify.alert('Subscribed successfully, thank you!');
-        setSubmitting(false);
+        alertify.alert('Subscribed successfully, thank you!')
+        setSubmitting(false)
       })
       .catch(() => {
-        setSubmitting(false);
-        alertify.alert('Subscription failed, please try again.');
-      });
+        setSubmitting(false)
+        alertify.alert('Subscription failed, please try again.')
+      })
   },
   displayName: 'SubscriptionForm', // helps with React DevTools
-})(SubscriptionForm);
+})(SubscriptionForm)
