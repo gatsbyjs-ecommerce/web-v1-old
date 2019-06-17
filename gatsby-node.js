@@ -14,8 +14,8 @@ exports.onPreBootstrap = () => {
     });
 };
 
-exports.createPages = ({ actions, graphql }) => {
-  const { createPage } = actions;
+exports.createPages = ({ boundActionCreators, graphql }) => {
+  const { createPage } = boundActionCreators;
 
   return graphql(`
     {
