@@ -1,16 +1,16 @@
 /* global $ */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Spring, animated } from 'react-spring';
-import Link from 'gatsby-link';
-import { Query } from 'react-apollo';
-import gql from 'graphql-tag';
-import ReactGA from 'react-ga';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { Spring, animated } from 'react-spring'
+import Link from 'gatsby-link'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+import ReactGA from 'react-ga'
 
-import config from '../config';
-import SocialIcons from './SocialIcons';
+import config from '../config'
+import SocialIcons from './SocialIcons'
 
 const cartQuery = gql`
   query {
@@ -18,7 +18,7 @@ const cartQuery = gql`
       count
     }
   }
-`;
+`
 
 const Container = styled.div`
   a {
@@ -34,11 +34,11 @@ const Container = styled.div`
       font-size: 1.2rem;
     }
     .navbar-item:hover {
-      color: #384AEB;
+      color: #384aeb;
     }
   }
   .navbar-menu .navbar-item:first-child {
-    color: #384AEB;
+    color: #384aeb;
   }
   #navbarBasicExample {
     margin-right: 1rem !important;
@@ -50,10 +50,10 @@ const Container = styled.div`
     background-color: transparent !important;
   }
   img {
-    width: 23%;
+    width: 66%;
     height: auto;
   }
-`;
+`
 
 const ContainerMobile = styled.div`
   position: relative;
@@ -69,7 +69,7 @@ const ContainerMobile = styled.div`
     font-size: 1.4rem;
     color: #4a4a4a;
   }
-`;
+`
 
 const MobileMenu = styled(animated.div)`
   && {
@@ -96,7 +96,7 @@ const MobileMenu = styled(animated.div)`
       }
     }
   }
-`;
+`
 
 const Cart = styled.div`
   font-size: 1.2rem;
@@ -122,7 +122,7 @@ const Cart = styled.div`
     top: -3px;
     left: 22px;
   }
-`;
+`
 
 const ButtonWrapper = styled.button`
   padding: 5px 45px;
@@ -135,11 +135,11 @@ const ButtonWrapper = styled.button`
     border: 1px solid #384aeb;
     transition: all 0.4s ease;
   }
-`;
+`
 
 const Icons = styled.div`
   margin-left: 8rem;
-`;
+`
 
 const CartMobile = styled.div`
   width: 8rem;
@@ -149,7 +149,7 @@ const CartMobile = styled.div`
   .count {
     left: 16px;
   }
-`;
+`
 
 const NavItems = [
   { id: 1, name: 'Home', url: '/' },
@@ -158,28 +158,28 @@ const NavItems = [
   { id: 4, name: 'Blog', url: '/blog' },
   { id: 5, name: 'Sign in', url: '/login' },
   { id: 6, name: 'Contact', url: '/contact' },
-];
+]
 
 class Header extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.state = { mobileMenuActive: false };
+    this.state = { mobileMenuActive: false }
   }
 
   toggleMobileMenu = () => {
-    const { mobileMenuActive } = this.state;
+    const { mobileMenuActive } = this.state
     if (mobileMenuActive) {
-      $('html').removeClass('disable-scroll');
+      $('html').removeClass('disable-scroll')
     } else {
-      $('html').addClass('disable-scroll');
+      $('html').addClass('disable-scroll')
     }
-    this.setState({ mobileMenuActive: !mobileMenuActive });
-  };
+    this.setState({ mobileMenuActive: !mobileMenuActive })
+  }
 
   render() {
-    const { mobileMenuActive } = this.state;
-    const { home } = this.props;
+    const { mobileMenuActive } = this.state
+    const { home } = this.props
 
     const cart = (
       <Cart>
@@ -194,7 +194,7 @@ class Header extends React.Component {
           )}
         </Query>
       </Cart>
-    );
+    )
 
     return (
       <React.Fragment>
@@ -245,9 +245,7 @@ class Header extends React.Component {
                           {home.telephone}
                         </ReactGA.OutboundLink>
                       </p>
-                      <div>
-                        {cart}
-                      </div>
+                      <div>{cart}</div>
                     </div>
                   </div>
                 </Icons>
@@ -280,10 +278,10 @@ class Header extends React.Component {
                   </a>
                 </span>
               ) : (
-                  <a onClick={this.toggleMobileMenu}>
-                    <i className="fas fa-bars menu-trigger" />
-                  </a>
-                )}
+                <a onClick={this.toggleMobileMenu}>
+                  <i className="fas fa-bars menu-trigger" />
+                </a>
+              )}
 
               <CartMobile>{cart}</CartMobile>
             </div>
@@ -316,16 +314,16 @@ class Header extends React.Component {
           </Spring>
         </ContainerMobile>
       </React.Fragment>
-    );
+    )
   }
 }
 
 Header.defaultProps = {
   home: {},
-};
+}
 
 Header.propTypes = {
   home: PropTypes.object,
-};
+}
 
-export default Header;
+export default Header
