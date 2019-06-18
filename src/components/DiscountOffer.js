@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
+
 import Button from './Button';
 
 const Container = styled.div`
@@ -37,19 +39,43 @@ const Container = styled.div`
     margin: 7%;
   }
 `;
+const discountQuery = graphql`{
+  allContentfulHomeDiscountOffer {
+    edges {
+      node {
+        title
+        subtitle
+        descritption {
+          descritption
+        }
+      }
+    }
+  }
+}
+`;
 
 const DiscountOffer = () => (
   <Container className="columns">
-    <div className="column is-5 has-text-centered">
-      <h1 className="has-text-weight-bold has-text-black">Up To 50% Off</h1>
-      <p className="is-size-3 has-text-weight-bold has-text-black">
-        Winter Sale
-      </p>
-      <p className="has-text-black">Him she'd let them sixth saw light</p>
-      <div className="btn">
-        <Button text="Shop Now" link="/coupons" />
-      </div>
-    </div>
+    <StaticQuery
+      query={discountQuery}
+      render={data => {
+        const discountData = data.allContentfulHomeDiscountOffer.edges[0];
+        return (
+          <div className="column is-5 has-text-centered">
+            <h1 className="has-text-weight-bold has-text-black">{discountData.node.title}</h1>
+            <p className="is-size-3 has-text-weight-bold has-text-black">
+              {discountData.node.subtitle}
+            </p>
+            <p className="has-text-black">{discountData.node.descritption.descritption}</p>
+            <div className="btn">
+              <Button text="Shop Now" link="/coupons" />
+            </div>
+          </div>
+        );
+      }
+      }
+    />
+
   </Container>
 );
 

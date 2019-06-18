@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 
 import config from '../config/index';
 import Seo from '../components/Seo';

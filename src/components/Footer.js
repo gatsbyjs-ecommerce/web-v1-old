@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
+import { StaticQuery, graphql } from "gatsby"
 
 import config from '../config';
 import SocialIcons from './SocialIcons';
@@ -44,56 +45,81 @@ const NavItems = [
   { id: 4, name: 'Privacy Policy', url: '/page/privacy-policy' },
 ];
 
+const footerQuery = graphql`{
+  allContentfulFooter {
+    edges {
+      node {
+        companysMissionFirst {
+          companysMissionFirst
+        }
+        companysMissionSecond {
+          companysMissionSecond
+        }
+        address
+        contactNumber
+        emailId
+      }
+    }
+  }
+}
+`;
+
 const Footer = ({ home }) => (
   <Container>
     <div className="section container is-hidden-mobile">
-      <div className="columns is-multiline">
-        <div className="column is-4 has-text-white">
-          <Heading className="is-uppercase is-size-5">Our Mission</Heading>
-          <p>
-            So seed seed green that winged cattle in. Gathering thing made fly
-            you're no divided deep moved us lan Gathering thing us land years
-            living.
-          </p>
-          <p>
-            So seed seed green that winged cattle in. Gathering thing made fly
-            you're no divided deep moved
-          </p>
-        </div>
-        <div className="column has-text-white">
-          <Heading className="is-uppercase is-size-5">Customer service</Heading>
-          <ul>
-            {NavItems.map(item => (
-              <li key={item.id}>
-                <Link to={item.url} className="has-text-white">
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="column has-text-white">
-          <Heading className="is-uppercase is-size-5">Contact Us</Heading>
-          <div>
-            <h1 className="has-text-white has-text-weight-bold">Head Office</h1>
-            <p className="has-text-grey-light">491 Brimley Rd #16</p>
-          </div>
-          <div>
-            <h1 className="has-text-white has-text-weight-bold">
-              Phone Number
-            </h1>
-            <p className="has-text-grey-light">+1 6472449765</p>
-          </div>
-          <div>
-            <h1 className="has-text-white has-text-weight-bold">Email</h1>
-            <p className="has-text-grey-light">smarthomedevices@hotmail.com</p>
-          </div>
-        </div>
-        <div className="column has-text-white">
-          <Heading className="is-uppercase is-size-5">Connect</Heading>
-          <SocialIcons data={home} inverted />
-        </div>
-      </div>
+      <StaticQuery
+        query={footerQuery}
+        render={info => {
+          const list = info.allContentfulFooter.edges[0];
+          return (
+            <div className="columns is-multiline">
+              <div className="column is-4 has-text-white">
+                <Heading className="is-uppercase is-size-5">Our Mission</Heading>
+                <p>
+                  {list.node.companysMissionFirst.companysMissionFirst}
+                </p>
+                <p>
+                  {list.node.companysMissionSecond.companysMissionSecond}
+                </p>
+              </div>
+              <div className="column has-text-white">
+                <Heading className="is-uppercase is-size-5">Customer service</Heading>
+                <ul>
+                  {NavItems.map(item => (
+                    <li key={item.id}>
+                      <Link to={item.url} className="has-text-white">
+                        {item.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="column has-text-white">
+                <Heading className="is-uppercase is-size-5">Contact Us</Heading>
+                <div>
+                  <h1 className="has-text-white has-text-weight-bold">Head Office</h1>
+                  <p className="has-text-grey-light">{list.node.address}</p>
+                </div>
+                <div>
+                  <h1 className="has-text-white has-text-weight-bold">
+                    Phone Number
+                  </h1>
+                  <p className="has-text-grey-light">{list.node.contactNumber}</p>
+                </div>
+                <div>
+                  <h1 className="has-text-white has-text-weight-bold">Email</h1>
+                  <p className="has-text-grey-light">{list.node.emailId}</p>
+                </div>
+              </div>
+              <div className="column has-text-white">
+                <Heading className="is-uppercase is-size-5">Connect</Heading>
+                <SocialIcons data={home} inverted />
+              </div>
+            </div>
+          );
+        }
+        }
+      />
     </div>
     <Bottom>
       <div className="section container">

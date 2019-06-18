@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
 
 import img from '../../static/images/home/hero-banner1.png';
 // import Button from './Button';
@@ -58,6 +59,21 @@ const Content = styled.div`
   }
 `;
 
+const heroQuery = graphql`{
+  allContentfulHomePageTopSection {
+    edges {
+      node {
+        subtitle
+        title
+        description {
+          description
+        }
+      }
+    }
+  }
+}
+`;
+
 const Hero = () => (
   <Wrapper className="columns">
     <div className="column is-4 is-hidden-mobile">
@@ -65,19 +81,26 @@ const Hero = () => (
         <img src={img} alt="Cart With Things" />
       </ImageWrapper>
     </div>
-    <div className="column content">
-      <Content>
-        <h2 className="is-size-3">Shop is fun</h2>
-        <h1 className="title has-text-dark has-text-weight-bold is-uppercase">
-          Browse our premium product
-        </h1>
-        <p className="has-text-weight-semibold">
-          Us which over of signs divide dominion deep fill bring they are meat
-          beho upon own earth without morning over third. Their male dry. They
-          are great appear whose land fly grass.
-        </p>
-      </Content>
-    </div>
+    <StaticQuery
+      query={heroQuery}
+      render={data => {
+        const heroData = data.allContentfulHomePageTopSection.edges[0];
+        return (
+          <div className="column content">
+            <Content>
+              <h2 className="is-size-3">{heroData.node.title}</h2>
+              <h1 className="title has-text-dark has-text-weight-bold is-uppercase">
+                {heroData.node.subtitle}
+              </h1>
+              <p className="has-text-weight-semibold">
+                {heroData.node.description.description}
+              </p>
+            </Content>
+          </div>
+        );
+      }
+      }
+    />
   </Wrapper>
 );
 
