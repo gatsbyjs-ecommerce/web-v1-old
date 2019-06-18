@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 import { ApolloProvider } from 'react-apollo';
 import ReactGA from 'react-ga';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import config from '../config';
 import apolloClient from '../utils/apolloClient';

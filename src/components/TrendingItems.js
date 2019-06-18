@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Trail } from 'react-spring';
-import { filter } from 'underscore';
 
 import ProductsTitleHeader from './ProductsTitleHeader';
 import ProductItem from './ProductItem';
@@ -40,15 +39,6 @@ class TrendingItems extends React.Component {
     const { isOpen, activeCategory } = this.state;
     const keys = products.map(item => item.node.id);
     // console.log('products', products);
-
-    if (activeCategory === null) {
-      const filterProducts = products
-    } else {
-      const filterProducts = filter(
-        products,
-        item => item.category === activeCategory,
-      );
-    }
 
     return (
       <Container className="section">

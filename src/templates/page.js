@@ -59,18 +59,3 @@ export default class Page extends React.Component {
     );
   }
 }
-
-// export const pageQuery = graphql`
-//   query PageByPath($slug: String!) {
-//     contentfulPages(slug: { eq: $slug }) {
-//       id
-//       title
-//       slug
-//       content {
-//         childMarkdownRemark {
-//           html
-//         }
-//       }
-//     }
-//   }
-// `;

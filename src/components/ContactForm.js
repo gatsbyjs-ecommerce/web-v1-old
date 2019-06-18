@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import * as Yup from 'yup';
 import { withFormik } from 'formik';
 import gql from 'graphql-tag';
@@ -14,11 +13,6 @@ const contactMutation = gql`
       email
     }
   }
-`;
-
-const Submit = styled.button`
-  width: 100%;
-  margin-top: 2rem;
 `;
 
 const ContactForm = props => {

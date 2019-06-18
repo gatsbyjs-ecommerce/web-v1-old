@@ -5,7 +5,6 @@ import Link from 'gatsby-link'
 
 import config from '../config'
 import SocialIcons from './SocialIcons'
-// import SubscribeForm from './SubscribeForm';
 import ScrollButton from './ScrollButton'
 
 const Container = styled.footer`

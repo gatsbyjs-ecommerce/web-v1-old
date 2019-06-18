@@ -96,9 +96,6 @@ class SubscriptionForm extends React.Component {
                 onBlur={handleBlur}
                 placeholder="Your email"
               />
-              {/* {errors.email && touched.email && (
-                <p className="help is-danger">{errors.email}</p>
-              )} */}
               <Button
                 text="Subscribe Now"
                 type="submit"
