@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Link from 'gatsby-link';
+import React from 'react'
+import styled from 'styled-components'
+import Link from 'gatsby-link'
 
 const ButtonWrapper = styled.div`
   .button {
@@ -18,16 +18,17 @@ const ButtonWrapper = styled.div`
     }
     @media only screen and (max-width: 768px) {
       margin-top: 1rem;
+      width: ${props => props.widthMobile};
     }
   }
-`;
+`
 
-const Button = ({ width, link, text, margin }) => (
-  <ButtonWrapper width={width} margin={margin}>
+const Button = ({ width, link, text, margin, widthMobile }) => (
+  <ButtonWrapper width={width} margin={margin} widthMobile={widthMobile}>
     <Link to={`${link}`} className="button is-rounded has-text-weight-bold">
       {text}
     </Link>
   </ButtonWrapper>
-);
+)
 
-export default Button;
+export default Button

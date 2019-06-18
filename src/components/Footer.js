@@ -1,26 +1,29 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Link from 'gatsby-link';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import Link from 'gatsby-link'
 
-import config from '../config';
-import SocialIcons from './SocialIcons';
+import config from '../config'
+import SocialIcons from './SocialIcons'
 // import SubscribeForm from './SubscribeForm';
-import ScrollButton from './ScrollButton';
+import ScrollButton from './ScrollButton'
 
 const Container = styled.footer`
   padding-bottom: 80px;
-  background-color: #394AEB;
+  background-color: #394aeb;
   position: relative;
   margin-top: 6rem;
   .is-4 {
     padding-right: 5rem;
   }
-`;
+  ul {
+    list-style: circle;
+  }
+`
 
 const Heading = styled.p`
   margin-bottom: 1rem;
-`;
+`
 
 const Bottom = styled.div`
   background-color: #5b69ef;
@@ -30,7 +33,7 @@ const Bottom = styled.div`
   > .section {
     padding: 1.4rem 1.5rem;
   }
-`;
+`
 
 const NavItems = [
   { id: 2, name: 'Customer Care 24/7', url: '/contact' },
@@ -40,7 +43,7 @@ const NavItems = [
   { id: 1, name: 'About us', url: '/page/about' },
   { id: 3, name: 'Terms and Conditions', url: '/page/terms-and-condition' },
   { id: 4, name: 'Privacy Policy', url: '/page/privacy-policy' },
-];
+]
 
 const Footer = ({ home }) => (
   <Container>
@@ -74,13 +77,13 @@ const Footer = ({ home }) => (
           <Heading className="is-uppercase is-size-5">Contact Us</Heading>
           <div>
             <h1 className="has-text-white has-text-weight-bold">Head Office</h1>
-            <p className="has-text-grey-light">123, Main Office</p>
+            <p className="has-text-grey-light">491 Brimley Rd #16</p>
           </div>
           <div>
             <h1 className="has-text-white has-text-weight-bold">
               Phone Number
             </h1>
-            <p className="has-text-grey-light">123456789</p>
+            <p className="has-text-grey-light">+1 6472449765</p>
           </div>
           <div>
             <h1 className="has-text-white has-text-weight-bold">Email</h1>
@@ -111,14 +114,14 @@ const Footer = ({ home }) => (
     </Bottom>
     <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
   </Container>
-);
+)
 
 Footer.defaultProps = {
   home: {},
-};
+}
 
 Footer.propTypes = {
   home: PropTypes.object,
-};
+}
 
-export default Footer;
+export default Footer
