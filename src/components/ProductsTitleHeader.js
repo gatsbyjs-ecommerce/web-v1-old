@@ -11,7 +11,7 @@ const Container = styled.div`
     border-bottom: 2px solid #384aeb;
     padding-bottom: 8px;
   }
-`
+`;
 
 const ProductsTitleHeader = ({ desc, text, label }) => (
   <Container>
@@ -22,6 +22,6 @@ const ProductsTitleHeader = ({ desc, text, label }) => (
       <span className="product">{label}</span>
     </p>
   </Container>
-)
+);
 
-export default ProductsTitleHeader
+export default ProductsTitleHeader;

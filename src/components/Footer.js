@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import Link from 'gatsby-link'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Link from 'gatsby-link';
 
-import config from '../config'
-import SocialIcons from './SocialIcons'
-import ScrollButton from './ScrollButton'
+import config from '../config';
+import SocialIcons from './SocialIcons';
+import ScrollButton from './ScrollButton';
 
 const Container = styled.footer`
   padding-bottom: 80px;
@@ -18,11 +18,11 @@ const Container = styled.footer`
   ul {
     list-style: circle;
   }
-`
+`;
 
 const Heading = styled.p`
   margin-bottom: 1rem;
-`
+`;
 
 const Bottom = styled.div`
   background-color: #5b69ef;
@@ -32,7 +32,7 @@ const Bottom = styled.div`
   > .section {
     padding: 1.4rem 1.5rem;
   }
-`
+`;
 
 const NavItems = [
   { id: 2, name: 'Customer Care 24/7', url: '/contact' },
@@ -42,7 +42,7 @@ const NavItems = [
   { id: 1, name: 'About us', url: '/page/about' },
   { id: 3, name: 'Terms and Conditions', url: '/page/terms-and-condition' },
   { id: 4, name: 'Privacy Policy', url: '/page/privacy-policy' },
-]
+];
 
 const Footer = ({ home }) => (
   <Container>
@@ -113,7 +113,7 @@ const Footer = ({ home }) => (
     </Bottom>
     <ScrollButton scrollStepInPx="50" delayInMs="16.66" />
   </Container>
-)
+);
 
 Footer.defaultProps = {
   home: {},
@@ -123,4 +123,4 @@ Footer.propTypes = {
   home: PropTypes.object,
 }
 
-export default Footer
+export default Footer;

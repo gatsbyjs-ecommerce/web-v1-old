@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 import ReactGA from 'react-ga';
 
 import config from '../config';

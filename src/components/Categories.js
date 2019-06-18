@@ -37,6 +37,6 @@ const Categories = ({ toggleCategory, active }) => (
     </li> */}
     </ul>
   </div>
-)
+);
 
 export default Categories;

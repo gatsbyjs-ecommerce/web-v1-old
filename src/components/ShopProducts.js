@@ -1,7 +1,7 @@
 import React from 'react';
 
-import TopProductsCard from '../components/TopProductsCard';
-import ProductsTitleHeader from '../components/ProductsTitleHeader';
+import TopProductsCard from './TopProductsCard';
+import ProductsTitleHeader from './ProductsTitleHeader';
 
 const ShopProducts = () => (
   <React.Fragment>

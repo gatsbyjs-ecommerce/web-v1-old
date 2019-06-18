@@ -1,6 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
-import Link from 'gatsby-link'
+import React from 'react';
+import styled from 'styled-components';
+import Link from 'gatsby-link';
 
 const ButtonWrapper = styled.div`
   .button {
@@ -21,7 +21,7 @@ const ButtonWrapper = styled.div`
       width: ${props => props.widthMobile};
     }
   }
-`
+`;
 
 const Button = ({ width, link, text, margin, widthMobile }) => (
   <ButtonWrapper width={width} margin={margin} widthMobile={widthMobile}>
@@ -29,6 +29,6 @@ const Button = ({ width, link, text, margin, widthMobile }) => (
       {text}
     </Link>
   </ButtonWrapper>
-)
+);
 
 export default Button

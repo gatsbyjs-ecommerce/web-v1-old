@@ -7,7 +7,6 @@ const Button = styled.a`
   bottom: 8rem;
   right: 2rem;
   on:hover{
-
   }
 `;
 

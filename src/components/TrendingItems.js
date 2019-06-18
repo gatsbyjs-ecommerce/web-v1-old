@@ -21,7 +21,7 @@ class TrendingItems extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { isOpen: false, activeCategory: null };
+    this.state = { isOpen: false };
   }
 
   componentDidMount() {
@@ -30,13 +30,9 @@ class TrendingItems extends React.Component {
     }, 200);
   }
 
-  toggleCategory = (category) => (
-    this.setState({ activeCategory: category })
-  )
-
   render() {
     const { products } = this.props;
-    const { isOpen, activeCategory } = this.state;
+    const { isOpen } = this.state;
     const keys = products.map(item => item.node.id);
     // console.log('products', products);
 
@@ -75,21 +71,3 @@ TrendingItems.propTypes = {
 };
 
 export default TrendingItems;
-
-// export const trendingItemsQuery = graphql`
-// query Shopping {
-//   allContentfulShoppingItems {
-//     edges {
-//       node {
-//         id
-//         productImage {
-//           id
-//         }
-//         productCategory
-//         productName
-//         productPrice
-//       }
-//     }
-//   }
-// }
-// `;

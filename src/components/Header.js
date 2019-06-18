@@ -1,16 +1,16 @@
 /* global $ */
 
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { Spring, animated } from 'react-spring'
-import Link from 'gatsby-link'
-import { Query } from 'react-apollo'
-import gql from 'graphql-tag'
-import ReactGA from 'react-ga'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Spring, animated } from 'react-spring';
+import Link from 'gatsby-link';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
+import ReactGA from 'react-ga';
 
-import config from '../config'
-import SocialIcons from './SocialIcons'
+import config from '../config';
+import SocialIcons from './SocialIcons';
 
 const cartQuery = gql`
   query {
@@ -18,7 +18,7 @@ const cartQuery = gql`
       count
     }
   }
-`
+`;
 
 const Container = styled.div`
   a {
@@ -54,7 +54,7 @@ const Container = styled.div`
     height: auto;
     margin-top: 11px;
   }
-`
+`;
 
 const ContainerMobile = styled.div`
   position: relative;
@@ -70,7 +70,7 @@ const ContainerMobile = styled.div`
     font-size: 1.4rem;
     color: #4a4a4a;
   }
-`
+`;
 
 const MobileMenu = styled(animated.div)`
   && {
@@ -97,7 +97,7 @@ const MobileMenu = styled(animated.div)`
       }
     }
   }
-`
+`;
 
 const Cart = styled.div`
   font-size: 1.2rem;
@@ -123,24 +123,11 @@ const Cart = styled.div`
     top: -3px;
     left: 22px;
   }
-`
-
-const ButtonWrapper = styled.button`
-  padding: 5px 45px;
-  height: 3rem;
-  width: 8rem;
-  background: transparent;
-  color: #222;
-  border-color: #eeeeee;
-  :hover {
-    border: 1px solid #384aeb;
-    transition: all 0.4s ease;
-  }
-`
+`;
 
 const Icons = styled.div`
   margin-left: 8rem;
-`
+`;
 
 const CartMobile = styled.div`
   width: 8rem;
@@ -150,7 +137,7 @@ const CartMobile = styled.div`
   .count {
     left: 16px;
   }
-`
+`;
 
 const NavItems = [
   { id: 1, name: 'Home', url: '/' },
@@ -159,7 +146,7 @@ const NavItems = [
   { id: 4, name: 'Blog', url: '/blog' },
   { id: 5, name: 'Sign in', url: '/login' },
   { id: 6, name: 'Contact', url: '/contact' },
-]
+];
 
 class Header extends React.Component {
   constructor(props) {
@@ -195,7 +182,7 @@ class Header extends React.Component {
           )}
         </Query>
       </Cart>
-    )
+    );
 
     return (
       <React.Fragment>
@@ -315,7 +302,7 @@ class Header extends React.Component {
           </Spring>
         </ContainerMobile>
       </React.Fragment>
-    )
+    );
   }
 }
 

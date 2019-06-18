@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 const Progress = styled.div`
   border-top: 1px solid #979797;
@@ -37,7 +37,7 @@ const Progress = styled.div`
       margin: -9px 0 0 97%;
     }
   }
-`
+`;
 
 const CheckoutProgress = ({ activeStep }) => (
   <Progress>
@@ -54,7 +54,7 @@ const CheckoutProgress = ({ activeStep }) => (
       Confirm
     </div>
   </Progress>
-)
+);
 
 CheckoutProgress.defaultProps = {
   activeStep: 1,
@@ -64,4 +64,4 @@ CheckoutProgress.propTypes = {
   activeStep: PropTypes.number,
 }
 
-export default CheckoutProgress
+export default CheckoutProgress;

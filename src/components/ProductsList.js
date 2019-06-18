@@ -1,16 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { Trail } from 'react-spring'
-import { filter } from 'underscore'
+import React from 'react';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import { Trail } from 'react-spring';
 
-import ProductItem from './ProductItem'
-import Heading from './Heading'
-import Categories from './Categories'
+import ProductItem from './ProductItem';
+import Heading from './Heading';
+import Categories from './Categories';
 
 const Container = styled.section`
   position: relative;
-`
+`;
 
 class ProductsList extends React.Component {
   constructor(props) {
@@ -53,7 +52,7 @@ class ProductsList extends React.Component {
           </Trail>
         </div>
       </Container>
-    )
+    );
   }
 }
 
@@ -67,4 +66,4 @@ ProductsList.propTypes = {
   products: PropTypes.array,
 }
 
-export default ProductsList
+export default ProductsList;

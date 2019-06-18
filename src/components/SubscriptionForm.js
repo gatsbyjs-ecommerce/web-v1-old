@@ -1,18 +1,18 @@
-import React from 'react'
-import styled from 'styled-components'
-import { withFormik } from 'formik'
-import * as Yup from 'yup'
-import gql from 'graphql-tag'
+import React from 'react';
+import styled from 'styled-components';
+import { withFormik } from 'formik';
+import * as Yup from 'yup';
+import gql from 'graphql-tag';
 
-import apolloClient from '../utils/apolloClient'
+import apolloClient from '../utils/apolloClient';
 
-import Button from './Button'
+import Button from './Button';
 
 const Card = styled.div`
   justify-content: center;
   display: flex;
   margin-top: 5rem;
-`
+`;
 
 const Container = styled.div`
   width: 85%;
@@ -53,7 +53,7 @@ const Container = styled.div`
       margin-right: 0rem;
     }
   }
-`
+`;
 
 const subscribeMutation = gql`
   mutation subscribe($email: String!) {
@@ -61,7 +61,7 @@ const subscribeMutation = gql`
       email
     }
   }
-`
+`;
 
 class SubscriptionForm extends React.Component {
   render() {
