@@ -10,6 +10,7 @@ const Container = styled.div`
   @media only screen and (max-width: 768px) {
     background-image: none;
     background-color: #a3cbda;
+    margin-top: -3rem;
   }
 
   .column {

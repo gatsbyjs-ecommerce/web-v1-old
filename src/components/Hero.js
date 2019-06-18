@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import img from '../../static/images/home/hero-banner1.png';
-import Button from './Button';
+// import Button from './Button';
 
 const Wrapper = styled.div`
   height: 40.5rem;

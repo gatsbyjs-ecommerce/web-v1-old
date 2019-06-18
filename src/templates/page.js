@@ -25,12 +25,14 @@ const pageQuery = graphql`
 
 export default class Page extends React.Component {
   componentDidMount() {
+    // eslint-disable-next-line react/destructuring-assignment
     const { contentfulPages: page } = this.props.data;
 
     ReactGA.pageview(`/page/${page.slug}`);
   }
 
   render() {
+    // eslint-disable-next-line react/destructuring-assignment
     const { contentfulPages: page } = this.props.data;
 
     return (
