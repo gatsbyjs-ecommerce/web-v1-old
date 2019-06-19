@@ -37,7 +37,7 @@ const Container = styled.div`
       color: #384aeb;
     }
   }
-  .navbar-menu .navbar-item:first-child {
+  .navbar-menu .navbar-item.active {
     color: #384aeb;
   }
   #navbarBasicExample {
@@ -166,7 +166,7 @@ class Header extends React.Component {
   }
 
   render() {
-    const { mobileMenuActive } = this.state
+    const { mobileMenuActive } = this.state;
     const { home } = this.props
 
     const cart = (
@@ -208,6 +208,7 @@ class Header extends React.Component {
                           to={item.url}
                           className="navbar-item"
                           key={item.id}
+                          activeClassName="active"
                         >
                           {item.name}
                         </Link>
@@ -225,7 +226,8 @@ class Header extends React.Component {
                           to={`mailto:${home.email}`}
                         >
                           {home.email}
-                        </ReactGA.OutboundLink>{' '}
+                        </ReactGA.OutboundLink>
+                        {' '}
                         <ReactGA.OutboundLink
                           eventLabel="siteTelephone"
                           to={`tel:${home.telephone}`}
