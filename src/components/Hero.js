@@ -54,24 +54,24 @@ const Content = styled.div`
     margin-bottom: 2rem;
     @media only screen and (max-width: 768px) {
       margin-right: 0rem;
-      margin-bottom: 0rem;
     }
   }
 `;
 
-const heroQuery = graphql`{
-  allContentfulHomePageTopSection {
-    edges {
-      node {
-        subtitle
-        title
-        description {
-          description
+const heroQuery = graphql`
+  {
+    allContentfulHomePageTopSection {
+      edges {
+        node {
+          subtitle
+          title
+          description {
+            description
+          }
         }
       }
     }
   }
-}
 `;
 
 const Hero = () => (
@@ -98,8 +98,7 @@ const Hero = () => (
             </Content>
           </div>
         );
-      }
-      }
+      }}
     />
   </Wrapper>
 );

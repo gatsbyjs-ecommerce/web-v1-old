@@ -8,6 +8,7 @@ import config from '../config/index';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
 import LoginForm from '../components/LoginForm';
+import ForgotPasswordForm from '../components/ForgotPasswordForm';
 
 const Container = styled.div`
   a {
@@ -46,30 +47,18 @@ export default class Login extends React.Component {
         <Container className="section">
           <div className="container">
             <Seo
-              title="Login"
+              title="Forgot Password"
               description="Get In Touch"
-              url={`${config.siteUrl}/Login`}
+              url={`${config.siteUrl}/forgotPassword`}
             />
-            <Heading>Login</Heading>
+            <Heading>Forgot Password</Heading>
             <div className="columns">
               <div className="column is-half is-hidden-mobile">
-                <LoginForm />
+                <ForgotPasswordForm />
               </div>
               <div className="column is-hidden-tablet">
-                <LoginForm />
+                <ForgotPasswordForm />
               </div>
-            </div>
-            <div className="columns link-column">
-              <p>
-                Don't have an account?
-                <RegisterLink to="/register">
-                  <strong>Register Here</strong>
-                </RegisterLink>{' '}
-                |
-                <RegisterLink to="/forgotPassword">
-                  <strong>Forgot Password?</strong>
-                </RegisterLink>
-              </p>
             </div>
           </div>
         </Container>

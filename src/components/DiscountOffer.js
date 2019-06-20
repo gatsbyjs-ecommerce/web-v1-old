@@ -24,7 +24,7 @@ const Container = styled.div`
 
   h1 {
     margin-top: 5%;
-    font-size: 3rem;
+    font-size: 2.5rem;
     @media only screen and (max-width: 768px) {
       font-size: 2rem;
     }
@@ -39,19 +39,20 @@ const Container = styled.div`
     margin: 7%;
   }
 `;
-const discountQuery = graphql`{
-  allContentfulHomeDiscountOffer {
-    edges {
-      node {
-        title
-        subtitle
-        descritption {
-          descritption
+const discountQuery = graphql`
+  {
+    allContentfulHomeDiscountOffer {
+      edges {
+        node {
+          title
+          subtitle
+          descritption {
+            descritption
+          }
         }
       }
     }
   }
-}
 `;
 
 const DiscountOffer = () => (
@@ -62,20 +63,22 @@ const DiscountOffer = () => (
         const discountData = data.allContentfulHomeDiscountOffer.edges[0];
         return (
           <div className="column is-5 has-text-centered">
-            <h1 className="has-text-weight-bold has-text-black">{discountData.node.title}</h1>
+            <h1 className="has-text-weight-bold has-text-black">
+              {discountData.node.title}
+            </h1>
             <p className="is-size-3 has-text-weight-bold has-text-black">
               {discountData.node.subtitle}
             </p>
-            <p className="has-text-black">{discountData.node.descritption.descritption}</p>
+            <p className="has-text-black">
+              {discountData.node.descritption.descritption}
+            </p>
             <div className="btn">
               <Button text="Shop Now" link="/coupons" />
             </div>
           </div>
         );
-      }
-      }
+      }}
     />
-
   </Container>
 );
 
