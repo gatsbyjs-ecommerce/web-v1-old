@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server';
+import { gql } from "apollo-server";
 
 const typeDefs = gql`
   type Query {
@@ -62,6 +62,7 @@ const typeDefs = gql`
     validateCoupon(code: String!): Coupon
     subscribe(email: String!): Subscriber
     contact(email: String!, name: String!, message: String!): Subscriber
+    login: Boolean
   }
 `;
 
