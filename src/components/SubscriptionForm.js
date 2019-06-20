@@ -71,7 +71,7 @@ class SubscriptionForm extends React.Component {
       handleSubmit,
       handleChange,
       handleBlur,
-    } = this.props
+    } = this.props;
     return (
       <Card>
         <Container className="card" onSubmit={handleSubmit}>
@@ -81,10 +81,7 @@ class SubscriptionForm extends React.Component {
                 <h1 className="has-text-weight-bold">
                   GET UPDATE FROM ANYWHERE
                 </h1>
-                <p>
-                  Bearing Void gathering light light his eavening unto dont
-                  afraid
-                </p>
+                <p>Subscribe us to get our latest updates</p>
               </div>
             </div>
             <div className="content">
@@ -107,7 +104,7 @@ class SubscriptionForm extends React.Component {
           </div>
         </Container>
       </Card>
-    )
+    );
   }
 }
 
@@ -122,7 +119,7 @@ export default withFormik({
   }),
   handleSubmit: (values, { setSubmitting }) => {
     // console.log('handle submit', values, props);
-    const alertify = require('alertify.js') // eslint-disable-line
+    const alertify = require('alertify.js'); // eslint-disable-line
 
     apolloClient
       .mutate({
@@ -130,13 +127,13 @@ export default withFormik({
         variables: values,
       })
       .then(() => {
-        alertify.alert('Subscribed successfully, thank you!')
-        setSubmitting(false)
+        alertify.alert('Subscribed successfully, thank you!');
+        setSubmitting(false);
       })
       .catch(() => {
-        setSubmitting(false)
-        alertify.alert('Subscription failed, please try again.')
-      })
+        setSubmitting(false);
+        alertify.alert('Subscription failed, please try again.');
+      });
   },
   displayName: 'SubscriptionForm', // helps with React DevTools
-})(SubscriptionForm)
+})(SubscriptionForm);

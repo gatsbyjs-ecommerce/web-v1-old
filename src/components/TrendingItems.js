@@ -8,7 +8,7 @@ import ProductItem from './ProductItem';
 
 const Container = styled.div`
   @media only screen and (max-width: 768px) {
-    margin-top: -8rem;
+    margin-top: 0rem;
   }
   .columns {
     @media only screen and (max-width: 768px) {
