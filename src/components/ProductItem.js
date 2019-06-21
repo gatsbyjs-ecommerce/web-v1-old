@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 import Link from 'gatsby-link';
@@ -40,15 +39,15 @@ const Container = styled(animated.div)`
 
 const Image = styled(Img)`
   object-fit: cover;
-  height: 460px;
+  height: auto;
   width: 100%;
   @media only screen and (max-width: 768px) {
     height: 75%;
   }
 `;
 
-const ProductItem = ({ item, styles }) => (
-  <Container className="column is-one-third" style={styles}>
+const ProductItem = ({ item }) => (
+  <Container className="column is-one-third">
     <div className="card">
       <div className="card-image">
         <Link to={`/product/${item.slug}`}>
@@ -85,9 +84,5 @@ const ProductItem = ({ item, styles }) => (
     </div>
   </Container>
 );
-
-ProductItem.propTypes = {
-  styles: PropTypes.object.isRequired,
-};
 
 export default ProductItem;

@@ -51,8 +51,8 @@ class TrendingItems extends React.Component {
               to={{ opacity: isOpen ? 1 : 0.25 }}
               keys={keys}
             >
-              {products.map(({ node }) => styles => (
-                <ProductItem key={node.id} item={node} styles={styles} />
+              {products.map(({ node }) => () => (
+                <ProductItem key={node.id} item={node} />
               ))}
             </Trail>
           </div>
