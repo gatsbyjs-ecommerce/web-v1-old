@@ -15,7 +15,7 @@ export default class HTML extends React.Component {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <meta name="author" content="Parminder Klair" />
-          <link rel="shortcut icon" href="/images/logo.png" />
+          <link rel="shortcut icon" href="/images/favicon.png" />
           <link
             href="https://fonts.googleapis.com/css?family=Oswald:400,500,700&display=swap"
             rel="stylesheet"
