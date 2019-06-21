@@ -56,7 +56,7 @@ export default class Product extends React.Component {
             />
             <div>
               <Container className="columns">
-                <div className="column is-two-fifths">
+                <div className="column is-8">
                   <ProductGallery product={product} />
                 </div>
                 <div className="column section">
