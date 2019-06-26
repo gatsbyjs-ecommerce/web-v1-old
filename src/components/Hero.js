@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
-import img from '../../static/images/home/hero-banner1.png';
+import img from '../../static/images/home/hero.jpeg';
 // import Button from './Button';
 
 const Wrapper = styled.div`
-  height: 40.5rem;
+  height: 35rem;
   @media only screen and (max-width: 768px) {
     height: 26rem;
   }
@@ -19,23 +19,18 @@ const Wrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  margin-left: 4rem;
   position: absolute;
-  margin-top: 12px;
+  margin-top: -13px;
   @media screen and (max-width: 1510px) and (min-width: 769px) {
-    margin-left: 2rem;
     position: absolute;
-    margin-top: 12px;
   }
   @media screen and (min-width: 1511px) {
-    margin-left: 14rem;
     position: absolute;
-    margin-top: 12px;
   }
 `;
 
 const Content = styled.div`
-  margin: 13% 10% 0 21%;
+  margin: 9% 10% 0 21%;
   @media only screen and (max-width: 768px) {
     margin: 8% 4% 0 9%;
   }
