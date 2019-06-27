@@ -24,8 +24,7 @@ const SocialIcons = ({ inverted, data }) => (
       <ReactGA.OutboundLink
         eventLabel="siteFacebook"
         to={data.facebook}
-        target="_blank"
-      >
+        target="_blank">
         <i className="fab fa-facebook-square" />
       </ReactGA.OutboundLink>
     </div>
@@ -33,8 +32,7 @@ const SocialIcons = ({ inverted, data }) => (
       <ReactGA.OutboundLink
         eventLabel="siteTwitter"
         to={data.twitter}
-        target="_blank"
-      >
+        target="_blank">
         <i className="fab fa-twitter-square" />
       </ReactGA.OutboundLink>
     </div>
@@ -42,8 +40,7 @@ const SocialIcons = ({ inverted, data }) => (
       <ReactGA.OutboundLink
         eventLabel="siteInstagram"
         to={data.instagram}
-        target="_blank"
-      >
+        target="_blank">
         <i className="fab fa-instagram" />
       </ReactGA.OutboundLink>
     </div>
@@ -51,8 +48,7 @@ const SocialIcons = ({ inverted, data }) => (
       <ReactGA.OutboundLink
         eventLabel="sitePinterest"
         to={data.pinterest}
-        target="_blank"
-      >
+        target="_blank">
         <i className="fab fa-pinterest-square" />
       </ReactGA.OutboundLink>
     </div>

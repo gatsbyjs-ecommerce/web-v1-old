@@ -172,8 +172,7 @@ class ProductInfo extends React.Component {
       <React.Fragment>
         <Heading>{product.title}</Heading>
         <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency(product.discountPrice)}
-          {' '}
+          {formatCurrency(product.discountPrice)}{' '}
           {product.discountPrice < product.originalPrice && (
             <span>{formatCurrency(product.originalPrice)}</span>
           )}
@@ -181,8 +180,7 @@ class ProductInfo extends React.Component {
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+          to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <Query query={cartQuery}>
@@ -191,8 +189,7 @@ class ProductInfo extends React.Component {
                     {client => (
                       <BuyBtn
                         className="product-info-btn button is-large is-rounded is-uppercase"
-                        onClick={() => this.handleAddToCart(client, data)}
-                      >
+                        onClick={() => this.handleAddToCart(client, data)}>
                         Add to cart
                       </BuyBtn>
                     )}
@@ -209,17 +206,11 @@ class ProductInfo extends React.Component {
                     <HTMLContent
                       content={product.shortDetails.childMarkdownRemark.html}
                     />
-                    <p>
-                      Color:
-                      {' '}
-                      {product.color}
-                    </p>
+                    <p>Color: {product.color}</p>
                     {/* <p>Made in India</p> */}
                     <p>All prices include sales taxes</p>
                     <ProductCode>
-                      Product Code:
-                      {' '}
-                      {product.productCode}
+                      Product Code: {product.productCode}
                     </ProductCode>
                   </AccordionItemBody>
                 </AccordionItem>
@@ -250,8 +241,7 @@ class ProductInfo extends React.Component {
                       <FacebookShareButton
                         url={metaUrl}
                         quote={metaTitle}
-                        hashtag="#sejalsuits"
-                      >
+                        hashtag="#sejalsuits">
                         <i className="fab fa-facebook-square" />
                       </FacebookShareButton>
                     </div>
@@ -259,8 +249,7 @@ class ProductInfo extends React.Component {
                       <TwitterShareButton
                         url={metaUrl}
                         title={metaTitle}
-                        hashtags={['sejalsuits', 'punjabisuits']}
-                      >
+                        hashtags={['sejalsuits', 'punjabisuits']}>
                         <i className="fab fa-twitter-square" />
                       </TwitterShareButton>
                     </div>
@@ -268,8 +257,7 @@ class ProductInfo extends React.Component {
                       <PinterestShareButton
                         url={metaUrl}
                         media={metaImage}
-                        description={metaTitle}
-                      >
+                        description={metaTitle}>
                         <i className="fab fa-pinterest-square" />
                       </PinterestShareButton>
                     </div>

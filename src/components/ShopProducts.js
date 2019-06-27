@@ -6,7 +6,11 @@ import ProductsTitleHeader from './ProductsTitleHeader';
 const ShopProducts = () => (
   <React.Fragment>
     <div>
-      <ProductsTitleHeader desc="Popular Item in the market" text="Top" label="Products" />
+      <ProductsTitleHeader
+        desc="Popular Item in the market"
+        text="Top"
+        label="Products"
+      />
     </div>
     <div className="columns is-flex is-hidden-mobile">
       <div className="column">

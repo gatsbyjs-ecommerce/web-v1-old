@@ -26,9 +26,7 @@ export default ({ data }) => {
       <div className="column">
         <a href={url}>
           <Image
-            src={`https://cdn-images-1.medium.com/max/800/${
-              data.virtuals.previewImage.imageId
-              }`}
+            src={`https://cdn-images-1.medium.com/max/800/${data.virtuals.previewImage.imageId}`}
           />
         </a>
       </div>

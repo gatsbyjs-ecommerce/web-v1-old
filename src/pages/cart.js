@@ -46,8 +46,7 @@ class Cart extends React.Component {
               from={{ opacity: 0 }}
               to={{
                 opacity: activeStep !== 1 ? 1 : 0,
-              }}
-            >
+              }}>
               {styles => (
                 <animated.div style={styles}>
                   <CheckoutProgress activeStep={activeStep} />
@@ -58,13 +57,11 @@ class Cart extends React.Component {
               <Spring
                 native
                 from={{ marginLeft: '25%' }}
-                to={{ marginLeft: activeStep === 1 ? '25%' : '0%' }}
-              >
+                to={{ marginLeft: activeStep === 1 ? '25%' : '0%' }}>
                 {stylesProps => (
                   <animated.div
                     style={stylesProps}
-                    className="column section is-half is-hidden-mobile"
-                  >
+                    className="column section is-half is-hidden-mobile">
                     <CartItems
                       showCheckoutBtn={activeStep === 1}
                       handlePayment={data =>
@@ -99,7 +96,9 @@ class Cart extends React.Component {
                     }
                   />
                 )}
-                {activeStep === 4 && <PaymentConfirmed paymentData={paymentData} />}
+                {activeStep === 4 && (
+                  <PaymentConfirmed paymentData={paymentData} />
+                )}
               </div>
             </div>
           </div>

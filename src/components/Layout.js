@@ -11,17 +11,17 @@ import Header from './Header';
 import Footer from './Footer';
 
 const indexLayoutQuery = graphql`
-query {
-  contentfulHome {
-    telephone
-    email
-    address
-    facebook
-    twitter
-    instagram
-    pinterest
+  query {
+    contentfulHome {
+      telephone
+      email
+      address
+      facebook
+      twitter
+      instagram
+      pinterest
+    }
   }
-}
 `;
 
 class IndexLayout extends React.Component {

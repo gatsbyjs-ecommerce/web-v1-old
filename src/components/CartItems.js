@@ -129,8 +129,7 @@ class CartItems extends React.Component {
                       <div className="media-content">
                         <div className="content">
                           <p>
-                            <strong className="is-size-5">{item.title}</strong>
-                            {' '}
+                            <strong className="is-size-5">{item.title}</strong>{' '}
                             <small className="has-text-grey-light is-uppercase">
                               {item.productCode}
                             </small>
@@ -142,8 +141,7 @@ class CartItems extends React.Component {
                               className="remove"
                               onClick={() =>
                                 this.handleRemoveItem(client, data, index)
-                              }
-                            >
+                              }>
                               remove
                             </a>
                           </p>
@@ -167,25 +165,21 @@ class CartItems extends React.Component {
                     </div>
                     <div className="column is-6 is-offset-6">
                       <p className="is-size-5 has-text-dark has-text-right">
-                        <small>Shipping:</small>
-                        {' '}
+                        <small>Shipping:</small>{' '}
                         <span className="has-text-weight-bold">
                           {formatCurrency(0)}
                         </span>
                       </p>
                       {this.state.discount > 0 && (
                         <p className="is-size-5 has-text-dark has-text-right">
-                          <small>Discount:</small>
-                          {' '}
+                          <small>Discount:</small>{' '}
                           <span className="has-text-weight-bold">
-                            -
-                            {formatCurrency(this.state.discount)}
+                            -{formatCurrency(this.state.discount)}
                           </span>
                         </p>
                       )}
                       <p className="is-size-4 has-text-dark has-text-right">
-                        <small>Total:</small>
-                        {' '}
+                        <small>Total:</small>{' '}
                         <span className="has-text-weight-bold">
                           {formatCurrency(
                             this.state.total - this.state.discount,
@@ -197,8 +191,7 @@ class CartItems extends React.Component {
                   {showCheckoutBtn && (
                     <BuyBtn
                       className="product-info-btn button is-large is-rounded is-uppercase"
-                      onClick={() => this.props.handlePayment(this.state)}
-                    >
+                      onClick={() => this.props.handlePayment(this.state)}>
                       Checkout
                     </BuyBtn>
                   )}

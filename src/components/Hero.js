@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   }
   .is-4 {
     background-color: #384aeb;
-    background-image: url("/images/home/hero.jpeg")
+    background-image: url('/images/home/hero.jpeg');
   }
   .content {
     background-color: #f1f6f7;

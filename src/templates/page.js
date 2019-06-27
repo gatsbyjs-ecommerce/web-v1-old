@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from 'gatsby';
 import ReactGA from 'react-ga';
 
 import config from '../config/index';
@@ -9,18 +9,18 @@ import Heading from '../components/Heading';
 import { HTMLContent } from '../utils/helpers';
 
 const pageQuery = graphql`
-{
-  contentfulPages(slug: {}) {
-    id
-    title
-    slug
-    content {
-      childMarkdownRemark {
-        html
+  {
+    contentfulPages(slug: {}) {
+      id
+      title
+      slug
+      content {
+        childMarkdownRemark {
+          html
+        }
       }
     }
   }
-}
 `;
 
 export default class Page extends React.Component {
@@ -49,7 +49,9 @@ export default class Page extends React.Component {
               render={() => (
                 <React.Fragment>
                   <Heading>{page.title}</Heading>
-                  <HTMLContent content={page.content.childMarkdownRemark.html} />
+                  <HTMLContent
+                    content={page.content.childMarkdownRemark.html}
+                  />
                 </React.Fragment>
               )}
             />

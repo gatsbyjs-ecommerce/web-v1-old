@@ -50,7 +50,7 @@ class InventoryManagementApp extends React.Component {
       string.charAt(0).toLowerCase() + string.slice(1);
 
     product.category = decapitalize(product.category);
-    const inventory = this.state.inventory;
+    const { inventory } = this.state;
     inventory.categories[product.category].push(product);
 
     this.setState({ inventory });

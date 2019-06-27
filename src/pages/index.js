@@ -65,7 +65,7 @@ export const indexQuery = graphql`
 
 export default class IndexPage extends React.Component {
   componentDidMount() {
-    ReactGA.pageview('/')
+    ReactGA.pageview('/');
   }
 
   render() {
@@ -79,7 +79,7 @@ export default class IndexPage extends React.Component {
         <StaticQuery
           query={indexQuery}
           render={data => {
-            const { allContentfulProduct: products } = data
+            const { allContentfulProduct: products } = data;
 
             return (
               <React.Fragment>

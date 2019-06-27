@@ -57,8 +57,7 @@ class CouponForm extends React.Component {
             <ApplyBtn
               type="submit"
               className="button coupon-form-btn"
-              disabled={isSubmitting}
-            >
+              disabled={isSubmitting}>
               Apply
             </ApplyBtn>
           </div>

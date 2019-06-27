@@ -58,8 +58,7 @@ class SubscribeForm extends React.Component {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="button is-light"
-            >
+              className="button is-light">
               Subscribe
             </button>
           </div>

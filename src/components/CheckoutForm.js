@@ -58,8 +58,7 @@ class CheckoutForm extends React.Component {
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+          to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <form onSubmit={handleSubmit}>
@@ -74,10 +73,9 @@ class CheckoutForm extends React.Component {
                       onBlur={handleBlur}
                       autoFocus
                     />
-                    {errors.fullName &&
-                      touched.fullName && (
-                        <p className="help is-danger">{errors.fullName}</p>
-                      )}
+                    {errors.fullName && touched.fullName && (
+                      <p className="help is-danger">{errors.fullName}</p>
+                    )}
                   </div>
                 </div>
                 <div className="field">
@@ -90,10 +88,9 @@ class CheckoutForm extends React.Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.address1 &&
-                      touched.address1 && (
-                        <p className="help is-danger">{errors.address1}</p>
-                      )}
+                    {errors.address1 && touched.address1 && (
+                      <p className="help is-danger">{errors.address1}</p>
+                    )}
                   </div>
                 </div>
                 <div className="field">
@@ -106,10 +103,9 @@ class CheckoutForm extends React.Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.address2 &&
-                      touched.address2 && (
-                        <p className="help is-danger">{errors.address2}</p>
-                      )}
+                    {errors.address2 && touched.address2 && (
+                      <p className="help is-danger">{errors.address2}</p>
+                    )}
                   </div>
                 </div>
                 <div className="field is-horizontal">
@@ -124,10 +120,9 @@ class CheckoutForm extends React.Component {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.city &&
-                          touched.city && (
-                            <p className="help is-danger">{errors.city}</p>
-                          )}
+                        {errors.city && touched.city && (
+                          <p className="help is-danger">{errors.city}</p>
+                        )}
                       </div>
                     </div>
                     <div className="field">
@@ -140,10 +135,9 @@ class CheckoutForm extends React.Component {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.postcode &&
-                          touched.postcode && (
-                            <p className="help is-danger">{errors.postcode}</p>
-                          )}
+                        {errors.postcode && touched.postcode && (
+                          <p className="help is-danger">{errors.postcode}</p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -160,10 +154,9 @@ class CheckoutForm extends React.Component {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.state &&
-                          touched.state && (
-                            <p className="help is-danger">{errors.state}</p>
-                          )}
+                        {errors.state && touched.state && (
+                          <p className="help is-danger">{errors.state}</p>
+                        )}
                       </div>
                     </div>
                     <div className="field">
@@ -176,10 +169,9 @@ class CheckoutForm extends React.Component {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.country &&
-                          touched.country && (
-                            <p className="help is-danger">{errors.country}</p>
-                          )}
+                        {errors.country && touched.country && (
+                          <p className="help is-danger">{errors.country}</p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -194,10 +186,9 @@ class CheckoutForm extends React.Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.email &&
-                      touched.email && (
-                        <p className="help is-danger">{errors.email}</p>
-                      )}
+                    {errors.email && touched.email && (
+                      <p className="help is-danger">{errors.email}</p>
+                    )}
                   </div>
                 </div>
                 <div className="field">
@@ -210,17 +201,15 @@ class CheckoutForm extends React.Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.telephone &&
-                      touched.telephone && (
-                        <p className="help is-danger">{errors.telephone}</p>
-                      )}
+                    {errors.telephone && touched.telephone && (
+                      <p className="help is-danger">{errors.telephone}</p>
+                    )}
                   </div>
                 </div>
                 <BuyBtn
                   type="submit"
                   disabled={isSubmitting}
-                  className="checkout-form-btn button is-large is-rounded is-uppercase"
-                >
+                  className="checkout-form-btn button is-large is-rounded is-uppercase">
                   <span className="icon">
                     <i className="far fa-credit-card" />
                   </span>

@@ -31,7 +31,7 @@ const Container = styled.div`
 
 const LoginLink = styled(Link)`
   :hover {
-    color: #394AEB;
+    color: #394aeb;
   }
 `;
 

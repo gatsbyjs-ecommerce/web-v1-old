@@ -57,8 +57,7 @@ class PaymentConfirmed extends React.Component {
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+          to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <Result>
@@ -76,8 +75,7 @@ class PaymentConfirmed extends React.Component {
               </Result>
               <BuyBtn
                 to="/"
-                className="button is-dark is-large is-radiusless is-uppercase"
-              >
+                className="button is-dark is-large is-radiusless is-uppercase">
                 Continue Shopping
               </BuyBtn>
             </animated.div>

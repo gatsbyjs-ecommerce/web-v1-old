@@ -1,32 +1,32 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import styled from 'styled-components'
-import ReactGA from 'react-ga'
-import Link from 'gatsby-link'
+import React from 'react';
+import { graphql } from 'gatsby';
+import styled from 'styled-components';
+import ReactGA from 'react-ga';
+import Link from 'gatsby-link';
 
-import Seo from '../components/Seo'
-import config from '../config/index'
-import Layout from '../components/Layout'
-import ProductGallery from '../components/ProductGallery'
-import ProductInfo from '../components/ProductInfo'
-import ProductsList from '../components/ProductsList'
+import Seo from '../components/Seo';
+import config from '../config/index';
+import Layout from '../components/Layout';
+import ProductGallery from '../components/ProductGallery';
+import ProductInfo from '../components/ProductInfo';
+import ProductsList from '../components/ProductsList';
 
 const Container = styled.div`
   &&& {
     margin-top: 3rem;
   }
-`
+`;
 
 const ViewAllBtn = styled(Link)`
   padding-right: 2rem;
   padding-left: 2rem;
-`
+`;
 
 export default class Product extends React.Component {
   componentDidMount() {
-    const { contentfulProduct: product } = this.props.data
+    const { contentfulProduct: product } = this.props.data;
 
-    ReactGA.pageview(`/product/${product.slug}`)
+    ReactGA.pageview(`/product/${product.slug}`);
   }
 
   render() {
@@ -36,12 +36,12 @@ export default class Product extends React.Component {
         allContentfulProduct: products,
         contentfulHome: home,
       },
-    } = this.props
+    } = this.props;
     // console.log('product', product);
 
     const metaImage = product.featuredImage
       ? product.featuredImage.sizes.src
-      : `${config.url}${config.logo}`
+      : `${config.url}${config.logo}`;
 
     return (
       <Layout>
@@ -73,7 +73,7 @@ export default class Product extends React.Component {
           </div>
         </section>
       </Layout>
-    )
+    );
   }
 }
 
@@ -143,4 +143,4 @@ export const productQuery = graphql`
       }
     }
   }
-`
+`;

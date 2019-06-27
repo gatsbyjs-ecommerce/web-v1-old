@@ -69,8 +69,7 @@ export default class ShoppingItems extends React.Component {
         <Container
           className="has-text-centered"
           onMouseOver={this.onMouseHover}
-          onMouseOut={this.onMouseHover}
-        >
+          onMouseOut={this.onMouseHover}>
           <CardWrapper className="card">
             <div className="card-image">
               <img src={img} alt="Placeholder" />

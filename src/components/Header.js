@@ -150,24 +150,24 @@ const NavItems = [
 
 class Header extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = { mobileMenuActive: false }
+    this.state = { mobileMenuActive: false };
   }
 
   toggleMobileMenu = () => {
-    const { mobileMenuActive } = this.state
+    const { mobileMenuActive } = this.state;
     if (mobileMenuActive) {
-      $('html').removeClass('disable-scroll')
+      $('html').removeClass('disable-scroll');
     } else {
-      $('html').addClass('disable-scroll')
+      $('html').addClass('disable-scroll');
     }
-    this.setState({ mobileMenuActive: !mobileMenuActive })
-  }
+    this.setState({ mobileMenuActive: !mobileMenuActive });
+  };
 
   render() {
     const { mobileMenuActive } = this.state;
-    const { home } = this.props
+    const { home } = this.props;
 
     const cart = (
       <Cart>
@@ -194,8 +194,7 @@ class Header extends React.Component {
             <nav
               className="navbar"
               role="navigation"
-              aria-label="main navigation"
-            >
+              aria-label="main navigation">
               <Link to="/">
                 <img src={config.logo} alt={`${config.siteName} logo`} />
               </Link>
@@ -208,8 +207,7 @@ class Header extends React.Component {
                           to={item.url}
                           className="navbar-item"
                           key={item.id}
-                          activeClassName="active"
-                        >
+                          activeClassName="active">
                           {item.name}
                         </Link>
                       ))}
@@ -223,15 +221,12 @@ class Header extends React.Component {
                       <p>
                         <ReactGA.OutboundLink
                           eventLabel="siteEmail"
-                          to={`mailto:${home.email}`}
-                        >
+                          to={`mailto:${home.email}`}>
                           {home.email}
-                        </ReactGA.OutboundLink>
-                        {' '}
+                        </ReactGA.OutboundLink>{' '}
                         <ReactGA.OutboundLink
                           eventLabel="siteTelephone"
-                          to={`tel:${home.telephone}`}
-                        >
+                          to={`tel:${home.telephone}`}>
                           {home.telephone}
                         </ReactGA.OutboundLink>
                       </p>
@@ -283,8 +278,7 @@ class Header extends React.Component {
               height: mobileMenuActive ? 800 : 0,
               opacity: mobileMenuActive ? 1 : 0,
               paddingTop: mobileMenuActive ? 0 : -64,
-            }}
-          >
+            }}>
             {styles => (
               <MobileMenu style={styles}>
                 <aside className="menu">
@@ -310,10 +304,10 @@ class Header extends React.Component {
 
 Header.defaultProps = {
   home: {},
-}
+};
 
 Header.propTypes = {
   home: PropTypes.object,
-}
+};
 
-export default Header
+export default Header;

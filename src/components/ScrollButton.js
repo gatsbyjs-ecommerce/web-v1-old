@@ -6,13 +6,13 @@ const Button = styled.a`
   float: right;
   bottom: 8rem;
   right: 2rem;
-  on:hover{
+  on:hover {
   }
 `;
 
 class ScrollButton extends React.Component {
-  constructor () {
-    super ();
+  constructor() {
+    super();
     this.state = {
       intervalId: 0,
     };
@@ -20,24 +20,23 @@ class ScrollButton extends React.Component {
 
   scrollStep = () => {
     if (window.pageYOffset === 0) {
-      clearInterval (this.state.intervalId);
+      clearInterval(this.state.intervalId);
     }
-    window.scroll (0, window.pageYOffset - this.props.scrollStepInPx);
+    window.scroll(0, window.pageYOffset - this.props.scrollStepInPx);
   };
 
   scrollToTop = () => {
-    const intervalId = setInterval (this.scrollStep, this.props.delayInMs);
-    this.setState ({intervalId});
+    const intervalId = setInterval(this.scrollStep, this.props.delayInMs);
+    this.setState({ intervalId });
   };
 
-  render () {
+  render() {
     return (
       <React.Fragment>
         <Button
           title="Back to top"
           className="button"
-          onClick={this.scrollToTop}
-        >
+          onClick={this.scrollToTop}>
           <i className="fas fa-arrow-up" />
         </Button>
       </React.Fragment>

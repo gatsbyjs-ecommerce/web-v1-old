@@ -39,17 +39,13 @@ class TrendingItems extends React.Component {
     return (
       <Container className="section">
         <div className="container">
-          <ProductsTitleHeader
-            text="Our"
-            label="Products"
-          />
+          <ProductsTitleHeader text="Our" label="Products" />
           <div className="columns is-multiline">
             <Trail
               native
               from={{ opacity: 0 }}
               to={{ opacity: isOpen ? 1 : 0.25 }}
-              keys={keys}
-            >
+              keys={keys}>
               {products.map(({ node }) => () => (
                 <ProductItem key={node.id} item={node} />
               ))}

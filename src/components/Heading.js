@@ -22,6 +22,6 @@ const Heading = ({ children }) => (
 
 Heading.propTypes = {
   children: PropTypes.string.isRequired,
-}
+};
 
-export default Heading
+export default Heading;

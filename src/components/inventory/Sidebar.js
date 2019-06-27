@@ -8,20 +8,17 @@ const Sidebar = props => (
       </li>
       <li
         className={props.activeTab === 1 ? 'active' : ''}
-        onClick={() => props.changeTab(1)}
-      >
+        onClick={() => props.changeTab(1)}>
         Products
       </li>
       <li
         className={props.activeTab === 2 ? 'active' : ''}
-        onClick={() => props.changeTab(2)}
-      >
+        onClick={() => props.changeTab(2)}>
         Categories
       </li>
       <li
         className={props.activeTab === 3 ? 'active' : ''}
-        onClick={() => props.changeTab(3)}
-      >
+        onClick={() => props.changeTab(3)}>
         Item Archive
       </li>
     </ul>

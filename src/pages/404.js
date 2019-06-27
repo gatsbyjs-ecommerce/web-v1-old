@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import ReactGA from 'react-ga';
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 
 import config from '../config';
 import Layout from '../components/Layout';

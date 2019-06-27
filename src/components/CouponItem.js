@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Container = styled.div`
   height: 100%;
   header {
-    border-bottom: 1px solid rgba(10,10,10, .1)
+    border-bottom: 1px solid rgba(10, 10, 10, 0.1);
   }
   .card-header {
     box-shadow: none !important;
@@ -18,9 +18,7 @@ const Container = styled.div`
 export default ({ data }) => (
   <Container className="card">
     <header className="card-header">
-      <h3 className="card-header-title is-size-5">
-        {data.name}
-      </h3>
+      <h3 className="card-header-title is-size-5">{data.name}</h3>
     </header>
     <div className="card-content">
       <div className="content has-text-centered">{data.details.details}</div>

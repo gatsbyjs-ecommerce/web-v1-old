@@ -31,4 +31,4 @@ const Button = ({ width, link, text, margin, widthMobile }) => (
   </ButtonWrapper>
 );
 
-export default Button
+export default Button;
