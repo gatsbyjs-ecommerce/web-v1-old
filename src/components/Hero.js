@@ -12,20 +12,10 @@ const Wrapper = styled.div`
   }
   .is-4 {
     background-color: #384aeb;
+    background-image: url("/images/home/hero.jpeg")
   }
   .content {
     background-color: #f1f6f7;
-  }
-`;
-
-const ImageWrapper = styled.div`
-  position: absolute;
-  margin-top: -13px;
-  @media screen and (max-width: 1510px) and (min-width: 769px) {
-    position: absolute;
-  }
-  @media screen and (min-width: 1511px) {
-    position: absolute;
   }
 `;
 
@@ -72,9 +62,9 @@ const heroQuery = graphql`
 const Hero = () => (
   <Wrapper className="columns">
     <div className="column is-4 is-hidden-mobile">
-      <ImageWrapper>
+      {/* <ImageWrapper>
         <img src={img} alt="Cart With Things" />
-      </ImageWrapper>
+      </ImageWrapper> */}
     </div>
     <StaticQuery
       query={heroQuery}

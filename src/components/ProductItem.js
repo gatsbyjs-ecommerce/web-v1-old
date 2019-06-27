@@ -15,6 +15,7 @@ const Container = styled(animated.div)`
       padding-top: 0;
     }
     .card-content {
+      padding: 3.5rem;
       padding-left: 0;
       padding-top: 0.8rem;
       position: relative;

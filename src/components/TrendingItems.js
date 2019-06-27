@@ -40,8 +40,7 @@ class TrendingItems extends React.Component {
       <Container className="section">
         <div className="container">
           <ProductsTitleHeader
-            desc="Popular Item in the market"
-            text="Trending"
+            text="Our"
             label="Products"
           />
           <div className="columns is-multiline">
