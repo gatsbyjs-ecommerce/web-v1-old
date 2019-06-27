@@ -17,7 +17,7 @@
     "develop": "gatsby develop",
     "serve": "gatsby serve",
     "build": "gatsby build",
-    "lint": "eslint --ignore-path .gitignore \"src/**/*.{js,jsx}\"",
+    "lint": "eslint --fix --ignore-path .gitignore \"src/**/*.{js,jsx}\"",
     "format": "prettier --write src/**/*.{js,jsx}"
   },
   "dependencies": {
