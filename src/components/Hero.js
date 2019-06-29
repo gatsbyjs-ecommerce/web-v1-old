@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
-import img from '../../static/images/home/hero.jpeg';
+// import img from '../../static/images/home/hero.jpeg';
 // import Button from './Button';
 
 const Wrapper = styled.div`
@@ -12,7 +12,9 @@ const Wrapper = styled.div`
   }
   .is-4 {
     background-color: #384aeb;
-    background-image: url("/images/home/hero.jpeg")
+    background-image: url("/images/home/home.png");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   .content {
     background-color: #f1f6f7;
