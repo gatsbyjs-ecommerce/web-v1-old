@@ -49,7 +49,9 @@ export default class Product extends React.Component {
           <div className="container">
             <Seo
               title={product.title}
-              description={product.shortDetails.shortDetails}
+              description={
+                product.shortDetails ? product.shortDetails.shortDetails : ''
+              }
               url={`${config.siteUrl}/product/${product.slug}`}
               image={metaImage}
               isProduct
@@ -103,9 +105,9 @@ export const productQuery = graphql`
       }
       shortDetails {
         shortDetails
-        childMarkdownRemark {
-          html
-        }
+        # childMarkdownRemark {
+        #   html
+        # }
       }
     }
     allContentfulProduct(
@@ -132,14 +134,16 @@ export const productQuery = graphql`
     }
     contentfulHome {
       productDeliveryInfo {
-        childMarkdownRemark {
-          html
-        }
+        productDeliveryInfo
+        # childMarkdownRemark {
+        #   html
+        # }
       }
       productShippingReturns {
-        childMarkdownRemark {
-          html
-        }
+        productShippingReturns
+        # childMarkdownRemark {
+        #   html
+        # }
       }
     }
   }

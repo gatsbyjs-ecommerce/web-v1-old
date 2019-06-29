@@ -15,9 +15,10 @@ const pageQuery = graphql`
       title
       slug
       content {
-        childMarkdownRemark {
-          html
-        }
+        content
+        # childMarkdownRemark {
+        #   html
+        # }
       }
     }
   }
