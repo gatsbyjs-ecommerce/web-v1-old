@@ -1,39 +1,39 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import ReactGA from 'react-ga';
-import { graphql } from 'gatsby';
+// import { graphql } from 'gatsby';
 
 import config from '../config';
 import Layout from '../components/Layout';
 import Heading from '../components/Heading';
-import ProductsList from '../components/ProductsList';
+// import ProductsList from '../components/ProductsList';
 
-export const notFoundQuery = graphql`
-  query notFoundQuery {
-    allContentfulProduct(
-      filter: { status: { eq: "active" } }
-      limit: 6
-      sort: { fields: [createdAt], order: DESC }
-    ) {
-      edges {
-        node {
-          id
-          title
-          slug
-          color
-          originalPrice
-          discountPrice
-          featuredImage {
-            title
-            sizes(maxWidth: 550) {
-              ...GatsbyContentfulSizes
-            }
-          }
-        }
-      }
-    }
-  }
-`;
+// export const notFoundQuery = graphql`
+//   query notFoundQuery {
+//     allContentfulProduct(
+//       filter: { status: { eq: "active" } }
+//       limit: 6
+//       sort: { fields: [createdAt], order: DESC }
+//     ) {
+//       edges {
+//         node {
+//           id
+//           title
+//           slug
+//           color
+//           originalPrice
+//           discountPrice
+//           featuredImage {
+//             title
+//             sizes(maxWidth: 550) {
+//               ...GatsbyContentfulSizes
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default class NotFoundPage extends React.Component {
   componentDidMount() {
@@ -41,7 +41,7 @@ export default class NotFoundPage extends React.Component {
   }
 
   render() {
-    const { allContentfulProduct: products } = this.props.data;
+    // const { allContentfulProduct: products } = this.props.data;
 
     return (
       <Layout>
@@ -51,7 +51,7 @@ export default class NotFoundPage extends React.Component {
           You just hit a route that doesn&#39;t exist... the sadness.
         </p>
         <br />
-        <ProductsList title="We think you'll" products={products.edges} />
+        {/* <ProductsList title="We think you'll" products={products.edges} /> */}
       </Layout>
     );
   }

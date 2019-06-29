@@ -204,7 +204,11 @@ class ProductInfo extends React.Component {
                   </AccordionItemTitle>
                   <AccordionItemBody>
                     <HTMLContent
-                      content={product.shortDetails.childMarkdownRemark.html}
+                      content={
+                        product.shortDetails
+                          ? product.shortDetails.shortDetails
+                          : ''
+                      }
                     />
                     <p>Color: {product.color}</p>
                     {/* <p>Made in India</p> */}
@@ -220,14 +224,12 @@ class ProductInfo extends React.Component {
                   </AccordionItemTitle>
                   <AccordionItemBody>
                     <HTMLContent
-                      content={
-                        home.productDeliveryInfo.childMarkdownRemark.html
-                      }
+                      content={home.productDeliveryInfo.productDeliveryInfo}
                     />
                     <br />
                     <HTMLContent
                       content={
-                        home.productShippingReturns.childMarkdownRemark.html
+                        home.productShippingReturns.productShippingReturns
                       }
                     />
                   </AccordionItemBody>

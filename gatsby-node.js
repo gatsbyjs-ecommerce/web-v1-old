@@ -11,6 +11,9 @@ exports.onPreBootstrap = () => {
     .then(r => r.json())
     .then(data => {
       fs.writeFileSync(`./data/currency.json`, JSON.stringify(data, ``, 2));
+    })
+    .catch(error => {
+      console.log(error);
     });
 };
 

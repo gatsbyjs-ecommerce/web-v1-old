@@ -50,9 +50,7 @@ export default class Page extends React.Component {
               render={() => (
                 <React.Fragment>
                   <Heading>{page.title}</Heading>
-                  <HTMLContent
-                    content={page.content.childMarkdownRemark.html}
-                  />
+                  <HTMLContent content={page.content.content} />
                 </React.Fragment>
               )}
             />
