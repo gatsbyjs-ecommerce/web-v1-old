@@ -59,8 +59,7 @@ export default class Contact extends React.Component {
             <div className="columns">
               <div
                 className="column is-two-fifths"
-                style={{ borderRight: '1px solid #eee' }}
-              >
+                style={{ borderRight: '1px solid #eee' }}>
                 <p>
                   If you have any question or enquiry, feel free to get in touch
                   with us

@@ -20,7 +20,7 @@ class IndexLayout extends React.Component {
     const {
       children,
       // data: { contentfulHome: home },
-    } = this.props
+    } = this.props;
 
     return (
       <ApolloProvider client={apolloClient}>
@@ -42,6 +42,6 @@ class IndexLayout extends React.Component {
 
 IndexLayout.propTypes = {
   children: PropTypes.func.isRequired,
-}
+};
 
 export default IndexLayout;

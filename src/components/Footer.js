@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
-import { StaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from 'gatsby';
 
 import config from '../config';
 import SocialIcons from './SocialIcons';
@@ -45,23 +45,24 @@ const NavItems = [
   { id: 4, name: 'Privacy Policy', url: '/page/privacy-policy' },
 ];
 
-const footerQuery = graphql`{
-  allContentfulFooter {
-    edges {
-      node {
-        companysMissionFirst {
-          companysMissionFirst
+const footerQuery = graphql`
+  {
+    allContentfulFooter {
+      edges {
+        node {
+          companysMissionFirst {
+            companysMissionFirst
+          }
+          companysMissionSecond {
+            companysMissionSecond
+          }
+          address
+          contactNumber
+          emailId
         }
-        companysMissionSecond {
-          companysMissionSecond
-        }
-        address
-        contactNumber
-        emailId
       }
     }
   }
-}
 `;
 
 const Footer = ({ home }) => (
@@ -74,16 +75,16 @@ const Footer = ({ home }) => (
           return (
             <div className="columns is-multiline">
               <div className="column is-4 has-text-white">
-                <Heading className="is-uppercase is-size-5">Our Mission</Heading>
-                <p>
-                  {list.node.companysMissionFirst.companysMissionFirst}
-                </p>
-                <p>
-                  {list.node.companysMissionSecond.companysMissionSecond}
-                </p>
+                <Heading className="is-uppercase is-size-5">
+                  Our Mission
+                </Heading>
+                <p>{list.node.companysMissionFirst.companysMissionFirst}</p>
+                <p>{list.node.companysMissionSecond.companysMissionSecond}</p>
               </div>
               <div className="column has-text-white">
-                <Heading className="is-uppercase is-size-5">Customer service</Heading>
+                <Heading className="is-uppercase is-size-5">
+                  Customer service
+                </Heading>
                 <ul>
                   {NavItems.map(item => (
                     <li key={item.id}>
@@ -97,14 +98,18 @@ const Footer = ({ home }) => (
               <div className="column has-text-white">
                 <Heading className="is-uppercase is-size-5">Contact Us</Heading>
                 <div>
-                  <h1 className="has-text-white has-text-weight-bold">Head Office</h1>
+                  <h1 className="has-text-white has-text-weight-bold">
+                    Head Office
+                  </h1>
                   <p className="has-text-grey-light">{list.node.address}</p>
                 </div>
                 <div>
                   <h1 className="has-text-white has-text-weight-bold">
                     Phone Number
                   </h1>
-                  <p className="has-text-grey-light">{list.node.contactNumber}</p>
+                  <p className="has-text-grey-light">
+                    {list.node.contactNumber}
+                  </p>
                 </div>
                 <div>
                   <h1 className="has-text-white has-text-weight-bold">Email</h1>
@@ -117,8 +122,7 @@ const Footer = ({ home }) => (
               </div>
             </div>
           );
-        }
-        }
+        }}
       />
     </div>
     <Bottom>
@@ -143,10 +147,10 @@ const Footer = ({ home }) => (
 
 Footer.defaultProps = {
   home: {},
-}
+};
 
 Footer.propTypes = {
   home: PropTypes.object,
-}
+};
 
 export default Footer;

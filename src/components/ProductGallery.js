@@ -31,9 +31,9 @@ class ProductGallery extends React.Component {
 
     const images = product.otherImages
       ? product.otherImages.map(image => ({
-        original: image.sizes.src,
-        thumbnail: image.sizes.src,
-      }))
+          original: image.sizes.src,
+          thumbnail: image.sizes.src,
+        }))
       : [];
 
     return (
@@ -43,8 +43,7 @@ class ProductGallery extends React.Component {
         to={{
           opacity: isVisible ? 1 : 0,
           marginLeft: isVisible ? 0 : -100,
-        }}
-      >
+        }}>
         {styles => (
           <animated.div style={styles}>
             <ImageGallery

@@ -13,23 +13,23 @@ const Container = styled.section`
 
 class ProductsList extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
-    this.state = { isOpen: false, activeCategory: null }
+    this.state = { isOpen: false, activeCategory: null };
   }
 
   componentDidMount() {
     setTimeout(() => {
-      this.setState({ isOpen: true })
-    }, 200)
+      this.setState({ isOpen: true });
+    }, 200);
   }
 
-  toggleCategory = category => this.setState({ activeCategory: category })
+  toggleCategory = category => this.setState({ activeCategory: category });
 
   render() {
-    const { title, products } = this.props
-    const { isOpen, activeCategory } = this.state
-    const keys = products.map(item => item.node.id)
+    const { title, products } = this.props;
+    const { isOpen, activeCategory } = this.state;
+    const keys = products.map(item => item.node.id);
     // console.log('products', products);
 
     return (
@@ -44,8 +44,7 @@ class ProductsList extends React.Component {
             native
             from={{ opacity: 0 }}
             to={{ opacity: isOpen ? 1 : 0.25 }}
-            keys={keys}
-          >
+            keys={keys}>
             {products.map(({ node }) => styles => (
               <ProductItem key={node.id} item={node} styles={styles} />
             ))}
@@ -59,11 +58,11 @@ class ProductsList extends React.Component {
 ProductsList.defaultProps = {
   title: 'New arrivals',
   products: [],
-}
+};
 
 ProductsList.propTypes = {
   title: PropTypes.string,
   products: PropTypes.array,
-}
+};
 
 export default ProductsList;

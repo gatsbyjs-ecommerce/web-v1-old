@@ -3,8 +3,10 @@
   "parser": "babel-eslint",
   "extends": [
     "airbnb",
-    "prettier"
+    "prettier",
+    "prettier/react"
   ],
+  "plugins": ["prettier"],
   "env": {
     "browser": true
   },
@@ -16,6 +18,12 @@
     ]
   },
   "rules": {
+    "prettier/prettier": ["error", {
+      "singleQuote": true,
+      "trailingComma": "all",
+      "bracketSpacing": true,
+      "jsxBracketSameLine": true
+    }],
     "react/jsx-filename-extension": 0,
     "react/prop-types": 0,
     "react/no-danger": 0,

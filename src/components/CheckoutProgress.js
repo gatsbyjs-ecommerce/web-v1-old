@@ -58,10 +58,10 @@ const CheckoutProgress = ({ activeStep }) => (
 
 CheckoutProgress.defaultProps = {
   activeStep: 1,
-}
+};
 
 CheckoutProgress.propTypes = {
   activeStep: PropTypes.number,
-}
+};
 
 export default CheckoutProgress;

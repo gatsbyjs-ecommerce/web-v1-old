@@ -107,8 +107,7 @@ class NewItemTab extends React.Component {
               }
               id="newItemForm-category"
               value={this.props.formData.category}
-              onChange={() => this.updateForm()}
-            >
+              onChange={() => this.updateForm()}>
               <option />
               {this.renderCategorySelections(this.props.inventory)}
             </select>

@@ -39,8 +39,9 @@ const ContactForm = props => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.name &&
-            touched.name && <p className="help is-danger">{errors.name}</p>}
+          {errors.name && touched.name && (
+            <p className="help is-danger">{errors.name}</p>
+          )}
         </div>
       </div>
       <div className="field">
@@ -54,10 +55,9 @@ const ContactForm = props => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.email &&
-            touched.email && (
-              <p className="help is-danger is-capitalized">{errors.email}</p>
-            )}
+          {errors.email && touched.email && (
+            <p className="help is-danger is-capitalized">{errors.email}</p>
+          )}
         </div>
       </div>
       <div className="field">
@@ -71,10 +71,9 @@ const ContactForm = props => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.message &&
-            touched.message && (
-              <p className="help is-danger">{errors.message}</p>
-            )}
+          {errors.message && touched.message && (
+            <p className="help is-danger">{errors.message}</p>
+          )}
         </div>
       </div>
       <Button

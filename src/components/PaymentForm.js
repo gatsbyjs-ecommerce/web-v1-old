@@ -99,8 +99,7 @@ class PaymentForm extends React.Component {
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+          to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <Cards className="has-text-centered">
@@ -124,10 +123,9 @@ class PaymentForm extends React.Component {
                       onBlur={handleBlur}
                       options={{ creditCard: true }}
                     />
-                    {errors.number &&
-                      touched.number && (
-                        <p className="help is-danger">{errors.number}</p>
-                      )}
+                    {errors.number && touched.number && (
+                      <p className="help is-danger">{errors.number}</p>
+                    )}
                   </div>
                 </div>
                 <div className="field is-horizontal">
@@ -146,10 +144,9 @@ class PaymentForm extends React.Component {
                             datePattern: ['m'],
                           }}
                         />
-                        {errors.exp_month &&
-                          touched.exp_month && (
-                            <p className="help is-danger">{errors.exp_month}</p>
-                          )}
+                        {errors.exp_month && touched.exp_month && (
+                          <p className="help is-danger">{errors.exp_month}</p>
+                        )}
                       </div>
                     </div>
                     <div className="field">
@@ -166,10 +163,9 @@ class PaymentForm extends React.Component {
                             datePattern: ['Y'],
                           }}
                         />
-                        {errors.exp_year &&
-                          touched.exp_year && (
-                            <p className="help is-danger">{errors.exp_year}</p>
-                          )}
+                        {errors.exp_year && touched.exp_year && (
+                          <p className="help is-danger">{errors.exp_year}</p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -188,17 +184,15 @@ class PaymentForm extends React.Component {
                         numeral: true,
                       }}
                     />
-                    {errors.cvc &&
-                      touched.cvc && (
-                        <p className="help is-danger">{errors.cvc}</p>
-                      )}
+                    {errors.cvc && touched.cvc && (
+                      <p className="help is-danger">{errors.cvc}</p>
+                    )}
                   </div>
                 </div>
                 <BuyBtn
                   className="payment-form-btn button is-dark is-large is-radiusless is-uppercase"
                   onClick={this.handleSubmit}
-                  disabled={isSubmitting}
-                >
+                  disabled={isSubmitting}>
                   <span className="icon">
                     <i className="fas fa-lock" />
                   </span>

@@ -39,10 +39,9 @@ const LoginForm = props => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.email &&
-            touched.email && (
-              <p className="help is-danger is-capitalized">{errors.email}</p>
-            )}
+          {errors.email && touched.email && (
+            <p className="help is-danger is-capitalized">{errors.email}</p>
+          )}
         </div>
       </div>
       <div className="field">
@@ -56,8 +55,9 @@ const LoginForm = props => {
             onChange={handleChange}
             onBlur={handleBlur}
           />
-          {errors.password &&
-            touched.password && <p className="help is-danger">{errors.password}</p>}
+          {errors.password && touched.password && (
+            <p className="help is-danger">{errors.password}</p>
+          )}
         </div>
       </div>
       <Button
@@ -101,9 +101,7 @@ export default withFormik({
         variables: values,
       })
       .then(() => {
-        alertify.alert(
-          'Your are successfully logged in.',
-        );
+        alertify.alert('Your are successfully logged in.');
         setSubmitting(false);
       })
       .catch(() => {
