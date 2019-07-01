@@ -6,30 +6,31 @@ import { StaticQuery, graphql } from 'gatsby';
 // import Button from './Button';
 
 const Wrapper = styled.div`
-  height: 35rem;
+  height: 28rem;
   @media only screen and (max-width: 768px) {
     height: 26rem;
   }
-  .is-4 {
-    background-color: #384aeb;
-    background-image: url('/images/home/home.png');
+  .is-5 {
+    background-image: url('/images/home/home1.png');
     background-repeat: no-repeat;
     background-size: cover;
   }
   .content {
     background-color: #f1f6f7;
+    height: 27.5rem;
+    margin-top: 0.3rem;
   }
 `;
 
 const Content = styled.div`
-  margin: 9% 10% 0 21%;
+  margin: 7% 4% 0 13%;
   @media only screen and (max-width: 768px) {
     margin: 8% 4% 0 9%;
   }
   h1 {
     margin-right: 6rem;
     margin-top: 1rem;
-    font-size: 3rem;
+    font-size: 2.5rem;
     @media only screen and (max-width: 768px) {
       font-size: 1.5rem;
       margin-right: 0rem;
@@ -63,7 +64,7 @@ const heroQuery = graphql`
 
 const Hero = () => (
   <Wrapper className="columns">
-    <div className="column is-4 is-hidden-mobile">
+    <div className="column is-5 is-hidden-mobile">
       {/* <ImageWrapper>
         <img src={img} alt="Cart With Things" />
       </ImageWrapper> */}
@@ -76,7 +77,7 @@ const Hero = () => (
           <div className="column content">
             <Content>
               <h2 className="is-size-3">{heroData.node.title}</h2>
-              <h1 className="title has-text-dark has-text-weight-bold is-uppercase">
+              <h1 className="has-text-dark has-text-weight-bold is-uppercase">
                 {heroData.node.subtitle}
               </h1>
               <p className="has-text-weight-semibold">
