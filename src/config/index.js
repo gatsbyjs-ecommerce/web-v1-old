@@ -24,6 +24,6 @@ module.exports = {
   themeColor: '#c62828',
   primaryColor: '#394AEB',
   secondaryColor: '#2876C4',
-  logo: '/images/logo.png',
+  logo: '/images/logo.jpeg',
   homeBannerImage: '/images/home-bg-3.jpg',
 };

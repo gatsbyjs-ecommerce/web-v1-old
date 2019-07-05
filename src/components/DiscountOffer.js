@@ -73,7 +73,7 @@ const DiscountOffer = () => (
               {discountData.node.descritption.descritption}
             </p>
             <div className="btn">
-              <Button text="Shop Now" link="/coupons" />
+              <Button text="Discounts Offers" link="/coupons" />
             </div>
           </div>
         );
