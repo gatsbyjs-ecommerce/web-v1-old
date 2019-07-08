@@ -37,11 +37,14 @@ const Container = styled.div`
     font-size: 1.19rem;
   }
   .content {
-    padding: 5% 20%;
+    padding: 5% 18%;
     display: flex;
     @media only screen and (max-width: 768px) {
       display: inline;
       padding: 0;
+    }
+    @media only screen and (max-width: 1042px) and (min-width: 769px) {
+      padding: 5% 5%;
     }
   }
   input {

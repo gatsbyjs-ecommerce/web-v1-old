@@ -80,7 +80,6 @@ export default class IndexPage extends React.Component {
           query={indexQuery}
           render={data => {
             const { allContentfulProduct: products } = data;
-
             return (
               <React.Fragment>
                 <Hero />

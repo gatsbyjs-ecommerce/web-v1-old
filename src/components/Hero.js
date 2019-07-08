@@ -10,23 +10,38 @@ const Wrapper = styled.div`
   @media only screen and (max-width: 768px) {
     height: 26rem;
   }
+
   .is-5 {
     background-image: url('/images/home/home1.png');
     background-repeat: no-repeat;
     background-size: cover;
+    @media only screen and (max-width: 1042px) and (min-width: 769px) {
+      height: 32rem;
+    }
   }
+
   .content {
     background-color: #f1f6f7;
     height: 27.5rem;
     margin-top: 0.3rem;
+    @media only screen and (max-width: 1042px) and (min-width: 769px) {
+      height: 31.5rem;
+    }
   }
 `;
 
 const Content = styled.div`
-  margin: 7% 4% 0 13%;
+  margin: 4% 4% 0 13%;
   @media only screen and (max-width: 768px) {
     margin: 8% 4% 0 9%;
   }
+
+  h2 {
+    @media only screen and (max-width: 1042px) and (min-width: 769px) {
+      margin-top: -0.6rem;
+    }
+  }
+
   h1 {
     margin-right: 6rem;
     margin-top: 1rem;
@@ -36,12 +51,19 @@ const Content = styled.div`
       margin-right: 0rem;
       margin-top: 1rem;
     }
+    @media only screen and (max-width: 1042px) and (min-width: 769px) {
+      margin-top: 0rem;
+    }
   }
   p {
     margin-right: 9rem;
     margin-bottom: 2rem;
     @media only screen and (max-width: 768px) {
       margin-right: 0rem;
+    }
+    @media only screen and (max-width: 1042px) and (min-width: 769px) {
+      margin-right: 0rem;
+      margin-bottom: 0rem;
     }
   }
 `;

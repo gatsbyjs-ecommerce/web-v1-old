@@ -28,6 +28,10 @@ const Container = styled.div`
     @media only screen and (max-width: 768px) {
       font-size: 2rem;
     }
+    @media only screen and (max-width: 1042px) and (min-width: 769px) {
+      margin-top: 0;
+      font-size: 1rem;
+    }
   }
 
   .is-size-3 {
@@ -39,6 +43,13 @@ const Container = styled.div`
     margin: 7%;
   }
 `;
+
+const Desc = styled.p`
+  @media only screen and (max-width: 1042px) and (min-width: 769px) {
+    font-size: 0.9rem;
+  }
+`;
+
 const discountQuery = graphql`
   {
     allContentfulHomeDiscountOffer {
@@ -69,9 +80,9 @@ const DiscountOffer = () => (
             <p className="is-size-3 has-text-weight-bold has-text-black">
               {discountData.node.subtitle}
             </p>
-            <p className="has-text-black">
+            <Desc className="has-text-black">
               {discountData.node.descritption.descritption}
-            </p>
+            </Desc>
             <div className="btn">
               <Button text="Discounts Offers" link="/coupons" />
             </div>
