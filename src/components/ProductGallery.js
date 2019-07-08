@@ -31,9 +31,9 @@ class ProductGallery extends React.Component {
 
     const images = product.otherImages
       ? product.otherImages.map(image => ({
-          original: image.sizes.src,
-          thumbnail: image.sizes.src,
-        }))
+        original: image.sizes.src,
+        thumbnail: image.sizes.src,
+      }))
       : [];
 
     return (

@@ -15,6 +15,11 @@ const Container = styled.div`
   &&& {
     margin-top: 3rem;
   }
+  .is-6 {
+    margin-top: 8rem;
+    @media only screen and (max-width: 768px) {
+      margin-top: 0;
+  }
 `;
 
 const ViewAllBtn = styled(Link)`
@@ -58,7 +63,7 @@ export default class Product extends React.Component {
             />
             <div>
               <Container className="columns">
-                <div className="column is-8">
+                <div className="column is-6">
                   <ProductGallery product={product} />
                 </div>
                 <div className="column section">

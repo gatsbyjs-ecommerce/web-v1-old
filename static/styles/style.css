@@ -28,13 +28,6 @@ p {
   overflow: hidden;
 }
 
-@media only screen and (max-width: 768px) {
-  .image-gallery-image,
-  .image-gallery-image img {
-    height: 600px !important;
-  }
-}
-
 /*!
   Ionicons, v2.0.0
   Created by Ben Sperry for the Ionic Framework, http://ionicons.com/
@@ -440,7 +433,6 @@ p {
   vertical-align: middle;
   width: 100%;
   object-fit: cover;
-  height: 10rem;
 }
 .image-gallery-thumbnail.active {
   border: 4px solid #337ab7;
@@ -478,11 +470,8 @@ p {
   }
 }
 
-.image-gallery-image {
-  height: 800px;
-}
 .image-gallery-slide img {
-  height: 800px;
+  height: auto;
   object-fit: cover;
 }
 
