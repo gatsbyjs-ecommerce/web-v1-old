@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
+import SearchBar from './SearchBar';
+
 const Container = styled.div`
   height: 4rem;
   background-color: #f1f6f7;
@@ -17,8 +19,7 @@ const Container = styled.div`
     border: transparent;
   }
 
-  button,
-  input {
+  button {
     border: transparent;
   }
 `;
@@ -51,7 +52,9 @@ const FilterBar = () => (
                     // console.log(data, 'filterdata');
                     const lists = data.allContentfulSearchBarOptions.edges;
                     return lists.map(item => (
-                      <option key={item.id}>{item.option}</option>
+                      <option key={item.node.id} value={item.node.value}>
+                        {item.node.option}
+                      </option>
                     ));
                   }}
                 />
@@ -61,18 +64,7 @@ const FilterBar = () => (
         </div>
       </div>
     </div>
-    <div className="field search-bar">
-      <p className="control has-icons-right">
-        <input
-          className="input is-radiusless"
-          type="text"
-          placeholder="Search"
-        />
-        <span className="icon is-small is-right">
-          <i className="fas fa-search" />
-        </span>
-      </p>
-    </div>
+    <SearchBar />
   </Container>
 );
 
