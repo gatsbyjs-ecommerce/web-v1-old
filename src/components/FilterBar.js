@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
 
 const Container = styled.div`
   height: 4rem;
@@ -16,17 +17,22 @@ const Container = styled.div`
     border: transparent;
   }
 
-  div p input {
-    padding-left: 18%;
-  }
-
   button,
   input {
     border: transparent;
   }
+`;
 
-  .search-bar {
-    margin-left: 22%;
+const fiterQuery = graphql`
+  query {
+    allContentfulSearchBarOptions {
+      edges {
+        node {
+          id
+          option
+        }
+      }
+    }
   }
 `;
 
@@ -38,11 +44,17 @@ const FilterBar = () => (
           <div className="control">
             <div className="select">
               <select className="is-radiusless">
-                <option>Select Items</option>
-                <option>Option 1</option>
-                <option>Option 2</option>
-                <option>Option 3</option>
-                <option>Option 4</option>
+                <option>Select Options</option>
+                <StaticQuery
+                  query={fiterQuery}
+                  render={data => {
+                    // console.log(data, 'filterdata');
+                    const lists = data.allContentfulSearchBarOptions.edges;
+                    return lists.map(item => (
+                      <option key={item.id}>{item.option}</option>
+                    ));
+                  }}
+                />
               </select>
             </div>
           </div>

@@ -12,20 +12,6 @@ const Container = styled.section`
   padding: 0rem 1.5rem !important;
 `;
 
-// export const shopQuery = graphql`
-//   query Shop {
-//     allContentfulSidebarOptions {
-//       edges {
-//         node {
-//           id
-//           name
-//           quantity
-//         }
-//       }
-//     }
-//   }
-// `;
-
 export default class Shop extends React.Component {
   componentDidMount() {
     ReactGA.pageview('/shop');
