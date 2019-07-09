@@ -13,8 +13,8 @@ const Container = styled.aside`
 const Title = styled.p`
   background-color: #384aeb;
   width: 100%;
-  height: 3.5rem;
-  font-size: 1rem;
+  height: 4.5rem;
+  font-size: 1.2rem;
   font-weight: 900;
   padding: 1rem;
 `;

@@ -7,11 +7,24 @@ import Layout from '../components/Layout';
 import config from '../config/index';
 import Seo from '../components/Seo';
 import ShopBodyItems from '../components/ShopBodyItems';
-import ShopProducts from '../components/ShopProducts';
 
 const Container = styled.section`
   padding: 0rem 1.5rem !important;
 `;
+
+// export const shopQuery = graphql`
+//   query Shop {
+//     allContentfulSidebarOptions {
+//       edges {
+//         node {
+//           id
+//           name
+//           quantity
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default class Shop extends React.Component {
   componentDidMount() {
@@ -19,6 +32,9 @@ export default class Shop extends React.Component {
   }
 
   render() {
+    // const { data } = this.props;
+    // const shop = data.allContentfulSidebarOptions;
+
     return (
       <Layout>
         <Container className="section">
@@ -29,7 +45,6 @@ export default class Shop extends React.Component {
               url={`${config.siteUrl}/shop`}
             />
             <ShopBodyItems />
-            <ShopProducts />
           </div>
         </Container>
       </Layout>

@@ -19,7 +19,7 @@ const Container = styled.aside`
   }
 `;
 
-const AsideOptions = ({ name, number }) => (
+const AsideOptions = ({ name, quantity }) => (
   <Container className="menu">
     <ul className="menu-list">
       <li>
@@ -27,7 +27,7 @@ const AsideOptions = ({ name, number }) => (
           <label className="radio">
             <input type="radio" name="answer" />
             <span>{name}</span>
-            <span>{number}</span>
+            <span>{quantity}</span>
           </label>
         </div>
       </li>
