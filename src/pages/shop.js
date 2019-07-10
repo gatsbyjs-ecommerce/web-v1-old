@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 import config from '../config/index';
 import Seo from '../components/Seo';
-import ShopBodyItems from '../components/ShopBodyItems';
+import ShopItems from '../components/ShopItems';
 
 const Container = styled.section`
   padding: 0rem 1.5rem !important;
@@ -30,7 +30,7 @@ export default class Shop extends React.Component {
               description="Get the best details"
               url={`${config.siteUrl}/shop`}
             />
-            <ShopBodyItems />
+            <ShopItems />
           </div>
         </Container>
       </Layout>

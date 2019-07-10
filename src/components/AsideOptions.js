@@ -26,7 +26,7 @@ const AsideOptions = ({ name, quantity }) => (
         <div className="control">
           <label className="radio">
             <input type="radio" name="answer" />
-            <span>{name}</span>
+            <span className="is-uppercase">{name}</span>
             <span>{quantity}</span>
           </label>
         </div>

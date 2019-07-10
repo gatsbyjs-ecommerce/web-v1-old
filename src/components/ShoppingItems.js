@@ -56,9 +56,11 @@ export default class ShoppingItems extends React.Component {
   }
 
   onMouseHover = () => {
-    this.setState(prevState => ({
-      showIcons: !prevState.showIcons,
-    }));
+    setTimeout(() => {
+      this.setState(prevState => ({
+        showIcons: !prevState.showIcons,
+      }));
+    }, 500);
   };
 
   render() {
@@ -73,22 +75,22 @@ export default class ShoppingItems extends React.Component {
           <CardWrapper className="card">
             <div className="card-image">
               <img src={img} alt="Placeholder" />
-              <IconContainer>
+              {/*  <IconContainer>
                 {showIcons ? (
                   <ul>
                     <li>
-                      <button className="icon">
+                      <button className="icon" type="button">
                         <i className="fas fa-shopping-cart" />
                       </button>
                     </li>
                     <li>
-                      <button className="icon">
+                      <button className="icon" type="button">
                         <i className="far fa-heart" />
                       </button>
                     </li>
                   </ul>
                 ) : null}
-              </IconContainer>
+                </IconContainer> */}
             </div>
           </CardWrapper>
           <MediaContent className="media-content has-text-centered">

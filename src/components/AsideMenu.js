@@ -10,8 +10,7 @@ const asideQuery = graphql`
       edges {
         node {
           id
-          name
-          quantity
+          title
         }
       }
     }
@@ -25,9 +24,7 @@ const AsideMenu = () => (
       query={asideQuery}
       render={data => {
         const lists = data.allContentfulSidebarOptions.edges;
-        return lists.map(item => (
-          <AsideOptions name={item.node.name} quantity={item.node.quantity} />
-        ));
+        return lists.map(item => <AsideOptions name={item.node.title} />);
       }}
     />
   </div>

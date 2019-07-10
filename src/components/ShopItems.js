@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import AsideMenu from './AsideMenu';
-import FilterBar from './FilterBar';
+import SearchBar from './SearchBar';
 import ShoppingItems from './ShoppingItems';
 
 const Items = styled.div`
@@ -10,13 +10,13 @@ const Items = styled.div`
   display: grid;
 `;
 
-const ShopBodyItems = () => (
+const ShopItems = () => (
   <div className="columns">
     <div className="column is-3">
       <AsideMenu />
     </div>
     <div className="column is-hidden-mobile">
-      <FilterBar />
+      <SearchBar />
       <div className="columns is-flex">
         <div className="column">
           <ShoppingItems />
@@ -51,4 +51,4 @@ const ShopBodyItems = () => (
   </div>
 );
 
-export default ShopBodyItems;
+export default ShopItems;
