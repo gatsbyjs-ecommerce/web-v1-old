@@ -65,6 +65,8 @@ const footerQuery = graphql`
   }
 `;
 
+// TODO: Customer service needs to be dynamic
+
 const Footer = ({ home }) => (
   <Container>
     <div className="section container is-hidden-mobile">
