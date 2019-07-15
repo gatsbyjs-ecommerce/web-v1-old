@@ -21,6 +21,19 @@ const pageQuery = graphql`
         # }
       }
     }
+    allContentfulPages {
+      edges {
+        node {
+          id
+          title
+          slug
+          content {
+            content
+            id
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -34,7 +47,14 @@ export default class Page extends React.Component {
 
   render() {
     // eslint-disable-next-line react/destructuring-assignment
-    const { contentfulPages: page } = this.props.data;
+    const {
+      data: {
+        contentfulPages: page,
+        allContentfulPages: pages,
+        contentfulHome: home,
+      },
+    } = this.props;
+    // const { contentfulPages: page } = this.props.data;
 
     return (
       <Layout>
@@ -47,12 +67,15 @@ export default class Page extends React.Component {
             />
             <StaticQuery
               query={pageQuery}
-              render={() => (
-                <React.Fragment>
-                  <Heading>{page.title}</Heading>
-                  <HTMLContent content={page.content.content} />
-                </React.Fragment>
-              )}
+              render={data => {
+                const items = data.allContentfulPages.edges[0];
+                return (
+                  <React.Fragment>
+                    <Heading>{items.node.title}</Heading>
+                    <HTMLContent content={items.node.content.content} />
+                  </React.Fragment>
+                );
+              }}
             />
           </div>
         </section>
