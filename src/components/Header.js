@@ -142,7 +142,7 @@ const CartMobile = styled.div`
 const NavItems = [
   { id: 1, name: 'Home', url: '/' },
   // { id: 2, name: 'Shop', url: '/shop' },
-  { id: 3, name: 'Coupons', url: '/coupons' },
+  // { id: 3, name: 'Coupons', url: '/coupons' },
   { id: 4, name: 'Blog', url: '/blog' },
   { id: 5, name: 'Sign in', url: '/login' },
   { id: 6, name: 'Contact', url: '/contact' },
