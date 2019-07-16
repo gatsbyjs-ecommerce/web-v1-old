@@ -9,10 +9,10 @@ module.exports = {
   fbAppID: '@sejalsuits',
   type: 'website',
 
-  GRAPHQL_ENDPOINT: 'https://api.sejalsuits.co.uk',
+  // GRAPHQL_ENDPOINT: 'https://api.sejalsuits.co.uk',
   GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000',
   siteUrl: 'https://www.smarthomedevices.solutions',
-  mediumPublicationUrl: 'https://medium.com/sejal-suits',
+  mediumPublicationUrl: 'https://medium.com/@shdevicesblog',
   googleAnalytics: 'UA-1390187-40',
   stripePublishableKey:
     process.env.NODE_ENV === 'development'
