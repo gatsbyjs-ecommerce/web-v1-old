@@ -36,9 +36,10 @@ node_modules
 .idea
 
 # Configuration files
-src/*.json
-deploy.sh
-now.json
+src/conf/*.json
 
 # Environment file
 .env
+
+# build files
+/build

@@ -1,7 +1,7 @@
 /* eslint consistent-return:0 */
 
 import { createClient as createClientManagement } from 'contentful-management';
-import { isObject, isArray } from 'underscore';
+import { isObject, isArray } from 'lodash';
 
 import conf from './config';
 

@@ -11,11 +11,6 @@ const conf = convict({
     default: 'Sejal Suits',
     env: 'SITE_NAME',
   },
-  adminEmail: {
-    doc: 'Default admin email address.',
-    default: 'perminder.klair@gmail.com',
-    env: 'ADMIN_EMAIL',
-  },
   env: {
     doc: 'The application environment.',
     format: ['production', 'development', 'test'],
@@ -27,6 +22,36 @@ const conf = convict({
     format: 'port',
     default: 4000,
     env: 'PORT',
+  },
+  webAppUrl: {
+    doc: 'Web app url',
+    format: String,
+    default: 'http://www.site.com',
+    env: 'WEB_APP_URL',
+  },
+  adminEmail: {
+    doc: 'Admin email ',
+    format: String,
+    default: 'no-reply@site.com',
+    env: 'ADMIN_EMAIL',
+  },
+  jwtSecret: {
+    doc: 'JWT secret.',
+    format: String,
+    default: 'MY_SITE_SECRET',
+    env: 'JWTSECRET',
+  },
+  mailer: {
+    user: {
+      doc: 'Mailer user.',
+      format: String,
+      default: '',
+    },
+    password: {
+      doc: 'Mailer password.',
+      format: String,
+      default: '',
+    },
   },
   contentful: {
     spaceId: {
@@ -40,20 +65,6 @@ const conf = convict({
       format: String,
       default: '',
       env: 'CONTENTFUL_MANAGEMENT_ACCESS_TOKEN',
-    },
-  },
-  mailer: {
-    user: {
-      doc: 'Mailer user.',
-      format: String,
-      default: '',
-      env: 'MAILGUN_USER',
-    },
-    password: {
-      doc: 'Mailer password.',
-      format: String,
-      default: '',
-      env: 'MAILGUN_PASSWORD',
     },
   },
   mailchimp: {
