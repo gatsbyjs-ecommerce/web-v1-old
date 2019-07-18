@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactGA from 'react-ga';
 import { StaticQuery, graphql } from 'gatsby';
+import gql from 'graphql-tag';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -59,6 +60,14 @@ export const indexQuery = graphql`
           }
         }
       }
+    }
+  }
+`;
+
+const subscribeMutation = gql`
+  mutation subscribe($email: String!) {
+    subscribe(email: $email) {
+      email
     }
   }
 `;

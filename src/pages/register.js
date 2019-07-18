@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
 import Link from 'gatsby-link';
+import gql from 'graphql-tag';
 
 import Layout from '../components/Layout';
 import config from '../config/index';
@@ -32,6 +33,19 @@ const Container = styled.div`
 const LoginLink = styled(Link)`
   :hover {
     color: #394aeb;
+  }
+`;
+
+const registerMutation = gql`
+  mutation register($email: String!, $password: String!) {
+    register(input: { email: $email, password: $password }) {
+      jwt
+      user {
+        id
+        email
+        type
+      }
+    }
   }
 `;
 

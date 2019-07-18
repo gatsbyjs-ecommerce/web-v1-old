@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
-import Link from 'gatsby-link';
+import gql from 'graphql-tag';
 
 import Layout from '../components/Layout';
 import config from '../config/index';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
-import LoginForm from '../components/LoginForm';
 import ForgotPasswordForm from '../components/ForgotPasswordForm';
 
 const Container = styled.div`
@@ -30,9 +29,11 @@ const Container = styled.div`
   }
 `;
 
-const RegisterLink = styled(Link)`
-  :hover {
-    color: #394aeb;
+const forgotPasswordMutation = gql`
+  mutation forgotPassword($email: String!) {
+    forgotPassword(input: { email: $email }) {
+      success
+    }
   }
 `;
 

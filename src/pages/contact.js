@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
 import { graphql } from 'gatsby';
+import gql from 'graphql-tag';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -33,6 +34,14 @@ export const contactQuery = graphql`
       twitter
       instagram
       pinterest
+    }
+  }
+`;
+
+const contactMutation = gql`
+  mutation contact($email: String!, $name: String!, $message: String!) {
+    contact(email: $email, name: $name, message: $message) {
+      email
     }
   }
 `;
@@ -87,7 +96,7 @@ export default class Contact extends React.Component {
                 <SocialIcons data={contact} />
               </div>
               <div className="column">
-                <ContactForm />
+                <ContactForm onSubmit={this.contactMutation} />
               </div>
             </div>
           </div>
