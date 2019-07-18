@@ -144,5 +144,51 @@
       "disabled": false,
       "omitted": false
     }
-  ]
+  ],
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "o6uhtcakujse"
+      }
+    },
+    "id": "home",
+    "type": "ContentType",
+    "createdAt": "2018-03-21T09:53:43.650Z",
+    "updatedAt": "2018-06-07T06:02:20.171Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "publishedVersion": 27,
+    "publishedAt": "2018-06-07T06:02:20.171Z",
+    "firstPublishedAt": "2018-03-21T09:53:44.491Z",
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    },
+    "publishedCounter": 14,
+    "version": 28,
+    "publishedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    }
+  }
 }

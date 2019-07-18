@@ -14,21 +14,35 @@
       "omitted": false
     },
     {
-      "id": "product",
-      "name": "Product",
-      "type": "Link",
+      "id": "products",
+      "name": "Products",
+      "type": "Array",
       "localized": false,
       "required": false,
-      "validations": [
-        {
-          "linkContentType": [
-            "product"
-          ]
-        }
-      ],
+      "validations": [],
       "disabled": false,
       "omitted": false,
-      "linkType": "Entry"
+      "items": {
+        "type": "Link",
+        "validations": [
+          {
+            "linkContentType": [
+              "product"
+            ]
+          }
+        ],
+        "linkType": "Entry"
+      }
+    },
+    {
+      "id": "shipping",
+      "name": "Shipping Details",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
     },
     {
       "id": "status",
@@ -43,16 +57,6 @@
     {
       "id": "subtotal",
       "name": "Subtotal",
-      "type": "Symbol",
-      "localized": false,
-      "required": false,
-      "validations": [],
-      "disabled": false,
-      "omitted": false
-    },
-    {
-      "id": "shipping",
-      "name": "Shipping",
       "type": "Symbol",
       "localized": false,
       "required": false,
@@ -210,5 +214,51 @@
       "disabled": false,
       "omitted": false
     }
-  ]
+  ],
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "o6uhtcakujse"
+      }
+    },
+    "id": "order",
+    "type": "ContentType",
+    "createdAt": "2018-03-18T04:26:56.168Z",
+    "updatedAt": "2018-06-17T15:15:25.579Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "publishedVersion": 55,
+    "publishedAt": "2018-06-17T15:15:25.579Z",
+    "firstPublishedAt": "2018-03-18T04:26:57.072Z",
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    },
+    "publishedCounter": 28,
+    "version": 56,
+    "publishedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    }
+  }
 }

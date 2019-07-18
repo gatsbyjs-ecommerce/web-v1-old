@@ -1,14 +1,14 @@
 {
-  "name": "Pages",
+  "name": "Category",
   "description": "",
-  "displayField": "title",
+  "displayField": "slug",
   "fields": [
     {
       "id": "title",
       "name": "Title",
       "type": "Symbol",
       "localized": false,
-      "required": true,
+      "required": false,
       "validations": [],
       "disabled": false,
       "omitted": false
@@ -18,28 +18,14 @@
       "name": "slug",
       "type": "Symbol",
       "localized": false,
-      "required": true,
-      "validations": [
-        {
-          "unique": true
-        }
-      ],
-      "disabled": false,
-      "omitted": false
-    },
-    {
-      "id": "content",
-      "name": "Content",
-      "type": "Text",
-      "localized": false,
       "required": false,
       "validations": [],
       "disabled": false,
       "omitted": false
     },
     {
-      "id": "otherContent",
-      "name": "Other Content",
+      "id": "description",
+      "name": "Description",
       "type": "Text",
       "localized": false,
       "required": false,
@@ -57,6 +43,23 @@
       "disabled": false,
       "omitted": false,
       "linkType": "Asset"
+    },
+    {
+      "id": "parent",
+      "name": "Parent",
+      "type": "Link",
+      "localized": false,
+      "required": false,
+      "validations": [
+        {
+          "linkContentType": [
+            "category"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Entry"
     }
   ],
   "sys": {
@@ -67,10 +70,10 @@
         "id": "o6uhtcakujse"
       }
     },
-    "id": "pages",
+    "id": "category",
     "type": "ContentType",
-    "createdAt": "2018-04-24T10:11:52.250Z",
-    "updatedAt": "2018-04-24T10:11:53.453Z",
+    "createdAt": "2018-06-26T14:35:10.707Z",
+    "updatedAt": "2018-06-26T14:43:37.761Z",
     "environment": {
       "sys": {
         "id": "master",
@@ -78,9 +81,9 @@
         "linkType": "Environment"
       }
     },
-    "publishedVersion": 1,
-    "publishedAt": "2018-04-24T10:11:53.453Z",
-    "firstPublishedAt": "2018-04-24T10:11:53.453Z",
+    "publishedVersion": 3,
+    "publishedAt": "2018-06-26T14:43:37.761Z",
+    "firstPublishedAt": "2018-06-26T14:35:11.584Z",
     "createdBy": {
       "sys": {
         "type": "Link",
@@ -95,8 +98,8 @@
         "id": "6lmquIU9OomPxnEpFo88h8"
       }
     },
-    "publishedCounter": 1,
-    "version": 2,
+    "publishedCounter": 2,
+    "version": 4,
     "publishedBy": {
       "sys": {
         "type": "Link",

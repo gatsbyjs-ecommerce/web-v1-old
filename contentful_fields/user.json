@@ -1,21 +1,11 @@
 {
-  "name": "Pages",
+  "name": "User",
   "description": "",
-  "displayField": "title",
+  "displayField": "email",
   "fields": [
     {
-      "id": "title",
-      "name": "Title",
-      "type": "Symbol",
-      "localized": false,
-      "required": true,
-      "validations": [],
-      "disabled": false,
-      "omitted": false
-    },
-    {
-      "id": "slug",
-      "name": "slug",
+      "id": "email",
+      "name": "email",
       "type": "Symbol",
       "localized": false,
       "required": true,
@@ -28,9 +18,9 @@
       "omitted": false
     },
     {
-      "id": "content",
-      "name": "Content",
-      "type": "Text",
+      "id": "password",
+      "name": "password",
+      "type": "Symbol",
       "localized": false,
       "required": false,
       "validations": [],
@@ -38,9 +28,9 @@
       "omitted": false
     },
     {
-      "id": "otherContent",
-      "name": "Other Content",
-      "type": "Text",
+      "id": "resetPasswordToken",
+      "name": "resetPasswordToken",
+      "type": "Symbol",
       "localized": false,
       "required": false,
       "validations": [],
@@ -48,15 +38,14 @@
       "omitted": false
     },
     {
-      "id": "image",
-      "name": "Image",
-      "type": "Link",
+      "id": "status",
+      "name": "status",
+      "type": "Symbol",
       "localized": false,
       "required": false,
       "validations": [],
       "disabled": false,
-      "omitted": false,
-      "linkType": "Asset"
+      "omitted": false
     }
   ],
   "sys": {
@@ -67,10 +56,10 @@
         "id": "o6uhtcakujse"
       }
     },
-    "id": "pages",
+    "id": "user",
     "type": "ContentType",
-    "createdAt": "2018-04-24T10:11:52.250Z",
-    "updatedAt": "2018-04-24T10:11:53.453Z",
+    "createdAt": "2019-07-17T17:57:03.046Z",
+    "updatedAt": "2019-07-17T17:57:04.363Z",
     "environment": {
       "sys": {
         "id": "master",
@@ -79,8 +68,8 @@
       }
     },
     "publishedVersion": 1,
-    "publishedAt": "2018-04-24T10:11:53.453Z",
-    "firstPublishedAt": "2018-04-24T10:11:53.453Z",
+    "publishedAt": "2019-07-17T17:57:04.363Z",
+    "firstPublishedAt": "2019-07-17T17:57:04.363Z",
     "createdBy": {
       "sys": {
         "type": "Link",

@@ -1,0 +1,19 @@
+<mjml>
+  <mj-body>
+    <mj-section>
+      <mj-column>
+
+        <mj-text font-size="35px" font-family="helvetica" color="#F45E43" align="center">
+          My Site
+        </mj-text>
+
+        <mj-divider border-color="#F45E43"></mj-divider>
+
+        <mj-text font-size="20px" font-family="helvetica" color="#5a6270" align="center">
+        	email content here
+        </mj-text>
+
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

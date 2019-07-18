@@ -1,20 +1,10 @@
-import Mailchimp from 'mailchimp-api-v3';
-import nodemailer from 'nodemailer';
 import Stripe from 'stripe';
 import async from 'async';
-import { first } from 'underscore';
+import { first } from 'lodash';
 
-import { getEntry, getEntries, createEntry } from './contentful';
+import { getEntry, getEntries, createEntry } from '../utils/contentful';
 
-import conf from './config';
-
-const transporter = nodemailer.createTransport({
-  service: 'Mailgun',
-  auth: {
-    user: conf.get('mailer.user'),
-    pass: conf.get('mailer.password'),
-  },
-});
+import config from '../utils/config';
 
 export default {
   Query: {
@@ -39,7 +29,7 @@ export default {
       });
 
       // process payment with stripe
-      const stripe = new Stripe(conf.get('stripeKey'));
+      const stripe = new Stripe(config.get('stripeKey'));
       try {
         const charge = await stripe.charges.create({
           amount: `${totalCost}00`,
@@ -81,36 +71,6 @@ export default {
         throw new Error('Invalid coupon.');
       }
       return coupon;
-    },
-    subscribe: async (parent, args) => {
-      const mailchimp = new Mailchimp(conf.get('mailchimp.key'));
-      const list = conf.get('mailchimp.list');
-      await mailchimp.post(`/lists/${list}/members`, {
-        email_address: args.email,
-        status: 'subscribed',
-      });
-
-      return args;
-    },
-    contact: async (parent, args) => {
-      const { name, email, message } = args;
-
-      const mailOptions = {
-        to: conf.get('adminEmail'),
-        from: `${name} <${email}>`,
-        subject: `${conf.get('siteName')} Contact Form`,
-        text: message,
-      };
-
-      try {
-        await transporter.sendMail(mailOptions);
-        return {
-          status: 'success',
-          message: 'Contact informaton sent successfully',
-        };
-      } catch (err) {
-        return { status: 'error', message: err.message };
-      }
     },
   },
 };

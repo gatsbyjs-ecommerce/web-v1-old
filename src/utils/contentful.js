@@ -1,7 +1,7 @@
 /* eslint consistent-return:0 */
 
 import { createClient as createClientManagement } from 'contentful-management';
-import { isObject, isArray } from 'underscore';
+import { isObject, isArray } from 'lodash';
 
 import conf from './config';
 
@@ -91,14 +91,19 @@ const parseNewEntry = input => {
  * @param {*} contentType
  */
 export const getEntries = async (contentType, other) => {
-  const space = await contentfulManagement.getSpace(config.contenfulSpaceId);
-  const entries = await space.getEntries({
-    // order: '-sys.createdAt',
-    content_type: contentType,
-    ...other,
-  });
-  // console.log('entries', entries);
-  return parseResponse(entries.items);
+  try {
+    const space = await contentfulManagement.getSpace(config.contenfulSpaceId);
+    const environment = await space.getEnvironment('master');
+    const entries = await environment.getEntries({
+      // order: '-sys.createdAt',
+      content_type: contentType,
+      ...other,
+    });
+    // console.log('entries', entries);
+    return parseResponse(entries.items);
+  } catch (err) {
+    console.error('getEntries', err.message);
+  }
 };
 
 /**
@@ -106,7 +111,8 @@ export const getEntries = async (contentType, other) => {
  */
 export const getEntry = async id => {
   const space = await contentfulManagement.getSpace(config.contenfulSpaceId);
-  const entry = await space.getEntry(id);
+  const environment = await space.getEnvironment('master');
+  const entry = await environment.getEntry(id);
   return { id: entry.sys.id, ...parseFields(entry.fields) };
 };
 
@@ -117,8 +123,9 @@ export const getEntry = async id => {
  */
 export const createEntry = async (args, contentType) => {
   const space = await contentfulManagement.getSpace(config.contenfulSpaceId);
+  const environment = await space.getEnvironment('master');
   const data = parseNewEntry(args);
-  const entry = await space.createEntry(contentType, {
+  const entry = await environment.createEntry(contentType, {
     fields: data,
   });
 
