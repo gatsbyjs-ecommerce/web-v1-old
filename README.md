@@ -8,6 +8,8 @@ A minimalist static E-commerce site built using GatsbyJs.
 
 Required API for mutations can be found in [API branch](https://github.com/perminder-klair/gatsbyjs-ecommerce/tree/api)
 
+Schema to setup Contentful's `Content model` can be found here [Schema JSON](https://github.com/perminder-klair/gatsbyjs-ecommerce/tree/api/contentful_fields)
+
 More info about this written here for better understanding [Creating Static E-commerce site with GatsbyJs](https://medium.com/@pinku1/creating-static-e-commerce-site-with-gatsbyjs-a349d7e022a)
 
 ## Stack
