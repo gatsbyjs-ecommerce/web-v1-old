@@ -43,3 +43,5 @@ src/conf/*.json
 
 # build files
 /build
+now.json
+deploy.sh
