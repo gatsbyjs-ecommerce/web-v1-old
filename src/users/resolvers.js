@@ -1,10 +1,11 @@
-import { isEmpty } from 'lodash';
+import { isEmpty, head } from 'lodash';
 import randomstring from 'randomstring';
 
-import { generateToken } from '../utils/auth';
+import { generateToken, hashPassword, comparePassword } from '../utils/auth';
 import User from './database';
 import mailer, { renderTemplate } from '../utils/mailer';
 import config from '../utils/config';
+import { getEntry, createEntry, getEntries } from '../utils/contentful';
 
 export default {
   Query: {
@@ -13,53 +14,58 @@ export default {
         throw new Error('Not logged in');
       }
 
-      return User.findOne({ _id: ctx.user.id });
+      const user = await getEntry(ctx.user.id);
+      return user;
     },
   },
   Mutation: {
     register: async (root, args) => {
       const { email, password } = args.input;
-      let user = await User.findOne({ email: email.toLowerCase() });
+
+      const users = await getEntries('user', {
+        'fields.email[match]': email.toLowerCase(),
+      });
+      let user = head(users);
 
       if (user) {
         throw new Error('E-mail already registered.');
       }
 
-      const data = {
-        email,
-        password,
-      };
-
-      user = new User(data);
-      await user.save();
+      const hashedPassword = await hashPassword(password);
+      user = await createEntry({ email, password: hashedPassword }, 'user');
 
       // send welcome email
-      const [html, subject] = await renderTemplate('welcome', {
-        user,
-      });
-      const mailOptions = {
-        to: `"Site User" <${user.email}>`,
-        from: config.get('adminEmail'),
-        subject,
-        html,
-      };
-      await mailer.sendMail(mailOptions);
+      // const [html, subject] = await renderTemplate('welcome', {
+      //   user,
+      // });
+      // const mailOptions = {
+      //   to: `"Site User" <${user.email}>`,
+      //   from: config.get('adminEmail'),
+      //   subject,
+      //   html,
+      // };
+      // await mailer.sendMail(mailOptions);
 
       const token = generateToken(user);
       return { user, jwt: token };
     },
     login: async (root, args) => {
-      const user = await User.findOne({ email: args.input.email });
+      const { email, password } = args.input;
+      const users = await getEntries('user', {
+        'fields.email[match]': email.toLowerCase(),
+      });
+      const user = head(users);
+
       if (!user) {
         throw new Error('Invalid username or password.');
       }
-      const isPasswordValid = await user.comparePassword(args.input.password);
+      const isPasswordValid = await comparePassword(password, user.password);
       if (!isPasswordValid) {
         throw new Error('Invalid username or password.');
       }
 
       const token = generateToken(user);
-      return { user, jwt: token };
+      return { user: { ...user, id: user.id || user.entryId }, jwt: token };
     },
     updateMe: async (root, { input }, ctx) => {
       if (!ctx.user) {

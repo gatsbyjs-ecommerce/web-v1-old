@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 import conf from './config';
 
 export const isAuthenticated = async req => {
@@ -21,8 +22,19 @@ export const isAuthenticated = async req => {
 
 export function generateToken(user) {
   const jwtToken = jwt.sign(
-    { id: user._id, email: user.email },
+    { id: user.id || user.entryId, email: user.email },
     conf.get('jwtSecret'),
   );
   return `JWT ${jwtToken}`;
 }
+
+export const hashPassword = async password => {
+  const salt = await bcrypt.genSaltSync(10);
+  const hash = await bcrypt.hashSync(password, salt);
+  return hash;
+};
+
+export const comparePassword = async (candidatePassword, password) => {
+  const result = await bcrypt.compareSync(candidatePassword, password);
+  return result;
+};

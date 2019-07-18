@@ -80,6 +80,16 @@
       "omitted": false
     },
     {
+      "id": "shippingTime",
+      "name": "Shipping Time",
+      "type": "Symbol",
+      "localized": false,
+      "required": false,
+      "validations": [],
+      "disabled": false,
+      "omitted": false
+    },
+    {
       "id": "shortDetails",
       "name": "Short Details",
       "type": "Text",
@@ -163,6 +173,23 @@
       "omitted": false
     },
     {
+      "id": "category",
+      "name": "Category",
+      "type": "Link",
+      "localized": false,
+      "required": false,
+      "validations": [
+        {
+          "linkContentType": [
+            "category"
+          ]
+        }
+      ],
+      "disabled": false,
+      "omitted": false,
+      "linkType": "Entry"
+    },
+    {
       "id": "listingOrder",
       "name": "Listing Order",
       "type": "Integer",
@@ -172,5 +199,51 @@
       "disabled": false,
       "omitted": false
     }
-  ]
+  ],
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "o6uhtcakujse"
+      }
+    },
+    "id": "product",
+    "type": "ContentType",
+    "createdAt": "2018-03-18T04:24:07.452Z",
+    "updatedAt": "2018-06-26T14:43:12.377Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "publishedVersion": 35,
+    "publishedAt": "2018-06-26T14:43:12.377Z",
+    "firstPublishedAt": "2018-03-18T04:24:08.302Z",
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    },
+    "publishedCounter": 18,
+    "version": 36,
+    "publishedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    }
+  }
 }

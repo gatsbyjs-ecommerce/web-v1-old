@@ -26,7 +26,7 @@
         {
           "size": {
             "max": 5,
-            "min": 5
+            "min": 4
           },
           "message": "coupon code have five character"
         }
@@ -81,5 +81,51 @@
       "disabled": false,
       "omitted": false
     }
-  ]
+  ],
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "o6uhtcakujse"
+      }
+    },
+    "id": "coupons",
+    "type": "ContentType",
+    "createdAt": "2018-04-12T07:54:06.469Z",
+    "updatedAt": "2018-06-18T05:35:19.667Z",
+    "environment": {
+      "sys": {
+        "id": "master",
+        "type": "Link",
+        "linkType": "Environment"
+      }
+    },
+    "publishedVersion": 9,
+    "publishedAt": "2018-06-18T05:35:19.667Z",
+    "firstPublishedAt": "2018-04-12T07:54:07.465Z",
+    "createdBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "1shslti5XQZ0doWDE85AbY"
+      }
+    },
+    "updatedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    },
+    "publishedCounter": 5,
+    "version": 10,
+    "publishedBy": {
+      "sys": {
+        "type": "Link",
+        "linkType": "User",
+        "id": "6lmquIU9OomPxnEpFo88h8"
+      }
+    }
+  }
 }
