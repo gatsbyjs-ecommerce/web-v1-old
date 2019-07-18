@@ -9,7 +9,7 @@ module.exports = {
   fbAppID: '@sejalsuits',
   type: 'website',
 
-  // GRAPHQL_ENDPOINT: 'https://api.sejalsuits.co.uk',
+  GRAPHQL_ENDPOINT: 'https://smart-home-api.now.sh',
   GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000',
   siteUrl: 'https://www.smarthomedevices.solutions',
   mediumPublicationUrl: 'https://medium.com/@shdevicesblog',
