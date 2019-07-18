@@ -1,6 +1,7 @@
 # GatsbyJs Ecommerce
 
 A minimalist static E-commerce site built using GatsbyJs.
+It use headless CMS called Contentful, so no need to manage database for APIs hosting.
 
 - Site is still in progress, happy for pull requests and issues if you find any.
 
