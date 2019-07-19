@@ -2,18 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { withFormik } from 'formik';
-import gql from 'graphql-tag';
-
-import apolloClient from '../utils/apolloClient';
-import Button from './Button';
-
-const loginMutation = gql`
-  mutation login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      email
-    }
-  }
-`;
 
 const LoginForm = props => {
   const {
@@ -60,14 +48,13 @@ const LoginForm = props => {
           )}
         </div>
       </div>
-      <Button
+      <button
         type="submit"
         disabled={isSubmitting}
-        className="checkout-form-btn button is-fullwidth is-radiusless is-uppercase"
-        text="Submit"
-        width="100%"
-        margin="2rem"
-      />
+        className="button is-link is-fullwidth is-radiusless is-uppercase"
+        text="Submit">
+        Submit
+      </button>
     </form>
   );
 };
@@ -91,23 +78,10 @@ export default withFormik({
     email: Yup.string().required('Email is required!'),
     password: Yup.string().required('Password is required'),
   }),
-  handleSubmit: (values, { setSubmitting }) => {
-    // console.log('handle submit', values);
-    const alertify = require('alertify.js'); // eslint-disable-line
-
-    apolloClient
-      .mutate({
-        mutation: loginMutation, // connect it to login mutation
-        variables: values,
-      })
-      .then(() => {
-        alertify.alert('Your are successfully logged in.');
-        setSubmitting(false);
-      })
-      .catch(() => {
-        setSubmitting(false);
-        alertify.alert('Please check your credentials.');
-      });
+  handleSubmit: (values, { setSubmitting, props }) => {
+    props.handleUpdate(values).finally(() => {
+      setSubmitting(false);
+    });
   },
   displayName: 'LoginForm', // helps with React DevTools
 })(LoginForm);

@@ -76,14 +76,20 @@ const RegisterForm = props => {
           )}
         </div>
       </div>
-      <Button
+      {/* <Button
         type="submit"
         disabled={isSubmitting}
         className="checkout-form-btn button is-fullwidth is-radiusless is-uppercase"
         text="Register"
         width="100%"
         margin="2rem"
-      />
+      /> */}
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="button is-link is-fullwidth is-radiusless is-uppercase">
+        Register
+      </button>
     </form>
   );
 };
@@ -109,23 +115,10 @@ export default withFormik({
     email: Yup.string().required('Email is required!'),
     password: Yup.string().required('Password is required'),
   }),
-  handleSubmit: (values, { setSubmitting }) => {
-    // console.log('handle submit', values);
-    const alertify = require('alertify.js'); // eslint-disable-line
-
-    apolloClient
-      .mutate({
-        mutation: registerMutation, // connect it to register mutation
-        variables: values,
-      })
-      .then(() => {
-        alertify.alert('Your are successfully logged in.');
-        setSubmitting(false);
-      })
-      .catch(() => {
-        setSubmitting(false);
-        alertify.alert('Please check your credentials.');
-      });
+  handleSubmit: (values, { setSubmitting, props }) => {
+    props.handleUpdate(values).finally(() => {
+      setSubmitting(false);
+    });
   },
   displayName: 'RegisterForm', // helps with React DevTools
 })(RegisterForm);

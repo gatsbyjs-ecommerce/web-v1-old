@@ -62,25 +62,26 @@ export default class Login extends React.Component {
     const { user, jwt } = login;
     // store token in local storage
     await window.localStorage.setItem('token', jwt);
-    const requiredConfirmations = user.store.requiredConfirmations.map(
-      confirmation => ({
-        ...confirmation,
-        __typename: 'Confirmation',
-      }),
-    );
-    // sync data with local store
-    apolloClient
-      .mutate({
-        variables: {
-          requiredConfirmations,
-        },
-      })
-      .then(() => {
-        // redirect to Home Page
-        setTimeout(() => {
-          window.location.replace('/');
-        }, 1000);
-      });
+    // const requiredConfirmations = user.store.requiredConfirmations.map(
+    //   confirmation => ({
+    //     ...confirmation,
+    //     __typename: 'Confirmation',
+    //   }),
+    // );
+    // // console.log('confiration', requiredConfirmations);
+    // // sync data with local store
+    // apolloClient
+    //   .mutate({
+    //     variables: {
+    //       requiredConfirmations,
+    //     },
+    //   })
+    //   .then(() => {
+    //     // redirect to Home Page
+    //     setTimeout(() => {
+    //       window.location.replace('/');
+    //     }, 1000);
+    //   });
   };
 
   render() {
@@ -109,7 +110,7 @@ export default class Login extends React.Component {
                   {login => (
                     <LoginForm
                       handleUpdate={data => {
-                        // console.log('login form', data);
+                        console.log('login form', data);
                         return login({
                           variables: data,
                         });
@@ -146,7 +147,9 @@ export default class Login extends React.Component {
               <p>
                 Forgot Password? |
                 <RegisterLink to="/forgotPassword">
-                  <strong>Click Here</strong>
+                  <strong>
+                    <u>Click Here</u>
+                  </strong>
                 </RegisterLink>
               </p>
             </div>

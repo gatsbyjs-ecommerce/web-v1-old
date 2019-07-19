@@ -45,7 +45,6 @@ const registerMutation = gql`
       user {
         id
         email
-        type
       }
     }
   }
@@ -57,7 +56,7 @@ export default class Register extends React.Component {
   }
 
   onRegisterSuccess = async (cache, { data: { register } }) => {
-    console.log('onRegisterSuccess', register);
+    // console.log('onRegisterSuccess', register);
     // store token in local storage
     await window.localStorage.setItem('token', register.jwt);
     window.location.replace('/');

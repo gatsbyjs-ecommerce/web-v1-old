@@ -144,9 +144,9 @@ const NavItems = [
   // { id: 2, name: 'Shop', url: '/shop' },
   // { id: 3, name: 'Coupons', url: '/coupons' },
   { id: 4, name: 'Blog', url: '/blog' },
-  { id: 7, name: 'Contact Us', url: '/contact' },
-  { id: 5, name: 'Sign in', url: '/login' },
-  { id: 6, name: 'Register', url: '/register' },
+  { id: 5, name: 'Contact', url: '/contact' },
+  { id: 6, name: 'Sign in', url: '/login' },
+  { id: 7, name: 'Register', url: '/register' },
 ];
 
 class Header extends React.Component {

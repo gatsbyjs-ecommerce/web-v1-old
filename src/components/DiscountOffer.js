@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
 
-import Button from './Button';
+import ButtonLink from './ButtonLink';
 
 const Container = styled.div`
   margin-top: 3rem;
@@ -84,7 +84,7 @@ const DiscountOffer = () => (
               {discountData.node.descritption.descritption}
             </Desc>
             <div className="btn">
-              <Button text="Discounts Offers" link="/coupons" />
+              <ButtonLink text="Discounts Offers" link="/coupons" />
             </div>
           </div>
         );

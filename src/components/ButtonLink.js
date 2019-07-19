@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'gatsby-link';
 
 const ButtonWrapper = styled.div`
   .button {
@@ -22,10 +23,12 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const Button = ({ width, text, margin, widthMobile }) => (
+const ButtonLink = ({ width, link, text, margin, widthMobile }) => (
   <ButtonWrapper width={width} margin={margin} widthMobile={widthMobile}>
-    <span className="button is-rounded has-text-weight-bold">{text}</span>
+    <Link to={`${link}`} className="button is-rounded has-text-weight-bold">
+      {text}
+    </Link>
   </ButtonWrapper>
 );
 
-export default Button;
+export default ButtonLink;
