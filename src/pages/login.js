@@ -3,7 +3,10 @@ import styled from 'styled-components';
 import ReactGA from 'react-ga';
 import Link from 'gatsby-link';
 import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
+import swal from 'sweetalert';
 
+import apolloClient from '../utils/apolloClient';
 import Layout from '../components/Layout';
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -54,6 +57,32 @@ export default class Login extends React.Component {
     ReactGA.pageview('/login');
   }
 
+  onLoginSuccess = async (cache, { data: { login } }) => {
+    // console.log('onLoginSuccess', login);
+    const { user, jwt } = login;
+    // store token in local storage
+    await window.localStorage.setItem('token', jwt);
+    const requiredConfirmations = user.store.requiredConfirmations.map(
+      confirmation => ({
+        ...confirmation,
+        __typename: 'Confirmation',
+      }),
+    );
+    // sync data with local store
+    apolloClient
+      .mutate({
+        variables: {
+          requiredConfirmations,
+        },
+      })
+      .then(() => {
+        // redirect to Home Page
+        setTimeout(() => {
+          window.location.replace('/');
+        }, 1000);
+      });
+  };
+
   render() {
     return (
       <Layout>
@@ -67,10 +96,50 @@ export default class Login extends React.Component {
             <Heading>Login</Heading>
             <div className="columns">
               <div className="column is-half is-hidden-mobile">
-                <LoginForm />
+                <Mutation
+                  mutation={loginMutation}
+                  update={this.onLoginSuccess}
+                  onError={error => {
+                    swal(
+                      'Issue!',
+                      error.message.replace('GraphQL error: ', ''),
+                      'warning',
+                    );
+                  }}>
+                  {login => (
+                    <LoginForm
+                      handleUpdate={data => {
+                        // console.log('login form', data);
+                        return login({
+                          variables: data,
+                        });
+                      }}
+                    />
+                  )}
+                </Mutation>
               </div>
               <div className="column is-hidden-tablet">
-                <LoginForm />
+                <Mutation
+                  mutation={loginMutation}
+                  update={this.onLoginSuccess}
+                  onError={error => {
+                    swal(
+                      'Issue!',
+                      error.message.replace('GraphQL error: ', ''),
+                      'warning',
+                    );
+                  }}>
+                  {login => (
+                    <LoginForm
+                      handleUpdate={data => {
+                        // console.log('login form', data);
+                        return login({
+                          variables: data,
+                        });
+                      }}
+                    />
+                  )}
+                </Mutation>
               </div>
             </div>
             <div className="columns link-column">

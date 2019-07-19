@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import ReactGA from 'react-ga';
 import { graphql } from 'gatsby';
 import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
+import swal from 'sweetalert';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -51,6 +53,13 @@ export default class Contact extends React.Component {
     ReactGA.pageview('/contact');
   }
 
+  onSuccess = () => {
+    swal(
+      'Thank you!',
+      'Your message has been successfully sent. We will contact you very soon!',
+    );
+  };
+
   render() {
     const { data } = this.props;
     const contact = data.contentfulHome;
@@ -96,7 +105,26 @@ export default class Contact extends React.Component {
                 <SocialIcons data={contact} />
               </div>
               <div className="column">
-                <ContactForm onSubmit={this.contactMutation} />
+                <Mutation
+                  mutation={contactMutation}
+                  update={this.onSuccess}
+                  onError={error => {
+                    swal(
+                      'Issue!',
+                      error.message.replace('GraphQL error: ', ''),
+                      'warning',
+                    );
+                  }}>
+                  {subscription => (
+                    <ContactForm
+                      handleUpdate={dataNew => {
+                        return subscription({
+                          variables: dataNew,
+                        });
+                      }}
+                    />
+                  )}
+                </Mutation>
               </div>
             </div>
           </div>

@@ -2,6 +2,8 @@ import React from 'react';
 import ReactGA from 'react-ga';
 import { StaticQuery, graphql } from 'gatsby';
 import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
+import swal from 'sweetalert';
 
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -77,6 +79,10 @@ export default class IndexPage extends React.Component {
     ReactGA.pageview('/');
   }
 
+  onSuccess = () => {
+    swal('You have successfully subscribed!');
+  };
+
   render() {
     return (
       <Layout>
@@ -94,7 +100,26 @@ export default class IndexPage extends React.Component {
                 <Hero />
                 <TrendingItems products={products.edges} />
                 <DiscountOffer />
-                <SubscriptionForm />
+                <Mutation
+                  mutation={subscribeMutation}
+                  update={this.onSuccess}
+                  onError={error => {
+                    swal(
+                      'Issue!',
+                      error.message.replace('GraphQL error: ', ''),
+                      'warning',
+                    );
+                  }}>
+                  {subscription => (
+                    <SubscriptionForm
+                      handleUpdate={dataNew => {
+                        return subscription({
+                          variables: dataNew,
+                        });
+                      }}
+                    />
+                  )}
+                </Mutation>
               </React.Fragment>
             );
           }}

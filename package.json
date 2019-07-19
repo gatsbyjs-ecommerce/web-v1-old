@@ -73,6 +73,7 @@
     "react-spring": "^5.3.8",
     "react-truncate": "^2.4.0",
     "styled-components": "^4.3.1",
+    "sweetalert": "^2.1.2",
     "underscore": "^1.9.1",
     "underscore.string": "^3.3.5",
     "yup": "^0.27.0"

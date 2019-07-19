@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import ReactGA from 'react-ga';
 import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
+import swal from 'sweetalert';
 
 import Layout from '../components/Layout';
 import config from '../config/index';
@@ -42,6 +44,13 @@ export default class Login extends React.Component {
     ReactGA.pageview('/login');
   }
 
+  onSuccess = () => {
+    swal(
+      'Success!',
+      'Please check your email, we have sent instructions to reset password.',
+    );
+  };
+
   render() {
     return (
       <Layout>
@@ -55,10 +64,48 @@ export default class Login extends React.Component {
             <Heading>Forgot Password</Heading>
             <div className="columns">
               <div className="column is-half is-hidden-mobile">
-                <ForgotPasswordForm />
+                <Mutation
+                  mutation={forgotPasswordMutation}
+                  update={this.onSuccess}
+                  onError={error => {
+                    swal(
+                      'Issue!',
+                      error.message.replace('GraphQL error: ', ''),
+                      'warning',
+                    );
+                  }}>
+                  {forgotPassword => (
+                    <ForgotPasswordForm
+                      handleUpdate={data => {
+                        return forgotPassword({
+                          variables: data,
+                        });
+                      }}
+                    />
+                  )}
+                </Mutation>
               </div>
               <div className="column is-hidden-tablet">
-                <ForgotPasswordForm />
+                <Mutation
+                  mutation={forgotPasswordMutation}
+                  update={this.onSuccess}
+                  onError={error => {
+                    swal(
+                      'Issue!',
+                      error.message.replace('GraphQL error: ', ''),
+                      'warning',
+                    );
+                  }}>
+                  {forgotPassword => (
+                    <ForgotPasswordForm
+                      handleUpdate={data => {
+                        return forgotPassword({
+                          variables: data,
+                        });
+                      }}
+                    />
+                  )}
+                </Mutation>
               </div>
             </div>
           </div>
