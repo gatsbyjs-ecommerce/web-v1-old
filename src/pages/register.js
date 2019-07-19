@@ -53,14 +53,14 @@ const registerMutation = gql`
 
 export default class Register extends React.Component {
   componentDidMount() {
-    ReactGA.pageview('/contact');
+    ReactGA.pageview('/register');
   }
 
   onRegisterSuccess = async (cache, { data: { register } }) => {
-    // console.log('onRegisterSuccess', register);
+    console.log('onRegisterSuccess', register);
     // store token in local storage
     await window.localStorage.setItem('token', register.jwt);
-    window.location.replace('/login');
+    window.location.replace('/');
   };
 
   render() {

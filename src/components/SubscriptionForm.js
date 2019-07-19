@@ -17,8 +17,8 @@ const Card = styled.div`
 const Container = styled.div`
   width: 85%;
   height: 24.2rem;
-  box-shadow: 0px 3px 2px rgba(10, 10, 10, 0.1),
-    8px 0px 30px 1px rgba(10, 10, 10, 0.1);
+  box-shadow: 0px 3px 15px rgba(10, 10, 10, 0.1),
+    4px 4px 11px 1px rgba(10, 10, 10, 0.1);
   font-family: 'Oswald', sans-serif;
   border-radius: 10px;
   @media only screen and (max-width: 768px) {
