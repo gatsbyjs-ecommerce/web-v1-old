@@ -144,13 +144,9 @@ export default class Login extends React.Component {
             </div>
             <div className="columns link-column">
               <p>
-                Don't have an account?
-                <RegisterLink to="/register">
-                  <strong>Register Here</strong>
-                </RegisterLink>{' '}
-                |
+                Forgot Password? |
                 <RegisterLink to="/forgotPassword">
-                  <strong>Forgot Password?</strong>
+                  <strong>Click Here</strong>
                 </RegisterLink>
               </p>
             </div>
