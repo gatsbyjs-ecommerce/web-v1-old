@@ -6,7 +6,6 @@ import gql from 'graphql-tag';
 import { Mutation } from 'react-apollo';
 import swal from 'sweetalert';
 
-import apolloClient from '../utils/apolloClient';
 import Layout from '../components/Layout';
 import config from '../config/index';
 import Seo from '../components/Seo';
@@ -110,7 +109,7 @@ export default class Login extends React.Component {
                   {login => (
                     <LoginForm
                       handleUpdate={data => {
-                        console.log('login form', data);
+                        // console.log('login form', data);
                         return login({
                           variables: data,
                         });

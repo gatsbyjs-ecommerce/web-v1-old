@@ -2,18 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { withFormik } from 'formik';
-import gql from 'graphql-tag';
 
-import apolloClient from '../utils/apolloClient';
-import Button from './Button';
-
-const registerMutation = gql`
-  mutation register($name: String!, $email: String!, $password: String!) {
-    register(name: $name, email: $email, password: $password) {
-      email
-    }
-  }
-`;
+// import Button from './Button';
 
 const RegisterForm = props => {
   const {
