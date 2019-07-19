@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { withFormik } from 'formik';
 
+import Button from './Button';
+
 const LoginForm = props => {
   const {
     values,
@@ -48,13 +50,14 @@ const LoginForm = props => {
           )}
         </div>
       </div>
-      <button
+      <Button
         type="submit"
         disabled={isSubmitting}
         className="button is-link is-fullwidth is-radiusless is-uppercase"
-        text="Submit">
-        Submit
-      </button>
+        text="Submit"
+        width="100%"
+        margin="2rem"
+      />
     </form>
   );
 };

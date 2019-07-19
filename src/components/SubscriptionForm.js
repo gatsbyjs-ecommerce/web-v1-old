@@ -1,115 +1,58 @@
 import React from 'react';
-import styled from 'styled-components';
-import { withFormik } from 'formik';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
-import gql from 'graphql-tag';
-
-import apolloClient from '../utils/apolloClient';
+import { withFormik } from 'formik';
 
 import Button from './Button';
 
-const Card = styled.div`
-  justify-content: center;
-  display: flex;
-  margin-top: 5rem;
-`;
+const SubscriptionForm = props => {
+  const {
+    values,
+    touched,
+    errors,
+    isSubmitting,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+  } = props;
 
-const Container = styled.div`
-  width: 85%;
-  height: 24.2rem;
-  box-shadow: 0px 3px 15px rgba(10, 10, 10, 0.1),
-    4px 4px 11px 1px rgba(10, 10, 10, 0.1);
-  font-family: 'Oswald', sans-serif;
-  border-radius: 10px;
-  @media only screen and (max-width: 768px) {
-    width: 90%;
-    height: 26rem;
-  }
-  h1 {
-    margin-top: 2.2rem;
-    font-size: 2.2rem;
-    color: #000;
-    @media only screen and (max-width: 768px) {
-      margin-top: 2rem;
-    }
-  }
-  p {
-    font-size: 1.19rem;
-  }
-  .content {
-    padding: 5% 18%;
-    display: flex;
-    @media only screen and (max-width: 768px) {
-      display: inline;
-      padding: 0;
-    }
-    @media only screen and (max-width: 1042px) and (min-width: 769px) {
-      padding: 5% 5%;
-    }
-  }
-  input {
-    height: 3.5rem;
-    padding: 0rem 1rem;
-    margin-right: 1.5rem;
-    @media only screen and (max-width: 768px) {
-      padding: 0rem;
-      margin-right: 0rem;
-    }
-  }
-`;
+  return (
+    <form onSubmit={handleSubmit} className="is-flex">
+      <div className="field">
+        <div className="control">
+          <input
+            className="input is-rounded"
+            name="email"
+            value={values.email}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            placeholder="Your email"
+          />
+          {errors.email && touched.email && (
+            <p className="help is-danger">{errors.email}</p>
+          )}
+        </div>
+      </div>
+      <Button
+        type="submit"
+        disabled={isSubmitting}
+        text="Register"
+        width="100%"
+        margin="2rem"
+      />
+    </form>
+  );
+};
 
-const subscribeMutation = gql`
-  mutation subscribe($email: String!) {
-    subscribe(email: $email) {
-      email
-    }
-  }
-`;
-
-class SubscriptionForm extends React.Component {
-  render() {
-    const {
-      values,
-      isSubmitting,
-      handleSubmit,
-      handleChange,
-      handleBlur,
-    } = this.props;
-    return (
-      <Card>
-        <Container className="card" onSubmit={handleSubmit}>
-          <div className="card-content has-text-centered">
-            <div className="media">
-              <div className="media-content has-text-centered">
-                <h1 className="has-text-weight-bold">
-                  GET UPDATE FROM ANYWHERE
-                </h1>
-                <p>Subscribe us to get our latest updates</p>
-              </div>
-            </div>
-            <div className="content">
-              <input
-                className="input is-rounded"
-                name="email"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                placeholder="Your email"
-              />
-              <Button
-                text="Subscribe Now"
-                type="submit"
-                disabled={isSubmitting}
-                className="button"
-                widthMobile="100%"
-              />
-            </div>
-          </div>
-        </Container>
-      </Card>
-    );
-  }
-}
+SubscriptionForm.propTypes = {
+  values: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  isSubmitting: PropTypes.bool.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+};
 
 export default withFormik({
   mapPropsToValues: () => ({
@@ -120,23 +63,10 @@ export default withFormik({
       .email('Invalid email address')
       .required('Email is required!'),
   }),
-  handleSubmit: (values, { setSubmitting }) => {
-    // console.log('handle submit', values, props);
-    const alertify = require('alertify.js'); // eslint-disable-line
-
-    apolloClient
-      .mutate({
-        mutation: subscribeMutation,
-        variables: values,
-      })
-      .then(() => {
-        alertify.alert('Subscribed successfully, thank you!');
-        setSubmitting(false);
-      })
-      .catch(() => {
-        setSubmitting(false);
-        alertify.alert('Subscription failed, please try again.');
-      });
+  handleSubmit: (values, { setSubmitting, props }) => {
+    props.handleUpdate(values).finally(() => {
+      setSubmitting(false);
+    });
   },
   displayName: 'SubscriptionForm', // helps with React DevTools
 })(SubscriptionForm);
