@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { Mutation } from 'react-apollo';
 
 import SubscriptionForm from './SubscriptionForm';
+import Loading from './Loading';
 
 const subscribeMutation = gql`
   mutation subscribe($email: String!) {
@@ -43,8 +44,7 @@ const Container = styled.div`
     font-size: 1.19rem;
   }
   .content {
-    padding: 5% 18%;
-    display: flex;
+    padding: 1% 18%;
     @media only screen and (max-width: 768px) {
       display: inline;
       padding: 0;
@@ -66,7 +66,7 @@ const Container = styled.div`
 
 class Subscription extends React.Component {
   onSuccess = () => {
-    swal('You have successfully subscribed!');
+    swal('You have been successfully subscribed!');
   };
 
   render() {

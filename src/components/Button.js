@@ -15,16 +15,17 @@ const ButtonWrapper = styled.button`
     color: #000;
   }
   @media only screen and (max-width: 768px) {
-    margin-top: 1rem;
+    margin-top: ${props => props.marginTop};
     width: ${props => props.widthMobile};
   }
 `;
 
-const Button = ({ width, text, margin, widthMobile }) => (
+const Button = ({ width, text, margin, widthMobile, marginTop }) => (
   <ButtonWrapper
     width={width}
     margin={margin}
     widthMobile={widthMobile}
+    marginTop={marginTop}
     className="button is-rounded has-text-weight-bold">
     {text}
   </ButtonWrapper>

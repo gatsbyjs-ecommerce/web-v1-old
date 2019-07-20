@@ -7,7 +7,7 @@ import Seo from '../components/Seo';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
 import DiscountOffer from '../components/DiscountOffer';
-// import Subscription from '../components/Subscription';
+import Subscription from '../components/Subscription';
 import TrendingItems from '../components/TrendingItems';
 
 export const indexQuery = graphql`
@@ -85,7 +85,7 @@ export default class IndexPage extends React.Component {
                 <Hero />
                 <TrendingItems products={products.edges} />
                 <DiscountOffer />
-                {/* <Subscription /> */}
+                <Subscription />
               </React.Fragment>
             );
           }}

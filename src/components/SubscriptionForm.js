@@ -17,7 +17,7 @@ const SubscriptionForm = props => {
   } = props;
 
   return (
-    <form onSubmit={handleSubmit} className="is-flex">
+    <form onSubmit={handleSubmit}>
       <div className="field">
         <div className="control">
           <input
@@ -38,7 +38,6 @@ const SubscriptionForm = props => {
         disabled={isSubmitting}
         text="Register"
         width="100%"
-        margin="2rem"
       />
     </form>
   );

@@ -69,6 +69,7 @@
     "react-image-magnify": "^2.7.4",
     "react-image-zoom": "^0.7.0",
     "react-load-script": "^0.0.6",
+    "react-loading": "^2.0.3",
     "react-share": "^3.0.0",
     "react-spring": "^5.3.8",
     "react-truncate": "^2.4.0",
