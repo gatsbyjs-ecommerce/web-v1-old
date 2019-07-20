@@ -57,30 +57,9 @@ export default class Login extends React.Component {
   }
 
   onLoginSuccess = async (cache, { data: { login } }) => {
-    // console.log('onLoginSuccess', login);
-    const { user, jwt } = login;
-    // store token in local storage
+    const { jwt } = login;
+
     await window.localStorage.setItem('token', jwt);
-    // const requiredConfirmations = user.store.requiredConfirmations.map(
-    //   confirmation => ({
-    //     ...confirmation,
-    //     __typename: 'Confirmation',
-    //   }),
-    // );
-    // // console.log('confiration', requiredConfirmations);
-    // // sync data with local store
-    // apolloClient
-    //   .mutate({
-    //     variables: {
-    //       requiredConfirmations,
-    //     },
-    //   })
-    //   .then(() => {
-    //     // redirect to Home Page
-    //     setTimeout(() => {
-    //       window.location.replace('/');
-    //     }, 1000);
-    //   });
   };
 
   render() {
@@ -105,11 +84,11 @@ export default class Login extends React.Component {
                       error.message.replace('GraphQL error: ', ''),
                       'warning',
                     );
-                  }}>
+                  }}
+                >
                   {login => (
                     <LoginForm
                       handleUpdate={data => {
-                        // console.log('login form', data);
                         return login({
                           variables: data,
                         });
@@ -128,7 +107,8 @@ export default class Login extends React.Component {
                       error.message.replace('GraphQL error: ', ''),
                       'warning',
                     );
-                  }}>
+                  }}
+                >
                   {login => (
                     <LoginForm
                       handleUpdate={data => {
@@ -144,10 +124,16 @@ export default class Login extends React.Component {
             </div>
             <div className="columns link-column">
               <p>
-                Forgot Password? |
+                Need Account?
+                <RegisterLink to="/register">
+                  <strong>
+                    <u>Register Here</u>
+                  </strong>
+                </RegisterLink>
+                |
                 <RegisterLink to="/forgotPassword">
                   <strong>
-                    <u>Click Here</u>
+                    <u>Forgot Password? </u>
                   </strong>
                 </RegisterLink>
               </p>

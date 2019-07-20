@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
+import ButtonLink from './ButtonLink';
 
 // import img from '../../static/images/home/hero.jpeg';
 // import Button from './Button';
@@ -105,6 +106,7 @@ const Hero = () => (
               <p className="has-text-weight-semibold">
                 {heroData.node.description.description}
               </p>
+              <ButtonLink text="Shop Now" link="/shop" />
             </Content>
           </div>
         );

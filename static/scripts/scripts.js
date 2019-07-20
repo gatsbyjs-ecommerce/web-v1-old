@@ -74,7 +74,7 @@
     u.send();
 })(window, document, 'Smooch', '5ac9c610ace37a00225d098c');
 
-Smooch.init({ appId: '5ac9c610ace37a00225d098c' });
+// Smooch.init({ appId: '5ac9c610ace37a00225d098c' });
 
 window.dataLayer = window.dataLayer || [];
 function gtag() {

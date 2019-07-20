@@ -15,38 +15,15 @@ const ShopItems = () => (
     <div className="column is-3">
       <AsideMenu />
     </div>
-    <div className="column is-hidden-mobile">
+    <div className="column">
       <SearchBar />
-      <div className="columns is-flex">
-        <div className="column">
-          <ShoppingItems />
-          <ShoppingItems />
-          <ShoppingItems />
-        </div>
-        <div className="column">
-          <ShoppingItems />
-          <ShoppingItems />
-          <ShoppingItems />
-        </div>
-        <div className="column">
+      <div className="columns">
+        <div className="column is-flex">
           <ShoppingItems />
           <ShoppingItems />
           <ShoppingItems />
         </div>
       </div>
-    </div>
-    <div className="columns is-hidden-tablet">
-      <Items className="column">
-        <ShoppingItems />
-        <ShoppingItems />
-        <ShoppingItems />
-        <ShoppingItems />
-        <ShoppingItems />
-        <ShoppingItems />
-        <ShoppingItems />
-        <ShoppingItems />
-        <ShoppingItems />
-      </Items>
     </div>
   </div>
 );
