@@ -51,7 +51,7 @@ export default class Blog extends React.Component {
             description="Read our latest news"
             url={`${config.siteUrl}/blog`}
           />
-          <Heading>Our Blog</Heading>
+          <Heading>Our Latest News</Heading>
           <div className="columns is-multiline is-gapless">
             <div className="column is-half">
               {/* {posts.map(({ node }) => (

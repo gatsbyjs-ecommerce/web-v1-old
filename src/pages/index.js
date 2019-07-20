@@ -13,6 +13,7 @@ import TrendingItems from '../components/TrendingItems';
 export const indexQuery = graphql`
   query Products {
     allContentfulProduct(
+      limit: 9
       filter: { status: { eq: "active" } }
       sort: { fields: [listingOrder], order: ASC }
     ) {
