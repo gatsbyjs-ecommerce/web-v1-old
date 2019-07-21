@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import AsideMenu from './AsideMenu';
 import SearchBar from './SearchBar';
-import ShoppingItems from './ShoppingItems';
+import Container from './Container';
 
 const Items = styled.div`
   justify-content: center;
@@ -17,13 +17,12 @@ const ShopItems = () => (
     </div>
     <div className="column">
       <SearchBar />
-      <div className="columns">
-        <div className="column is-flex">
-          <ShoppingItems />
-          <ShoppingItems />
-          <ShoppingItems />
-        </div>
-      </div>
+      <Container>
+        <h1>Our Products</h1>
+      </Container>
+      <Container>
+        <h1>TV Accessories</h1>
+      </Container>
     </div>
   </div>
 );
