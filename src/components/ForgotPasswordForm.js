@@ -2,18 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { withFormik } from 'formik';
-import gql from 'graphql-tag';
 
-import apolloClient from '../utils/apolloClient';
 import Button from './Button';
-
-const forgotPasswordMutation = gql`
-  mutation forgotPassword($email: String!) {
-    forgotPassword(email: $email) {
-      email
-    }
-  }
-`;
 
 const ForgotPassword = props => {
   const {
@@ -73,23 +63,10 @@ export default withFormik({
   validationSchema: Yup.object().shape({
     email: Yup.string().required('Email is required!'),
   }),
-  handleSubmit: (values, { setSubmitting }) => {
-    // console.log('handle submit', values);
-    const alertify = require('alertify.js'); // eslint-disable-line
-
-    apolloClient
-      .mutate({
-        mutation: forgotPasswordMutation, // connect it to forgotPassword mutation
-        variables: values,
-      })
-      .then(() => {
-        alertify.alert('Your password successfully sent to your email.');
-        setSubmitting(false);
-      })
-      .catch(() => {
-        setSubmitting(false);
-        alertify.alert('Please check your credentials.');
-      });
+  handleSubmit: (values, { setSubmitting, props }) => {
+    props.handleUpdate(values).finally(() => {
+      setSubmitting(false);
+    });
   },
   displayName: 'ForgotPassword', // helps with React DevTools
 })(ForgotPassword);
