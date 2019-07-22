@@ -105,6 +105,7 @@ const Hero = () => (
               </h1>
               <p className="has-text-weight-semibold">
                 {heroData.node.description.description}
+                <a> Find out how now!</a>
               </p>
               <ButtonLink text="Shop Now" link="/shop" />
             </Content>

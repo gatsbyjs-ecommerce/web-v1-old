@@ -73,8 +73,7 @@ export default class Login extends React.Component {
                       error.message.replace('GraphQL error: ', ''),
                       'warning',
                     );
-                  }}
-                >
+                  }}>
                   {forgotPassword => (
                     <ForgotPasswordForm
                       handleUpdate={data => {
@@ -96,8 +95,7 @@ export default class Login extends React.Component {
                       error.message.replace('GraphQL error: ', ''),
                       'warning',
                     );
-                  }}
-                >
+                  }}>
                   {forgotPassword => (
                     <ForgotPasswordForm
                       handleUpdate={data => {

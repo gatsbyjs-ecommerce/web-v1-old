@@ -32,9 +32,9 @@ class SearchBar extends React.Component {
       ],
     };
   }
+
   // TODO: Fix this with filter. Take reference from lodash
 
-  
   handleChange = event => {
     this.setState({ filter: event.target.value });
   };

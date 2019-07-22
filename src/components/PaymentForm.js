@@ -25,6 +25,15 @@ const Cards = styled.div`
 const BuyBtn = styled.button`
   width: 100%;
   margin-top: 3rem;
+  border: 1px solid #384aeb;
+  background: #384aeb;
+  transition: all 0.4s ease;
+  color: #fff;
+  :hover {
+    border: 2px solid #384aeb;
+    background: transparent;
+    color: #000;
+  }
 `;
 
 const createOrder = gql`
@@ -99,7 +108,8 @@ class PaymentForm extends React.Component {
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}>
+          to={{ opacity: isVisible ? 1 : 0 }}
+        >
           {stylesProps => (
             <animated.div style={stylesProps}>
               <Cards className="has-text-centered">
@@ -190,9 +200,11 @@ class PaymentForm extends React.Component {
                   </div>
                 </div>
                 <BuyBtn
-                  className="payment-form-btn button is-dark is-large is-radiusless is-uppercase"
+                  type="submit"
+                  className="checkout-form-btn button is-large is-rounded is-uppercase"
                   onClick={this.handleSubmit}
-                  disabled={isSubmitting}>
+                  disabled={isSubmitting}
+                >
                   <span className="icon">
                     <i className="fas fa-lock" />
                   </span>

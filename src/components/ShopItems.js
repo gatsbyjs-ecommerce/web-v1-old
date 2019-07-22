@@ -1,14 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import AsideMenu from './AsideMenu';
 import SearchBar from './SearchBar';
 import Container from './Container';
-
-const Items = styled.div`
-  justify-content: center;
-  display: grid;
-`;
 
 const ShopItems = () => (
   <div className="columns">
@@ -18,10 +12,10 @@ const ShopItems = () => (
     <div className="column">
       <SearchBar />
       <Container>
-        <h1>Our Products</h1>
+        <h1 className="title">Our Products</h1>
       </Container>
       <Container>
-        <h1>TV Accessories</h1>
+        <h1 className="title">TV Accessories</h1>
       </Container>
     </div>
   </div>
