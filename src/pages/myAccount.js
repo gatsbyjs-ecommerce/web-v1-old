@@ -32,9 +32,9 @@ const MyAccount = () => (
     <Container className="section">
       <div className="container">
         <Seo
-          title="Forgot Password"
-          description="Get In Touch"
-          url={`${config.siteUrl}/forgotPassword`}
+          title="My Account"
+          description="Upgate your account"
+          url={`${config.siteUrl}/myAccount`}
         />
         <Heading>My Account</Heading>
         <div className="columns">
