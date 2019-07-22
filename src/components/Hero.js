@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { StaticQuery, graphql } from 'gatsby';
+import Link from 'gatsby-link';
+
 import ButtonLink from './ButtonLink';
 
 // import img from '../../static/images/home/hero.jpeg';
@@ -87,11 +89,7 @@ const heroQuery = graphql`
 
 const Hero = () => (
   <Wrapper className="columns">
-    <div className="column is-5 is-hidden-mobile">
-      {/* <ImageWrapper>
-        <img src={img} alt="Cart With Things" />
-      </ImageWrapper> */}
-    </div>
+    <div className="column is-5 is-hidden-mobile"></div>
     <StaticQuery
       query={heroQuery}
       render={data => {
@@ -105,7 +103,7 @@ const Hero = () => (
               </h1>
               <p className="has-text-weight-semibold">
                 {heroData.node.description.description}
-                <a> Find out how now!</a>
+                <Link to="/tvUpgrade"> Find out how now!</Link>
               </p>
               <ButtonLink text="Shop Now" link="/shop" />
             </Content>

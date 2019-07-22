@@ -188,6 +188,13 @@ class CartItems extends React.Component {
                       </p>
                     </div>
                   </div>
+                  <div>
+                    <h1 className="has-text-weight-bold">Leave a Comment</h1>
+                    <textarea
+                      className="textarea"
+                      placeholder="Leave your comment here"
+                    />
+                  </div>
                   {showCheckoutBtn && (
                     <BuyBtn
                       className="product-info-btn button is-large is-rounded is-uppercase"

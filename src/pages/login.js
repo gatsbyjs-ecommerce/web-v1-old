@@ -84,8 +84,7 @@ export default class Login extends React.Component {
                       error.message.replace('GraphQL error: ', ''),
                       'warning',
                     );
-                  }}
-                >
+                  }}>
                   {login => (
                     <LoginForm
                       handleUpdate={data => {
@@ -107,8 +106,7 @@ export default class Login extends React.Component {
                       error.message.replace('GraphQL error: ', ''),
                       'warning',
                     );
-                  }}
-                >
+                  }}>
                   {login => (
                     <LoginForm
                       handleUpdate={data => {
