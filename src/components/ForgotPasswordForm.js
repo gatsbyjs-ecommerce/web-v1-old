@@ -63,10 +63,12 @@ export default withFormik({
   validationSchema: Yup.object().shape({
     email: Yup.string().required('Email is required!'),
   }),
+
   handleSubmit: (values, { setSubmitting, props }) => {
     props.handleUpdate(values).finally(() => {
       setSubmitting(false);
     });
   },
+
   displayName: 'ForgotPassword', // helps with React DevTools
 })(ForgotPassword);
