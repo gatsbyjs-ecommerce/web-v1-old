@@ -9,6 +9,7 @@ import Hero from '../components/Hero';
 import DiscountOffer from '../components/DiscountOffer';
 import Subscription from '../components/Subscription';
 import TrendingItems from '../components/TrendingItems';
+import ProductsTitleHeader from '../components/ProductsTitleHeader';
 
 export const indexQuery = graphql`
   query Products {
@@ -84,6 +85,7 @@ export default class IndexPage extends React.Component {
             return (
               <React.Fragment>
                 <Hero />
+                <ProductsTitleHeader text="Latest" label="Products" />
                 <TrendingItems products={products.edges} />
                 <DiscountOffer />
                 <Subscription />

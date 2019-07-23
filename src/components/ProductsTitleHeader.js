@@ -2,7 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  margin-bottom: 2rem;
+  margin-top: 2rem;
+  justify-content: center;
+  display: flex;
   p {
     color: #777;
   }
@@ -13,10 +15,9 @@ const Container = styled.div`
   }
 `;
 
-const ProductsTitleHeader = ({ desc, text, label }) => (
+const ProductsTitleHeader = ({ text, label }) => (
   <Container>
-    <p>{desc}</p>
-    <p className="is-size-3 has-text-weight-bold has-text-black-bis">
+    <p className="is-size-4 has-text-weight-bold has-text-black-bis">
       {text}
       {` `}
       <span className="product">{label}</span>

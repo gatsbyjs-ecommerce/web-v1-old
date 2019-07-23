@@ -1,6 +1,7 @@
 import React from 'react';
 // import graphql from 'graphql';
 import ReactGA from 'react-ga';
+import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Layout from '../components/Layout';
@@ -8,10 +9,64 @@ import config from '../config/index';
 import Seo from '../components/Seo';
 import AsideMenu from '../components/AsideMenu';
 import SearchBar from '../components/SearchBar';
-import Container from '../components/Container';
+import ProductsTitleHeader from '../components/ProductsTitleHeader';
+import TrendingItems from '../components/TrendingItems';
 
 const Section = styled.section`
   padding: 0rem 1.5rem !important;
+`;
+
+export const shopQuery = graphql`
+  query {
+    allContentfulProduct(
+      filter: { status: { eq: "active" } }
+      sort: { fields: [listingOrder], order: ASC }
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug
+          color
+          originalPrice
+          discountPrice
+          featuredImage {
+            title
+            sizes(maxWidth: 550) {
+              ...GatsbyContentfulSizes
+            }
+          }
+        }
+      }
+    }
+    contentfulHome {
+      homeSliderTitle
+      homeSliderSubTitle
+      homeSliderImage {
+        title
+        sizes(maxWidth: 550) {
+          ...GatsbyContentfulSizes
+        }
+      }
+      homeIntro {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+    allDataJson {
+      edges {
+        node {
+          CAD_USD {
+            val
+          }
+          CAD_INR {
+            val
+          }
+        }
+      }
+    }
+  }
 `;
 
 export default class Shop extends React.Component {
@@ -35,14 +90,18 @@ export default class Shop extends React.Component {
               </div>
               <div className="column">
                 <SearchBar />
-                <Container>
-                  <h1 className="title">Our Products</h1>
-                  {/* TrendingItems component render here */}
-                </Container>
-                <Container>
-                  <h1 className="title">TV Accessories</h1>
-                  {/* New contentful field required */}
-                </Container>
+                <ProductsTitleHeader text="Our" label="Products" />
+                <StaticQuery
+                  query={shopQuery}
+                  render={data => {
+                    const { allContentfulProduct: products } = data;
+                    return (
+                      <React.Fragment>
+                        <TrendingItems products={products.edges} />
+                      </React.Fragment>
+                    );
+                  }}
+                />
               </div>
             </div>
           </div>

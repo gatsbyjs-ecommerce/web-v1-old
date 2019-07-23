@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { Trail } from 'react-spring';
 
-import ProductsTitleHeader from './ProductsTitleHeader';
 import ProductItem from './ProductItem';
 
 const Container = styled.div`
@@ -39,7 +38,6 @@ class TrendingItems extends React.Component {
     return (
       <Container className="section">
         <div className="container">
-          <ProductsTitleHeader text="Our" label="Products" />
           <div className="columns is-multiline">
             <Trail
               native
