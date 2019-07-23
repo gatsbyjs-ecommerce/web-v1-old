@@ -1,5 +1,4 @@
 import React from 'react';
-// import graphql from 'graphql';
 import ReactGA from 'react-ga';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
@@ -88,7 +87,7 @@ export default class Shop extends React.Component {
               <div className="column is-3">
                 <AsideMenu />
               </div>
-              <div className="column">
+              <div className="column is-9">
                 <SearchBar />
                 <ProductsTitleHeader text="Our" label="Products" />
                 <StaticQuery
@@ -96,9 +95,7 @@ export default class Shop extends React.Component {
                   render={data => {
                     const { allContentfulProduct: products } = data;
                     return (
-                      <React.Fragment>
                         <TrendingItems products={products.edges} />
-                      </React.Fragment>
                     );
                   }}
                 />
