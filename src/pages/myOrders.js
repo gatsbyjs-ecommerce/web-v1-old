@@ -5,7 +5,6 @@ import Layout from '../components/Layout';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
 import config from '../config/index';
-import TrendingItems from '../components/TrendingItems';
 
 const Container = styled.div`
   .columns {

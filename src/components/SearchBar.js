@@ -19,9 +19,9 @@ class SearchBar extends React.Component {
       data: [
         // {
         //   brand: 'Samsung',
-        //   lname: 'Washington',
+        //   name: 'Washington',
         //   email: 'jaynewashington@exposa.com',
-        //   gender: 'female',
+        //   model: 'female',
         // },
         // {
         //   brand: 'LG',
