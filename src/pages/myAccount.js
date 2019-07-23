@@ -8,22 +8,8 @@ import config from '../config/index';
 import MyAccountForm from '../components/MyAccountForm';
 
 const Container = styled.div`
-  a {
-    padding: 1rem;
-    color: #4a4a4a;
-  }
-  p {
-    padding: 0.2rem 0;
-  }
-  svg {
-    color: #494949;
-  }
   .columns {
     justify-content: center;
-  }
-  .link-column {
-    justify-content: center;
-    display: grid;
   }
 `;
 

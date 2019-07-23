@@ -12,13 +12,12 @@ import ProductInfo from '../components/ProductInfo';
 import ProductsList from '../components/ProductsList';
 
 const Container = styled.div`
-  &&& {
-    margin-top: 3rem;
-  }
+  margin-top: 3rem;
   .is-6 {
     margin-top: 8rem;
     @media only screen and (max-width: 768px) {
       margin-top: 0;
+    }
   }
 `;
 
