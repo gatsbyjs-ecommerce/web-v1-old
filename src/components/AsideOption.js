@@ -15,7 +15,7 @@ const Container = styled.aside`
   }
 `;
 
-const AsideOptions = ({ name, slug, isActive, onChange }) => (
+const AsideOption = ({ name, slug, isActive, onChange }) => (
   <Container className="menu" active={isActive} onClick={() => onChange(slug)}>
     <ul className="menu-list">
       <li>
@@ -29,4 +29,4 @@ const AsideOptions = ({ name, slug, isActive, onChange }) => (
   </Container>
 );
 
-export default AsideOptions;
+export default AsideOption;

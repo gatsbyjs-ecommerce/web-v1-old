@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import AsideTitle from './AsideTitle';
-import AsideOptions from './AsideOptions';
+import AsideOption from './AsideOption';
 
 const Brand = styled.div`
   margin-top: 2rem;
@@ -21,9 +21,13 @@ const AsideMenu = ({ brand, category, onBrandChange, onCategoryChange }) => (
   <React.Fragment>
     <div>
       <AsideTitle title="Products Type" />
-      <AsideOptions name="All" isActive={category === 'all'} />
+      <AsideOption
+        name="All"
+        isActive={category === 'all'}
+        onChange={() => onCategoryChange('all')}
+      />
       {categories.map(item => (
-        <AsideOptions
+        <AsideOption
           key={item.id}
           name={item.name}
           slug={item.slug}
@@ -34,13 +38,13 @@ const AsideMenu = ({ brand, category, onBrandChange, onCategoryChange }) => (
     </div>
     <Brand>
       <AsideTitle title="Brand" />
-      <AsideOptions
+      <AsideOption
         name="All"
         isActive={brand === 'all'}
         onChange={() => onBrandChange('all')}
       />
       {brands.map(item => (
-        <AsideOptions
+        <AsideOption
           key={item.id}
           name={item.name}
           slug={item.slug}

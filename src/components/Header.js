@@ -141,7 +141,7 @@ const CartMobile = styled.div`
 
 const NavItems = [
   { id: 1, name: 'Home', url: '/' },
-  // { id: 2, name: 'Shop', url: '/shop' },
+  { id: 2, name: 'Shop', url: '/shop' },
   // { id: 3, name: 'Coupons', url: '/coupons' },
   { id: 4, name: 'News', url: '/blog' },
   { id: 5, name: 'Contact', url: '/contact' },
@@ -189,9 +189,6 @@ class Header extends React.Component {
       <React.Fragment>
         <Container className="is-hidden-mobile">
           <div className="container">
-            {/* <div className="column">
-              <SocialIcons data={home} />
-            </div> */}
             <nav
               className="navbar"
               role="navigation"
@@ -235,16 +232,6 @@ class Header extends React.Component {
                     </div>
                   </div>
                 </Icons>
-              </div>
-              <div className="buttons">
-                <div className="control">
-                  {/* <ButtonWrapper
-                    type="submit"
-                    className="button is-rounded has-text-weight-bold"
-                  >
-                    Buy Now
-                  </ButtonWrapper> */}
-                </div>
               </div>
             </nav>
           </div>
