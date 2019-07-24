@@ -16,37 +16,19 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       filter: '',
-      data: [
-        // {
-        //   brand: 'Samsung',
-        //   name: 'Washington',
-        //   email: 'jaynewashington@exposa.com',
-        //   model: 'female',
-        // },
-        // {
-        //   brand: 'LG',
-        //   lname: 'Dalton',
-        //   email: 'petersondalton@exposa.com',
-        //   gender: 'male',
-        // },
-      ],
     };
   }
 
-  // TODO: Fix this with filter. Take reference from lodash
-
   handleChange = event => {
-    this.setState({ filter: event.target.value });
+    const { onChange } = this.props;
+    const { value } = event.target;
+
+    this.setState({ filter: value });
+    onChange(value);
   };
 
   render() {
-    const { filter, data } = this.state;
-    const lowercasedFilter = filter.toLowerCase();
-    const filteredData = data.filter(item => {
-      return Object.keys(item).some(key =>
-        item[key].toLowerCase().includes(lowercasedFilter),
-      );
-    });
+    const { filter } = this.state;
 
     return (
       <Container className="field search-bar">
@@ -61,13 +43,6 @@ class SearchBar extends React.Component {
           <span className="icon is-small is-right">
             <i className="fas fa-search" />
           </span>
-          {filteredData.map(item => (
-            <div key={item.email}>
-              <div>
-                {item.fname} {item.lname} - {item.gender} - {item.email}
-              </div>
-            </div>
-          ))}
         </p>
       </Container>
     );

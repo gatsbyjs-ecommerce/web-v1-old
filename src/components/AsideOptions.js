@@ -2,12 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.aside`
-  background-color: #f1f6f7;
+  background-color: ${props => (props.active ? 'red' : '#f1f6f7')};
   width: 100%;
-  @media only screen and (max-width: 768px) {
-    background-color: #f1f6f7;
-    width: 100%;
-  }
 
   ul {
     padding: 1rem;
@@ -19,15 +15,13 @@ const Container = styled.aside`
   }
 `;
 
-const AsideOptions = ({ name, quantity }) => (
-  <Container className="menu">
+const AsideOptions = ({ name, slug, isActive, onChange }) => (
+  <Container className="menu" active={isActive} onClick={() => onChange(slug)}>
     <ul className="menu-list">
       <li>
         <div className="control">
           <label className="radio">
-            <input type="radio" name="answer" />
             <span className="is-uppercase">{name}</span>
-            <span>{quantity}</span>
           </label>
         </div>
       </li>

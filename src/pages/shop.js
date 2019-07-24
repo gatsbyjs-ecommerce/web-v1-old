@@ -35,6 +35,12 @@ export const shopQuery = graphql`
               ...GatsbyContentfulSizes
             }
           }
+          category {
+            slug
+          }
+          brand {
+            slug
+          }
         }
       }
     }
@@ -69,11 +75,27 @@ export const shopQuery = graphql`
 `;
 
 export default class Shop extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { category: 'all', brand: 'all', searchQuery: '' };
+  }
+
   componentDidMount() {
     ReactGA.pageview('/shop');
   }
 
+  onBrandChange = brand => {
+    this.setState({ brand });
+  };
+
+  onCategoryChange = category => {
+    this.setState({ category });
+  };
+
   render() {
+    const { category, brand, searchQuery } = this.state;
+
     return (
       <Layout>
         <Section className="section">
@@ -85,17 +107,29 @@ export default class Shop extends React.Component {
             />
             <div className="columns">
               <div className="column is-3">
-                <AsideMenu />
+                <AsideMenu
+                  brand={brand}
+                  category={category}
+                  onBrandChange={this.onBrandChange}
+                  onCategoryChange={this.onCategoryChange}
+                />
               </div>
               <div className="column is-9">
-                <SearchBar />
+                <SearchBar
+                  onChange={val => this.setState({ searchQuery: val })}
+                />
                 <ProductsTitleHeader text="Our" label="Products" />
                 <StaticQuery
                   query={shopQuery}
                   render={data => {
                     const { allContentfulProduct: products } = data;
                     return (
-                        <TrendingItems products={products.edges} />
+                      <TrendingItems
+                        products={products.edges}
+                        category={category}
+                        brand={brand}
+                        searchQuery={searchQuery}
+                      />
                     );
                   }}
                 />

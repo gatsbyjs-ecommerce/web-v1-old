@@ -33,7 +33,7 @@ class TrendingItems extends React.Component {
   }
 
   render() {
-    const { products } = this.props;
+    const { products, category, brand, searchQuery } = this.props;
     const { isOpen } = this.state;
     const keys = products.map(item => item.node.id);
     // console.log('products', products);
@@ -47,9 +47,35 @@ class TrendingItems extends React.Component {
               from={{ opacity: 0 }}
               to={{ opacity: isOpen ? 1 : 0.25 }}
               keys={keys}>
-              {products.map(({ node }) => () => (
-                <ProductItem key={node.id} item={node} />
-              ))}
+              {products.map(({ node }) => () => {
+                // filter here
+                if (category === 'all' || !category) {
+                  //
+                } else if (category && !node.category) {
+                  return null;
+                } else if (category !== node.category.slug) {
+                  return null;
+                }
+
+                if (brand === 'all' || !brand) {
+                  //
+                } else if (brand && !node.brand) {
+                  return null;
+                } else if (brand !== node.brand.slug) {
+                  return null;
+                }
+
+                const nodeTitle = node.title.toLowerCase();
+                if (!searchQuery) {
+                  //
+                } else if (searchQuery.length < 2) {
+                  //
+                } else if (nodeTitle.search(searchQuery.toLowerCase()) === -1) {
+                  return null;
+                }
+
+                return <ProductItem key={node.id} item={node} />;
+              })}
             </Trail>
           </div>
         </div>

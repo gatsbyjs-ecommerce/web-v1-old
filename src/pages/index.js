@@ -32,6 +32,12 @@ export const indexQuery = graphql`
               ...GatsbyContentfulSizes
             }
           }
+          category {
+            slug
+          }
+          brand {
+            slug
+          }
         }
       }
     }
