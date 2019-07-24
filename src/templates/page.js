@@ -8,29 +8,15 @@ import Layout from '../components/Layout';
 import Heading from '../components/Heading';
 import { HTMLContent } from '../utils/helpers';
 
-const pageQuery = graphql`
-  {
-    contentfulPages(slug: {}) {
+export const pageQuery = graphql`
+  query PageByPath($slug: String!) {
+    contentfulPages(slug: { eq: $slug }) {
       id
       title
       slug
       content {
-        content
-        # childMarkdownRemark {
-        #   html
-        # }
-      }
-    }
-    allContentfulPages {
-      edges {
-        node {
-          id
-          title
-          slug
-          content {
-            content
-            id
-          }
+        childMarkdownRemark {
+          html
         }
       }
     }
@@ -46,39 +32,19 @@ export default class Page extends React.Component {
   }
 
   render() {
-    // eslint-disable-next-line react/destructuring-assignment
-    const {
-      data: {
-        contentfulPages: page,
-        // allContentfulPages: pages,
-        contentfulHome: home,
-      },
-    } = this.props;
-    // const { contentfulPages: page } = this.props.data;
+    const { contentfulPages: page } = this.props.data;
 
     return (
       <Layout>
-        <section className="section">
-          <div className="container">
-            <Seo
-              title={page.title}
-              description=""
-              url={`${config.siteUrl}/page/${page.slug}`}
-            />
-            <StaticQuery
-              query={pageQuery}
-              render={data => {
-                const pages = data.allContentfulPages.edges;
-                return pages.map(pageData => (
-                  <React.Fragment key={pageData.node.id}>
-                    <Heading>{pageData.node.title}</Heading>
-                    <HTMLContent content={pageData.node.content.content} />
-                  </React.Fragment>
-                ));
-              }}
-            />
-          </div>
-        </section>
+        <div className="section">
+          <Seo
+            title={page.title}
+            description=""
+            url={`${config.siteUrl}/page/${page.slug}`}
+          />
+          <Heading>{page.title}</Heading>
+          <HTMLContent content={page.content.childMarkdownRemark.html} />
+        </div>
       </Layout>
     );
   }
