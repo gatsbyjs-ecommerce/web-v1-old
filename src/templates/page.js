@@ -50,7 +50,7 @@ export default class Page extends React.Component {
     const {
       data: {
         contentfulPages: page,
-        allContentfulPages: pages,
+        // allContentfulPages: pages,
         contentfulHome: home,
       },
     } = this.props;
@@ -68,13 +68,14 @@ export default class Page extends React.Component {
             <StaticQuery
               query={pageQuery}
               render={data => {
-                const items = data.allContentfulPages.edges[0];
+                const pages = data.allContentfulPages.edges;
                 return (
-                  <React.Fragment>
-                    <Heading>{items.node.title}</Heading>
-                    <HTMLContent content={items.node.content.content} />
+                  pages.map(pageData => (
+                  <React.Fragment key={pageData.node.id}>
+                    <Heading>{pageData.node.title}</Heading>
+                    <HTMLContent content={pageData.node.content.content} />
                   </React.Fragment>
-                );
+                )));
               }}
             />
           </div>

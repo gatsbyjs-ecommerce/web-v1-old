@@ -7,31 +7,39 @@ const Brand = styled.div`
   margin-top: 2rem;
 `;
 
-const categories = [
-  { id: 1, name: 'TV accessories', slug: 'tv-accessories' },
-  { id: 2, name: 'Led TV', slug: 'led-tv' },
-];
+// const categories = [
+//   { id: 1, name: 'TV accessories', slug: 'tv-accessories' },
+//   { id: 2, name: 'Led TV', slug: 'led-tv' },
+// ];
 
-const brands = [
-  { id: 1, name: 'Samsung', slug: 'samsung' },
-  { id: 2, name: 'Sony', slug: 'sony' },
-];
+// const brands = [
+//   { id: 1, name: 'Samsung', slug: 'samsung' },
+//   { id: 2, name: 'Sony', slug: 'sony' },
+// ];
 
-const AsideMenu = ({ brand, category, onBrandChange, onCategoryChange }) => (
+const AsideMenu = ({
+  brands,
+  categories,
+  brand,
+  category,
+  onBrandChange,
+  onCategoryChange,
+}) => (
   <React.Fragment>
     <div>
       <AsideTitle title="Products Type" />
       <AsideOption
         name="All"
+        slug="all"
         isActive={category === 'all'}
-        onChange={() => onCategoryChange('all')}
+        onChange={onCategoryChange}
       />
       {categories.map(item => (
         <AsideOption
-          key={item.id}
-          name={item.name}
-          slug={item.slug}
-          isActive={category === item.slug}
+          key={item.node.id}
+          name={item.node.title}
+          slug={item.node.slug}
+          isActive={category === item.node.slug}
           onChange={onCategoryChange}
         />
       ))}
@@ -40,15 +48,16 @@ const AsideMenu = ({ brand, category, onBrandChange, onCategoryChange }) => (
       <AsideTitle title="Brand" />
       <AsideOption
         name="All"
+        slug="all"
         isActive={brand === 'all'}
-        onChange={() => onBrandChange('all')}
+        onChange={onBrandChange}
       />
       {brands.map(item => (
         <AsideOption
-          key={item.id}
-          name={item.name}
-          slug={item.slug}
-          isActive={brand === item.slug}
+          key={item.node.id}
+          name={item.node.name}
+          slug={item.node.slug}
+          isActive={brand === item.node.slug}
           onChange={onBrandChange}
         />
       ))}

@@ -36,7 +36,7 @@ class TrendingItems extends React.Component {
     const { products, category, brand, searchQuery } = this.props;
     const { isOpen } = this.state;
     const keys = products.map(item => item.node.id);
-    // console.log('products', products);
+    console.log('products filters', category, brand, searchQuery);
 
     return (
       <Container className="section">
@@ -46,9 +46,11 @@ class TrendingItems extends React.Component {
               native
               from={{ opacity: 0 }}
               to={{ opacity: isOpen ? 1 : 0.25 }}
-              keys={keys}>
+              keys={keys}
+            >
               {products.map(({ node }) => () => {
                 // filter here
+                console.log('prodcut', category, node.category);
                 if (category === 'all' || !category) {
                   //
                 } else if (category && !node.category) {

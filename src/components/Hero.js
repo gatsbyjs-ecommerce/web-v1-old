@@ -103,7 +103,7 @@ const Hero = () => (
               </h1>
               <p className="has-text-weight-semibold">
                 {heroData.node.description.description}
-                <Link to="/tvUpgrade"> Find out how now!</Link>
+                <Link to="/page/tv-upgrade"> Find out how now!</Link>
               </p>
               <ButtonLink text="Shop Now" link="/shop" />
             </Content>

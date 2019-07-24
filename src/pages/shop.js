@@ -44,6 +44,24 @@ export const shopQuery = graphql`
         }
       }
     }
+    allContentfulBrand {
+      edges {
+        node {
+          id
+          name
+          slug
+        }
+      }
+    }
+    allContentfulCategory {
+      edges {
+        node {
+          id
+          title
+          slug
+        }
+      }
+    }
     contentfulHome {
       homeSliderTitle
       homeSliderSubTitle
@@ -105,36 +123,44 @@ export default class Shop extends React.Component {
               description="Get the best products"
               url={`${config.siteUrl}/shop`}
             />
-            <div className="columns">
-              <div className="column is-3">
-                <AsideMenu
-                  brand={brand}
-                  category={category}
-                  onBrandChange={this.onBrandChange}
-                  onCategoryChange={this.onCategoryChange}
-                />
-              </div>
-              <div className="column is-9">
-                <SearchBar
-                  onChange={val => this.setState({ searchQuery: val })}
-                />
-                <ProductsTitleHeader text="Our" label="Products" />
-                <StaticQuery
-                  query={shopQuery}
-                  render={data => {
-                    const { allContentfulProduct: products } = data;
-                    return (
+
+            <StaticQuery
+              query={shopQuery}
+              render={data => {
+                // console.log(data, 'data');
+                const {
+                  allContentfulProduct: products,
+                  allContentfulBrand: brands,
+                  allContentfulCategory: categories,
+                } = data;
+                return (
+                  <div className="columns">
+                    <div className="column is-3">
+                      <AsideMenu
+                        brands={brands.edges}
+                        categories={categories.edges}
+                        brand={brand}
+                        category={category}
+                        onBrandChange={this.onBrandChange}
+                        onCategoryChange={this.onCategoryChange}
+                      />
+                    </div>
+                    <div className="column is-9">
+                      <SearchBar
+                        onChange={val => this.setState({ searchQuery: val })}
+                      />
+                      <ProductsTitleHeader text="Our" label="Products" />
                       <TrendingItems
                         products={products.edges}
                         category={category}
                         brand={brand}
                         searchQuery={searchQuery}
                       />
-                    );
-                  }}
-                />
-              </div>
-            </div>
+                    </div>
+                  </div>
+                );
+              }}
+            />
           </div>
         </Section>
       </Layout>
