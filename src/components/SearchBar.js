@@ -5,6 +5,9 @@ const Container = styled.div`
   height: 4rem;
   background-color: #f1f6f7;
   padding: 1.4%;
+  @media only screen and (max-width: 768px) {
+    padding: 4%;
+  }
 
   input {
     border: transparent;

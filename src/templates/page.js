@@ -69,13 +69,12 @@ export default class Page extends React.Component {
               query={pageQuery}
               render={data => {
                 const pages = data.allContentfulPages.edges;
-                return (
-                  pages.map(pageData => (
+                return pages.map(pageData => (
                   <React.Fragment key={pageData.node.id}>
                     <Heading>{pageData.node.title}</Heading>
                     <HTMLContent content={pageData.node.content.content} />
                   </React.Fragment>
-                )));
+                ));
               }}
             />
           </div>
