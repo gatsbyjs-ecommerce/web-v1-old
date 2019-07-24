@@ -17,6 +17,7 @@ const Title = styled.p`
   font-size: 1.2rem;
   font-weight: 900;
   padding: 1rem;
+  margin-bottom: -4px;
 `;
 
 const AsideTitle = ({ title }) => (

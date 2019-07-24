@@ -2,12 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.aside`
-  background-color: ${props => (props.active ? 'red' : '#f1f6f7')};
+  background-color: ${props => (props.active ? '#B3CED4' : '#f1f6f7')};
   width: 100%;
 
   ul {
-    padding: 1rem;
-    margin-top: -1rem;
+    padding: 1.5rem;
   }
 
   span {
