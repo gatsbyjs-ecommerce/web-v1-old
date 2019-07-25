@@ -46,8 +46,7 @@ class TrendingItems extends React.Component {
               native
               from={{ opacity: 0 }}
               to={{ opacity: isOpen ? 1 : 0.25 }}
-              keys={keys}
-            >
+              keys={keys}>
               {products.map(({ node }) => () => {
                 // filter here
                 console.log('prodcut', category, node.category);

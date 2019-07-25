@@ -73,13 +73,13 @@ const Content = styled.div`
 
 const heroQuery = graphql`
   {
-    allContentfulHomePageTopSection {
+    allContentfulHome {
       edges {
         node {
-          subtitle
-          title
-          description {
-            description
+          heroTitle
+          heroSubtitle
+          heroDescription {
+            heroDescription
           }
         }
       }
@@ -93,16 +93,16 @@ const Hero = () => (
     <StaticQuery
       query={heroQuery}
       render={data => {
-        const heroData = data.allContentfulHomePageTopSection.edges[0];
+        const heroData = data.allContentfulHome.edges[0];
         return (
           <div className="column content">
             <Content>
-              <h2 className="is-size-3">{heroData.node.title}</h2>
+              <h2 className="is-size-3">{heroData.node.heroTitle}</h2>
               <h1 className="has-text-dark has-text-weight-bold is-uppercase">
-                {heroData.node.subtitle}
+                {heroData.node.heroSubtitle}
               </h1>
               <p className="has-text-weight-semibold">
-                {heroData.node.description.description}
+                {heroData.node.heroDescription.heroDescription}
                 <Link to="/page/tv-upgrade"> Find out how now!</Link>
               </p>
               <ButtonLink text="Shop Now" link="/shop" />

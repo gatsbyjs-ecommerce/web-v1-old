@@ -51,15 +51,13 @@ const Desc = styled.p`
 `;
 
 const discountQuery = graphql`
-  {
-    allContentfulHomeDiscountOffer {
+  query {
+    allContentfulHome {
       edges {
         node {
-          title
-          subtitle
-          descritption {
-            descritption
-          }
+          discountTitile
+          discountSubtitle
+          discountDescription
         }
       }
     }
@@ -71,17 +69,17 @@ const DiscountOffer = () => (
     <StaticQuery
       query={discountQuery}
       render={data => {
-        const discountData = data.allContentfulHomeDiscountOffer.edges[0];
+        const discountData = data.allContentfulHome.edges[0];
         return (
           <div className="column is-5 has-text-centered">
             <h1 className="has-text-weight-bold has-text-black">
-              {discountData.node.title}
+              {discountData.node.discountTitile}
             </h1>
             <p className="is-size-3 has-text-weight-bold has-text-black">
-              {discountData.node.subtitle}
+              {discountData.node.discountSubtitle}
             </p>
             <Desc className="has-text-black">
-              {discountData.node.descritption.descritption}
+              {discountData.node.discountDescription}
             </Desc>
             <div className="btn">
               <ButtonLink text="Discounts Offers" link="/coupons" />
