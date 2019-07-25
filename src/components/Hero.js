@@ -1,12 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StaticQuery, graphql } from 'gatsby';
 import Link from 'gatsby-link';
 
 import ButtonLink from './ButtonLink';
-
-// import img from '../../static/images/home/hero.jpeg';
-// import Button from './Button';
 
 const Wrapper = styled.div`
   height: 28rem;
@@ -71,47 +67,29 @@ const Content = styled.div`
   }
 `;
 
-const heroQuery = graphql`
-  {
-    allContentfulHome {
-      edges {
-        node {
-          heroTitle
-          heroSubtitle
-          heroDescription {
-            heroDescription
-          }
-        }
-      }
-    }
-  }
-`;
+class Hero extends React.Component {
+  render() {
+    const { home } = this.props;
 
-const Hero = () => (
-  <Wrapper className="columns">
-    <div className="column is-5 is-hidden-mobile"></div>
-    <StaticQuery
-      query={heroQuery}
-      render={data => {
-        const heroData = data.allContentfulHome.edges[0];
-        return (
-          <div className="column content">
-            <Content>
-              <h2 className="is-size-3">{heroData.node.heroTitle}</h2>
-              <h1 className="has-text-dark has-text-weight-bold is-uppercase">
-                {heroData.node.heroSubtitle}
-              </h1>
-              <p className="has-text-weight-semibold">
-                {heroData.node.heroDescription.heroDescription}
-                <Link to="/page/tv-upgrade"> Find out how now!</Link>
-              </p>
-              <ButtonLink text="Shop Now" link="/shop" />
-            </Content>
-          </div>
-        );
-      }}
-    />
-  </Wrapper>
-);
+    return (
+      <Wrapper className="columns">
+        <div className="column is-5 is-hidden-mobile"></div>
+        <div className="column content">
+          <Content>
+            <h2 className="is-size-3">{home.heroTitle}</h2>
+            <h1 className="has-text-dark has-text-weight-bold is-uppercase">
+              {home.heroSubtitle}
+            </h1>
+            <p className="has-text-weight-semibold">
+              {home.heroDescription.heroDescription}
+              <Link to="/page/tv-upgrade">Find out how now!</Link>
+            </p>
+            <ButtonLink text="Shop Now" link="/shop" />
+          </Content>
+        </div>
+      </Wrapper>
+    );
+  }
+}
 
 export default Hero;

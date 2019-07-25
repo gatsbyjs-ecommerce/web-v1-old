@@ -41,21 +41,17 @@ export const indexQuery = graphql`
         }
       }
     }
-    # allContentfulHome {
-    #   edges {
-    #     node {
-    #       id
-    #       heroTitle
-    #       heroSubtitle
-    #       heroDescription {
-    #         heroDescription
-    #       }
-    #       discountTitile
-    #       discountSubtitle
-    #       discountDescription
-    #     }
-    #   }
-    # }
+    contentfulHome {
+      id
+      heroTitle
+      heroSubtitle
+      heroDescription {
+        heroDescription
+      }
+      discountTitile
+      discountSubtitle
+      discountDescription
+    }
     contentfulHome {
       homeSliderTitle
       homeSliderSubTitle
@@ -104,14 +100,14 @@ export default class IndexPage extends React.Component {
           render={data => {
             const {
               allContentfulProduct: products,
-              // allContentfulHome: home,
+              contentfulHome: home,
             } = data;
             return (
               <React.Fragment>
-                <Hero />
+                <Hero home={home} />
                 <ProductsTitleHeader text="Latest" label="Products" />
                 <TrendingItems products={products.edges} />
-                <DiscountOffer />
+                <DiscountOffer home={home} />
                 <Subscription />
               </React.Fragment>
             );

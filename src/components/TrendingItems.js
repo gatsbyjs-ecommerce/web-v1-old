@@ -36,7 +36,6 @@ class TrendingItems extends React.Component {
     const { products, category, brand, searchQuery } = this.props;
     const { isOpen } = this.state;
     const keys = products.map(item => item.node.id);
-    console.log('products filters', category, brand, searchQuery);
 
     return (
       <Container className="section">
@@ -49,7 +48,6 @@ class TrendingItems extends React.Component {
               keys={keys}>
               {products.map(({ node }) => () => {
                 // filter here
-                console.log('prodcut', category, node.category);
                 if (category === 'all' || !category) {
                   //
                 } else if (category && !node.category) {

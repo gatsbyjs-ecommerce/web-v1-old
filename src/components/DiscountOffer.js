@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StaticQuery, graphql } from 'gatsby';
 
 import ButtonLink from './ButtonLink';
 
@@ -50,45 +49,27 @@ const Desc = styled.p`
   }
 `;
 
-const discountQuery = graphql`
-  query {
-    allContentfulHome {
-      edges {
-        node {
-          discountTitile
-          discountSubtitle
-          discountDescription
-        }
-      }
-    }
-  }
-`;
+class DiscountOffer extends React.Component {
+  render() {
+    const { home } = this.props;
 
-const DiscountOffer = () => (
-  <Container className="columns">
-    <StaticQuery
-      query={discountQuery}
-      render={data => {
-        const discountData = data.allContentfulHome.edges[0];
-        return (
-          <div className="column is-5 has-text-centered">
-            <h1 className="has-text-weight-bold has-text-black">
-              {discountData.node.discountTitile}
-            </h1>
-            <p className="is-size-3 has-text-weight-bold has-text-black">
-              {discountData.node.discountSubtitle}
-            </p>
-            <Desc className="has-text-black">
-              {discountData.node.discountDescription}
-            </Desc>
-            <div className="btn">
-              <ButtonLink text="Discounts Offers" link="/coupons" />
-            </div>
+    return (
+      <Container className="columns">
+        <div className="column is-5 has-text-centered">
+          <h1 className="has-text-weight-bold has-text-black">
+            {home.discountTitile}
+          </h1>
+          <p className="is-size-3 has-text-weight-bold has-text-black">
+            {home.discountSubtitle}
+          </p>
+          <Desc className="has-text-black">{home.discountDescription}</Desc>
+          <div className="btn">
+            <ButtonLink text="Discounts Offers" link="/coupons" />
           </div>
-        );
-      }}
-    />
-  </Container>
-);
+        </div>
+      </Container>
+    );
+  }
+}
 
 export default DiscountOffer;
