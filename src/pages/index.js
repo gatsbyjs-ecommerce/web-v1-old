@@ -42,17 +42,6 @@ export const indexQuery = graphql`
       }
     }
     contentfulHome {
-      id
-      heroTitle
-      heroSubtitle
-      heroDescription {
-        heroDescription
-      }
-      discountTitile
-      discountSubtitle
-      discountDescription
-    }
-    contentfulHome {
       homeSliderTitle
       homeSliderSubTitle
       homeSliderImage {
@@ -66,6 +55,15 @@ export const indexQuery = graphql`
           html
         }
       }
+
+      heroTitle
+      heroSubtitle
+      heroDescription {
+        heroDescription
+      }
+      discountTitile
+      discountSubtitle
+      discountDescription
     }
     allDataJson {
       edges {
