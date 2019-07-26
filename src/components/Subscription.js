@@ -31,6 +31,9 @@ const Container = styled.div`
     width: 90%;
     height: 26rem;
   }
+  .media {
+    margin-top: 2.5rem;
+  }
   h1 {
     margin-top: 2.2rem;
     font-size: 2.2rem;
