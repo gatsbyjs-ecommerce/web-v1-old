@@ -5,7 +5,6 @@ import swal from 'sweetalert';
 import { Mutation } from 'react-apollo';
 
 import SubscriptionForm from './SubscriptionForm';
-import Loading from './Loading';
 
 const subscribeMutation = gql`
   mutation subscribe($email: String!) {

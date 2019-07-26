@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const ButtonWrapper = styled.button`
   width: ${props => props.width};
   margin-top: ${props => props.margin};
+  margin-left: ${props => props.marginLeft};
   border: 1px solid #384aeb;
   padding: 12px 41px;
   height: 3.5rem;
@@ -20,13 +21,22 @@ const ButtonWrapper = styled.button`
   }
 `;
 
-const Button = ({ width, text, margin, widthMobile, marginTop }) => (
+const Button = ({
+  width,
+  text,
+  margin,
+  marginLeft,
+  widthMobile,
+  marginTop,
+}) => (
   <ButtonWrapper
     width={width}
     margin={margin}
+    marginLeft={marginLeft}
     widthMobile={widthMobile}
     marginTop={marginTop}
-    className="button is-rounded has-text-weight-bold">
+    className="button is-rounded has-text-weight-bold"
+  >
     {text}
   </ButtonWrapper>
 );

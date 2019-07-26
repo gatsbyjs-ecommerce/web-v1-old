@@ -2,8 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { withFormik } from 'formik';
+import styled from 'styled-components';
 
 import Button from './Button';
+
+const InputWrapper = styled.div`
+  width: 100%;
+`;
 
 const SubscriptionForm = props => {
   const {
@@ -17,29 +22,55 @@ const SubscriptionForm = props => {
   } = props;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className="field">
-        <div className="control">
-          <input
-            className="input is-rounded"
-            name="email"
-            value={values.email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            placeholder="Your email"
-          />
-          {errors.email && touched.email && (
-            <p className="help is-danger">{errors.email}</p>
-          )}
+    <React.Fragment>
+      <form onSubmit={handleSubmit} className="is-hidden-tablet">
+        <div className="field">
+          <div className="control">
+            <input
+              className="input is-rounded"
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="Your email"
+            />
+            {errors.email && touched.email && (
+              <p className="help is-danger">{errors.email}</p>
+            )}
+          </div>
         </div>
-      </div>
-      <Button
-        type="submit"
-        disabled={isSubmitting}
-        text="Register"
-        width="100%"
-      />
-    </form>
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          text="Register"
+          width="100%"
+        />
+      </form>
+      <form onSubmit={handleSubmit} className="is-hidden-mobile is-flex">
+        <InputWrapper className="field">
+          <div className="control">
+            <input
+              className="input is-rounded"
+              name="email"
+              value={values.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="Your email"
+            />
+            {errors.email && touched.email && (
+              <p className="help is-danger">{errors.email}</p>
+            )}
+          </div>
+        </InputWrapper>
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          text="Register"
+          width="40%"
+          marginLeft="1.5rem"
+        />
+      </form>
+    </React.Fragment>
   );
 };
 
