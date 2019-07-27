@@ -7,6 +7,7 @@ import Img from 'gatsby-image';
 import { formatCurrency } from '../utils/helpers';
 import config from '../config';
 import CouponForm from './CouponForm';
+import Dropdown from './Dropdown';
 
 const cartQuery = gql`
   query {
@@ -195,6 +196,7 @@ class CartItems extends React.Component {
                       placeholder="Leave your comment here"
                     />
                   </div>
+                  <Dropdown />
                   {showCheckoutBtn && (
                     <BuyBtn
                       className="product-info-btn button is-large is-rounded is-uppercase"

@@ -108,8 +108,7 @@ class PaymentForm extends React.Component {
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+          to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <Cards className="has-text-centered">
@@ -203,8 +202,7 @@ class PaymentForm extends React.Component {
                   type="submit"
                   className="checkout-form-btn button is-large is-rounded is-uppercase"
                   onClick={this.handleSubmit}
-                  disabled={isSubmitting}
-                >
+                  disabled={isSubmitting}>
                   <span className="icon">
                     <i className="fas fa-lock" />
                   </span>
