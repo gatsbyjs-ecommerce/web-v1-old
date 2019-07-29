@@ -84,6 +84,7 @@ exports.createPages = ({ actions, graphql }) => {
             color
             rating
             productCode
+            couponBanner
             featuredImage {
               title
               file {

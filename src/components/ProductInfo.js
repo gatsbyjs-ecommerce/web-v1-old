@@ -110,6 +110,10 @@ const ShareContainer = styled.div`
   }
 `;
 
+const CouponBanner = styled.div`
+  margin-top: 3%;
+`;
+
 class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -196,7 +200,9 @@ class ProductInfo extends React.Component {
                   </ApolloConsumer>
                 )}
               </Query>
-
+              <CouponBanner className="has-text-weight-semibold">
+                {product.couponBanner}
+              </CouponBanner>
               <AccordionStyled>
                 <AccordionItem expanded>
                   <AccordionItemTitle>

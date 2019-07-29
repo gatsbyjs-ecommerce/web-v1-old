@@ -94,6 +94,7 @@ export const productQuery = graphql`
       shippingCost
       color
       productCode
+      couponBanner
       featuredImage {
         title
         sizes(maxWidth: 550) {
@@ -127,6 +128,7 @@ export const productQuery = graphql`
           color
           originalPrice
           discountPrice
+          couponBanner
           featuredImage {
             title
             sizes(maxWidth: 550) {
