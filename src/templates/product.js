@@ -72,7 +72,7 @@ export default class Product extends React.Component {
             </div>
             <ProductsList title="We think you'll" products={products.edges} />
             <div className="has-text-centered	">
-              <ViewAllBtn to="/" className="button is-outlined is-medium">
+              <ViewAllBtn to="/shop" className="button is-outlined is-medium">
                 View all
               </ViewAllBtn>
             </div>

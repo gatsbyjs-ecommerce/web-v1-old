@@ -200,9 +200,18 @@ class ProductInfo extends React.Component {
                   </ApolloConsumer>
                 )}
               </Query>
-              <CouponBanner className="has-text-weight-semibold">
-                {product.couponBanner}
-              </CouponBanner>
+
+              {product.couponBanner ? (
+                <CouponBanner className="has-text-weight-semibold">
+                  <span className="icon has-text-info">
+                    <i className="fas fa-tag" />
+                  </span>
+                  {product.couponBanner}
+                </CouponBanner>
+              ) : (
+                ''
+              )}
+
               <AccordionStyled>
                 <AccordionItem expanded>
                   <AccordionItemTitle>
