@@ -113,16 +113,20 @@ export default class Login extends React.Component {
                       'warning',
                     );
                   }}>
-                  {login => (
-                    <LoginForm
-                      handleUpdate={data => {
-                        // console.log('login form', data);
-                        return login({
-                          variables: data,
-                        });
-                      }}
-                    />
-                  )}
+                  {(login, { loading }) => {
+                    return (
+                      <React.Fragment>
+                        <LoginForm
+                          handleUpdate={data => {
+                            return login({
+                              variables: data,
+                            });
+                          }}
+                        />
+                        {loading ? <Loading /> : null}
+                      </React.Fragment>
+                    );
+                  }}
                 </Mutation>
               </div>
             </div>

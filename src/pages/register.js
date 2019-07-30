@@ -86,15 +86,20 @@ export default class Register extends React.Component {
                       'warning',
                     );
                   }}>
-                  {register => (
-                    <RegisterForm
-                      handleUpdate={data => {
-                        return register({
-                          variables: data,
-                        });
-                      }}
-                    />
-                  )}
+                  {(register, { loading }) => {
+                    return (
+                      <React.Fragment>
+                        <RegisterForm
+                          handleUpdate={data => {
+                            return register({
+                              variables: data,
+                            });
+                          }}
+                        />
+                        {loading ? <Loading /> : null}
+                      </React.Fragment>
+                    );
+                  }}
                 </Mutation>
               </div>
               <div className="column is-hidden-tablet">

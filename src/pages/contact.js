@@ -116,12 +116,12 @@ export default class Contact extends React.Component {
                       'warning',
                     );
                   }}>
-                  {(subscription, { loading }) => {
+                  {(contactData, { loading }) => {
                     return (
                       <React.Fragment>
                         <ContactForm
                           handleUpdate={dataNew => {
-                            return subscription({
+                            return contactData({
                               variables: dataNew,
                             });
                           }}

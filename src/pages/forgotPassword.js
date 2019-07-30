@@ -102,15 +102,20 @@ export default class Login extends React.Component {
                       'warning',
                     );
                   }}>
-                  {forgotPassword => (
-                    <ForgotPasswordForm
-                      handleUpdate={data => {
-                        return forgotPassword({
-                          variables: data,
-                        });
-                      }}
-                    />
-                  )}
+                  {(forgotPassword, { loading }) => {
+                    return (
+                      <React.Fragment>
+                        <ForgotPasswordForm
+                          handleUpdate={data => {
+                            return forgotPassword({
+                              variables: data,
+                            });
+                          }}
+                        />
+                        {loading ? <Loading /> : null}
+                      </React.Fragment>
+                    );
+                  }}
                 </Mutation>
               </div>
             </div>
