@@ -42,7 +42,7 @@ const SubscriptionForm = props => {
         <Button
           type="submit"
           disabled={isSubmitting}
-          text="Register"
+          text="Subscribe"
           width="100%"
         />
       </form>
@@ -65,7 +65,7 @@ const SubscriptionForm = props => {
         <Button
           type="submit"
           disabled={isSubmitting}
-          text="Register"
+          text="Subscribe"
           width="40%"
           marginLeft="1.5rem"
         />
