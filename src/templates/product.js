@@ -72,7 +72,7 @@ export default class Product extends React.Component {
             </div>
             <ProductsList title="We think you'll" products={products.edges} />
             <div className="has-text-centered	">
-              <ViewAllBtn to="/" className="button is-outlined is-medium">
+              <ViewAllBtn to="/shop" className="button is-outlined is-medium">
                 View all
               </ViewAllBtn>
             </div>
@@ -94,6 +94,7 @@ export const productQuery = graphql`
       shippingCost
       color
       productCode
+      couponBanner
       featuredImage {
         title
         sizes(maxWidth: 550) {
@@ -127,6 +128,7 @@ export const productQuery = graphql`
           color
           originalPrice
           discountPrice
+          couponBanner
           featuredImage {
             title
             sizes(maxWidth: 550) {

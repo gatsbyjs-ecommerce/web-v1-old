@@ -110,6 +110,10 @@ const ShareContainer = styled.div`
   }
 `;
 
+const CouponBanner = styled.div`
+  margin-top: 3%;
+`;
+
 class ProductInfo extends React.Component {
   constructor(props) {
     super(props);
@@ -167,6 +171,7 @@ class ProductInfo extends React.Component {
     const metaImage = product.featuredImage
       ? product.featuredImage.sizes.src
       : `${config.url}${config.logo}`;
+    const isBanner = product.couponBanner;
 
     return (
       <React.Fragment>
@@ -196,6 +201,17 @@ class ProductInfo extends React.Component {
                   </ApolloConsumer>
                 )}
               </Query>
+
+              {isBanner ? (
+                <CouponBanner className="has-text-weight-semibold">
+                  <span className="icon has-text-info">
+                    <i className="fas fa-tag" />
+                  </span>
+                  {isBanner}
+                </CouponBanner>
+              ) : (
+                ''
+              )}
 
               <AccordionStyled>
                 <AccordionItem expanded>

@@ -29,6 +29,7 @@ export const shopQuery = graphql`
           color
           originalPrice
           discountPrice
+          couponBanner
           featuredImage {
             title
             sizes(maxWidth: 550) {
