@@ -171,6 +171,7 @@ class ProductInfo extends React.Component {
     const metaImage = product.featuredImage
       ? product.featuredImage.sizes.src
       : `${config.url}${config.logo}`;
+    const isBanner = product.couponBanner;
 
     return (
       <React.Fragment>
@@ -201,12 +202,12 @@ class ProductInfo extends React.Component {
                 )}
               </Query>
 
-              {product.couponBanner ? (
+              {isBanner ? (
                 <CouponBanner className="has-text-weight-semibold">
                   <span className="icon has-text-info">
                     <i className="fas fa-tag" />
                   </span>
-                  {product.couponBanner}
+                  {isBanner}
                 </CouponBanner>
               ) : (
                 ''
