@@ -10,6 +10,7 @@ import config from '../config/index';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
 import ForgotPasswordForm from '../components/ForgotPasswordForm';
+import Loading from '../components/Loading';
 
 const Container = styled.div`
   a {
@@ -74,15 +75,20 @@ export default class Login extends React.Component {
                       'warning',
                     );
                   }}>
-                  {forgotPassword => (
-                    <ForgotPasswordForm
-                      handleUpdate={data => {
-                        return forgotPassword({
-                          variables: data,
-                        });
-                      }}
-                    />
-                  )}
+                  {(forgotPassword, { loading }) => {
+                    return (
+                      <React.Fragment>
+                        <ForgotPasswordForm
+                          handleUpdate={data => {
+                            return forgotPassword({
+                              variables: data,
+                            });
+                          }}
+                        />
+                        {loading ? <Loading /> : null}
+                      </React.Fragment>
+                    );
+                  }}
                 </Mutation>
               </div>
               <div className="column is-hidden-tablet">

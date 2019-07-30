@@ -11,6 +11,7 @@ import config from '../config/index';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
 import LoginForm from '../components/LoginForm';
+import Loading from '../components/Loading';
 
 const Container = styled.div`
   a {
@@ -85,15 +86,20 @@ export default class Login extends React.Component {
                       'warning',
                     );
                   }}>
-                  {login => (
-                    <LoginForm
-                      handleUpdate={data => {
-                        return login({
-                          variables: data,
-                        });
-                      }}
-                    />
-                  )}
+                  {(login, { loading }) => {
+                    return (
+                      <React.Fragment>
+                        <LoginForm
+                          handleUpdate={data => {
+                            return login({
+                              variables: data,
+                            });
+                          }}
+                        />
+                        {loading ? <Loading /> : null}
+                      </React.Fragment>
+                    );
+                  }}
                 </Mutation>
               </div>
               <div className="column is-hidden-tablet">
@@ -131,7 +137,7 @@ export default class Login extends React.Component {
                 |
                 <RegisterLink to="/forgotPassword">
                   <strong>
-                    <u>Forgot Password? </u>
+                    <u>Forgot Password?</u>
                   </strong>
                 </RegisterLink>
               </p>

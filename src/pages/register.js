@@ -11,6 +11,7 @@ import config from '../config/index';
 import Seo from '../components/Seo';
 import Heading from '../components/Heading';
 import RegisterForm from '../components/RegisterForm';
+import Loading from '../components/Loading';
 
 const Container = styled.div`
   a {
@@ -107,15 +108,20 @@ export default class Register extends React.Component {
                       'warning',
                     );
                   }}>
-                  {register => (
-                    <RegisterForm
-                      handleUpdate={data => {
-                        return register({
-                          variables: data,
-                        });
-                      }}
-                    />
-                  )}
+                  {(register, { loading }) => {
+                    return (
+                      <React.Fragment>
+                        <RegisterForm
+                          handleUpdate={data => {
+                            return register({
+                              variables: data,
+                            });
+                          }}
+                        />
+                        {loading ? <Loading /> : null}
+                      </React.Fragment>
+                    );
+                  }}
                 </Mutation>
               </div>
             </div>
