@@ -26,6 +26,7 @@ const Container = styled.div`
   }
   .navbar {
     margin-bottom: 0.8rem;
+    z-index: 0;
   }
   .navbar-menu {
     flex-grow: unset;

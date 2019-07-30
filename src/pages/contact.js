@@ -12,6 +12,7 @@ import Layout from '../components/Layout';
 import Heading from '../components/Heading';
 import ContactForm from '../components/ContactForm';
 import SocialIcons from '../components/SocialIcons';
+import Loading from '../components/Loading';
 
 const Container = styled.section`
   a {
@@ -115,15 +116,20 @@ export default class Contact extends React.Component {
                       'warning',
                     );
                   }}>
-                  {subscription => (
-                    <ContactForm
-                      handleUpdate={dataNew => {
-                        return subscription({
-                          variables: dataNew,
-                        });
-                      }}
-                    />
-                  )}
+                  {(subscription, { loading }) => {
+                    return (
+                      <React.Fragment>
+                        <ContactForm
+                          handleUpdate={dataNew => {
+                            return subscription({
+                              variables: dataNew,
+                            });
+                          }}
+                        />
+                        {loading ? <Loading /> : null}
+                      </React.Fragment>
+                    );
+                  }}
                 </Mutation>
               </div>
             </div>
