@@ -40,7 +40,7 @@ const Container = styled.div`
     font-size: 2.2rem;
     color: #000;
     @media only screen and (max-width: 768px) {
-      margin-top: 2rem;
+      margin-top: -1.3rem;
     }
   }
   p {
