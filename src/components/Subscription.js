@@ -5,6 +5,7 @@ import swal from 'sweetalert';
 import { Mutation } from 'react-apollo';
 
 import SubscriptionForm from './SubscriptionForm';
+import Loading from './Loading';
 
 const subscribeMutation = gql`
   mutation subscribe($email: String!) {
@@ -95,15 +96,20 @@ class Subscription extends React.Component {
                     'warning',
                   );
                 }}>
-                {subscription => (
-                  <SubscriptionForm
-                    handleUpdate={dataNew => {
-                      return subscription({
-                        variables: dataNew,
-                      });
-                    }}
-                  />
-                )}
+                {(subscription, { loading }) => {
+                  return (
+                    <React.Fragment>
+                      <SubscriptionForm
+                        handleUpdate={data => {
+                          return subscription({
+                            variables: data,
+                          });
+                        }}
+                      />
+                      {loading ? <Loading /> : null}
+                    </React.Fragment>
+                  );
+                }}
               </Mutation>
             </div>
           </div>
