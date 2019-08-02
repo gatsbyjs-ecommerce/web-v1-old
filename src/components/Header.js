@@ -81,7 +81,7 @@ const MobileMenu = styled(animated.div)`
     height: 100%;
     width: 100%;
     background-color: #2f2f2f;
-    z-index: 2;
+    z-index: -1;
     padding: 2rem;
     overflow: hidden;
     a {
