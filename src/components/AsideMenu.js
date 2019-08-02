@@ -4,23 +4,29 @@ import AsideTitle from './AsideTitle';
 import AsideOption from './AsideOption';
 
 const Brand = styled.div`
-  margin-top: 2rem;
+  margin-top: 1rem;
 `;
 
 class AsideMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isActive: false };
+    this.state = { isProducts: false, isBrand: false };
   }
 
-  toggleOptions = () => {
+  toggleProducts = () => {
     this.setState(preState => ({
-      isActive: !preState.isActive,
+      isProducts: !preState.isProducts,
+    }));
+  };
+
+  toggleBrands = () => {
+    this.setState(preState => ({
+      isBrand: !preState.isBrand,
     }));
   };
 
   render() {
-    const { isActive } = this.state;
+    const { isProducts, isBrand } = this.state;
     const {
       brands,
       categories,
@@ -69,9 +75,9 @@ class AsideMenu extends React.Component {
           ))}
         </Brand>
 
-        <div className="is-hidden-tablet" onClick={this.toggleOptions}>
+        <Brand className="is-hidden-tablet" onClick={this.toggleProducts}>
           <AsideTitle title="Products Type" />
-          {isActive ? (
+          {isProducts ? (
             <React.Fragment>
               <AsideOption
                 name="All"
@@ -90,10 +96,11 @@ class AsideMenu extends React.Component {
               ))}
             </React.Fragment>
           ) : null}
-        </div>
-        <Brand className="is-hidden-tablet" onClick={this.toggleOptions}>
+        </Brand>
+
+        <Brand className="is-hidden-tablet" onClick={this.toggleBrands}>
           <AsideTitle title="Brand" />
-          {isActive ? (
+          {isBrand ? (
             <React.Fragment>
               <AsideOption
                 name="All"
