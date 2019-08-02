@@ -75,7 +75,7 @@ class AsideMenu extends React.Component {
           ))}
         </Brand>
 
-        <Brand className="is-hidden-tablet" onClick={this.toggleProducts}>
+        <div className="is-hidden-tablet" onClick={this.toggleProducts}>
           <AsideTitle title="Products Type" />
           {isProducts ? (
             <React.Fragment>
@@ -96,7 +96,7 @@ class AsideMenu extends React.Component {
               ))}
             </React.Fragment>
           ) : null}
-        </Brand>
+        </div>
 
         <Brand className="is-hidden-tablet" onClick={this.toggleBrands}>
           <AsideTitle title="Brand" />
