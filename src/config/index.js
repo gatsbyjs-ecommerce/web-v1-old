@@ -17,8 +17,8 @@ module.exports = {
   googleAnalytics: 'UA-1390187-40',
   stripePublishableKey:
     process.env.NODE_ENV === 'development'
-      ? 'pk_test_P0DEB2otulfya51U9lIkLXAn'
-      : 'pk_live_eMN5tHGymDNn3DOZH8MX5ziD',
+      ? 'pk_test_ReUxZNC00MHaGq2kpGssM4OM00tAbKXaLU'
+      : 'pk_live_fo5Q5XUV0G2gFfGPGjW28OLO00c7xoDSfQ',
   deliveryCharges: 2,
 
   backgroundColor: '#e0e0e0',
