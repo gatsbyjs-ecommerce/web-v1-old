@@ -77,11 +77,11 @@ const MobileMenu = styled(animated.div)`
   && {
     position: fixed;
     left: 0;
-    top: 161px;
+    top: 114px;
     height: 100%;
     width: 100%;
     background-color: #2f2f2f;
-    z-index: -1;
+    z-index: 2;
     padding: 2rem;
     overflow: hidden;
     a {
@@ -252,10 +252,10 @@ class Header extends React.Component {
                   </a>
                 </span>
               ) : (
-                <a onClick={this.toggleMobileMenu}>
-                  <i className="fas fa-bars menu-trigger" />
-                </a>
-              )}
+                  <a onClick={this.toggleMobileMenu}>
+                    <i className="fas fa-bars menu-trigger" />
+                  </a>
+                )}
 
               <CartMobile>{cart}</CartMobile>
             </div>

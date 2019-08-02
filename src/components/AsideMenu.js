@@ -7,6 +7,10 @@ const Brand = styled.div`
   margin-top: 1rem;
 `;
 
+const BrandWrapper = styled.div`
+  z-index: 5;
+`;
+
 class AsideMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -75,7 +79,9 @@ class AsideMenu extends React.Component {
           ))}
         </Brand>
 
-        <div className="is-hidden-tablet" onClick={this.toggleProducts}>
+        <BrandWrapper
+          className="is-hidden-tablet"
+          onClick={this.toggleProducts}>
           <AsideTitle title="Products Type" />
           {isProducts ? (
             <React.Fragment>
@@ -96,7 +102,7 @@ class AsideMenu extends React.Component {
               ))}
             </React.Fragment>
           ) : null}
-        </div>
+        </BrandWrapper>
 
         <Brand className="is-hidden-tablet" onClick={this.toggleBrands}>
           <AsideTitle title="Brand" />
