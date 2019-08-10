@@ -1,11 +1,11 @@
 import React from 'react';
-// import { graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import ReactGA from 'react-ga';
 
 import config from '../config';
 import Layout from '../components/Layout';
 import Heading from '../components/Heading';
-// import BlogItem from '../components/BlogItem';
+import BlogItem from '../components/BlogItem';
 import Seo from '../components/Seo';
 
 // export const blogQuery = graphql`
@@ -15,7 +15,6 @@ import Seo from '../components/Seo';
 //         node {
 //           id
 //           title
-//           uniqueSlug
 //           virtuals {
 //             subtitle
 //             totalClapCount

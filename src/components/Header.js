@@ -146,7 +146,7 @@ const NavItems = [
   // { id: 3, name: 'Coupons', url: '/coupons' },
   { id: 4, name: 'News', url: '/blog' },
   { id: 5, name: 'Contact', url: '/contact' },
-  { id: 6, name: 'Sign in', url: '/login' },
+  { id: 6, name: 'My Account', url: '/login' },
   // { id: 7, name: 'Register', url: '/register' },
 ];
 
