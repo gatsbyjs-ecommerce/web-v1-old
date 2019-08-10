@@ -81,7 +81,7 @@ class Hero extends React.Component {
               {home.heroSubtitle}
             </h1>
             <p className="has-text-weight-semibold">
-              {home.heroDescription.heroDescription}
+              {home.heroDescription.heroDescription}{' '}
               <Link to="/page/tv-upgrade">Find out how now!</Link>
             </p>
             <ButtonLink text="Shop Now" link="/shop" />
