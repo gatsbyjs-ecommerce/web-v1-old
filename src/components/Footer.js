@@ -109,13 +109,15 @@ const Footer = ({ home }) => (
                   <h1 className="has-text-white has-text-weight-bold">
                     Phone Number
                   </h1>
-                  <p className="has-text-grey-light">
+                  <a href="tel:" className="has-text-grey-light">
                     {list.node.contactNumber}
-                  </p>
+                  </a>
                 </div>
                 <div>
                   <h1 className="has-text-white has-text-weight-bold">Email</h1>
-                  <p className="has-text-grey-light">{list.node.emailId}</p>
+                  <a href="mailto:" className="has-text-grey-light">
+                    {list.node.emailId}
+                  </a>
                 </div>
               </div>
               <div className="column has-text-white">
