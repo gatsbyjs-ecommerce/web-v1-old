@@ -19,7 +19,7 @@ const cartQuery = gql`
 `;
 
 const Item = styled.article`
-  min-height: 200px;
+  min-height: 120px;
   .image {
     height: auto;
   }
