@@ -12,7 +12,7 @@ module.exports = {
   GRAPHQL_ENDPOINT: 'https://smart-home-api.now.sh',
   GRAPHQL_ENDPOINT_DEV: 'https://smart-home-api.now.sh',
   // GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000',
-  siteUrl: 'https://www.smarthomedevices.solutions',
+  siteUrl: 'https://www.shdevices.ca',
   mediumPublicationUrl: 'https://medium.com/@shdevicesblog',
   googleAnalytics: 'UA-1390187-40',
   stripePublishableKey:

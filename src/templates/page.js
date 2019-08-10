@@ -36,15 +36,17 @@ export default class Page extends React.Component {
 
     return (
       <Layout>
-        <div className="section">
-          <Seo
-            title={page.title}
-            description=""
-            url={`${config.siteUrl}/page/${page.slug}`}
-          />
-          <Heading>{page.title}</Heading>
-          <HTMLContent content={page.content.childMarkdownRemark.html} />
-        </div>
+        <section className="section">
+          <div className="container">
+            <Seo
+              title={page.title}
+              description=""
+              url={`${config.siteUrl}/page/${page.slug}`}
+            />
+            <Heading>{page.title}</Heading>
+            <HTMLContent content={page.content.childMarkdownRemark.html} />
+          </div>
+        </section>
       </Layout>
     );
   }
