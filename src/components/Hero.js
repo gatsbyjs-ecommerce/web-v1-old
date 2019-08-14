@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 `;
 
 const Content = styled.div`
-  margin: 4% 4% 0 13%;
+  margin: 8% 4% 0 13%;
   @media only screen and (max-width: 768px) {
     margin: 8% 4% 0 9%;
   }

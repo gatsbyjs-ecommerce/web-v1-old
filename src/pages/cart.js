@@ -37,8 +37,9 @@ class Cart extends React.Component {
           <div className="container">
             <Seo
               title="Cart"
-              description="Your order items"
+              description="Your selected items for purchase"
               url={`${config.siteUrl}/cart`}
+              keywords="my cart, shopping cart, cart"
             />
             <Heading>Cart</Heading>
             <Spring

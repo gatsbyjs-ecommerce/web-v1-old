@@ -71,7 +71,8 @@ export default class Register extends React.Component {
             <Seo
               title="Register"
               description="Register Yourself"
-              url={`${config.siteUrl}/Register`}
+              url={`${config.siteUrl}/register`}
+              keywords="sign up, register"
             />
             <Heading>Register</Heading>
             <div className="columns">

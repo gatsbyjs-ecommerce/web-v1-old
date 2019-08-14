@@ -61,6 +61,7 @@ export default class Login extends React.Component {
               title="Forgot Password"
               description="Get In Touch"
               url={`${config.siteUrl}/forgotPassword`}
+              keywords="forgot password"
             />
             <Heading>Forgot Password</Heading>
             <div className="columns">

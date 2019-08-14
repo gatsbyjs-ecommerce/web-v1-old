@@ -73,6 +73,7 @@ export default class Contact extends React.Component {
               title="Contact"
               description="Get In Touch"
               url={`${config.siteUrl}/contact`}
+              keywords="contact, phone number, customer support, helpline number, contact information, contact email, "
             />
             <Heading>Get In touch</Heading>
             <div className="columns">

@@ -43,6 +43,7 @@ export default class Coupons extends React.Component {
               title="Coupons"
               description="Get a best detals"
               url={`${config.siteUrl}/coupons`}
+              keywords="coupons, vouchers, free coupons, promo code, discount codes, coupons code, discount coupons"
             />
             <Heading>Coupons</Heading>
             <div className="columns is-multiline">

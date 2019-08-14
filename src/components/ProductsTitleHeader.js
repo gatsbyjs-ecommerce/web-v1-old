@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
-  margin-top: 2rem;
+  margin-top: ${props => (props.margin ? '4rem' : '2rem')};
   justify-content: center;
   display: flex;
   p {
@@ -15,8 +15,8 @@ const Container = styled.div`
   }
 `;
 
-const ProductsTitleHeader = ({ text, label }) => (
-  <Container>
+const ProductsTitleHeader = ({ text, label, margin }) => (
+  <Container margin={margin}>
     <p className="is-size-4 has-text-weight-bold has-text-black-bis">
       {text}
       {` `}

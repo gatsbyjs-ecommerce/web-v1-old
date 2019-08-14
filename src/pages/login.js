@@ -70,8 +70,9 @@ export default class Login extends React.Component {
           <div className="container">
             <Seo
               title="Login"
-              description="Get In Touch"
-              url={`${config.siteUrl}/Login`}
+              description="Get In Touch with us"
+              url={`${config.siteUrl}/login`}
+              keywords="sign in"
             />
             <Heading>Login</Heading>
             <div className="columns">

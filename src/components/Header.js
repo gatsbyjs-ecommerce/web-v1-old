@@ -252,10 +252,10 @@ class Header extends React.Component {
                   </a>
                 </span>
               ) : (
-                  <a onClick={this.toggleMobileMenu}>
-                    <i className="fas fa-bars menu-trigger" />
-                  </a>
-                )}
+                <a onClick={this.toggleMobileMenu}>
+                  <i className="fas fa-bars menu-trigger" />
+                </a>
+              )}
 
               <CartMobile>{cart}</CartMobile>
             </div>

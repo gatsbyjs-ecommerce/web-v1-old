@@ -122,7 +122,7 @@ export default class Shop extends React.Component {
               title="Shop"
               description="Search our wide range of products"
               url={`${config.siteUrl}/shop`}
-              keywords="all products, tv accessories"
+              keywords="all products, tv accessories, led tv"
             />
 
             <StaticQuery

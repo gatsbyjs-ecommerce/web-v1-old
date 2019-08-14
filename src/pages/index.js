@@ -91,7 +91,7 @@ export default class IndexPage extends React.Component {
         <Seo
           title="Purchase all kind of smart home devices and TVs"
           description="Your Smart Home Solutions"
-          keywords="featured products, smart home devices"
+          keywords="featured products, smart home devices, TV Accessories"
           url={config.siteUrl}
         />
         <StaticQuery
@@ -104,7 +104,7 @@ export default class IndexPage extends React.Component {
             return (
               <React.Fragment>
                 <Hero home={home} />
-                <ProductsTitleHeader text="Latest" label="Products" />
+                <ProductsTitleHeader margin text="Latest" label="Products" />
                 <TrendingItems products={products.edges} />
                 <DiscountOffer home={home} />
                 <Subscription />

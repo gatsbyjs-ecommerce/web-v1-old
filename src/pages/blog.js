@@ -47,9 +47,10 @@ export default class Blog extends React.Component {
       <Layout>
         <div className="container">
           <Seo
-            title="Blog"
-            description="Read our latest news"
+            title="News"
+            description="Smart home devices latest news"
             url={`${config.siteUrl}/blog`}
+            keywords="blogs, latest updates, latest news"
           />
           <Heading>Our Latest News</Heading>
           <div className="columns is-multiline is-gapless">

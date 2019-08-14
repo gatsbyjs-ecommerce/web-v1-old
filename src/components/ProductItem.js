@@ -25,7 +25,7 @@ const Container = styled(animated.div)`
       .price-container {
         width: 50px;
         position: absolute;
-        right: 0;
+        right: 5%;
         top: 0.5rem;
       }
       .price {

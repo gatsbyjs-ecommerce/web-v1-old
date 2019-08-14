@@ -24,6 +24,7 @@ const MyOrders = () => (
           title="My Orders"
           description="Your order history"
           url={`${config.siteUrl}/myOrders`}
+          keywords="my orders"
         />
         <Heading>My Orders</Heading>
         <div className="columns">
