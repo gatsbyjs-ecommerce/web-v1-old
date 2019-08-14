@@ -39,7 +39,7 @@ export default class Blog extends React.Component {
   }
 
   render() {
-    const { data } = this.props;
+    // const { data } = this.props;
     // const posts = data.allMediumPost.edges;
 
     return (
@@ -53,12 +53,9 @@ export default class Blog extends React.Component {
           <Heading>Our Latest News</Heading>
           <div className="columns is-multiline is-gapless">
             <div className="column is-half">
-              {/* {postMessage.length === 0 > ? ("No updates yet") 
-              : (
-              {posts.map(({ node }) => (
-              <BlogItem data={node} key={node.id} />
-                ))}
-              )} */}
+              {/* {posts.map(({ node }) => (
+                <BlogItem data={node} key={node.id} />
+              ))} */}
             </div>
           </div>
         </div>
