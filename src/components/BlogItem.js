@@ -19,17 +19,20 @@ const Image = styled.img`
 `;
 
 export default ({ data }) => {
+  console.log('data', data);
   const url = `${config.mediumPublicationUrl}/${data.uniqueSlug}`;
 
   return (
     <div className="columns">
-      <div className="column">
-        <a href={url}>
-          <Image
-            src={`https://cdn-images-1.medium.com/max/800/${data.virtuals.previewImage.imageId}`}
-          />
-        </a>
-      </div>
+      {data.virtuals.previewImage.imageId.length !== 0 && (
+        <div className="column">
+          <a href={url}>
+            <Image
+              src={`https://cdn-images-1.medium.com/max/800/${data.virtuals.previewImage.imageId}`}
+            />
+          </a>
+        </div>
+      )}
       <div className="column ">
         <div className="content">
           <Title className="is-size-5 has-text-weight-semibold" href={url}>

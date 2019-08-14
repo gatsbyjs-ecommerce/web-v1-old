@@ -6171,7 +6171,7 @@ gatsby-source-filesystem@^2.0.38, gatsby-source-filesystem@^2.1.9:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-source-medium@^2.0.8:
+gatsby-source-medium@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/gatsby-source-medium/-/gatsby-source-medium-2.1.2.tgz#ece35a6fd63491303000afdff48ce2fda2016e20"
   integrity sha512-hdfx55rF4RLR7OM/HdE7yXuL6H94cCQs5MzfE1rK0w7KZ5enLQbgrBwWsCcbVk5RTvaZkQcpEPUBCzn843CI7w==

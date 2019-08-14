@@ -119,9 +119,10 @@ export default class Shop extends React.Component {
         <Section className="section">
           <div className="container">
             <Seo
-              title="shop"
-              description="Get the best products"
+              title="Shop"
+              description="Search our wide range of products"
               url={`${config.siteUrl}/shop`}
+              keywords="all products, tv accessories"
             />
 
             <StaticQuery

@@ -89,8 +89,9 @@ export default class IndexPage extends React.Component {
     return (
       <Layout>
         <Seo
-          title="home"
+          title="Purchase all kind of smart home devices and TVs"
           description="Your Smart Home Solutions"
+          keywords="featured products, smart home devices"
           url={config.siteUrl}
         />
         <StaticQuery
