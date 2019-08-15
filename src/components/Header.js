@@ -176,7 +176,9 @@ class Header extends React.Component {
         <Query query={cartQuery}>
           {({ data }) => (
             <Link to="/cart">
-              <i className="fas fa-shopping-cart" />
+              <span className="icon has-text-link">
+                <i className="fas fa-shopping-cart" />
+              </span>
               {data.cart && data.cart.count > 0 && (
                 <div className="count">{data.cart.count}</div>
               )}
@@ -252,10 +254,10 @@ class Header extends React.Component {
                   </a>
                 </span>
               ) : (
-                <a onClick={this.toggleMobileMenu}>
-                  <i className="fas fa-bars menu-trigger" />
-                </a>
-              )}
+                  <a onClick={this.toggleMobileMenu}>
+                    <i className="fas fa-bars menu-trigger" />
+                  </a>
+                )}
 
               <CartMobile>{cart}</CartMobile>
             </div>
