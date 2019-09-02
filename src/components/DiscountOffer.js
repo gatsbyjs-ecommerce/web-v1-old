@@ -6,11 +6,11 @@ import ButtonLink from './ButtonLink';
 const Container = styled.div`
   margin-top: 3rem;
   height: 33rem;
-  background-image: url('/images/home/parallax.jpg');
+  background-image: url('/images/home/dis.svg');
   background-repeat: no-repeat;
-  background-size: 100%;
+  background-size: 52%;
   background-color: #8dc0d3;
-  background-position: center;
+  background-position: right;
   @media only screen and (max-width: 768px) {
     background-image: none;
     background-color: #a3cbda;
