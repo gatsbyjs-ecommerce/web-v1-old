@@ -5,34 +5,16 @@ import Link from 'gatsby-link';
 import ButtonLink from './ButtonLink';
 
 const Wrapper = styled.div`
-  height: 28rem;
-  @media only screen and (max-width: 768px) {
-    height: 26rem;
-  }
-
-  .is-5 {
-    background-image: url('/images/home/home1.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    @media only screen and (max-width: 1042px) and (min-width: 769px) {
-      height: 32rem;
-    }
-  }
-
-  .content {
-    background-color: #f1f6f7;
-    height: 27.5rem;
-    margin-top: 0.3rem;
-    @media only screen and (max-width: 1042px) and (min-width: 769px) {
-      height: 31.5rem;
-    }
+  .column :last-child {
+    background: #f1f6f7;
+    align-self: center;
   }
 `;
 
 const Content = styled.div`
-  margin: 8% 4% 0 13%;
+  margin: 8% 4% 8% 13%;
   @media only screen and (max-width: 768px) {
-    margin: 8% 4% 0 9%;
+    margin: 8% 4% 8% 9%;
   }
 
   h2 {
@@ -73,8 +55,10 @@ class Hero extends React.Component {
 
     return (
       <Wrapper className="columns">
-        <div className="column is-5 is-hidden-mobile"></div>
-        <div className="column content">
+        <div className="column is-6 is-hidden-mobile">
+          <img src="/images/home/shdhome.svg" alt="Smart Home Theme" />
+        </div>
+        <div className="column">
           <Content>
             <h2 className="is-size-3">{home.heroTitle}</h2>
             <h1 className="has-text-dark has-text-weight-bold is-uppercase">
