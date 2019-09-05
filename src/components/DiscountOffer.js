@@ -6,11 +6,17 @@ import ButtonLink from './ButtonLink';
 const Container = styled.div`
   margin-top: 3rem;
   height: 33rem;
-  background-image: url('/images/home/parallax.jpg');
+  background-image: url('/images/home/dis.svg');
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-color: #8dc0d3;
-  background-position: center;
+  background-size: 52%;
+  background-color: #f1f6f7;
+  background-position: right;
+  @media only screen and (max-width: 2100px) and (min-width: 1300px) {
+    background-size: 38%;
+  }
+  @media only screen and (max-width: 2700px) and (min-width: 2101px) {
+    background-size: 30%;
+  }
   @media only screen and (max-width: 768px) {
     background-image: none;
     background-color: #a3cbda;
@@ -29,7 +35,7 @@ const Container = styled.div`
   h1 {
     margin-top: 15%;
     font-size: 2.5rem;
-    color: #ffffff;
+    color: #363636;
     @media only screen and (max-width: 768px) {
       font-size: 2rem;
       color: #000;
@@ -51,7 +57,7 @@ const Container = styled.div`
   }
 
   p {
-    color: #ffffff;
+    color: #363636;
     @media only screen and (max-width: 768px) {
       color: #000;
     }
