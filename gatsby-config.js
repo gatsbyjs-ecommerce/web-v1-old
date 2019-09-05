@@ -28,12 +28,12 @@ module.exports = {
         accessToken: `sbbWvYoF9ii5yrjytZ8XdxgW4qRe0-Dz6MY7QEe6HPU`,
       },
     },
-    {
-      resolve: `gatsby-source-medium`,
-      options: {
-        username: `smart-home-devices`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-medium`,
+    //   options: {
+    //     username: `smart-home-devices`,
+    //   },
+    // },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
