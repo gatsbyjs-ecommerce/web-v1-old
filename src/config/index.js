@@ -10,8 +10,8 @@ module.exports = {
   type: 'website',
 
   GRAPHQL_ENDPOINT: 'https://smart-home-api.now.sh',
-  GRAPHQL_ENDPOINT_DEV: 'https://smart-home-api.now.sh',
-  // GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000',
+  // GRAPHQL_ENDPOINT_DEV: 'https://smart-home-api.now.sh',
+  GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000',
   siteUrl: 'https://www.shdevices.ca',
   mediumPublicationUrl: 'https://medium.com/smart-home-devices',
   googleAnalytics: 'UA-1390187-40',

@@ -52,18 +52,20 @@ const createOrder = gql`
     $telephone: String!
   ) {
     createOrder(
-      tokenId: $tokenId
-      orderId: $orderId
-      productIds: $productIds
-      customerName: $fullName
-      customerAddress1: $address1
-      customerAddress2: $address2
-      customerCity: $city
-      customerState: $state
-      customerPostcode: $postcode
-      customerCountry: $country
-      customerEmail: $email
-      customerTelephone: $telephone
+      input: {
+        tokenId: $tokenId
+        orderId: $orderId
+        productIds: $productIds
+        customerName: $fullName
+        customerAddress1: $address1
+        customerAddress2: $address2
+        customerCity: $city
+        customerState: $state
+        customerPostcode: $postcode
+        customerCountry: $country
+        customerEmail: $email
+        customerTelephone: $telephone
+      }
     ) {
       id
       orderId
@@ -108,8 +110,7 @@ class PaymentForm extends React.Component {
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+          to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <Cards className="has-text-centered">
@@ -203,8 +204,7 @@ class PaymentForm extends React.Component {
                   type="submit"
                   className="checkout-form-btn button is-large is-rounded is-uppercase"
                   onClick={this.handleSubmit}
-                  disabled={isSubmitting}
-                >
+                  disabled={isSubmitting}>
                   <span className="icon">
                     <i className="fas fa-lock" />
                   </span>
