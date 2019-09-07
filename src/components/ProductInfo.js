@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Query, ApolloConsumer } from 'react-apollo';
-import { navigateTo, gql } from 'gatsby';
+import { navigateTo, graphql } from 'gatsby';
 import {
   Accordion,
   AccordionItem,
@@ -22,15 +22,15 @@ import { formatCurrency } from '../utils/helpers';
 import { HTMLContent } from './Content';
 import Heading from './Heading';
 
-const cartQuery = gql`
-  query {
-    cart @client {
-      __typename
-      items
-      count
-    }
-  }
-`;
+// const cartQuery = graphql`
+//   query {
+//     cart @client {
+//       __typename
+//       items
+//       count
+//     }
+//   }
+// `;
 
 const Price = styled.div`
   color: ${config.primaryColor};
@@ -112,21 +112,12 @@ class ProductInfo extends React.Component {
   }
 
   handleAddToCart(client, data) {
-    $('.product-info-btn').addClass('is-loading');
+    // $('.product-info-btn').addClass('is-loading');
 
     const { product } = this.props;
     const newCart = { ...data.cart };
     let items = JSON.parse(newCart.items);
     items = items !== null ? items : [];
-
-    // log to google analytics
-    ReactGA.plugin.execute('ecommerce', 'addItem', {
-      id: product.id,
-      name: product.title,
-      sku: product.productCode,
-      price: product.discountPrice,
-      quantity: 1,
-    });
 
     newCart.count = items.length + 1;
     items.push({
@@ -171,7 +162,7 @@ class ProductInfo extends React.Component {
           to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
-              <Query query={cartQuery}>
+              {/* <Query query={cartQuery}>
                 {({ data }) => (
                   <ApolloConsumer>
                     {client => (
@@ -183,7 +174,7 @@ class ProductInfo extends React.Component {
                     )}
                   </ApolloConsumer>
                 )}
-              </Query>
+              </Query> */}
 
               <AccordionStyled>
                 <AccordionItem expanded>

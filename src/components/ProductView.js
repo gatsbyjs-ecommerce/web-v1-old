@@ -3,11 +3,11 @@ import { graphql, Link } from 'gatsby';
 import styled from 'styled-components';
 
 import config from '../utils/config';
-import Seo from '../components/Seo';
-import Layout from '../components/Layout';
-import ProductGallery from '../components/ProductGallery';
-import ProductInfo from '../components/ProductInfo';
-import ProductsList from '../components/ProductsList';
+import Seo from './Seo';
+import Layout from './Layout';
+import ProductGallery from './ProductGallery';
+import ProductInfo from './ProductInfo';
+import ProductsList from './ProductsList';
 
 const Container = styled.div`
   &&& {

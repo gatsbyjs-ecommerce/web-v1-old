@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
-import { Link, gql } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 import { Query } from 'react-apollo';
 
 import config from '../utils/config';
 import SocialIcons from './SocialIcons';
 
-const cartQuery = gql`
+const cartQuery = graphql`
   query {
     cart @client {
       count

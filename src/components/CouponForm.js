@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withFormik } from 'formik';
-import { gql } from 'graphql';
+import { graphql } from 'gatsby';
 
 import apolloClient from '../utils/apolloClient';
 
-const couponMutation = gql`
+const couponMutation = graphql`
   mutation validateCoupon($code: String!) {
     validateCoupon(code: $code) {
       code
@@ -42,8 +42,7 @@ class CouponForm extends React.Component {
             <button
               type="submit"
               className="button coupon-form-btn is-dark"
-              disabled={isSubmitting}
-            >
+              disabled={isSubmitting}>
               Apply
             </button>
           </div>

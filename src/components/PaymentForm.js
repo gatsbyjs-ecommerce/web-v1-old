@@ -6,7 +6,7 @@ import { withFormik } from 'formik';
 import * as Yup from 'yup';
 import Cleave from 'cleave.js/react';
 import randomstring from 'randomstring';
-import { gql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import config from '../utils/config';
 import apolloClient from '../utils/apolloClient';
@@ -23,7 +23,7 @@ const BuyBtn = styled.button`
   margin-top: 3rem;
 `;
 
-const createOrder = gql`
+const createOrder = graphql`
   mutation createOrder(
     $tokenId: String!
     $orderId: String!

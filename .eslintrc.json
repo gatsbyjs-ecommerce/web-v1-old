@@ -7,7 +7,6 @@
     "browser": true
   },
   "globals": {
-    "graphql": true,
     "Stripe": true
   },
   "settings": {
