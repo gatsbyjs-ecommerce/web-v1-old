@@ -8,13 +8,13 @@ import { Query } from 'react-apollo';
 import config from '../utils/config';
 import SocialIcons from './SocialIcons';
 
-const cartQuery = graphql`
-  query {
-    cart @client {
-      count
-    }
-  }
-`;
+// const cartQuery = graphql`
+//   query {
+//     cart @client {
+//       count
+//     }
+//   }
+// `;
 
 const Container = styled.div`
   margin-top: 0.6rem;
@@ -147,7 +147,7 @@ class Header extends React.Component {
 
     const cart = (
       <Cart>
-        <Query query={cartQuery}>
+        {/* <Query query={cartQuery}>
           {({ data }) => (
             <Link to="/cart">
               <i className="fas fa-shopping-cart" />
@@ -157,7 +157,7 @@ class Header extends React.Component {
               )}
             </Link>
           )}
-        </Query>
+        </Query> */}
       </Cart>
     );
 

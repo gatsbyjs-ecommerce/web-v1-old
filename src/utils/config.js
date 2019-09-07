@@ -7,8 +7,8 @@ module.exports = {
     'A ecommerce system using ReactJs, bundled with awesome GatsbyJs.',
   siteUrl: 'http://kickoff-gatsbyjs.netlify.com',
   logo: '/images/logo-1024.png',
-  graphQlUri: 'https://api.sejalsuits.co.uk',
-  graphQlUriDev: 'http://localhost:4000',
+  graphQlUri: 'https://2jkk6tlv.api.sanity.io/v1/graphql/production/default',
+  graphQlUriDev: 'https://2jkk6tlv.api.sanity.io/v1/graphql/production/default',
 
   telephone: '+1-123-123-123',
   email: 'john@doe.com',

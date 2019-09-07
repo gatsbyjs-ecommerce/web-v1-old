@@ -22,13 +22,16 @@ const ViewAllBtn = styled(Link)`
 
 export default class Product extends React.Component {
   render() {
-    const {
-      data: {
-        contentfulProduct: product,
-        allContentfulProduct: products,
-        contentfulHome: home,
-      },
-    } = this.props;
+    // const {
+    //   data: {
+    //     contentfulProduct: product,
+    //     allContentfulProduct: products,
+    //     contentfulHome: home,
+    //   },
+    // } = this.props;
+    const product = {};
+    const products = [];
+    const home = {};
     // console.log('product', product);
 
     const metaImage = product.featuredImage
@@ -65,63 +68,63 @@ export default class Product extends React.Component {
   }
 }
 
-export const productQuery = graphql`
-  query ProductByPath($slug: String!) {
-    contentfulProduct(slug: { eq: $slug }) {
-      id
-      title
-      slug
-      originalPrice
-      discountPrice
-      shippingCost
-      color
-      productCode
-      featuredImage {
-        title
-        sizes(maxWidth: 550) {
-          ...GatsbyContentfulSizes
-        }
-      }
-      otherImages {
-        id
-        title
-        sizes(maxWidth: 1200) {
-          ...GatsbyContentfulSizes
-        }
-      }
-      shortDetails {
-        shortDetails
-      }
-    }
-    allContentfulProduct(
-      filter: { status: { eq: "active" }, slug: { ne: $slug } }
-      limit: 9
-      sort: { fields: [createdAt], order: DESC }
-    ) {
-      edges {
-        node {
-          id
-          title
-          slug
-          color
-          originalPrice
-          discountPrice
-          featuredImage {
-            title
-            sizes(maxWidth: 550) {
-              ...GatsbyContentfulSizes
-            }
-          }
-        }
-      }
-    }
-    contentfulHome {
-      productDeliveryInfo {
-        productDeliveryInfo
-      }
-      productShippingReturns {
-        productShippingReturns
-      }
-    }
-  }
-`;
+// export const productQuery = graphql`
+//   query ProductByPath($slug: String!) {
+//     contentfulProduct(slug: { eq: $slug }) {
+//       id
+//       title
+//       slug
+//       originalPrice
+//       discountPrice
+//       shippingCost
+//       color
+//       productCode
+//       featuredImage {
+//         title
+//         sizes(maxWidth: 550) {
+//           ...GatsbyContentfulSizes
+//         }
+//       }
+//       otherImages {
+//         id
+//         title
+//         sizes(maxWidth: 1200) {
+//           ...GatsbyContentfulSizes
+//         }
+//       }
+//       shortDetails {
+//         shortDetails
+//       }
+//     }
+//     allContentfulProduct(
+//       filter: { status: { eq: "active" }, slug: { ne: $slug } }
+//       limit: 9
+//       sort: { fields: [createdAt], order: DESC }
+//     ) {
+//       edges {
+//         node {
+//           id
+//           title
+//           slug
+//           color
+//           originalPrice
+//           discountPrice
+//           featuredImage {
+//             title
+//             sizes(maxWidth: 550) {
+//               ...GatsbyContentfulSizes
+//             }
+//           }
+//         }
+//       }
+//     }
+//     contentfulHome {
+//       productDeliveryInfo {
+//         productDeliveryInfo
+//       }
+//       productShippingReturns {
+//         productShippingReturns
+//       }
+//     }
+//   }
+// `;

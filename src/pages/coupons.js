@@ -7,28 +7,28 @@ import Layout from '../components/Layout';
 import Heading from '../components/Heading';
 import CouponItem from '../components/CouponItem';
 
-export const couponsQuery = graphql`
-  query Coupons {
-    allContentfulCoupons {
-      edges {
-        node {
-          id
-          name
-          code
-          expiryDate
-          details {
-            details
-          }
-        }
-      }
-    }
-  }
-`;
+// export const couponsQuery = graphql`
+//   query Coupons {
+//     allContentfulCoupons {
+//       edges {
+//         node {
+//           id
+//           name
+//           code
+//           expiryDate
+//           details {
+//             details
+//           }
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export default class Coupons extends React.Component {
   render() {
     const { data } = this.props;
-    const coupons = data.allContentfulCoupons.edges;
+    const coupons = []; // data.allContentfulCoupons.edges;
 
     return (
       <Layout>
