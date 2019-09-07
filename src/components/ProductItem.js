@@ -47,35 +47,38 @@ const Image = styled(Img)`
 const ProductItem = ({ item, styles }) => (
   <Container className="column is-one-third" style={styles}>
     <div className="card">
-      <div className="card-image">
-        <Link to={`/product/${item.slug}`}>
-          <figure className="image is-4by5">
-            <Image
-              sizes={item.featuredImage.sizes}
-              alt={item.featuredImage.title}
-              title={item.featuredImage.title}
-              backgroundColor="#f1f1f1"
-            />
-          </figure>
-        </Link>
-      </div>
+      {item.featuredImage && (
+        <div className="card-image">
+          <Link to={`/product/${item.slug.current}`}>
+            <figure className="image is-4by5">
+              <Image fluid={item.featuredImage.asset.fluid} />
+            </figure>
+          </Link>
+        </div>
+      )}
       <div className="card-content">
         <div className="media">
           <div className="media-content">
             <p className="title is-5" style={{ maxWidth: '94%' }}>
-              <Link to={`/product/${item.slug}`}>{item.title}</Link>
+              <Link to={`/product/${item.slug.current}`}>{item.title}</Link>
             </p>
-            <p className="subtitle is-6 has-text-grey">{item.color}</p>
-            <div className="price-container has-text-right">
-              <p className="title is-5 has-text-weight-normal price">
-                {formatCurrency(item.discountPrice)}
+            {item.variant && (
+              <p className="subtitle is-6 has-text-grey">
+                {item.variant.color}
               </p>
-              {item.discountPrice < item.originalPrice && (
-                <p className="subtitle is-6 has-text-grey-light old-price">
-                  {formatCurrency(item.originalPrice)}
+            )}
+            {item.variant && (
+              <div className="price-container has-text-right">
+                <p className="title is-5 has-text-weight-normal price">
+                  {formatCurrency(item.variant.discountPrice)}
                 </p>
-              )}
-            </div>
+                {item.variant.discountPrice < item.variant.price && (
+                  <p className="subtitle is-6 has-text-grey-light old-price">
+                    {formatCurrency(item.variant.price)}
+                  </p>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

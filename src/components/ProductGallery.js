@@ -29,8 +29,8 @@ class ProductGallery extends React.Component {
       ? global.window.innerWidth < 768
       : false;
 
-    const images = product.otherImages
-      ? product.otherImages.map(image => ({
+    const images = product.variant.images
+      ? product.variant.images.map(image => ({
           original: image.sizes.src,
           thumbnail: image.sizes.src,
         }))

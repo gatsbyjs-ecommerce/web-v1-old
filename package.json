@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@apollo/react-hooks": "^3.1.0",
+    "@sanity/block-content-to-react": "^2.0.6",
     "apollo-cache-inmemory": "^1.6.3",
     "apollo-cache-persist": "^0.1.1",
     "apollo-client": "^2.6.4",
@@ -44,7 +45,7 @@
     "prop-types": "^15.7.2",
     "randomstring": "^1.1.5",
     "react": "^16.9.0",
-    "react-accessible-accordion": "^3.0.0",
+    "react-accessible-accordion": "^2.4.2",
     "react-apollo": "^3.1.0",
     "react-dom": "^16.9.0",
     "react-helmet": "^5.2.1",

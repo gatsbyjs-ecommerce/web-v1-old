@@ -38,8 +38,7 @@ class ProductsList extends React.Component {
             native
             from={{ opacity: 0 }}
             to={{ opacity: isOpen ? 1 : 0.25 }}
-            keys={keys}
-          >
+            keys={keys}>
             {products.map(({ node }) => styles => (
               <ProductItem key={node.id} item={node} styles={styles} />
             ))}

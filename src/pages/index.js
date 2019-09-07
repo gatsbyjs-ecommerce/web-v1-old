@@ -10,9 +10,28 @@ import HomeAbout from '../components/HomeAbout';
 
 export const query = graphql`
   query HomePageQuery {
-    site {
-      siteMetadata {
-        description
+    allSanityProduct {
+      edges {
+        node {
+          id
+          title
+          slug {
+            current
+          }
+          variant {
+            color
+            discountPrice
+            price
+            sku
+            featuredImage {
+              asset {
+                fluid(maxWidth: 700) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
@@ -57,9 +76,10 @@ export const query = graphql`
 //   }
 // `;
 
-const HomePage = () => {
+const HomePage = ({ data }) => {
+  console.log('data', data);
   const home = {};
-  const products = [];
+  const products = data.allSanityProduct.edges;
 
   return (
     <Layout>

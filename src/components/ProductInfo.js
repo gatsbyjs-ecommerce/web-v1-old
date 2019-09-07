@@ -19,7 +19,7 @@ import {
 
 import config from '../utils/config';
 import { formatCurrency } from '../utils/helpers';
-import { HTMLContent } from './Content';
+import { BlockContent } from './Content';
 import Heading from './Heading';
 
 // const cartQuery = graphql`
@@ -141,19 +141,19 @@ class ProductInfo extends React.Component {
     const { isVisible } = this.state;
     const { product, home } = this.props;
 
-    const metaUrl = `${config.siteUrl}/product/${product.slug}`;
+    const metaUrl = `${config.siteUrl}/product/${product.slug.current}`;
     const metaTitle = `Checkout ${product.title} at SejalSuits`;
-    const metaImage = product.featuredImage
-      ? product.featuredImage.sizes.src
-      : `${config.url}${config.logo}`;
+    // const metaImage = product.featuredImage
+    //   ? product.featuredImage.sizes.src
+    //   : `${config.url}${config.logo}`;
 
     return (
       <>
         <Heading>{product.title}</Heading>
         <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency(product.discountPrice)}{' '}
-          {product.discountPrice < product.originalPrice && (
-            <span>{formatCurrency(product.originalPrice)}</span>
+          {formatCurrency(product.variant.discountPrice)}{' '}
+          {product.variant.discountPrice < product.variant.price && (
+            <span>{formatCurrency(product.variant.price)}</span>
           )}
         </Price>
         <Spring
@@ -162,34 +162,28 @@ class ProductInfo extends React.Component {
           to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
-              {/* <Query query={cartQuery}>
-                {({ data }) => (
-                  <ApolloConsumer>
-                    {client => (
-                      <BuyBtn
-                        className="product-info-btn button is-dark is-large is-radiusless is-uppercase"
-                        onClick={() => this.handleAddToCart(client, data)}>
-                        Add to cart
-                      </BuyBtn>
-                    )}
-                  </ApolloConsumer>
-                )}
-              </Query> */}
-
+              <BuyBtn
+                className="product-info-btn button is-dark is-large is-radiusless is-uppercase"
+                onClick={() => console.log('add')}>
+                Add to cart
+              </BuyBtn>
               <AccordionStyled>
                 <AccordionItem expanded>
                   <AccordionItemTitle>
                     <h3>Product Details</h3>
                   </AccordionItemTitle>
                   <AccordionItemBody>
-                    <HTMLContent
+                    {product._rawBody && (
+                      <BlockContent blocks={product._rawBody.en || []} />
+                    )}
+                    {/* <HTMLContent
                       content={product.shortDetails.childMarkdownRemark.html}
-                    />
-                    <p>Color: {product.color}</p>
+                    /> */}
+                    <p>Color: {product.variant.color}</p>
                     <p>Made in India</p>
                     <p>All prices include sales taxes and free UK delivery.</p>
                     <ProductCode>
-                      Product Code: {product.productCode}
+                      Product Code: {product.variant.sku}
                     </ProductCode>
                   </AccordionItemBody>
                 </AccordionItem>
@@ -198,56 +192,20 @@ class ProductInfo extends React.Component {
                     <h3>Delivery & Returns</h3>
                   </AccordionItemTitle>
                   <AccordionItemBody>
-                    <HTMLContent
+                    {/* <BlockContent
                       content={
                         home.productDeliveryInfo.childMarkdownRemark.html
                       }
                     />
                     <br />
-                    <HTMLContent
+                    <BlockContent
                       content={
                         home.productShippingReturns.childMarkdownRemark.html
                       }
-                    />
+                    /> */}
                   </AccordionItemBody>
                 </AccordionItem>
               </AccordionStyled>
-              <ShareContainer>
-                <h3>Share</h3>
-                <div className="share-icons">
-                  <div className="level">
-                    <div className="level-item">
-                      <FacebookShareButton
-                        url={metaUrl}
-                        quote={metaTitle}
-                        hashtag="#sejalsuits">
-                        <i className="fab fa-facebook-square" />
-                      </FacebookShareButton>
-                    </div>
-                    <div className="level-item">
-                      <TwitterShareButton
-                        url={metaUrl}
-                        title={metaTitle}
-                        hashtags={['sejalsuits', 'punjabisuits']}>
-                        <i className="fab fa-twitter-square" />
-                      </TwitterShareButton>
-                    </div>
-                    <div className="level-item">
-                      <PinterestShareButton
-                        url={metaUrl}
-                        media={metaImage}
-                        description={metaTitle}>
-                        <i className="fab fa-pinterest-square" />
-                      </PinterestShareButton>
-                    </div>
-                    <div className="level-item">
-                      <EmailShareButton url={metaUrl} subject={metaTitle}>
-                        <i className="fas fa-envelope" />
-                      </EmailShareButton>
-                    </div>
-                  </div>
-                </div>
-              </ShareContainer>
             </animated.div>
           )}
         </Spring>

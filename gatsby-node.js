@@ -1,45 +1,36 @@
 const path = require('path');
 
-// exports.createPages = async ({ graphql, actions, reporter }) => {
-//   // Destructure the createPage function from the actions object
-//   const { createPage } = actions;
-//   const result = await graphql(`
-//     query {
-//       allContentfulProduct {
-//         edges {
-//           node {
-//             id
-//             slug
-//           }
-//         }
-//       }
-//     }
-//   `);
-//   if (result.errors) {
-//     return reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
-//   }
-//   if (!result.data) {
-//     return reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query data');
-//   }
+exports.createPages = async ({ graphql, actions, reporter }) => {
+  const { createPage } = actions;
 
-//   const products = result.data.allContentfulProduct.edges;
+  const result = await graphql(`
+    query {
+      allSanityProduct {
+        edges {
+          node {
+            id
+            slug {
+              current
+            }
+          }
+        }
+      }
+    }
+  `);
+  if (result.errors) {
+    return reporter.panicOnBuild('🚨 ERROR: Loading "createPages" query');
+  }
 
-//   products.forEach(({ node }) => {
-//     createPage({
-//       path: `product/${node.slug}`,
-//       component: path.resolve(`src/components/ProductView.js`),
-//       // additional data can be passed via context
-//       context: {
-//         slug: node.slug,
-//       },
-//     });
-//   });
-// };
+  const products = result.data.allSanityProduct.edges || [];
 
-// exports.onCreateWebpackConfig = ({ actions }) => {
-//   actions.setWebpackConfig({
-//     resolve: {
-//       modules: [path.resolve(__dirname, 'src'), 'node_modules'],
-//     },
-//   });
-// };
+  products.forEach(({ node }) => {
+    createPage({
+      path: `product/${node.slug.current}`,
+      component: path.resolve(`src/components/ProductView.js`),
+      // additional data can be passed via context
+      context: {
+        slug: node.slug.current,
+      },
+    });
+  });
+};

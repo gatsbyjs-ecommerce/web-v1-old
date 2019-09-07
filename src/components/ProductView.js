@@ -20,53 +20,107 @@ const ViewAllBtn = styled(Link)`
   padding-left: 2rem;
 `;
 
-export default class Product extends React.Component {
-  render() {
-    // const {
-    //   data: {
-    //     contentfulProduct: product,
-    //     allContentfulProduct: products,
-    //     contentfulHome: home,
-    //   },
-    // } = this.props;
-    const product = {};
-    const products = [];
-    const home = {};
-    // console.log('product', product);
-
-    const metaImage = product.featuredImage
-      ? product.featuredImage.sizes.src
-      : `${config.url}${config.logo}`;
-
-    return (
-      <Layout>
-        <Seo
-          title={product.title}
-          description={product.shortDetails.shortDetails}
-          url={`${config.siteUrl}/product/${product.slug}`}
-          image={metaImage}
-          isProduct
-        />
-        <div>
-          <Container className="columns">
-            <div className="column is-two-fifths">
-              <ProductGallery product={product} />
-            </div>
-            <div className="column section">
-              <ProductInfo home={home} product={product} />
-            </div>
-          </Container>
-        </div>
-        <ProductsList title="We think you'll" products={products.edges} />
-        <div className="has-text-centered	">
-          <ViewAllBtn to="/" className="button is-outlined is-medium">
-            View all
-          </ViewAllBtn>
-        </div>
-      </Layout>
-    );
+export const query = graphql`
+  query ProductViewQuery($slug: String!) {
+    sanityProduct(slug: { current: { eq: $slug } }) {
+      id
+      title
+      slug {
+        current
+      }
+      _rawBody
+      variant {
+        color
+        discountPrice
+        price
+        sku
+        featuredImage {
+          asset {
+            fluid(maxWidth: 700) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+        images {
+          asset {
+            fluid(maxWidth: 700) {
+              ...GatsbySanityImageFluid
+            }
+          }
+        }
+      }
+    }
+    allSanityProduct(
+      filter: { status: { eq: "active" }, slug: { current: { ne: $slug } } }
+      limit: 9
+      sort: { fields: [_createdAt], order: DESC }
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug {
+            current
+          }
+          variant {
+            color
+            discountPrice
+            price
+            sku
+            featuredImage {
+              asset {
+                fluid(maxWidth: 700) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
-}
+`;
+
+const ProductView = ({ data }) => {
+  console.log('data', data);
+  const product = data.sanityProduct;
+  const products = [];
+  const home = {};
+  // console.log('product', product);
+
+  // const metaImage = product.featuredImage
+  //   ? product.featuredImage.sizes.src
+  //   : `${config.url}${config.logo}`;
+
+  return (
+    <Layout>
+      <Seo
+        title={product.title}
+        url={`${config.siteUrl}/product/${product.slug}`}
+        // image={metaImage}
+        isProduct
+      />
+      <div>
+        <Container className="columns">
+          <div className="column is-two-fifths">
+            <ProductGallery product={product} />
+          </div>
+          <div className="column section">
+            <ProductInfo home={home} product={product} />
+          </div>
+        </Container>
+      </div>
+      <ProductsList title="We think you'll" products={products.edges} />
+      <div className="has-text-centered	">
+        <ViewAllBtn to="/" className="button is-outlined is-medium">
+          View all
+        </ViewAllBtn>
+      </div>
+    </Layout>
+  );
+};
+
+export default ProductView;
 
 // export const productQuery = graphql`
 //   query ProductByPath($slug: String!) {
