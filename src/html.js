@@ -29,6 +29,11 @@ export default class HTML extends React.Component {
             rel="stylesheet"
           />
           <script src="/js/scripts.js" />
+          <script src="https://js.stripe.com/v2/" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Muli:300,400,600,700"
+            rel="stylesheet"
+          />
           {/* Add custom css or scripts here */}
 
           {this.props.headComponents}
