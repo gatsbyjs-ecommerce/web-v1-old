@@ -1,15 +1,63 @@
 import React from 'react';
-import styled from 'styled-components';
+import { StaticQuery, graphql } from 'gatsby';
 
+import config from '../utils/config';
 import Seo from '../components/Seo';
 import Layout from '../components/Layout';
+import HomeBanner from '../components/HomeBanner';
+import ProductsList from '../components/ProductsList';
+import HomeAbout from '../components/HomeAbout';
 
-const Container = styled.div`
-  margin-top: 2rem;
-  margin-bottom: 4rem;
-  text-align: center;
-  h1 {
-    color: ${props => props.theme.mainBrandColor} !important;
+export const indexQuery = graphql`
+  query Products {
+    allContentfulProduct(
+      filter: { status: { eq: "active" } }
+      sort: { fields: [listingOrder], order: ASC }
+    ) {
+      edges {
+        node {
+          id
+          title
+          slug
+          color
+          originalPrice
+          discountPrice
+          featuredImage {
+            title
+            sizes(maxWidth: 550) {
+              ...GatsbyContentfulSizes
+            }
+          }
+        }
+      }
+    }
+    contentfulHome {
+      homeSliderTitle
+      homeSliderSubTitle
+      homeSliderImage {
+        title
+        sizes(maxWidth: 550) {
+          ...GatsbyContentfulSizes
+        }
+      }
+      homeIntro {
+        childMarkdownRemark {
+          html
+        }
+      }
+    }
+    allDataJson {
+      edges {
+        node {
+          GBP_CAD {
+            val
+          }
+          GBP_INR {
+            val
+          }
+        }
+      }
+    }
   }
 `;
 
@@ -17,14 +65,28 @@ export default class IndexPage extends React.Component {
   render() {
     return (
       <Layout>
-        <Seo title="Home" description="Welcome to GatsbyJs v1" />
-        <section className="section">
-          <Container className="container">
-            <h1 className="title">Hi people</h1>
-            <p>Welcome to your new Gatsby site.</p>
-            <p>Now go build something great.</p>
-          </Container>
-        </section>
+        <Seo
+          title="Latest punjabi suits collection"
+          description="Latest Punjabi Traditional Suits"
+          url={config.siteUrl}
+        />
+        <StaticQuery
+          query={indexQuery}
+          render={data => {
+            const {
+              allContentfulProduct: products,
+              contentfulHome: home,
+            } = data;
+
+            return (
+              <>
+                <HomeBanner data={home} />
+                <ProductsList products={products.edges} />
+                <HomeAbout data={home} />
+              </>
+            );
+          }}
+        />
       </Layout>
     );
   }
