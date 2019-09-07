@@ -1,142 +1,74 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReactGA from 'react-ga';
-import { graphql } from 'gatsby';
-import gql from 'graphql-tag';
-import { Mutation } from 'react-apollo';
-import swal from 'sweetalert';
 
-import config from '../config/index';
+import config from '../utils/config';
 import Seo from '../components/Seo';
 import Layout from '../components/Layout';
-import Heading from '../components/Heading';
-import ContactForm from '../components/ContactForm';
-import SocialIcons from '../components/SocialIcons';
-import Loading from '../components/Loading';
 
-const Container = styled.section`
-  a {
-    padding: 1rem;
-    color: #4a4a4a;
+const Section = styled.div`
+  .container {
+    margin-top: 4rem;
   }
   p {
-    padding: 0.2rem 0;
+    margin-bottom: 1rem;
   }
-  svg {
-    color: #494949;
+  .image {
+    width: 500px;
+    height: auto;
+    margin: 0 auto;
+    object-position: center;
   }
-`;
-
-export const contactQuery = graphql`
-  query Contact {
-    contentfulHome {
-      address
-      email
-      telephone
-      facebook
-      twitter
-      instagram
-      pinterest
-    }
+  .button {
+    margin-top: 2rem;
   }
 `;
 
-const contactMutation = gql`
-  mutation contact($email: String!, $name: String!, $message: String!) {
-    contact(email: $email, name: $name, message: $message) {
-      email
-    }
-  }
-`;
-
-export default class Contact extends React.Component {
-  componentDidMount() {
-    ReactGA.pageview('/contact');
-  }
-
-  onSuccess = () => {
-    swal(
-      'Thank you!',
-      'Your message has been successfully sent. We will contact you very soon!',
-    );
-  };
-
-  render() {
-    const { data } = this.props;
-    const contact = data.contentfulHome;
-
-    return (
-      <Layout>
-        <Container className="section">
-          <div className="container">
-            <Seo
-              title="Contact"
-              description="Get In Touch"
-              url={`${config.siteUrl}/contact`}
-              keywords="contact, phone number, customer support, helpline number, contact information, contact email, "
-            />
-            <Heading>Get In touch</Heading>
-            <div className="columns">
-              <div
-                className="column is-two-fifths"
-                style={{ borderRight: '1px solid #eee' }}>
-                <p>
-                  If you have any question or enquiry, feel free to get in touch
-                  with us
-                </p>
-                <p>
-                  <i className="fas fa-map-marker" />
-                  <a href="#" className="is-size-6">
-                    {contact.address}
-                  </a>
-                </p>
-                <p>
-                  <i className="fas fa-mobile" />
-                  <a href={`tel:${contact.telephone}`} className="is-size-6">
-                    {contact.telephone}
-                  </a>
-                </p>
-                <p>
-                  <i className="fas fa-envelope-open" />
-                  <a href={`mailto:${contact.email}`} className="is-size-6">
-                    {contact.email}
-                  </a>
-                </p>
-                <br />
-                <br />
-                <SocialIcons data={contact} />
-              </div>
-              <div className="column">
-                <Mutation
-                  mutation={contactMutation}
-                  update={this.onSuccess}
-                  onError={error => {
-                    swal(
-                      'Issue!',
-                      error.message.replace('GraphQL error: ', ''),
-                      'warning',
-                    );
-                  }}>
-                  {(contactData, { loading }) => {
-                    return (
-                      <React.Fragment>
-                        <ContactForm
-                          handleUpdate={dataNew => {
-                            return contactData({
-                              variables: dataNew,
-                            });
-                          }}
-                        />
-                        {loading ? <Loading /> : null}
-                      </React.Fragment>
-                    );
-                  }}
-                </Mutation>
-              </div>
-            </div>
+const Contact = () => (
+  <Layout>
+    <Seo title="Contact Us" />
+    <Section className="section">
+      <div className="container">
+        <div className="columns is-centered">
+          <div className="column is-two-fifths">
+            <h2 className="title is-1 has-text-weight-bold">Contact Us</h2>
+            <p>
+              We’re as accessible as your good neighbour. Feel free
+              <br />
+              to give us a shout.
+            </p>
+            <p>
+              <span role="img" aria-label="Round Pushpin">
+                📍
+              </span>{' '}
+              {config.location}
+            </p>
+            <p className="is-4">
+              <span role="img" aria-label="e-mail">
+                📧
+              </span>{' '}
+              <a href={`mailto:${config.email}`}>{config.email}</a>
+            </p>
+            <p>
+              <span role="img" aria-label="telephone">
+                ☎️
+              </span>{' '}
+              <a href={`tel:${config.telephone}`}>{config.telephone}</a>
+            </p>
+            <p className="control">
+              <a href="#">
+                <button type="submit" className="button is-secondary is-medium">
+                  Get in touch
+                </button>
+              </a>
+            </p>
           </div>
-        </Container>
-      </Layout>
-    );
-  }
-}
+          <div className="column is-two-fifths">
+            <img className="image" src="/images/contact.svg" alt="contact us" />
+          </div>
+        </div>
+      </div>
+    </Section>
+  </Layout>
+);
+
+export default Contact;

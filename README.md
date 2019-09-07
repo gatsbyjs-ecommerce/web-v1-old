@@ -1,12 +1,15 @@
 # GatsbyJs Ecommerce
 
 A minimalist static E-commerce site built using GatsbyJs.
+It use headless CMS called Contentful, so no need to manage database for APIs hosting.
 
 - Site is still in progress, happy for pull requests and issues if you find any.
 
-[Live Demo](https://www.smarthomedevices.solutions/)
+[Live Demo](https://www.sejalsuits.co.uk)
 
 Required API for mutations can be found in [API branch](https://github.com/perminder-klair/gatsbyjs-ecommerce/tree/api)
+
+Schema to setup Contentful's `Content model` can be found here [Schema JSON](https://github.com/perminder-klair/gatsbyjs-ecommerce/tree/api/contentful_fields)
 
 More info about this written here for better understanding [Creating Static E-commerce site with GatsbyJs](https://medium.com/@pinku1/creating-static-e-commerce-site-with-gatsbyjs-a349d7e022a)
 
@@ -21,7 +24,7 @@ More info about this written here for better understanding [Creating Static E-co
 - Fork or download this repository
 - Ready!
 
-To change site config `./src/config/index.js`
+To change site config `./utils/config.js`
 
 also add `.env` file in the root, with content for example:
 

@@ -1,6 +1,4 @@
-const path = require(`path`);
-require('dotenv').config();
-const config = require('./src/config/index.js');
+const config = require('./src/utils/config.js');
 
 module.exports = {
   siteMetadata: {
@@ -10,63 +8,41 @@ module.exports = {
     siteUrl: config.siteUrl,
   },
   plugins: [
-    `gatsby-plugin-styled-components`,
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-nprogress`,
+      resolve: `gatsby-plugin-mdx`,
       options: {
-        color: config.themeColor,
-        showSpinner: false,
-      },
-    },
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: `j0tc6s27591e`,
-        accessToken: `sbbWvYoF9ii5yrjytZ8XdxgW4qRe0-Dz6MY7QEe6HPU`,
-      },
-    },
-    // {
-    //   resolve: `gatsby-source-medium`,
-    //   options: {
-    //     username: `smart-home-devices`,
-    //   },
-    // },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [
+        defaultLayouts: {
+          default: require.resolve('./src/components/PageLayout.js'),
+        },
+        gatsbyRemarkPlugins: [
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 690,
+              maxWidth: 1035,
+              sizeByPixelDensity: true,
             },
           },
-          {
-            resolve: `gatsby-remark-responsive-iframe`,
-            options: {
-              wrapperStyle: `margin-bottom: 1.0725rem`,
-            },
-          },
-          `gatsby-remark-prismjs`,
-          `gatsby-remark-copy-linked-files`,
-          `gatsby-remark-smartypants`,
         ],
       },
     },
-    `gatsby-transformer-json`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `data`,
-        path: path.join(__dirname, `data`),
+        name: `posts`,
+        path: `${__dirname}/src/content/posts/`,
       },
     },
-    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-react-helmet`,
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: config.googleAnalytics,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
       options: {
         name: config.siteName,
         short_name: config.siteName,
@@ -74,7 +50,7 @@ module.exports = {
         background_color: config.backgroundColor,
         theme_color: config.themeColor,
         display: 'minimal-ui',
-        icon: './static/images/logo.png',
+        icon: './static/images/logo-1024.png',
       },
     },
     `gatsby-plugin-offline`,

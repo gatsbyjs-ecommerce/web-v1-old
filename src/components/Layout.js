@@ -1,63 +1,29 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { ApolloProvider } from 'react-apollo';
-import ReactGA from 'react-ga';
+import styled, { ThemeProvider } from 'styled-components';
 
-import config from '../config';
-import apolloClient from '../utils/apolloClient';
+import GlobalStyle, { theme } from '../utils/theme';
+import config from '../utils/config';
 import Header from './Header';
-import Footer from './Footer';
 
-class IndexLayout extends React.Component {
-  componentWillMount() {
-    ReactGA.initialize(config.googleAnalytics, {
-      // debug: config.DEBUG,
-    });
-  }
+const Container = styled.div`
+  min-height: 70vh;
+`;
 
-  render() {
-    const {
-      children,
-      // data: { contentfulHome: home },
-    } = this.props;
-    // TODO: fix this
-    const home = {};
-
-    return (
-      <ApolloProvider client={apolloClient}>
-        <div>
-          <Helmet
-            title={config.siteName}
-            meta={[{ name: 'description', content: config.description }]}
-          />
-          <div>
-            <Header home={home} />
-            {children}
-          </div>
-          <Footer home={home} />
-        </div>
-      </ApolloProvider>
-    );
-  }
-}
-
-IndexLayout.propTypes = {
-  children: PropTypes.any.isRequired,
-};
+const IndexLayout = ({ children, hideHeader }) => (
+  <ThemeProvider theme={theme}>
+    <>
+      <Helmet>
+        <title>{config.siteName}</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta description={config.description} />
+      </Helmet>
+      <GlobalStyle />
+      {!hideHeader && <Header />}
+      <Container>{children}</Container>
+    </>
+  </ThemeProvider>
+);
 
 export default IndexLayout;
-
-// # export const indexLayoutQuery = graphql`
-// #   query IndexLayout {
-// #     contentfulHome {
-// #       telephone
-// #       email
-// #       address
-// #       facebook
-// #       twitter
-// #       instagram
-// #       pinterest
-// #     }
-// #   }
-// # `;
