@@ -1,5 +1,3 @@
-/* global $, SmoothScroll, global */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -247,7 +245,7 @@ export default withFormik({
   }),
   handleSubmit: (values, { setSubmitting, props }) => {
     // console.log('handle submit', values, props);
-    $('.checkout-form-btn').addClass('is-loading');
+    // $('.checkout-form-btn').addClass('is-loading');
     setSubmitting(false);
     setTimeout(() => props.handlePayment(values), 350);
   },

@@ -2,11 +2,13 @@
   "root": true,
   "parser": "babel-eslint",
   "extends": ["airbnb", "prettier"],
+  "plugins": ["prettier"],
   "env": {
     "browser": true
   },
   "globals": {
-    "graphql": true
+    "graphql": true,
+    "Stripe": true
   },
   "settings": {
     "import/core-modules": ["prop-types", "react", "graphql"]
@@ -29,6 +31,7 @@
     "react/prefer-stateless-function": 0,
     "react/forbid-prop-types": 0,
     "react/jsx-one-expression-per-line": 0,
-    "react/jsx-props-no-spreading": 0
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-closing-bracket-location": 0
   }
 }

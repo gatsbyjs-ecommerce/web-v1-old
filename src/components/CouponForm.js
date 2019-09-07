@@ -1,5 +1,3 @@
-/* global $ */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withFormik } from 'formik';
@@ -66,7 +64,7 @@ export default withFormik({
   handleSubmit: (values, { setSubmitting, props }) => {
     // console.log('handle submit', values, props);
     const alertify = require('alertify.js'); // eslint-disable-line
-    $('.coupon-form-btn').addClass('is-loading');
+    // $('.coupon-form-btn').addClass('is-loading');
     apolloClient
       .mutate({
         mutation: couponMutation,
@@ -77,12 +75,12 @@ export default withFormik({
         alertify.log(`Applied: ${result.data.validateCoupon.details}`);
         setSubmitting(false);
         setTimeout(() => props.handleSubmit(result.data.validateCoupon), 200);
-        $('.coupon-form-btn').removeClass('is-loading');
+        // $('.coupon-form-btn').removeClass('is-loading');
       })
       .catch(() => {
         setSubmitting(false);
         alertify.error('Invalid coupon code.');
-        $('.coupon-form-btn').removeClass('is-loading');
+        // $('.coupon-form-btn').removeClass('is-loading');
       });
   },
   displayName: 'CouponForm', // helps with React DevTools

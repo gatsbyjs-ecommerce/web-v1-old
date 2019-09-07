@@ -1,15 +1,12 @@
-/* global $, SmoothScroll, global, Stripe */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
-import { isUndefined } from 'lodash';
 import { withFormik } from 'formik';
 import * as Yup from 'yup';
 import Cleave from 'cleave.js/react';
 import randomstring from 'randomstring';
-import { gql } from 'graphql';
+import { gql } from 'gatsby';
 
 import config from '../utils/config';
 import apolloClient from '../utils/apolloClient';
@@ -69,15 +66,15 @@ class PaymentForm extends React.Component {
   }
 
   componentDidMount() {
-    const isMobile = !isUndefined(global.window)
-      ? global.window.innerWidth < 768
-      : false;
+    // const isMobile = !isUndefined(global.window)
+    //   ? global.window.innerWidth < 768
+    //   : false;
 
     setTimeout(() => {
       this.setState({ isVisible: true });
 
-      const scroll = new SmoothScroll();
-      scroll.animateScroll(isMobile ? 1100 : 450);
+      // const scroll = new SmoothScroll();
+      // scroll.animateScroll(isMobile ? 1100 : 450);
     }, 200);
   }
 
@@ -98,8 +95,7 @@ class PaymentForm extends React.Component {
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+          to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <Cards className="has-text-centered">
@@ -192,8 +188,7 @@ class PaymentForm extends React.Component {
                 <BuyBtn
                   className="payment-form-btn button is-dark is-large is-radiusless is-uppercase"
                   onClick={this.handleSubmit}
-                  disabled={isSubmitting}
-                >
+                  disabled={isSubmitting}>
                   <span className="icon">
                     <i className="fas fa-lock" />
                   </span>
@@ -239,13 +234,7 @@ export default withFormik({
     const alertify = require('alertify.js'); // eslint-disable-line
     const productIds = props.cartData.items.map(item => item.id);
 
-    $('.payment-form-btn').addClass('is-loading');
-
-    // add to analytics
-    ReactGA.plugin.execute('ecommerce', 'addTransaction', {
-      id: orderId,
-      revenue: props.cartData.total,
-    });
+    // $('.payment-form-btn').addClass('is-loading');
 
     // send data to stripe
     Stripe.setPublishableKey(config.stripePublishableKey);
@@ -280,7 +269,7 @@ export default withFormik({
               // console.log('order result', result);
               if (result.data.createOrder === null) {
                 alertify.alert('Payment failed, please try again.');
-                $('.payment-form-btn').removeClass('is-loading');
+                // $('.payment-form-btn').removeClass('is-loading');
               } else {
                 // clear local storage
                 localStorage.removeItem('apollo-cache-persist');
@@ -288,13 +277,13 @@ export default withFormik({
               }
             })
             .catch(() => {
-              $('.payment-form-btn').removeClass('is-loading');
+              // $('.payment-form-btn').removeClass('is-loading');
               setSubmitting(false);
               alertify.alert('Payment failed, please try again.');
             });
         } else {
           alertify.alert('Payment failed, invalid card details.');
-          $('.payment-form-btn').removeClass('is-loading');
+          // $('.payment-form-btn').removeClass('is-loading');
           setSubmitting(false);
         }
       },

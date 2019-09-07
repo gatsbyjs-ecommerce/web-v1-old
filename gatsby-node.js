@@ -36,13 +36,108 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      allContentfulProduct {
+        edges {
+          node {
+            id
+            title
+            slug
+            status
+            originalPrice
+            discountPrice
+            shippingCost
+            color
+            rating
+            productCode
+            featuredImage {
+              title
+              file {
+                url
+                fileName
+                contentType
+              }
+              sizes {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+              resolutions {
+                base64
+                aspectRatio
+                width
+                height
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+              }
+              resize {
+                base64
+                src
+                width
+                height
+                aspectRatio
+              }
+            }
+            otherImages {
+              id
+              title
+              file {
+                url
+                fileName
+                contentType
+              }
+              sizes {
+                base64
+                aspectRatio
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+                sizes
+              }
+              resolutions {
+                base64
+                aspectRatio
+                width
+                height
+                src
+                srcSet
+                srcWebp
+                srcSetWebp
+              }
+              resize {
+                base64
+                src
+                width
+                height
+                aspectRatio
+              }
+            }
+            shortDetails {
+              childMarkdownRemark {
+                html
+              }
+            }
+          }
+        }
+      }
     }
   `);
   if (result.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
+    return reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
   }
+  if (!result.data) {
+    return reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query data');
+  }
+  // console.log('result', result.data);
   // Create blog post pages.
   const posts = result.data.allMdx.edges;
+  const products = result.data.allContentfulProduct.edges;
   // We'll call `createPage` for each result
   posts.forEach(({ node }, index) => {
     createPage({
@@ -54,6 +149,19 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       // We can use the values in this context in
       // our page layout component
       context: { id: node.id },
+    });
+  });
+
+  products.forEach(({ node }) => {
+    // console.log('node', node);
+    const pagePath = `product/${node.slug}`;
+    createPage({
+      path: pagePath,
+      component: path.resolve(`src/templates/product.js`),
+      // additional data can be passed via context
+      context: {
+        slug: node.slug,
+      },
     });
   });
 };

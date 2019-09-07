@@ -91,9 +91,6 @@ export const productQuery = graphql`
       }
       shortDetails {
         shortDetails
-        childMarkdownRemark {
-          html
-        }
       }
     }
     allContentfulProduct(
@@ -120,14 +117,10 @@ export const productQuery = graphql`
     }
     contentfulHome {
       productDeliveryInfo {
-        childMarkdownRemark {
-          html
-        }
+        productDeliveryInfo
       }
       productShippingReturns {
-        childMarkdownRemark {
-          html
-        }
+        productShippingReturns
       }
     }
   }

@@ -41,21 +41,7 @@ export const indexQuery = graphql`
         }
       }
       homeIntro {
-        childMarkdownRemark {
-          html
-        }
-      }
-    }
-    allDataJson {
-      edges {
-        node {
-          GBP_CAD {
-            val
-          }
-          GBP_INR {
-            val
-          }
-        }
+        homeIntro
       }
     }
   }
