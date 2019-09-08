@@ -5,11 +5,11 @@ export default ({ data }) => (
   <div className="card">
     <header className="card-header">
       <h3 className="card-header-title is-size-5 has-text-centered">
-        {data.name}
+        {data.title}
       </h3>
     </header>
     <div className="card-content">
-      <div className="content has-text-centered">{data.details.details}</div>
+      <div className="content has-text-centered">{data.description}</div>
     </div>
     <nav className="level card-header" style={{ padding: '1rem 1rem' }}>
       <div className="level-item has-text-centered">

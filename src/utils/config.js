@@ -17,6 +17,7 @@ module.exports = {
   fbUserId: '@NAME-HERE',
   fbAppID: '@NAME-HERE',
 
+  homeBannerImage: '/images/home-bg-3.jpg',
   type: 'website',
   googleAnalytics: '',
   backgroundColor: '#e0e0e0',

@@ -23,7 +23,7 @@ const Container = styled(animated.div)`
         color: #363636;
       }
       .price-container {
-        width: 50px;
+        width: 150px;
         position: absolute;
         right: 0;
         top: 0.5rem;
@@ -47,11 +47,17 @@ const Image = styled(Img)`
 const ProductItem = ({ item, styles }) => (
   <Container className="column is-one-third" style={styles}>
     <div className="card">
-      {item.featuredImage && (
+      {item.variant.featuredImage && (
         <div className="card-image">
           <Link to={`/product/${item.slug.current}`}>
             <figure className="image is-4by5">
-              <Image fluid={item.featuredImage.asset.fluid} />
+              <Image fluid={item.variant.featuredImage.asset.fluid} />
+              {/* <Image
+                sizes={item.variant.featuredImage.asset.fluid.sizes}
+                alt={item.variant.featuredImage.asset.fluid.title}
+                title={item.variant.featuredImage.asset.fluid.title}
+                backgroundColor="#f1f1f1"
+              /> */}
             </figure>
           </Link>
         </div>

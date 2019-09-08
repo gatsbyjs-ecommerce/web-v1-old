@@ -34,6 +34,9 @@ const Container = styled.div`
       color: #4a4a4a;
     }
   }
+  img.logo {
+    max-width: 150px;
+  }
 `;
 
 const ContainerMobile = styled.div`
@@ -162,7 +165,7 @@ class Header extends React.Component {
     );
 
     return (
-      <>
+      <div className="container">
         <Container className="is-hidden-mobile">
           <div className="columns">
             <div className="column">
@@ -170,7 +173,11 @@ class Header extends React.Component {
             </div>
             <div className="column has-text-centered">
               <Link to="/">
-                <img src={config.logo} alt={`${config.siteName} logo`} />
+                <img
+                  src={config.logo}
+                  className="logo"
+                  alt={`${config.siteName} logo`}
+                />
               </Link>
             </div>
             <div className="column has-text-right has-text-weight-semibold	">
@@ -242,7 +249,7 @@ class Header extends React.Component {
             )}
           </Spring>
         </ContainerMobile>
-      </>
+      </div>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 
 import config from '../utils/config';
 import Seo from '../components/Seo';
@@ -10,6 +10,11 @@ import HomeAbout from '../components/HomeAbout';
 
 export const query = graphql`
   query HomePageQuery {
+    sanitySiteSettings {
+      homeIntro
+      homeSliderSubTitle
+      description
+    }
     allSanityProduct {
       edges {
         node {
@@ -37,60 +42,22 @@ export const query = graphql`
   }
 `;
 
-// export const indexQuery = graphql`
-//   query Products {
-//     allContentfulProduct(
-//       filter: { status: { eq: "active" } }
-//       sort: { fields: [listingOrder], order: ASC }
-//     ) {
-//       edges {
-//         node {
-//           id
-//           title
-//           slug
-//           color
-//           originalPrice
-//           discountPrice
-//           featuredImage {
-//             title
-//             sizes(maxWidth: 550) {
-//               ...GatsbyContentfulSizes
-//             }
-//           }
-//         }
-//       }
-//     }
-//     contentfulHome {
-//       homeSliderTitle
-//       homeSliderSubTitle
-//       homeSliderImage {
-//         title
-//         sizes(maxWidth: 550) {
-//           ...GatsbyContentfulSizes
-//         }
-//       }
-//       homeIntro {
-//         homeIntro
-//       }
-//     }
-//   }
-// `;
-
 const HomePage = ({ data }) => {
-  console.log('data', data);
-  const home = {};
+  const home = data.sanitySiteSettings;
   const products = data.allSanityProduct.edges;
 
   return (
     <Layout>
       <Seo
         title="Latest punjabi suits collection"
-        description="Latest Punjabi Traditional Suits"
+        description={home.description}
         url={config.siteUrl}
       />
-      <HomeBanner data={home} />
-      <ProductsList products={products} />
-      <HomeAbout data={home} />
+      <div className="container">
+        <HomeBanner data={home} />
+        <ProductsList products={products} />
+        <HomeAbout data={home} />
+      </div>
     </Layout>
   );
 };
