@@ -29,14 +29,14 @@ class ProductGallery extends React.Component {
       ? global.window.innerWidth < 768
       : false;
 
-    console.log('images', product.variant.images);
+    // console.log('images', product.variant.images);
     const images = product.variant.images
       ? product.variant.images.map(image => ({
           original: image.asset.fluid.src,
           thumbnail: image.asset.fluid.src,
         }))
       : [];
-    console.log('images 2', images);
+    // console.log('images 2', images);
 
     return (
       <Spring

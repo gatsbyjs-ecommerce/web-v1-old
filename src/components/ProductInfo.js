@@ -1,8 +1,11 @@
-import React from 'react';
+/* eslint no-underscore-dangle: 0 */
+
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { Query, ApolloConsumer } from 'react-apollo';
-import { navigateTo, graphql } from 'gatsby';
+import { navigateTo } from 'gatsby';
+import { useQuery, useApolloClient } from '@apollo/react-hooks';
+import gql from 'graphql-tag';
 import {
   Accordion,
   AccordionItem,
@@ -13,7 +16,6 @@ import { Spring, animated } from 'react-spring';
 import {
   FacebookShareButton,
   TwitterShareButton,
-  PinterestShareButton,
   EmailShareButton,
 } from 'react-share';
 
@@ -98,113 +100,130 @@ const ShareContainer = styled.div`
   }
 `;
 
-class ProductInfo extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { isVisible: false };
+const cartQuery = gql`
+  query CartItems {
+    cartItems @client {
+      id
+    }
   }
+`;
 
-  componentDidMount() {
+const ProductInfo = ({ product, home }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const client = useApolloClient();
+  const { data } = useQuery(cartQuery);
+  const { cartItems } = data || {};
+
+  useEffect(() => {
     setTimeout(() => {
-      this.setState({ isVisible: true });
+      setIsVisible(true);
     }, 400);
-  }
+  }, []);
 
-  handleAddToCart(client, data) {
-    // $('.product-info-btn').addClass('is-loading');
+  const metaUrl = `${config.siteUrl}/product/${product.slug.current}`;
+  const metaTitle = `Checkout ${product.title} at SejalSuits`;
 
-    const { product } = this.props;
-    const newCart = { ...data.cart };
-    let items = JSON.parse(newCart.items);
-    items = items !== null ? items : [];
+  const addToCart = () => {
+    console.log('cartItems', cartItems);
+    const items = cartItems || [];
 
-    newCart.count = items.length + 1;
-    items.push({
+    const itemData = {
       id: product.id.slice(1),
-      productCode: product.productCode,
+      sku: product.variant.sku,
       title: product.title,
-      price: product.discountPrice,
+      price: product.variant.price,
       image: product.featuredImage,
       quantity: 1,
-    });
-    newCart.items = JSON.stringify(items);
-    client.writeData({
-      data: {
-        cart: newCart,
-      },
-    });
+      __typename: 'CartItem',
+    };
+    console.log('itemData', itemData);
+    items.push(itemData);
+
+    client.writeData({ data: { cartItems: items } });
+
     setTimeout(() => navigateTo('/cart'), 600);
-  }
+  };
 
-  render() {
-    const { isVisible } = this.state;
-    const { product, home } = this.props;
-
-    const metaUrl = `${config.siteUrl}/product/${product.slug.current}`;
-    const metaTitle = `Checkout ${product.title} at SejalSuits`;
-    // const metaImage = product.featuredImage
-    //   ? product.featuredImage.sizes.src
-    //   : `${config.url}${config.logo}`;
-
-    return (
-      <>
-        <Heading>{product.title}</Heading>
-        <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency(product.variant.discountPrice)}{' '}
-          {product.variant.discountPrice < product.variant.price && (
-            <span>{formatCurrency(product.variant.price)}</span>
-          )}
-        </Price>
-        <Spring
-          native
-          from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}>
-          {stylesProps => (
-            <animated.div style={stylesProps}>
-              <BuyBtn
-                className="product-info-btn button is-dark is-large is-radiusless is-uppercase"
-                onClick={() => console.log('add')}>
-                Add to cart
-              </BuyBtn>
-              <AccordionStyled>
-                <AccordionItem expanded>
-                  <AccordionItemTitle>
-                    <h3>Product Details</h3>
-                  </AccordionItemTitle>
-                  <AccordionItemBody>
-                    {product._rawBody && (
-                      <BlockContent blocks={product._rawBody.en || []} />
-                    )}
-                    {/* <HTMLContent
-                      content={product.shortDetails.childMarkdownRemark.html}
-                    /> */}
-                    <p>Color: {product.variant.color}</p>
-                    <p>Made in India</p>
-                    <p>All prices include sales taxes and free UK delivery.</p>
-                    <ProductCode>
-                      Product Code: {product.variant.sku}
-                    </ProductCode>
-                  </AccordionItemBody>
-                </AccordionItem>
-                <AccordionItem>
-                  <AccordionItemTitle>
-                    <h3>Delivery & Returns</h3>
-                  </AccordionItemTitle>
-                  <AccordionItemBody>
-                    {home.productDeliveryInfo}
-                    <br />
-                    {home.productShippingReturns}
-                  </AccordionItemBody>
-                </AccordionItem>
-              </AccordionStyled>
-            </animated.div>
-          )}
-        </Spring>
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <Heading>{product.title}</Heading>
+      <Price className="has-text-weight-semibold has-text-centered">
+        {formatCurrency(product.variant.discountPrice)}{' '}
+        {product.variant.discountPrice < product.variant.price && (
+          <span>{formatCurrency(product.variant.price)}</span>
+        )}
+      </Price>
+      <Spring native from={{ opacity: 0 }} to={{ opacity: isVisible ? 1 : 0 }}>
+        {stylesProps => (
+          <animated.div style={stylesProps}>
+            <BuyBtn
+              className="product-info-btn button is-dark is-large is-radiusless is-uppercase"
+              onClick={() => addToCart()}>
+              Add to cart
+            </BuyBtn>
+            <AccordionStyled>
+              <AccordionItem expanded>
+                <AccordionItemTitle>
+                  <h3>Product Details</h3>
+                </AccordionItemTitle>
+                <AccordionItemBody>
+                  {product._rawBody && (
+                    <BlockContent blocks={product._rawBody.en || []} />
+                  )}
+                  {/* <HTMLContent
+                    content={product.shortDetails.childMarkdownRemark.html}
+                  /> */}
+                  <p>Color: {product.variant.color}</p>
+                  <p>Made in India</p>
+                  <p>All prices include sales taxes and free UK delivery.</p>
+                  <ProductCode>Product Code: {product.variant.sku}</ProductCode>
+                </AccordionItemBody>
+              </AccordionItem>
+              <AccordionItem>
+                <AccordionItemTitle>
+                  <h3>Delivery & Returns</h3>
+                </AccordionItemTitle>
+                <AccordionItemBody>
+                  {home.productDeliveryInfo}
+                  <br />
+                  {home.productShippingReturns}
+                </AccordionItemBody>
+              </AccordionItem>
+            </AccordionStyled>
+            <ShareContainer>
+              <h3>Share</h3>
+              <div className="share-icons">
+                <div className="level">
+                  <div className="level-item">
+                    <FacebookShareButton
+                      url={metaUrl}
+                      quote={metaTitle}
+                      hashtag="#sejalsuits">
+                      <i className="fab fa-facebook-square" />
+                    </FacebookShareButton>
+                  </div>
+                  <div className="level-item">
+                    <TwitterShareButton
+                      url={metaUrl}
+                      title={metaTitle}
+                      hashtags={['sejalsuits', 'punjabisuits']}>
+                      <i className="fab fa-twitter-square" />
+                    </TwitterShareButton>
+                  </div>
+                  <div className="level-item">
+                    <EmailShareButton url={metaUrl} subject={metaTitle}>
+                      <i className="fas fa-envelope" />
+                    </EmailShareButton>
+                  </div>
+                </div>
+              </div>
+            </ShareContainer>
+          </animated.div>
+        )}
+      </Spring>
+    </>
+  );
+};
 
 ProductInfo.propTypes = {
   product: PropTypes.object.isRequired,
