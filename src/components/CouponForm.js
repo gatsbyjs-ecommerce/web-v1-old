@@ -62,7 +62,7 @@ export default withFormik({
   }),
   handleSubmit: (values, { setSubmitting, props }) => {
     // console.log('handle submit', values, props);
-    const alertify = require('alertify.js'); // eslint-disable-line
+    // const alertify = require('alertify.js'); // eslint-disable-line
     // $('.coupon-form-btn').addClass('is-loading');
     apolloClient
       .mutate({
@@ -71,14 +71,14 @@ export default withFormik({
       })
       .then(result => {
         // console.log('result', result);
-        alertify.log(`Applied: ${result.data.validateCoupon.details}`);
+        // alertify.log(`Applied: ${result.data.validateCoupon.details}`);
         setSubmitting(false);
         setTimeout(() => props.handleSubmit(result.data.validateCoupon), 200);
         // $('.coupon-form-btn').removeClass('is-loading');
       })
       .catch(() => {
         setSubmitting(false);
-        alertify.error('Invalid coupon code.');
+        // alertify.error('Invalid coupon code.');
         // $('.coupon-form-btn').removeClass('is-loading');
       });
   },

@@ -131,19 +131,17 @@ const NavItems = [
 const Header = ({ home }) => {
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
   const { data } = useQuery(cartQuery);
-  console.log('cartQuery', data);
+  const cartItems = data.cartItems || [];
 
   const cart = (
     <Cart>
-      {data && (
-        <Link to="/cart">
-          <i className="fas fa-shopping-cart" />
-          <span>Cart</span>{' '}
-          {data.cart && data.cart.length > 0 && (
-            <div className="count">{data.cart.length}</div>
-          )}
-        </Link>
-      )}
+      <Link to="/cart">
+        <i className="fas fa-shopping-cart" />
+        <span>Cart</span>{' '}
+        {cartItems.length > 0 && (
+          <div className="count">{cartItems.length}</div>
+        )}
+      </Link>
     </Cart>
   );
 

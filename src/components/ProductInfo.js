@@ -124,7 +124,7 @@ const ProductInfo = ({ product, home }) => {
   const metaTitle = `Checkout ${product.title} at SejalSuits`;
 
   const addToCart = () => {
-    console.log('cartItems', cartItems);
+    // console.log('cartItems', cartItems);
     const items = cartItems || [];
 
     const itemData = {
@@ -136,7 +136,7 @@ const ProductInfo = ({ product, home }) => {
       quantity: 1,
       __typename: 'CartItem',
     };
-    console.log('itemData', itemData);
+    // console.log('itemData', itemData);
     items.push(itemData);
 
     client.writeData({ data: { cartItems: items } });

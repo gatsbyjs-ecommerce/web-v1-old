@@ -231,7 +231,7 @@ export default withFormik({
     const { userData } = props;
     const user = userData !== null ? userData : {};
     const orderId = randomstring.generate(6).toUpperCase();
-    const alertify = require('alertify.js'); // eslint-disable-line
+    // const alertify = require('alertify.js'); // eslint-disable-line
     const productIds = props.cartData.items.map(item => item.id);
 
     // $('.payment-form-btn').addClass('is-loading');
@@ -268,7 +268,7 @@ export default withFormik({
             .then(result => {
               // console.log('order result', result);
               if (result.data.createOrder === null) {
-                alertify.alert('Payment failed, please try again.');
+                // alertify.alert('Payment failed, please try again.');
                 // $('.payment-form-btn').removeClass('is-loading');
               } else {
                 // clear local storage
@@ -279,10 +279,10 @@ export default withFormik({
             .catch(() => {
               // $('.payment-form-btn').removeClass('is-loading');
               setSubmitting(false);
-              alertify.alert('Payment failed, please try again.');
+              // alertify.alert('Payment failed, please try again.');
             });
         } else {
-          alertify.alert('Payment failed, invalid card details.');
+          // alertify.alert('Payment failed, invalid card details.');
           // $('.payment-form-btn').removeClass('is-loading');
           setSubmitting(false);
         }

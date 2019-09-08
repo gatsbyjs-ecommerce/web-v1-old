@@ -25,8 +25,8 @@ class CheckoutForm extends React.Component {
     setTimeout(() => {
       this.setState({ isVisible: true });
 
-      const scroll = new SmoothScroll();
-      scroll.animateScroll(isMobile ? 1100 : 450);
+      // const scroll = new SmoothScroll();
+      // scroll.animateScroll(isMobile ? 1100 : 450);
     }, 200);
   }
 
@@ -47,8 +47,7 @@ class CheckoutForm extends React.Component {
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+          to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <form onSubmit={handleSubmit}>
@@ -199,8 +198,7 @@ class CheckoutForm extends React.Component {
                 <BuyBtn
                   type="submit"
                   disabled={isSubmitting}
-                  className="checkout-form-btn button is-dark is-large is-radiusless is-uppercase"
-                >
+                  className="checkout-form-btn button is-dark is-large is-radiusless is-uppercase">
                   <span className="icon">
                     <i className="far fa-credit-card" />
                   </span>

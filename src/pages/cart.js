@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Spring, animated } from 'react-spring';
 
 import config from '../utils/config';
@@ -8,32 +8,24 @@ import Heading from '../components/Heading';
 import CheckoutProgress from '../components/CheckoutProgress';
 import CartItems from '../components/CartItems';
 import CheckoutForm from '../components/CheckoutForm';
-// import PaymentForm from '../components/PaymentForm';
+import PaymentForm from '../components/PaymentForm';
 import PaymentConfirmed from '../components/PaymentConfirmed';
 
-class Cart extends React.Component {
-  constructor(props) {
-    super(props);
+const Cart = () => {
+  const [activeStep, setActiveStep] = useState(1);
+  const [cartData, setCartData] = useState({});
+  const [userData, setUserData] = useState({});
+  const [paymentData, setPaymentData] = useState({});
 
-    this.state = {
-      activeStep: 1,
-      cartData: null,
-      userData: null,
-      paymentData: null,
-    };
-  }
-
-  render() {
-    const { activeStep, paymentData, userData, cartData } = this.state;
-
-    return (
-      <Layout>
-        <div className="section">
-          <Seo
-            title="Cart"
-            description="Your order items"
-            url={`${config.siteUrl}/cart`}
-          />
+  return (
+    <Layout>
+      <Seo
+        title="Cart"
+        description="Your order items"
+        url={`${config.siteUrl}/cart`}
+      />
+      <div className="section">
+        <div className="container">
           <Heading>Cart</Heading>
           <Spring
             native
@@ -58,42 +50,51 @@ class Cart extends React.Component {
                   className="column section is-half is-hidden-mobile">
                   <CartItems
                     showCheckoutBtn={activeStep === 1}
-                    handlePayment={data =>
-                      this.setState({ activeStep: 2, cartData: data })} />
+                    handlePayment={data => {
+                      setActiveStep(2);
+                      setCartData(data);
+                    }}
+                  />
                 </animated.div>
               )}
             </Spring>
             <div className="column section is-hidden-tablet">
               <CartItems
                 showCheckoutBtn={activeStep === 1}
-                handlePayment={data =>
-                  this.setState({ activeStep: 2, cartData: data })}
+                handlePayment={data => {
+                  setActiveStep(2);
+                  setCartData(data);
+                }}
               />
             </div>
             <div className="column section">
               {activeStep === 2 && (
                 <CheckoutForm
-                  handlePayment={data =>
-                    this.setState({ activeStep: 3, userData: data })}
+                  handlePayment={data => {
+                    setActiveStep(3);
+                    setUserData(data);
+                  }}
                 />
               )}
-              {/* {activeStep === 3 && (
+              {activeStep === 3 && (
                 <PaymentForm
                   cartData={cartData}
                   userData={userData}
-                  handlePayment={data =>
-                    this.setState({ activeStep: 4, paymentData: data })}
+                  handlePayment={data => {
+                    setActiveStep(4);
+                    setPaymentData(data);
+                  }}
                 />
-              )} */}
+              )}
               {activeStep === 4 && (
                 <PaymentConfirmed paymentData={paymentData} />
               )}
             </div>
           </div>
         </div>
-      </Layout>
-    );
-  }
-}
+      </div>
+    </Layout>
+  );
+};
 
 export default Cart;
