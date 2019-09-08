@@ -22,6 +22,10 @@ const ViewAllBtn = styled(Link)`
 
 export const query = graphql`
   query ProductViewQuery($slug: String!) {
+    sanitySiteSettings {
+      productDeliveryInfo
+      productShippingReturns
+    }
     sanityProduct(slug: { current: { eq: $slug } }) {
       id
       title
@@ -82,11 +86,10 @@ export const query = graphql`
 `;
 
 const ProductView = ({ data }) => {
-  console.log('data', data);
   const product = data.sanityProduct;
-  const products = [];
-  const home = {};
-  // console.log('product', product);
+  const products = data.allSanityProduct.edges;
+  const home = data.sanitySiteSettings;
+  // console.log('products', products);
 
   // const metaImage = product.featuredImage
   //   ? product.featuredImage.sizes.src
@@ -100,7 +103,7 @@ const ProductView = ({ data }) => {
         // image={metaImage}
         isProduct
       />
-      <div>
+      <div className="container">
         <Container className="columns">
           <div className="column is-two-fifths">
             <ProductGallery product={product} />
@@ -109,76 +112,15 @@ const ProductView = ({ data }) => {
             <ProductInfo home={home} product={product} />
           </div>
         </Container>
-      </div>
-      <ProductsList title="We think you'll" products={products.edges} />
-      <div className="has-text-centered	">
-        <ViewAllBtn to="/" className="button is-outlined is-medium">
-          View all
-        </ViewAllBtn>
+        <ProductsList title="We think you'll" products={products.edges} />
+        <div className="has-text-centered	">
+          <ViewAllBtn to="/" className="button is-outlined is-medium">
+            View all
+          </ViewAllBtn>
+        </div>
       </div>
     </Layout>
   );
 };
 
 export default ProductView;
-
-// export const productQuery = graphql`
-//   query ProductByPath($slug: String!) {
-//     contentfulProduct(slug: { eq: $slug }) {
-//       id
-//       title
-//       slug
-//       originalPrice
-//       discountPrice
-//       shippingCost
-//       color
-//       productCode
-//       featuredImage {
-//         title
-//         sizes(maxWidth: 550) {
-//           ...GatsbyContentfulSizes
-//         }
-//       }
-//       otherImages {
-//         id
-//         title
-//         sizes(maxWidth: 1200) {
-//           ...GatsbyContentfulSizes
-//         }
-//       }
-//       shortDetails {
-//         shortDetails
-//       }
-//     }
-//     allContentfulProduct(
-//       filter: { status: { eq: "active" }, slug: { ne: $slug } }
-//       limit: 9
-//       sort: { fields: [createdAt], order: DESC }
-//     ) {
-//       edges {
-//         node {
-//           id
-//           title
-//           slug
-//           color
-//           originalPrice
-//           discountPrice
-//           featuredImage {
-//             title
-//             sizes(maxWidth: 550) {
-//               ...GatsbyContentfulSizes
-//             }
-//           }
-//         }
-//       }
-//     }
-//     contentfulHome {
-//       productDeliveryInfo {
-//         productDeliveryInfo
-//       }
-//       productShippingReturns {
-//         productShippingReturns
-//       }
-//     }
-//   }
-// `;

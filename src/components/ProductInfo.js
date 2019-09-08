@@ -192,17 +192,9 @@ class ProductInfo extends React.Component {
                     <h3>Delivery & Returns</h3>
                   </AccordionItemTitle>
                   <AccordionItemBody>
-                    {/* <BlockContent
-                      content={
-                        home.productDeliveryInfo.childMarkdownRemark.html
-                      }
-                    />
+                    {home.productDeliveryInfo}
                     <br />
-                    <BlockContent
-                      content={
-                        home.productShippingReturns.childMarkdownRemark.html
-                      }
-                    /> */}
+                    {home.productShippingReturns}
                   </AccordionItemBody>
                 </AccordionItem>
               </AccordionStyled>
