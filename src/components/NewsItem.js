@@ -25,21 +25,16 @@ const NewsItem = ({ post }) => (
     <div className="media-content">
       <div className="content">
         <span className="has-text-weight-bold is-uppercase">
-          {dayjs(post.frontmatter.date).format('MMMM YYYY')}
+          {dayjs(post._createdAt).format('MMMM YYYY')}
         </span>{' '}
-        <span className="has-text-weight-bold has-text-warning is-uppercase category">
-          {post.frontmatter.category}
-        </span>
-        <Link to={post.fields.slug}>
-          <h3 className="title is-3 has-text-weight-bold">
-            {post.frontmatter.title}
-          </h3>
+        <Link to={`/article/${post.slug.current}`}>
+          <h3 className="title is-3 has-text-weight-bold">{post.title}</h3>
         </Link>
-        <p>{post.excerpt}</p>
+        <p>{post.description}</p>
       </div>
       <nav className="level is-mobile">
         <div className="level-left">
-          <Link to={post.fields.slug} className="level-item">
+          <Link to={`/article/${post.slug.current}`} className="level-item">
             Read
           </Link>
         </div>
