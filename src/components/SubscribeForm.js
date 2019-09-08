@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { withFormik } from 'formik';
 import * as Yup from 'yup';
 import { graphql } from 'gatsby';
+import swal from 'sweetalert';
 
 import apolloClient from '../utils/apolloClient';
 
@@ -78,20 +79,18 @@ export default withFormik({
   }),
   handleSubmit: (values, { setSubmitting }) => {
     // console.log('handle submit', values, props);
-    // const alertify = require('alertify.js'); // eslint-disable-line
-
     apolloClient
       .mutate({
         mutation: subscribeMutation,
         variables: values,
       })
       .then(() => {
-        // alertify.alert('Subscribed successfully, thank you!');
+        swal('Subscribed successfully, thank you!');
         setSubmitting(false);
       })
       .catch(() => {
         setSubmitting(false);
-        // alertify.alert('Subscription failed, please try again.');
+        swal('Subscription failed, please try again.', 'error');
       });
   },
   displayName: 'SubscribeForm', // helps with React DevTools

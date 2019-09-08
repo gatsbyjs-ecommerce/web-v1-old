@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withFormik } from 'formik';
 import { graphql } from 'gatsby';
+import swal from 'sweetalert';
 
 import apolloClient from '../utils/apolloClient';
 
@@ -62,7 +63,6 @@ export default withFormik({
   }),
   handleSubmit: (values, { setSubmitting, props }) => {
     // console.log('handle submit', values, props);
-    // const alertify = require('alertify.js'); // eslint-disable-line
     // $('.coupon-form-btn').addClass('is-loading');
     apolloClient
       .mutate({
@@ -71,14 +71,14 @@ export default withFormik({
       })
       .then(result => {
         // console.log('result', result);
-        // alertify.log(`Applied: ${result.data.validateCoupon.details}`);
+        swal(`Applied: ${result.data.validateCoupon.details}`);
         setSubmitting(false);
         setTimeout(() => props.handleSubmit(result.data.validateCoupon), 200);
         // $('.coupon-form-btn').removeClass('is-loading');
       })
       .catch(() => {
         setSubmitting(false);
-        // alertify.error('Invalid coupon code.');
+        swal('Invalid coupon code.', 'error');
         // $('.coupon-form-btn').removeClass('is-loading');
       });
   },

@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import Cleave from 'cleave.js/react';
 import randomstring from 'randomstring';
 import { graphql } from 'gatsby';
+import swal from 'sweetalert';
 
 import config from '../utils/config';
 import apolloClient from '../utils/apolloClient';
@@ -231,7 +232,6 @@ export default withFormik({
     const { userData } = props;
     const user = userData !== null ? userData : {};
     const orderId = randomstring.generate(6).toUpperCase();
-    // const alertify = require('alertify.js'); // eslint-disable-line
     const productIds = props.cartData.items.map(item => item.id);
 
     // $('.payment-form-btn').addClass('is-loading');
@@ -268,7 +268,7 @@ export default withFormik({
             .then(result => {
               // console.log('order result', result);
               if (result.data.createOrder === null) {
-                // alertify.alert('Payment failed, please try again.');
+                swal('Payment failed, please try again.', 'error');
                 // $('.payment-form-btn').removeClass('is-loading');
               } else {
                 // clear local storage
@@ -279,10 +279,10 @@ export default withFormik({
             .catch(() => {
               // $('.payment-form-btn').removeClass('is-loading');
               setSubmitting(false);
-              // alertify.alert('Payment failed, please try again.');
+              swal('Payment failed, please try again.', 'error');
             });
         } else {
-          // alertify.alert('Payment failed, invalid card details.');
+          swal('Payment failed, invalid card details.', 'error');
           // $('.payment-form-btn').removeClass('is-loading');
           setSubmitting(false);
         }
