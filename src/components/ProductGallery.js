@@ -3,6 +3,17 @@ import PropTypes from 'prop-types';
 import { isUndefined } from 'lodash';
 import { Spring, animated } from 'react-spring';
 import ImageGallery from 'react-image-gallery';
+import styled from 'styled-components';
+
+const Container = styled.div`
+  .image-gallery-thumbnails-wrapper {
+    margin-top: 10px;
+  }
+  .image-gallery-thumbnail-inner img {
+    width: auto;
+    height: 70px;
+  }
+`;
 
 class ProductGallery extends React.Component {
   constructor(props) {
@@ -39,28 +50,30 @@ class ProductGallery extends React.Component {
     // console.log('images 2', images);
 
     return (
-      <Spring
-        native
-        from={{ opacity: 0, marginLeft: -100 }}
-        to={{
-          opacity: isVisible ? 1 : 0,
-          marginLeft: isVisible ? 0 : -100,
-        }}>
-        {styles => (
-          <animated.div style={styles}>
-            <ImageGallery
-              items={images}
-              thumbnailPosition="bottom"
-              showPlayButton={false}
-              showNav={false}
-              showThumbnails={!isMobile}
-              showFullscreenButton={!isMobile}
-              showBullets={isMobile}
-              lazyLoad
-            />
-          </animated.div>
-        )}
-      </Spring>
+      <Container>
+        <Spring
+          native
+          from={{ opacity: 0, marginLeft: -100 }}
+          to={{
+            opacity: isVisible ? 1 : 0,
+            marginLeft: isVisible ? 0 : -100,
+          }}>
+          {styles => (
+            <animated.div style={styles}>
+              <ImageGallery
+                items={images}
+                thumbnailPosition="bottom"
+                showPlayButton={false}
+                showNav={false}
+                showThumbnails={!isMobile}
+                showFullscreenButton={!isMobile}
+                showBullets={isMobile}
+                lazyLoad
+              />
+            </animated.div>
+          )}
+        </Spring>
+      </Container>
     );
   }
 }

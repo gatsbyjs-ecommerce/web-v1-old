@@ -65,7 +65,7 @@ const ProductItem = ({ item, styles }) => (
       <div className="card-content">
         <div className="media">
           <div className="media-content">
-            <p className="title is-5" style={{ maxWidth: '94%' }}>
+            <p className="title is-5" style={{ maxWidth: '88%' }}>
               <Link to={`/product/${item.slug.current}`}>{item.title}</Link>
             </p>
             {item.variant && (

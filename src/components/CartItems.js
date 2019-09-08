@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
 import { useQuery, useApolloClient } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
 
@@ -12,7 +11,7 @@ const Item = styled.article`
   .image {
     height: auto;
   }
-  img {
+  img.cart-item-image {
     object-fit: cover;
     width: 128px;
     height: auto;
@@ -38,19 +37,19 @@ const cartQuery = gql`
       sku
       quantity
       price
-      # image
+      image
     }
   }
 `;
 
 const CartItems = ({ showCheckoutBtn, handlePayment }) => {
-  // const [items, setItems] = useState([]);
   const [total, setTotal] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [couponCode, setCouponCode] = useState(null);
   const client = useApolloClient();
   const { data } = useQuery(cartQuery);
-  const cartItems = data.cartItems || [];
+  const cartItems = data ? data.cartItems || [] : [];
+  // console.log('cartItems', cartItems);
 
   if (cartItems.length === 0) {
     return <p className="has-text-centered	is-size-4">No items in your cart.</p>;
@@ -71,7 +70,22 @@ const CartItems = ({ showCheckoutBtn, handlePayment }) => {
     setCouponCode(code);
   };
 
-  // this.calculateTotal(items);
+  const calculateTotal = () => {
+    let newTotal = 0;
+    cartItems.forEach(item => {
+      newTotal += item.price;
+    });
+    if (total !== newTotal) {
+      setTimeout(() => {
+        setTotal(newTotal);
+      }, 300);
+    }
+  };
+
+  // run everytime cart item updates
+  useEffect(() => {
+    calculateTotal();
+  }, [cartItems]);
 
   return (
     <>
@@ -80,12 +94,17 @@ const CartItems = ({ showCheckoutBtn, handlePayment }) => {
           {item.image && (
             <figure className="media-left">
               <div className="image is-128x128">
-                <Img
+                <img
+                  src={item.image}
+                  className="cart-item-image"
+                  alt={item.title}
+                />
+                {/* <Img
                   sizes={item.image.sizes}
                   alt={item.image.title}
                   title={item.image.title}
                   backgroundColor="#f1f1f1"
-                />
+                /> */}
               </div>
             </figure>
           )}

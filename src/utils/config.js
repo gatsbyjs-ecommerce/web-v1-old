@@ -8,14 +8,7 @@ module.exports = {
   siteUrl: 'http://kickoff-gatsbyjs.netlify.com',
   logo: '/images/logo-1024.png',
   graphQlUri: 'https://2jkk6tlv.api.sanity.io/v1/graphql/production/default',
-  graphQlUriDev: 'https://2jkk6tlv.api.sanity.io/v1/graphql/production/default',
-
-  telephone: '+1-123-123-123',
-  email: 'john@doe.com',
-  location: 'California, USA',
-  twitter: '@NAME-HERE',
-  fbUserId: '@NAME-HERE',
-  fbAppID: '@NAME-HERE',
+  graphQlUriDev: 'http://localhost:4000/',
 
   homeBannerImage: '/images/home-bg-3.jpg',
   type: 'website',

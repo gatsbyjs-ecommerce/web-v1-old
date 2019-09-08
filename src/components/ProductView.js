@@ -112,7 +112,7 @@ const ProductView = ({ data }) => {
             <ProductInfo home={home} product={product} />
           </div>
         </Container>
-        <ProductsList title="We think you'll" products={products.edges} />
+        <ProductsList title="We think you'll" products={products} />
         <div className="has-text-centered	">
           <ViewAllBtn to="/" className="button is-outlined is-medium">
             View all

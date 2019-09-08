@@ -13,6 +13,9 @@ const Container = styled.footer`
   background-color: #2f2f2f;
   position: relative;
   margin-top: 6rem;
+  p {
+    color: #ffffff !important;
+  }
 `;
 
 const Heading = styled.p`

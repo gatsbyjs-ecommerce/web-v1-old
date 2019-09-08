@@ -131,7 +131,7 @@ const NavItems = [
 const Header = ({ home }) => {
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
   const { data } = useQuery(cartQuery);
-  const cartItems = data.cartItems || [];
+  const cartItems = data ? data.cartItems || [] : [];
 
   const cart = (
     <Cart>
