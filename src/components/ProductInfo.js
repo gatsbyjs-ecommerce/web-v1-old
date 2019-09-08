@@ -113,7 +113,7 @@ const ProductInfo = ({ product, home }) => {
   const client = useApolloClient();
   const { data } = useQuery(cartQuery);
   const { cartItems } = data || {};
-  console.log('product', product);
+  // console.log('product', product);
 
   useEffect(() => {
     setTimeout(() => {
@@ -129,7 +129,7 @@ const ProductInfo = ({ product, home }) => {
     const items = cartItems || [];
 
     const itemData = {
-      id: product.id.slice(1),
+      id: product._id,
       sku: product.variant.sku,
       title: product.title,
       price: product.variant.price,
@@ -137,7 +137,6 @@ const ProductInfo = ({ product, home }) => {
       quantity: 1,
       __typename: 'CartItem',
     };
-    // console.log('itemData', itemData);
     items.push(itemData);
 
     client.writeData({ data: { cartItems: items } });

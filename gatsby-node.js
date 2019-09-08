@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       allSanityProduct {
         edges {
           node {
-            id
+            _id
             slug {
               current
             }

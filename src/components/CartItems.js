@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { useQuery, useApolloClient } from '@apollo/react-hooks';
-import gql from 'graphql-tag';
+import { useApolloClient } from '@apollo/react-hooks';
 
 import { formatCurrency } from '../utils/helpers';
 import CouponForm from './CouponForm';
@@ -29,26 +28,11 @@ const BuyBtn = styled.button`
   margin-top: 3rem;
 `;
 
-const cartQuery = gql`
-  query CartItems {
-    cartItems @client {
-      id
-      title
-      sku
-      quantity
-      price
-      image
-    }
-  }
-`;
-
-const CartItems = ({ showCheckoutBtn, handlePayment }) => {
+const CartItems = ({ showCheckoutBtn, handlePayment, cartItems }) => {
   const [total, setTotal] = useState(0);
   const [discount, setDiscount] = useState(0);
   const [couponCode, setCouponCode] = useState(null);
   const client = useApolloClient();
-  const { data } = useQuery(cartQuery);
-  const cartItems = data ? data.cartItems || [] : [];
   // console.log('cartItems', cartItems);
 
   if (cartItems.length === 0) {
@@ -57,11 +41,7 @@ const CartItems = ({ showCheckoutBtn, handlePayment }) => {
 
   const handleRemoveItem = index => {
     cartItems.splice(index, 1);
-    return client.writeData({
-      data: {
-        cartItems,
-      },
-    });
+    client.writeData({ data: { cartItems } });
   };
 
   const handleApplyDiscount = ({ discountPercentage, code }) => {

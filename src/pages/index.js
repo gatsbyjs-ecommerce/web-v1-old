@@ -18,7 +18,7 @@ export const query = graphql`
     allSanityProduct {
       edges {
         node {
-          id
+          _id
           title
           slug {
             current

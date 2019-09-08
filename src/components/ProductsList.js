@@ -28,7 +28,7 @@ class ProductsList extends React.Component {
   render() {
     const { title, products } = this.props;
     const { isOpen, activeCategory } = this.state;
-    const keys = products.map(item => item.node.id);
+    const keys = products.map(item => item.node._id);
 
     return (
       <Container className="section">
@@ -40,7 +40,7 @@ class ProductsList extends React.Component {
             to={{ opacity: isOpen ? 1 : 0.25 }}
             keys={keys}>
             {products.map(({ node }) => styles => (
-              <ProductItem key={node.id} item={node} styles={styles} />
+              <ProductItem key={node._id} item={node} styles={styles} />
             ))}
           </Trail>
         </div>

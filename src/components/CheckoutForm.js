@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
 import { isUndefined } from 'lodash';
@@ -68,32 +67,32 @@ class CheckoutForm extends React.Component {
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label">Address 1</label>
+                  <label className="label">Address Line 1</label>
                   <div className="control">
                     <input
                       className="input is-shadowless"
-                      name="address1"
-                      value={values.address1}
+                      name="addressLine1"
+                      value={values.addressLine1}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.address1 && touched.address1 && (
-                      <p className="help is-danger">{errors.address1}</p>
+                    {errors.addressLine1 && touched.addressLine1 && (
+                      <p className="help is-danger">{errors.addressLine1}</p>
                     )}
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label">Address 2</label>
+                  <label className="label">Address Line 2</label>
                   <div className="control">
                     <input
                       className="input is-shadowless"
-                      name="address2"
-                      value={values.address2}
+                      name="addressLine2"
+                      value={values.addressLine2}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.address2 && touched.address2 && (
-                      <p className="help is-danger">{errors.address2}</p>
+                    {errors.addressLine2 && touched.addressLine2 && (
+                      <p className="help is-danger">{errors.addressLine2}</p>
                     )}
                   </div>
                 </div>
@@ -213,15 +212,11 @@ class CheckoutForm extends React.Component {
   }
 }
 
-CheckoutForm.propTypes = {
-  handlePayment: PropTypes.func.isRequired,
-};
-
 export default withFormik({
   mapPropsToValues: () => ({
     fullName: '',
-    address1: '',
-    address2: '',
+    addressLine1: '',
+    addressLine2: '',
     city: '',
     postcode: '',
     state: '',
@@ -231,7 +226,7 @@ export default withFormik({
   }),
   validationSchema: Yup.object().shape({
     fullName: Yup.string().required('Full name is required.'),
-    address1: Yup.string().required('Address 1 is required.'),
+    addressLine1: Yup.string().required('Address Line 1 is required.'),
     city: Yup.string().required('City is required.'),
     postcode: Yup.string().required('Postcode is required.'),
     state: Yup.string().required('State is required.'),

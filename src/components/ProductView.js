@@ -27,7 +27,7 @@ export const query = graphql`
       productShippingReturns
     }
     sanityProduct(slug: { current: { eq: $slug } }) {
-      id
+      _id
       title
       slug {
         current
@@ -61,7 +61,7 @@ export const query = graphql`
     ) {
       edges {
         node {
-          id
+          _id
           title
           slug {
             current
