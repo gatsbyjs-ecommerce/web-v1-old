@@ -1,6 +1,7 @@
 # GatsbyJs Ecommerce
 
-A minimalist static E-commerce site built using GatsbyJs and Sanity.
+A minimalist static E-commerce site built using GatsbyJs.
+
 It use headless CMS called Contentful, so no need to manage database for APIs hosting.
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/73b567fe-9c0f-4ba1-b2e9-6d612b4c15b2/deploy-status)](https://app.netlify.com/sites/gatsbyjs-ecommerce/deploys)
