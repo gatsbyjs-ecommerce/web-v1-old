@@ -10,28 +10,6 @@
     ts-invariant "^0.4.4"
     tslib "^1.10.0"
 
-"@apollo/react-components@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@apollo/react-components/-/react-components-3.1.0.tgz#be4a8f3ee4ea0bc2cfe24cbdc1f684057a0489ca"
-  integrity sha512-w9gq0ccLR3SCLcBeYvrrLMOE70+MHK/9HX8FwJEcqCJJZy0ODeyjcl3XAle1ykEfEvSI/zLsS5g1YNbydYb8Sw==
-  dependencies:
-    "@apollo/react-common" "^3.1.0"
-    "@apollo/react-hooks" "^3.1.0"
-    prop-types "^15.7.2"
-    ts-invariant "^0.4.4"
-    tslib "^1.10.0"
-
-"@apollo/react-hoc@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@apollo/react-hoc/-/react-hoc-3.1.0.tgz#faec1a7e811de6e915ca6c47fdf829ebaf49cc95"
-  integrity sha512-lK5UyWGb90qClu2Xu8m8G7znt/cc0jo8TpGNh4OSCszXa6P5BOzxJ9rqNPL5HrqUB5A34B8wRhhfA8SLFYSqtA==
-  dependencies:
-    "@apollo/react-common" "^3.1.0"
-    "@apollo/react-components" "^3.1.0"
-    hoist-non-react-statics "^3.3.0"
-    ts-invariant "^0.4.4"
-    tslib "^1.10.0"
-
 "@apollo/react-hooks@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@apollo/react-hooks/-/react-hooks-3.1.0.tgz#47d94949e38262059b1639673072f117a9917653"
@@ -40,15 +18,6 @@
     "@apollo/react-common" "^3.1.0"
     "@wry/equality" "^0.1.9"
     ts-invariant "^0.4.4"
-    tslib "^1.10.0"
-
-"@apollo/react-ssr@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@apollo/react-ssr/-/react-ssr-3.1.0.tgz#dc70530c8ce26e5c9e0b0bb31ed0e0100670c8b7"
-  integrity sha512-ZMPq5HxX+8UFpyR5J3Fu+VBkSaSbDyxmETmV94mKXGj4iM54MFwZcg8UT0H1opKfZD9rSOunJKfhOSVTxKsWKQ==
-  dependencies:
-    "@apollo/react-common" "^3.1.0"
-    "@apollo/react-hooks" "^3.1.0"
     tslib "^1.10.0"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.5.5":
@@ -6731,7 +6700,7 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
-isomorphic-fetch@^2.1.1:
+isomorphic-fetch@^2.1.1, isomorphic-fetch@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/isomorphic-fetch/-/isomorphic-fetch-2.2.1.tgz#611ae1acf14f5e81f729507472819fe9733558a9"
   integrity sha1-YRrhrPFPXoH3KVB0coGf6XM1WKk=
@@ -9264,17 +9233,6 @@ react-accessible-accordion@^2.4.2:
     classnames "^2.2.5"
     consecutive "^5.0.4"
     recompose "^0.30.0"
-
-react-apollo@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/react-apollo/-/react-apollo-3.1.0.tgz#449073dd215f3fbb1979523299c8f76568aa0390"
-  integrity sha512-36uR7m4anws3i1cSPGoBGc1aJf7CF6+68vDaxUN9/Kg55h6/B0pydvwlHJPTqi5al4yyPLEIHuiJ5OXNzfrKhw==
-  dependencies:
-    "@apollo/react-common" "^3.1.0"
-    "@apollo/react-components" "^3.1.0"
-    "@apollo/react-hoc" "^3.1.0"
-    "@apollo/react-hooks" "^3.1.0"
-    "@apollo/react-ssr" "^3.1.0"
 
 react-dev-utils@^4.2.3:
   version "4.2.3"

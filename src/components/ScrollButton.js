@@ -17,10 +17,15 @@ class ScrollButton extends React.Component {
   }
 
   scrollStep = () => {
-    if (window.pageYOffset === 0) {
-      clearInterval(this.state.intervalId);
+    if (global.window) {
+      if (global.window.pageYOffset === 0) {
+        clearInterval(this.state.intervalId);
+      }
+      global.window.scroll(
+        0,
+        global.window.pageYOffset - this.props.scrollStepInPx,
+      );
     }
-    window.scroll(0, window.pageYOffset - this.props.scrollStepInPx);
   };
 
   scrollToTop = () => {

@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { graphql } from 'gatsby';
 import swal from 'sweetalert';
 
-import apolloClient from '../utils/apolloClient';
+// import apolloClient from '../utils/apolloClient';
 
 const Container = styled.form`
   margin-top: 1rem;
@@ -79,19 +79,19 @@ export default withFormik({
   }),
   handleSubmit: (values, { setSubmitting }) => {
     // console.log('handle submit', values, props);
-    apolloClient
-      .mutate({
-        mutation: subscribeMutation,
-        variables: values,
-      })
-      .then(() => {
-        swal('Subscribed successfully, thank you!');
-        setSubmitting(false);
-      })
-      .catch(() => {
-        setSubmitting(false);
-        swal('Subscription failed, please try again.', 'error');
-      });
+    // apolloClient
+    //   .mutate({
+    //     mutation: subscribeMutation,
+    //     variables: values,
+    //   })
+    //   .then(() => {
+    //     swal('Subscribed successfully, thank you!');
+    //     setSubmitting(false);
+    //   })
+    //   .catch(() => {
+    //     setSubmitting(false);
+    //     swal('Subscription failed, please try again.', 'error');
+    //   });
   },
   displayName: 'SubscribeForm', // helps with React DevTools
 })(SubscribeForm);

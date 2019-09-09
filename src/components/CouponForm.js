@@ -4,7 +4,7 @@ import { withFormik } from 'formik';
 import { graphql } from 'gatsby';
 import swal from 'sweetalert';
 
-import apolloClient from '../utils/apolloClient';
+// import apolloClient from '../utils/apolloClient';
 
 const couponMutation = graphql`
   mutation validateCoupon($code: String!) {
@@ -64,23 +64,23 @@ export default withFormik({
   handleSubmit: (values, { setSubmitting, props }) => {
     // console.log('handle submit', values, props);
     // $('.coupon-form-btn').addClass('is-loading');
-    apolloClient
-      .mutate({
-        mutation: couponMutation,
-        variables: { code: values.couponCode },
-      })
-      .then(result => {
-        // console.log('result', result);
-        swal(`Applied: ${result.data.validateCoupon.details}`);
-        setSubmitting(false);
-        setTimeout(() => props.handleSubmit(result.data.validateCoupon), 200);
-        // $('.coupon-form-btn').removeClass('is-loading');
-      })
-      .catch(() => {
-        setSubmitting(false);
-        swal('Invalid coupon code.', 'error');
-        // $('.coupon-form-btn').removeClass('is-loading');
-      });
+    // apolloClient
+    //   .mutate({
+    //     mutation: couponMutation,
+    //     variables: { code: values.couponCode },
+    //   })
+    //   .then(result => {
+    //     // console.log('result', result);
+    //     swal(`Applied: ${result.data.validateCoupon.details}`);
+    //     setSubmitting(false);
+    //     setTimeout(() => props.handleSubmit(result.data.validateCoupon), 200);
+    //     // $('.coupon-form-btn').removeClass('is-loading');
+    //   })
+    //   .catch(() => {
+    //     setSubmitting(false);
+    //     swal('Invalid coupon code.', 'error');
+    //     // $('.coupon-form-btn').removeClass('is-loading');
+    //   });
   },
   displayName: 'CouponForm', // helps with React DevTools
 })(CouponForm);

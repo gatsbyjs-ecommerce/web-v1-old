@@ -1,4 +1,5 @@
 /* eslint react/destructuring-assignment: 0 */
+/* eslint jsx-a11y/html-has-lang: 0 */
 
 import React from 'react';
 import PropTypes from 'prop-types';
