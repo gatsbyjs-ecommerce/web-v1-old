@@ -1,21 +1,18 @@
-/* global $ */
-
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
-import Link from 'gatsby-link';
-import { Query } from 'react-apollo';
+import { Link } from 'gatsby';
+import { useQuery } from '@apollo/react-hooks';
 import gql from 'graphql-tag';
-import ReactGA from 'react-ga';
 
-import config from '../config';
+import config from '../utils/config';
 import SocialIcons from './SocialIcons';
 
 const cartQuery = gql`
-  query {
-    cart @client {
-      count
+  query CartItems {
+    cartItems @client {
+      id
     }
   }
 `;
@@ -37,6 +34,9 @@ const Container = styled.div`
     .navbar-item:hover {
       color: #4a4a4a;
     }
+  }
+  img.logo {
+    max-width: 150px;
   }
 `;
 
@@ -128,142 +128,120 @@ const NavItems = [
   { id: 5, name: 'Contact', url: '/contact' },
 ];
 
-class Header extends React.Component {
-  constructor(props) {
-    super(props);
+const Header = ({ home }) => {
+  const [mobileMenuActive, setMobileMenuActive] = useState(false);
+  const { data } = useQuery(cartQuery);
+  const cartItems = data ? data.cartItems || [] : [];
 
-    this.state = { mobileMenuActive: false };
-  }
+  const cart = (
+    <Cart>
+      <Link to="/cart">
+        <i className="fas fa-shopping-cart" />
+        <span>Cart</span>{' '}
+        {cartItems.length > 0 && (
+          <div className="count">{cartItems.length}</div>
+        )}
+      </Link>
+    </Cart>
+  );
 
-  toggleMobileMenu = () => {
-    const { mobileMenuActive } = this.state;
-    if (mobileMenuActive) {
-      $('html').removeClass('disable-scroll');
-    } else {
-      $('html').addClass('disable-scroll');
-    }
-    this.setState({ mobileMenuActive: !mobileMenuActive });
+  const toggleMobileMenu = () => {
+    // if (mobileMenuActive) {
+    //   $('html').removeClass('disable-scroll');
+    // } else {
+    //   $('html').addClass('disable-scroll');
+    // }
+    setMobileMenuActive(!mobileMenuActive);
   };
 
-  render() {
-    const { mobileMenuActive } = this.state;
-    const { home } = this.props;
-
-    const cart = (
-      <Cart>
-        <Query query={cartQuery}>
-          {({ data }) => (
-            <Link to="/cart">
-              <i className="fas fa-shopping-cart" />
-              <span>Cart</span>{' '}
-              {data.cart &&
-                data.cart.count > 0 && (
-                  <div className="count">{data.cart.count}</div>
-                )}
+  return (
+    <div className="container">
+      <Container className="is-hidden-mobile">
+        <div className="columns">
+          <div className="column">
+            <SocialIcons data={home} />
+          </div>
+          <div className="column has-text-centered">
+            <Link to="/">
+              <img
+                src={config.logo}
+                className="logo"
+                alt={`${config.siteName} logo`}
+              />
             </Link>
-          )}
-        </Query>
-      </Cart>
-    );
-
-    return (
-      <React.Fragment>
-        <Container className="is-hidden-mobile">
-          <div className="columns">
-            <div className="column">
-              <SocialIcons data={home} />
-            </div>
-            <div className="column has-text-centered">
-              <Link to="/">
-                <img src={config.logo} alt={`${config.siteName} logo`} />
-              </Link>
-            </div>
-            <div className="column has-text-right has-text-weight-semibold	">
-              <p>
-                <ReactGA.OutboundLink
-                  eventLabel="siteEmail"
-                  to={`mailto:${home.email}`}
-                >
-                  {home.email}
-                </ReactGA.OutboundLink>{' '}
-                |{' '}
-                <ReactGA.OutboundLink
-                  eventLabel="siteTelephone"
-                  to={`tel:${home.telephone}`}
-                >
-                  {home.telephone}
-                </ReactGA.OutboundLink>
-              </p>
-              {cart}
-            </div>
           </div>
-          <nav
-            className="navbar has-background-white-ter"
-            role="navigation"
-            aria-label="main navigation"
-          >
-            <div className="navbar-menu is-uppercase has-text-weight-bold">
-              {NavItems.map(item => (
-                <Link to={item.url} className="navbar-item" key={item.id}>
-                  {item.name}
-                </Link>
-              ))}
-            </div>
-          </nav>
-        </Container>
-        <ContainerMobile className="is-hidden-tablet">
-          <div className="columns is-mobile">
-            <div className="column">
-              <Link to="/">
-                <img src={config.logo} alt={`${config.siteName} logo`} />
+          <div className="column has-text-right has-text-weight-semibold	">
+            <p>
+              <a href={`mailto:${home.email}`}>{home.email}</a> |{' '}
+              <a href={`tel:${home.telephone}`}>{home.telephone}</a>
+            </p>
+            {cart}
+          </div>
+        </div>
+        <nav
+          className="navbar has-background-white-ter"
+          role="navigation"
+          aria-label="main navigation">
+          <div className="navbar-menu is-uppercase has-text-weight-bold">
+            {NavItems.map(item => (
+              <Link to={item.url} className="navbar-item" key={item.id}>
+                {item.name}
               </Link>
-            </div>
-            <div className="column">
-              {mobileMenuActive ? (
-                <span>
-                  <a onClick={this.toggleMobileMenu}>
-                    <i className="fas fa-times menu-trigger" />
-                  </a>
-                </span>
-              ) : (
-                <a onClick={this.toggleMobileMenu}>
-                  <i className="fas fa-bars menu-trigger" />
+            ))}
+          </div>
+        </nav>
+      </Container>
+      <ContainerMobile className="is-hidden-tablet">
+        <div className="columns is-mobile">
+          <div className="column">
+            <Link to="/">
+              <img src={config.logo} alt={`${config.siteName} logo`} />
+            </Link>
+          </div>
+          <div className="column">
+            {mobileMenuActive ? (
+              <span>
+                <a onClick={toggleMobileMenu}>
+                  <i className="fas fa-times menu-trigger" />
                 </a>
-              )}
-              <CartMobile>{cart}</CartMobile>
-            </div>
-          </div>
-          <Spring
-            native
-            from={{ height: 0, opacity: 0, paddingTop: '-64px' }}
-            to={{
-              height: mobileMenuActive ? 800 : 0,
-              opacity: mobileMenuActive ? 1 : 0,
-              paddingTop: mobileMenuActive ? 0 : -64,
-            }}
-          >
-            {styles => (
-              <MobileMenu style={styles}>
-                <aside className="menu">
-                  <ul className="menu-list is-uppercase has-text-weight-bold is-size-4">
-                    {NavItems.map(item => (
-                      <li key={item.id} onClick={this.toggleMobileMenu}>
-                        <Link to={item.url}>{item.name}</Link>
-                      </li>
-                    ))}
-                    <li className="social">
-                      <SocialIcons data={home} inverted />
-                    </li>
-                  </ul>
-                </aside>
-              </MobileMenu>
+              </span>
+            ) : (
+              <a onClick={toggleMobileMenu}>
+                <i className="fas fa-bars menu-trigger" />
+              </a>
             )}
-          </Spring>
-        </ContainerMobile>
-      </React.Fragment>
-    );
-  }
-}
+            <CartMobile>{cart}</CartMobile>
+          </div>
+        </div>
+        <Spring
+          native
+          from={{ height: 0, opacity: 0, paddingTop: '-64px' }}
+          to={{
+            height: mobileMenuActive ? 800 : 0,
+            opacity: mobileMenuActive ? 1 : 0,
+            paddingTop: mobileMenuActive ? 0 : -64,
+          }}>
+          {styles => (
+            <MobileMenu style={styles}>
+              <aside className="menu">
+                <ul className="menu-list is-uppercase has-text-weight-bold is-size-4">
+                  {NavItems.map(item => (
+                    <li key={item.id} onClick={toggleMobileMenu}>
+                      <Link to={item.url}>{item.name}</Link>
+                    </li>
+                  ))}
+                  <li className="social">
+                    <SocialIcons data={home} inverted />
+                  </li>
+                </ul>
+              </aside>
+            </MobileMenu>
+          )}
+        </Spring>
+      </ContainerMobile>
+    </div>
+  );
+};
 
 Header.defaultProps = {
   home: {},

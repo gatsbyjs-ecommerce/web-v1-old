@@ -1,13 +1,11 @@
-/* global SmoothScroll, global */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
-import { isUndefined } from 'underscore';
-import Link from 'gatsby-link';
+import { isUndefined } from 'lodash';
+import { Link } from 'gatsby';
 
-import config from '../config';
+import config from '../utils/config';
 
 const Result = styled.div`
   text-align: center;
@@ -43,22 +41,21 @@ class PaymentConfirmed extends React.Component {
     setTimeout(() => {
       this.setState({ isVisible: true });
 
-      const scroll = new SmoothScroll();
-      scroll.animateScroll(isMobile ? 1100 : 450);
+      // const scroll = new SmoothScroll();
+      // scroll.animateScroll(isMobile ? 1100 : 450);
     }, 200);
   }
 
   render() {
     const { isVisible } = this.state;
-    const { paymentData } = this.props;
+    const { orderData } = this.props;
 
     return (
-      <React.Fragment>
+      <>
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+          to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <Result>
@@ -67,28 +64,28 @@ class PaymentConfirmed extends React.Component {
                   Payment complete
                 </h3>
                 <p className="info">
-                  Order code is <OrderId>#{paymentData.orderId}</OrderId>
+                  Order code is <OrderId>#{orderData.orderId}</OrderId>
                   <br />
-                  Please check your email<br />
+                  Please check your email
+                  <br />
                   for delivery updates.
                 </p>
               </Result>
               <BuyBtn
                 to="/"
-                className="button is-dark is-large is-radiusless is-uppercase"
-              >
+                className="button is-dark is-large is-radiusless is-uppercase">
                 Continue Shopping
               </BuyBtn>
             </animated.div>
           )}
         </Spring>
-      </React.Fragment>
+      </>
     );
   }
 }
 
 PaymentConfirmed.propTypes = {
-  paymentData: PropTypes.object.isRequired,
+  orderData: PropTypes.object.isRequired,
 };
 
 export default PaymentConfirmed;

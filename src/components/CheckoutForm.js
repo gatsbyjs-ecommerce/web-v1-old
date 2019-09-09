@@ -1,10 +1,7 @@
-/* global $, SmoothScroll, global */
-
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { Spring, animated } from 'react-spring';
-import { isUndefined } from 'underscore';
+import { isUndefined } from 'lodash';
 import { withFormik } from 'formik';
 import * as Yup from 'yup';
 
@@ -27,8 +24,8 @@ class CheckoutForm extends React.Component {
     setTimeout(() => {
       this.setState({ isVisible: true });
 
-      const scroll = new SmoothScroll();
-      scroll.animateScroll(isMobile ? 1100 : 450);
+      // const scroll = new SmoothScroll();
+      // scroll.animateScroll(isMobile ? 1100 : 450);
     }, 200);
   }
 
@@ -45,12 +42,11 @@ class CheckoutForm extends React.Component {
     } = this.props;
 
     return (
-      <React.Fragment>
+      <>
         <Spring
           native
           from={{ opacity: 0 }}
-          to={{ opacity: isVisible ? 1 : 0 }}
-        >
+          to={{ opacity: isVisible ? 1 : 0 }}>
           {stylesProps => (
             <animated.div style={stylesProps}>
               <form onSubmit={handleSubmit}>
@@ -65,42 +61,39 @@ class CheckoutForm extends React.Component {
                       onBlur={handleBlur}
                       autoFocus
                     />
-                    {errors.fullName &&
-                      touched.fullName && (
-                        <p className="help is-danger">{errors.fullName}</p>
-                      )}
+                    {errors.fullName && touched.fullName && (
+                      <p className="help is-danger">{errors.fullName}</p>
+                    )}
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label">Address 1</label>
+                  <label className="label">Address Line 1</label>
                   <div className="control">
                     <input
                       className="input is-shadowless"
-                      name="address1"
-                      value={values.address1}
+                      name="addressLine1"
+                      value={values.addressLine1}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.address1 &&
-                      touched.address1 && (
-                        <p className="help is-danger">{errors.address1}</p>
-                      )}
+                    {errors.addressLine1 && touched.addressLine1 && (
+                      <p className="help is-danger">{errors.addressLine1}</p>
+                    )}
                   </div>
                 </div>
                 <div className="field">
-                  <label className="label">Address 2</label>
+                  <label className="label">Address Line 2</label>
                   <div className="control">
                     <input
                       className="input is-shadowless"
-                      name="address2"
-                      value={values.address2}
+                      name="addressLine2"
+                      value={values.addressLine2}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.address2 &&
-                      touched.address2 && (
-                        <p className="help is-danger">{errors.address2}</p>
-                      )}
+                    {errors.addressLine2 && touched.addressLine2 && (
+                      <p className="help is-danger">{errors.addressLine2}</p>
+                    )}
                   </div>
                 </div>
                 <div className="field is-horizontal">
@@ -115,10 +108,9 @@ class CheckoutForm extends React.Component {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.city &&
-                          touched.city && (
-                            <p className="help is-danger">{errors.city}</p>
-                          )}
+                        {errors.city && touched.city && (
+                          <p className="help is-danger">{errors.city}</p>
+                        )}
                       </div>
                     </div>
                     <div className="field">
@@ -131,10 +123,9 @@ class CheckoutForm extends React.Component {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.postcode &&
-                          touched.postcode && (
-                            <p className="help is-danger">{errors.postcode}</p>
-                          )}
+                        {errors.postcode && touched.postcode && (
+                          <p className="help is-danger">{errors.postcode}</p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -151,10 +142,9 @@ class CheckoutForm extends React.Component {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.state &&
-                          touched.state && (
-                            <p className="help is-danger">{errors.state}</p>
-                          )}
+                        {errors.state && touched.state && (
+                          <p className="help is-danger">{errors.state}</p>
+                        )}
                       </div>
                     </div>
                     <div className="field">
@@ -167,10 +157,9 @@ class CheckoutForm extends React.Component {
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.country &&
-                          touched.country && (
-                            <p className="help is-danger">{errors.country}</p>
-                          )}
+                        {errors.country && touched.country && (
+                          <p className="help is-danger">{errors.country}</p>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -185,10 +174,9 @@ class CheckoutForm extends React.Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.email &&
-                      touched.email && (
-                        <p className="help is-danger">{errors.email}</p>
-                      )}
+                    {errors.email && touched.email && (
+                      <p className="help is-danger">{errors.email}</p>
+                    )}
                   </div>
                 </div>
                 <div className="field">
@@ -201,17 +189,15 @@ class CheckoutForm extends React.Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.telephone &&
-                      touched.telephone && (
-                        <p className="help is-danger">{errors.telephone}</p>
-                      )}
+                    {errors.telephone && touched.telephone && (
+                      <p className="help is-danger">{errors.telephone}</p>
+                    )}
                   </div>
                 </div>
                 <BuyBtn
                   type="submit"
                   disabled={isSubmitting}
-                  className="checkout-form-btn button is-dark is-large is-radiusless is-uppercase"
-                >
+                  className="checkout-form-btn button is-dark is-large is-radiusless is-uppercase">
                   <span className="icon">
                     <i className="far fa-credit-card" />
                   </span>
@@ -221,20 +207,16 @@ class CheckoutForm extends React.Component {
             </animated.div>
           )}
         </Spring>
-      </React.Fragment>
+      </>
     );
   }
 }
 
-CheckoutForm.propTypes = {
-  handlePayment: PropTypes.func.isRequired,
-};
-
 export default withFormik({
   mapPropsToValues: () => ({
     fullName: '',
-    address1: '',
-    address2: '',
+    addressLine1: '',
+    addressLine2: '',
     city: '',
     postcode: '',
     state: '',
@@ -244,7 +226,7 @@ export default withFormik({
   }),
   validationSchema: Yup.object().shape({
     fullName: Yup.string().required('Full name is required.'),
-    address1: Yup.string().required('Address 1 is required.'),
+    addressLine1: Yup.string().required('Address Line 1 is required.'),
     city: Yup.string().required('City is required.'),
     postcode: Yup.string().required('Postcode is required.'),
     state: Yup.string().required('State is required.'),
@@ -256,7 +238,7 @@ export default withFormik({
   }),
   handleSubmit: (values, { setSubmitting, props }) => {
     // console.log('handle submit', values, props);
-    $('.checkout-form-btn').addClass('is-loading');
+    // $('.checkout-form-btn').addClass('is-loading');
     setSubmitting(false);
     setTimeout(() => props.handlePayment(values), 350);
   },

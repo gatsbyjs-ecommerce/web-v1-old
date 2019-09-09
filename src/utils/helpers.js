@@ -1,10 +1,11 @@
-import React from 'react';
-import { numberFormat } from 'underscore.string';
+import currency from 'currency.js';
 
-export const formatCurrency = value => `£${numberFormat(value, 0)}`;
+import config from './config';
+
+export const formatCurrency = value =>
+  currency(parseFloat(value), {
+    symbol: `${config.currency} `,
+    formatWithSymbol: true,
+  }).format();
 
 export const log = value => console.log(value); // eslint-disable-line
-
-export const HTMLContent = ({ content, className }) => (
-  <div className={className} dangerouslySetInnerHTML={{ __html: content }} />
-);

@@ -42,13 +42,16 @@ const Progress = styled.div`
 const CheckoutProgress = ({ activeStep }) => (
   <Progress>
     <div className={`step one ${activeStep === 2 ? 'active' : ''}`}>
-      <div className="dot" />Shipping
+      <div className="dot" />
+      Shipping
     </div>
     <div className={`step two ${activeStep === 3 ? 'active' : ''}`}>
-      <div className="dot" />Payment
+      <div className="dot" />
+      Payment
     </div>
     <div className={`step three ${activeStep === 4 ? 'active' : ''}`}>
-      <div className="dot" />Confirm
+      <div className="dot" />
+      Confirm
     </div>
   </Progress>
 );

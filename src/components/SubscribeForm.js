@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { withFormik } from 'formik';
 import * as Yup from 'yup';
-import gql from 'graphql-tag';
+import { graphql } from 'gatsby';
+import swal from 'sweetalert';
 
 import apolloClient from '../utils/apolloClient';
 
@@ -16,7 +17,7 @@ const Container = styled.form`
   }
 `;
 
-const subscribeMutation = gql`
+const subscribeMutation = graphql`
   mutation subscribe($email: String!) {
     subscribe(email: $email) {
       email
@@ -48,8 +49,9 @@ class SubscribeForm extends React.Component {
               onBlur={handleBlur}
               placeholder="Your email"
             />
-            {errors.email &&
-              touched.email && <p className="help is-danger">{errors.email}</p>}
+            {errors.email && touched.email && (
+              <p className="help is-danger">{errors.email}</p>
+            )}
           </div>
         </div>
         <div className="field">
@@ -57,8 +59,7 @@ class SubscribeForm extends React.Component {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="button is-light"
-            >
+              className="button is-light">
               Subscribe
             </button>
           </div>
@@ -78,20 +79,18 @@ export default withFormik({
   }),
   handleSubmit: (values, { setSubmitting }) => {
     // console.log('handle submit', values, props);
-    const alertify = require('alertify.js'); // eslint-disable-line
-
     apolloClient
       .mutate({
         mutation: subscribeMutation,
         variables: values,
       })
       .then(() => {
-        alertify.alert('Subscribed successfully, thank you!');
+        swal('Subscribed successfully, thank you!');
         setSubmitting(false);
       })
       .catch(() => {
         setSubmitting(false);
-        alertify.alert('Subscription failed, please try again.');
+        swal('Subscription failed, please try again.', 'error');
       });
   },
   displayName: 'SubscribeForm', // helps with React DevTools

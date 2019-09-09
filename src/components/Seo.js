@@ -2,59 +2,19 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
-import config from '../config';
+import config from '../utils/config';
 
-const getSchemaOrgJSONLD = ({ isProduct, url, title, image, description }) => {
-  const schemaOrgJSONLD = [
-    {
-      '@context': 'http://schema.org',
-      '@type': 'WebSite',
-      url,
-      name: title,
-      alternateName: config.siteName,
-    },
-  ];
+const getSchemaOrgJSONLD = ({ url, title }) => [
+  {
+    '@context': 'http://schema.org',
+    '@type': 'WebSite',
+    url,
+    name: title,
+    alternateName: config.siteName,
+  },
+];
 
-  return isProduct
-    ? [
-        ...schemaOrgJSONLD,
-        {
-          '@context': 'http://schema.org',
-          '@type': 'ListItem',
-          itemListElement: [
-            {
-              '@type': 'ListItem',
-              position: 1,
-              item: {
-                '@id': url,
-                name: title,
-                image,
-              },
-            },
-          ],
-        },
-        {
-          '@context': 'http://schema.org',
-          '@type': 'Product',
-          url,
-          name: title,
-          alternateName: config.siteName,
-          headline: title,
-          image: {
-            '@type': 'ImageObject',
-            url: image,
-          },
-          description,
-          mainEntityOfPage: {
-            '@type': 'WebSite',
-            '@id': config.siteUrl,
-          },
-        },
-      ]
-    : schemaOrgJSONLD;
-};
-
-const Seo = ({ title, description, url, image, isProduct }) => {
+const Seo = ({ title, description, url, image }) => {
   const pageTitle = `${title} - ${config.siteName}`;
 
   const schemaOrgJSONLD = getSchemaOrgJSONLD({
@@ -62,7 +22,6 @@ const Seo = ({ title, description, url, image, isProduct }) => {
     pageTitle,
     image,
     description,
-    isProduct,
   });
 
   return (
@@ -79,7 +38,6 @@ const Seo = ({ title, description, url, image, isProduct }) => {
 
       {/* OpenGraph tags */}
       <meta property="og:url" content={url} />
-      {isProduct ? <meta property="og:type" content="product" /> : null}
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
@@ -95,18 +53,17 @@ const Seo = ({ title, description, url, image, isProduct }) => {
   );
 };
 
-Seo.propTypes = {
-  title: PropTypes.any.isRequired,
-  description: PropTypes.any.isRequired,
-  url: PropTypes.string,
-  image: PropTypes.string,
-  isProduct: PropTypes.bool,
-};
-
 Seo.defaultProps = {
   url: config.siteUrl,
   image: `${config.siteUrl}/${config.logo}`,
-  isProduct: false,
+  description: config.description,
+};
+
+Seo.propTypes = {
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string,
+  url: PropTypes.string,
+  image: PropTypes.string,
 };
 
 export default Seo;

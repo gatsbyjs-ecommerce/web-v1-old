@@ -1,8 +1,7 @@
 import React from 'react';
-import { graphql } from 'gatsby'
-import ReactGA from 'react-ga';
+import { graphql } from 'gatsby';
 
-import config from '../config/index';
+import config from '../utils/config';
 import Seo from '../components/Seo';
 import Layout from '../components/Layout';
 import Heading from '../components/Heading';
@@ -10,16 +9,15 @@ import CouponItem from '../components/CouponItem';
 
 export const couponsQuery = graphql`
   query Coupons {
-    allContentfulCoupons {
+    allSanityCoupon {
       edges {
         node {
           id
-          name
-          code
+          title
           expiryDate
-          details {
-            details
-          }
+          discountPercentage
+          description
+          code
         }
       }
     }
@@ -27,29 +25,27 @@ export const couponsQuery = graphql`
 `;
 
 export default class Coupons extends React.Component {
-  componentDidMount() {
-    ReactGA.pageview('/coupons');
-  }
-
   render() {
     const { data } = this.props;
-    const coupons = data.allContentfulCoupons.edges;
+    const coupons = data.allSanityCoupon.edges;
 
     return (
       <Layout>
+        <Seo
+          title="Coupons"
+          description="Get a best detals"
+          url={`${config.siteUrl}/coupons`}
+        />
         <div className="section">
-          <Seo
-            title="Coupons"
-            description="Get a best detals"
-            url={`${config.siteUrl}/coupons`}
-          />
-          <Heading>Coupons</Heading>
-          <div className="columns is-multiline">
-            {coupons.map(coupon => (
-              <div key={coupon.node.id} className="column is-one-third">
-                <CouponItem data={coupon.node} />
-              </div>
-          ))}
+          <div className="container">
+            <Heading>Coupons</Heading>
+            <div className="columns is-multiline">
+              {coupons.map(coupon => (
+                <div key={coupon.node.id} className="column is-one-third">
+                  <CouponItem data={coupon.node} />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </Layout>

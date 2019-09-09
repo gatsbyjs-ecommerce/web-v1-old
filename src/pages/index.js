@@ -1,61 +1,40 @@
 import React from 'react';
-import ReactGA from 'react-ga';
-// import { first } from 'underscore';
-import { StaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 
-import config from '../config/index';
+import config from '../utils/config';
 import Seo from '../components/Seo';
 import Layout from '../components/Layout';
 import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
 
-export const indexQuery = graphql`
-  query Products {
-    allContentfulProduct(
-      filter: { status: { eq: "active" } }
-      sort: { fields: [listingOrder], order: ASC }
-    ) {
-      edges {
-        node {
-          id
-          title
-          slug
-          color
-          originalPrice
-          discountPrice
-          featuredImage {
-            title
-            sizes(maxWidth: 550) {
-              ...GatsbyContentfulSizes
-            }
-          }
-        }
-      }
-    }
-    contentfulHome {
-      homeSliderTitle
+export const query = graphql`
+  query HomePageQuery {
+    sanitySiteSettings {
+      homeIntro
       homeSliderSubTitle
-      homeSliderImage {
-        title
-        sizes(maxWidth: 550) {
-          ...GatsbyContentfulSizes
-        }
-      }
-      homeIntro {
-        childMarkdownRemark {
-          html
-        }
-      }
+      description
     }
-    allDataJson {
+    allSanityProduct {
       edges {
         node {
-          GBP_CAD {
-            val
+          _id
+          title
+          slug {
+            current
           }
-          GBP_INR {
-            val
+          variant {
+            color
+            discountPrice
+            price
+            sku
+            featuredImage {
+              asset {
+                fluid(maxWidth: 700) {
+                  ...GatsbySanityImageFluid
+                }
+              }
+            }
           }
         }
       }
@@ -63,38 +42,24 @@ export const indexQuery = graphql`
   }
 `;
 
-export default class IndexPage extends React.Component {
-  componentDidMount() {
-    ReactGA.pageview('/');
-  }
+const HomePage = ({ data }) => {
+  const home = data.sanitySiteSettings;
+  const products = data.allSanityProduct.edges;
 
-  render() {
-    return (
-      <Layout>
-        <Seo
-          title="Latest punjabi suits collection"
-          description="Latest Punjabi Traditional Suits"
-          url={config.siteUrl}
-        />
-        <StaticQuery
-          query={indexQuery}
-          render={(data) => {
-          const {
-            allContentfulProduct: products, contentfulHome: home,
-          } = data;
-          // const currency = { edges: [{ node: {} }] }; // TODO: fix this
-          // const currencies = first(currency.edges).node;
+  return (
+    <Layout>
+      <Seo
+        title="Latest punjabi suits collection"
+        description={home.description}
+        url={config.siteUrl}
+      />
+      <div className="container">
+        <HomeBanner data={home} />
+        <ProductsList products={products} />
+        <HomeAbout data={home} />
+      </div>
+    </Layout>
+  );
+};
 
-            return (
-              <React.Fragment>
-                <HomeBanner data={home} />
-                <ProductsList products={products.edges} />
-                <HomeAbout data={home} />
-              </React.Fragment>
-            );
-          }}
-        />
-      </Layout>
-    );
-  }
-}
+export default HomePage;

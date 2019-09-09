@@ -1,90 +1,66 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
-import { ApolloProvider } from 'react-apollo';
-import ReactGA from 'react-ga';
-import { StaticQuery, graphql } from 'gatsby';
+import styled, { ThemeProvider } from 'styled-components';
+import { ApolloProvider } from '@apollo/react-hooks';
+import { graphql, StaticQuery } from 'gatsby';
 
-import config from '../config';
+import GlobalStyle, { theme } from '../utils/theme';
+import config from '../utils/config';
 import apolloClient from '../utils/apolloClient';
 import Header from './Header';
 import Footer from './Footer';
 
-const indexLayoutQuery = graphql`
-query {
-  contentfulHome {
-    telephone
-    email
-    address
-    facebook
-    twitter
-    instagram
-    pinterest
-  }
-}
+const Container = styled.div`
+  min-height: 70vh;
 `;
 
-class IndexLayout extends React.Component {
-  componentWillMount() {
-    ReactGA.initialize(config.googleAnalytics, {
-      // debug: config.DEBUG,
-    });
+const query = graphql`
+  query LayoutQuery {
+    sanitySiteSettings {
+      description
+      telephone
+      email
+      address
+      facebook
+      twitter
+      instagram
+      pinterest
+    }
   }
+`;
 
-  render() {
-    const {
-      children,
-      // data: { contentfulHome: home },
-    } = this.props;
-    // TODO: fix this
-    const home = {};
-
-    return (
+const IndexLayout = ({ children, hideHeader }) => {
+  return (
+    <ThemeProvider theme={theme}>
       <ApolloProvider client={apolloClient}>
-        <div>
-          <Helmet
-            title={config.siteName}
-            meta={[{ name: 'description', content: config.description }]}
-          />
-          {/* <StaticQuery
-            query={indexLayoutQuery}
+        <>
+          <Helmet>
+            <title>{config.siteName}</title>
+            <meta charSet="utf-8" />
+            <meta
+              name="viewport"
+              content="width=device-width, initial-scale=1"
+            />
+            <meta description={config.description} />
+          </Helmet>
+          <GlobalStyle />
+          <StaticQuery
+            query={query}
             render={data => {
-              const layout = data.contentfulHome;
-              console.log(layout)
+              const home = data.sanitySiteSettings;
               return (
-                layout.map(item =>
-                )
-              )
-            }
-            }
-          /> */}
-          <div className="container">
-            <Header home={home} />
-            {children}
-          </div>
-          <Footer home={home} />
-        </div>
+                <>
+                  {!hideHeader && <Header home={home} />}
+                  <Container>{children}</Container>
+                  <Footer home={home} />
+                </>
+              );
+            }}
+          />
+        </>
       </ApolloProvider>
-    );
-  }
-}
-
-IndexLayout.propTypes = {
-  children: PropTypes.any.isRequired,
+    </ThemeProvider>
+  );
 };
 
 export default IndexLayout;
-
-// # export const indexLayoutQuery = graphql`
-// #   query IndexLayout {
-// #     contentfulHome {
-// #       telephone
-// #       email
-// #       address
-// #       facebook
-// #       twitter
-// #       instagram
-// #       pinterest
-// #     }
-// #   }
-// # `;

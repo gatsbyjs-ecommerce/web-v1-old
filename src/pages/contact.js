@@ -1,98 +1,94 @@
 import React from 'react';
 import styled from 'styled-components';
-import ReactGA from 'react-ga';
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 
-import config from '../config/index';
 import Seo from '../components/Seo';
 import Layout from '../components/Layout';
-import Heading from '../components/Heading';
-import ContactForm from '../components/ContactForm';
-import SocialIcons from '../components/SocialIcons';
 
-const Container = styled.div`
-  a {
-    padding: 1rem;
-    color: #4a4a4a;
-  }
-  p {
-    padding: 0.2rem 0;
-  }
-  svg {
-    color: #494949;
-  }
-`;
-
-export const contactQuery = graphql`
-  query Contact {
-    contentfulHome {
-      address
-      email
+export const query = graphql`
+  query ContactQuery {
+    sanitySiteSettings {
       telephone
-      facebook
-      twitter
-      instagram
-      pinterest
+      email
+      address
     }
   }
 `;
 
-export default class Contact extends React.Component {
-  componentDidMount() {
-    ReactGA.pageview('/contact');
+const Section = styled.div`
+  .container {
+    margin-top: 4rem;
   }
+  p {
+    margin-bottom: 1rem;
+  }
+  .image {
+    width: 500px;
+    height: auto;
+    margin: 0 auto;
+    object-position: center;
+  }
+  .button {
+    margin-top: 2rem;
+  }
+`;
 
-  render() {
-    const { data } = this.props;
-    const contact = data.contentfulHome;
+const Contact = ({ data }) => {
+  const home = data.sanitySiteSettings;
 
-    return (
-      <Layout>
-        <Container className="section">
-          <Seo
-            title="Contact"
-            description="Get In Touch"
-            url={`${config.siteUrl}/contact`}
-          />
-          <Heading>Get In touch</Heading>
-          <div className="columns">
-            <div
-              className="column is-two-fifths"
-              style={{ borderRight: '1px solid #eee' }}
-            >
+  return (
+    <Layout>
+      <Seo title="Contact Us" />
+      <Section className="section">
+        <div className="container">
+          <div className="columns is-centered">
+            <div className="column is-two-fifths">
+              <h2 className="title is-1 has-text-weight-bold">Contact Us</h2>
               <p>
-              If you have any question or enquiry, feel free to get in touch
-              with us
+                We’re as accessible as your good neighbour. Feel free
+                <br />
+                to give us a shout.
               </p>
               <p>
-                <i className="fas fa-map-marker" />
-                <a href="#" className="is-size-6">
-                  {contact.address}
+                <span role="img" aria-label="Round Pushpin">
+                  📍
+                </span>{' '}
+                {home.address}
+              </p>
+              <p className="is-4">
+                <span role="img" aria-label="e-mail">
+                  📧
+                </span>{' '}
+                <a href={`mailto:${home.email}`}>{home.email}</a>
+              </p>
+              <p>
+                <span role="img" aria-label="telephone">
+                  ☎️
+                </span>{' '}
+                <a href={`tel:${home.telephone}`}>{home.telephone}</a>
+              </p>
+              <p className="control">
+                <a href="#">
+                  <button
+                    type="submit"
+                    className="button is-secondary is-medium">
+                    Get in touch
+                  </button>
                 </a>
               </p>
-              <p>
-                <i className="fas fa-mobile" />
-                <a href={`tel:${contact.telephone}`} className="is-size-6">
-                  {contact.telephone}
-                </a>
-              </p>
-              <p>
-                <i className="fas fa-envelope-open" />
-                <a href={`mailto:${contact.email}`} className="is-size-6">
-                  {contact.email}
-                </a>
-              </p>
-              <br />
-              <br />
-              <SocialIcons data={contact} />
             </div>
-            <div className="column">
-              <ContactForm />
+            <div className="column is-two-fifths">
+              <img
+                className="image"
+                src="/images/contact.svg"
+                alt="contact us"
+              />
             </div>
           </div>
-        </Container>
-      </Layout>
-    );
-  }
-}
+        </div>
+      </Section>
+    </Layout>
+  );
+};
 
+export default Contact;

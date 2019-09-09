@@ -1,13 +1,12 @@
-/* global $ */
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withFormik } from 'formik';
-import gql from 'graphql-tag';
+import { graphql } from 'gatsby';
+import swal from 'sweetalert';
 
 import apolloClient from '../utils/apolloClient';
 
-const couponMutation = gql`
+const couponMutation = graphql`
   mutation validateCoupon($code: String!) {
     validateCoupon(code: $code) {
       code
@@ -44,8 +43,7 @@ class CouponForm extends React.Component {
             <button
               type="submit"
               className="button coupon-form-btn is-dark"
-              disabled={isSubmitting}
-            >
+              disabled={isSubmitting}>
               Apply
             </button>
           </div>
@@ -65,8 +63,7 @@ export default withFormik({
   }),
   handleSubmit: (values, { setSubmitting, props }) => {
     // console.log('handle submit', values, props);
-    const alertify = require('alertify.js'); // eslint-disable-line
-    $('.coupon-form-btn').addClass('is-loading');
+    // $('.coupon-form-btn').addClass('is-loading');
     apolloClient
       .mutate({
         mutation: couponMutation,
@@ -74,15 +71,15 @@ export default withFormik({
       })
       .then(result => {
         // console.log('result', result);
-        alertify.log(`Applied: ${result.data.validateCoupon.details}`);
+        swal(`Applied: ${result.data.validateCoupon.details}`);
         setSubmitting(false);
         setTimeout(() => props.handleSubmit(result.data.validateCoupon), 200);
-        $('.coupon-form-btn').removeClass('is-loading');
+        // $('.coupon-form-btn').removeClass('is-loading');
       })
       .catch(() => {
         setSubmitting(false);
-        alertify.error('Invalid coupon code.');
-        $('.coupon-form-btn').removeClass('is-loading');
+        swal('Invalid coupon code.', 'error');
+        // $('.coupon-form-btn').removeClass('is-loading');
       });
   },
   displayName: 'CouponForm', // helps with React DevTools

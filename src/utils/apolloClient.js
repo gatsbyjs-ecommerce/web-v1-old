@@ -1,48 +1,45 @@
-import { ApolloClient } from 'apollo-client';
-import { HttpLink } from 'apollo-link-http';
-import { ApolloLink } from 'apollo-link';
+import ApolloClient from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { createHttpLink } from 'apollo-link-http';
+import { setContext } from 'apollo-link-context';
 import { CachePersistor } from 'apollo-cache-persist';
-import { onError } from 'apollo-link-error';
-import fetch from 'isomorphic-unfetch';
 
-import Config from '../config';
-import clientState from './clientState';
+import config from './config';
+import { resolvers, typeDefs } from './localState';
 
-// Polyfill fetch() on the server (used by apollo-client)
-if (!process.browser) {
-  global.fetch = fetch;
-}
-
-const GRAPHQL_URL = Config.DEBUG
-  ? Config.GRAPHQL_ENDPOINT_DEV
-  : Config.GRAPHQL_ENDPOINT;
+const httpLink = createHttpLink({
+  uri: config.debug ? config.graphQlUriDev : config.graphQlUri,
+});
 
 const cache = new InMemoryCache();
-if (process.browser) {
-  const persistor = new CachePersistor({
-    cache,
-    storage: global.window.localStorage,
-    debug: Config.DEBUG,
-  });
-  persistor.restore();
-}
 
-const client = new ApolloClient({
-  link: ApolloLink.from([
-    onError(({ graphQLErrors, networkError }) => {
-      console.log('onError', graphQLErrors, networkError);
-    }),
-    clientState,
-    new HttpLink({
-      uri: GRAPHQL_URL,
-      credentials: 'same-origin',
-    }),
-  ]),
+export const persistor = new CachePersistor({
   cache,
+  storage: window.localStorage,
+  debug: config.debug,
+});
+persistor.restore();
+
+const authLink = setContext(async (_, { headers }) => {
+  const token = window.localStorage.getItem('token');
+
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      authorization: token || '',
+    },
+  };
 });
 
 // Purge persistor when the store was reset.
-client.onResetStore(() => persistor.purge());
+// persistor.purge(); // clear local storage
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache,
+  typeDefs,
+  resolvers,
+});
 
 export default client;
