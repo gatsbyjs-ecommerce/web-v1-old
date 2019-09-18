@@ -164,7 +164,7 @@ const ProductInfo = ({ product, home }) => {
             <AccordionStyled>
               <AccordionItem expanded>
                 <AccordionItemTitle>
-                  <h3>Product Details</h3>
+                  <h3>Products Details</h3>
                 </AccordionItemTitle>
                 <AccordionItemBody>
                   {product._rawBody && (
