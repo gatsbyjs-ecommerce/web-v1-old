@@ -3,33 +3,46 @@ import styled from 'styled-components';
 
 import config from '../utils/config';
 
-const ContainerImage = styled.div`
-  width: 100%;
-  height: auto;
-  img {
-    width: 100%;
-    height: auto;
+const Section = styled.section`
+  background: url('/images/bgimage.webp') no-repeat center bottom;
+
+  background-size: cover;
+  .title {
+    color: ${props => props.theme.secondaryColor};
+    padding: 1rem 0rem;
+    font-size: 52px;
+    span {
+      color: ${props => props.theme.primaryColor};
+    }
+  }
+  .para {
+    font-size: 14px;
+  }
+  .control {
+    margin-top: 2rem;
   }
 `;
 
-const StripMobile = styled.div`
-  padding: 0.3rem 0;
-  background-color: #100b0b;
-  width: 100%;
-  opacity: 0.9;
-`;
-
 const HomeBanner = ({ data }) => (
-  <>
-    <ContainerImage className="is-hidden-mobile">
-      <img src={config.homeBannerImage} alt="home banner" />
-    </ContainerImage>
-    <StripMobile className="is-hidden-tablet">
-      <p className="is-size-6	is-uppercase has-text-white has-text-centered has-text-weight-semibold">
-        {data.homeSliderSubTitle}
-      </p>
-    </StripMobile>
-  </>
+  <Section className="hero is-info is-large">
+    <div className="hero-body">
+      <div className="container">
+        <p className="para has-text-weight-semibold">MEN COLLECTION</p>
+        <h1 className="title has-text-weight-bold">
+          <span>Show</span> Your <br />
+          Personal <span>Style</span>
+        </h1>
+        <h2 className="subtitle has-text-weight-normal">
+          Fowl saw dry which a above together place.
+        </h2>
+        <p className="control">
+          <button type="submit" className="button is-primary is-medium">
+            View Collection
+          </button>
+        </p>
+      </div>
+    </div>
+  </Section>
 );
 
 export default HomeBanner;

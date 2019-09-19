@@ -53,11 +53,9 @@ const HomePage = ({ data }) => {
         description={home.description}
         url={config.siteUrl}
       />
-      <div className="container">
-        <HomeBanner data={home} />
-        <ProductsList products={products} />
-        <HomeAbout data={home} />
-      </div>
+      <HomeBanner data={home} />
+      <ProductsList products={products} />
+      <HomeAbout data={home} />
     </Layout>
   );
 };

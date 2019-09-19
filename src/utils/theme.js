@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset-advanced';
 import { darken, lighten } from 'polished';
 
-const mainBrandColor = '#00D1B2';
+const mainBrandColor = '#71cd14';
 const lightShades = '#F5F5F5';
 const darkAccent = '#3173DC';
 const darkShades = '#0A0A0A';
@@ -25,15 +25,15 @@ export const theme = {
   dangerColor: '#f44336',
 
   primaryColor: mainBrandColor,
+  secondaryColor: '#ffffff',
   borderColor: '#e0e6ef',
-  backgroundColor: '#FFFFFF',
   backgroundInputColor: lightShades,
   backgroundInputColorDark: darkShades,
   fontSize: 16,
   fontSizeSmall: 14,
   fontSizeExtraSmall: 12,
   fontSizeMedium: 18,
-  fontSizeLarge: 22,
+  fontSizeLarge: 52,
   textColor: darkShades, // '#0A0B11',
   textColorInverse: lightShades,
   textColorLite: '#8B8989',
@@ -62,10 +62,11 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5rem;
   }
   p, .title, .box {
-    color: ${theme.textColor} !important;
+    color: ${theme.secondaryColor} !important;
   }
   .subtitle {
-    color: ${lighten(0.06, theme.textColor)} !important;
+    color: ${lighten(0.06, theme.secondaryColor)} !important;
+    font-size: ${theme.fontSizeMedium}px !important;
   }
   .button.is-primary {
     background-color: ${theme.mainBrandColor};

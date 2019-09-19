@@ -6,11 +6,11 @@ module.exports = {
   description:
     'A ecommerce system using ReactJs, bundled with awesome GatsbyJs.',
   siteUrl: 'http://kickoff-gatsbyjs.netlify.com',
-  logo: '/images/logo-1024.png',
+  logo: '/images/logo.webp',
   graphQlUri: 'http://localhost:4000/',
   graphQlUriDev: 'http://localhost:4000/',
 
-  homeBannerImage: '/images/home-bg-3.jpg',
+  homeBannerImage: '/images/bgimage.webp',
   type: 'website',
   googleAnalytics: '',
   backgroundColor: '#e0e0e0',
