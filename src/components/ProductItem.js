@@ -45,7 +45,7 @@ const Image = styled(Img)`
 `;
 
 const ProductItem = ({ item, styles }) => (
-  <Container className="column is-one-third" style={styles}>
+  <Container className="column is-one-quarter" style={styles}>
     <div className="card">
       {item.variant.featuredImage && (
         <div className="card-image">

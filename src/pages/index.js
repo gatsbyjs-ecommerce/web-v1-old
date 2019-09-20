@@ -7,6 +7,7 @@ import Layout from '../components/Layout';
 import HomeBanner from '../components/HomeBanner';
 import ProductsList from '../components/ProductsList';
 import HomeAbout from '../components/HomeAbout';
+import Policy from '../components/Policy';
 
 export const query = graphql`
   query HomePageQuery {
@@ -54,6 +55,7 @@ const HomePage = ({ data }) => {
         url={config.siteUrl}
       />
       <HomeBanner data={home} />
+      <Policy data={home} />
       <ProductsList products={products} />
       <HomeAbout data={home} />
     </Layout>

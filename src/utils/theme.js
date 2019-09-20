@@ -3,9 +3,9 @@ import reset from 'styled-reset-advanced';
 import { darken, lighten } from 'polished';
 
 const mainBrandColor = '#71cd14';
-const lightShades = '#F5F5F5';
+const lightShades = '#ebedee';
 const darkAccent = '#3173DC';
-const darkShades = '#0A0A0A';
+const darkShades = '#797979';
 
 export const theme = {
   // It can be liberally applied to your layout as its main identity.
@@ -36,7 +36,7 @@ export const theme = {
   fontSizeLarge: 52,
   textColor: darkShades, // '#0A0B11',
   textColorInverse: lightShades,
-  textColorLite: '#8B8989',
+  textColorLite: '#2a2a2a',
   menuTintColor: darkAccent,
   primaryFontFamily: "'Open Sans', sans-serif",
   secondaryFontFamily: "'Open Sans', sans-serif",
@@ -60,13 +60,17 @@ const GlobalStyle = createGlobalStyle`
   }
   p {
     line-height: 1.5rem;
+    color: ${theme.darkShades};
   }
-  p, .title, .box {
+   .title, .box {
     color: ${theme.secondaryColor} !important;
   }
   .subtitle {
     color: ${lighten(0.06, theme.secondaryColor)} !important;
     font-size: ${theme.fontSizeMedium}px !important;
+  }
+  .description {
+    color: ${theme.darkShades};
   }
   .button.is-primary {
     background-color: ${theme.mainBrandColor};

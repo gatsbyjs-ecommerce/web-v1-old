@@ -1,11 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import config from '../utils/config';
-
 const Section = styled.section`
   background: url('/images/bgimage.webp') no-repeat center bottom;
-
   background-size: cover;
   .title {
     color: ${props => props.theme.secondaryColor};
@@ -15,8 +12,9 @@ const Section = styled.section`
       color: ${props => props.theme.primaryColor};
     }
   }
-  .para {
+  .Text {
     font-size: 14px;
+    color: ${props => props.theme.secondaryColor};
   }
   .control {
     margin-top: 2rem;
@@ -27,7 +25,7 @@ const HomeBanner = ({ data }) => (
   <Section className="hero is-info is-large">
     <div className="hero-body">
       <div className="container">
-        <p className="para has-text-weight-semibold">MEN COLLECTION</p>
+        <p className="Text has-text-weight-semibold">MEN COLLECTION</p>
         <h1 className="title has-text-weight-bold">
           <span>Show</span> Your <br />
           Personal <span>Style</span>

@@ -8,6 +8,9 @@ import Heading from './Heading';
 
 const Container = styled.section`
   position: relative;
+  .container {
+    margin-top: 2rem;
+  }
 `;
 
 class ProductsList extends React.Component {
@@ -33,16 +36,21 @@ class ProductsList extends React.Component {
     return (
       <Container className="section">
         <Heading>{title}</Heading>
-        <div className="columns is-multiline">
-          <Trail
-            native
-            from={{ opacity: 0 }}
-            to={{ opacity: isOpen ? 1 : 0.25 }}
-            keys={keys}>
-            {products.map(({ node }) => styles => (
-              <ProductItem key={node._id} item={node} styles={styles} />
-            ))}
-          </Trail>
+        <p className="description has-text-centered">
+          Bring called seed first of third give itself now ment
+        </p>
+        <div className="container">
+          <div className="columns is-multiline">
+            <Trail
+              native
+              from={{ opacity: 0 }}
+              to={{ opacity: isOpen ? 1 : 0.25 }}
+              keys={keys}>
+              {products.map(({ node }) => styles => (
+                <ProductItem key={node._id} item={node} styles={styles} />
+              ))}
+            </Trail>
+          </div>
         </div>
       </Container>
     );
@@ -50,7 +58,7 @@ class ProductsList extends React.Component {
 }
 
 ProductsList.defaultProps = {
-  title: 'New arrivals',
+  title: 'FEATURED PRODUCT',
   products: [],
 };
 
