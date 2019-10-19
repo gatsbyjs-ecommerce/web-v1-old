@@ -4,9 +4,9 @@ import styled from 'styled-components';
 const Container = styled.div`
   height: 4rem;
   background-color: #f1f6f7;
-  padding: 1.4%;
+  padding: 1%;
   @media only screen and (max-width: 768px) {
-    padding: 4%;
+    padding: 2.2%;
   }
 
   input {
