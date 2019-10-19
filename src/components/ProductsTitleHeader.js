@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '../config';
+
 const Container = styled.div`
   margin-top: ${props => (props.margin ? '4rem' : '2rem')};
   justify-content: center;
@@ -10,7 +12,7 @@ const Container = styled.div`
   }
 
   .product {
-    border-bottom: 2px solid #384aeb;
+    border-bottom: 2px solid ${config.themeColor};
     padding-bottom: 8px;
   }
 `;

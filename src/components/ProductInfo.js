@@ -50,12 +50,12 @@ const Price = styled.div`
 const BuyBtn = styled.button`
   width: 100%;
   margin-top: 3rem;
-  border: 1px solid #384aeb;
-  background: #384aeb;
+  border: 1px solid ${config.primaryColor};
+  background: ${config.primaryColor};
   transition: all 0.4s ease;
   color: #fff;
   :hover {
-    border: 2px solid #384aeb;
+    border: 2px solid ${config.primaryColor};
     background: transparent;
     color: #000;
   }

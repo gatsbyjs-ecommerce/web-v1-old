@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import img from '../../static/images/home/product1.png';
+import config from '../config';
+// import img from '../../static/images/home/product1.png';
 
 const Container = styled.div`
   width: 16rem;
@@ -33,7 +34,7 @@ const IconContainer = styled.div`
   button {
     width: 2.5rem;
     height: 2.5rem;
-    background: #384aeb;
+    background: ${config.primaryColor};
     color: white;
     margin-right: 1rem;
     opacity: 0.6;
@@ -74,7 +75,7 @@ export default class ShoppingItems extends React.Component {
           onMouseOut={this.onMouseHover}>
           <CardWrapper className="card">
             <div className="card-image">
-              <img src={img} alt="Placeholder" />
+              {/* <img src={img} alt="Placeholder" /> */}
               {/*  <IconContainer>
                 {showIcons ? (
                   <ul>

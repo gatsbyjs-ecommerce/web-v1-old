@@ -35,7 +35,7 @@ const Container = styled.div`
 
 const LoginLink = styled(Link)`
   :hover {
-    color: #394aeb;
+    color: ${config.primaryColor};
   }
 `;
 

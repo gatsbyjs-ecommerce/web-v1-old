@@ -35,11 +35,11 @@ const Container = styled.div`
       font-size: 1.2rem;
     }
     .navbar-item:hover {
-      color: #384aeb;
+      color: ${config.themeColor};
     }
   }
   .navbar-menu .navbar-item.active {
-    color: #384aeb;
+    color: ${config.themeColor};
   }
   #navbarBasicExample {
     margin-right: 1rem !important;

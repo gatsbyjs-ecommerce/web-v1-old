@@ -4,6 +4,7 @@ import styled from 'styled-components';
 // import Magnifier from 'react-magnifier';
 import ReactImageZoom from 'react-image-zoom';
 
+import config from '../../config';
 import Button from '../Button';
 // import img from '../../../static/images/home/product1.png';
 
@@ -24,7 +25,7 @@ const Container = styled.div`
   .cost {
     font-size: 24px;
     font-weight: 700;
-    color: #384aeb;
+    color: ${config.primaryColor};
   }
 
   ul li a {

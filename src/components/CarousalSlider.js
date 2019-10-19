@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '../config';
 import img from '../../static/images/home/hero-slide1.png';
 
 const Container = styled.div`
@@ -34,7 +35,7 @@ const Container = styled.div`
   }
   .text {
     position: relative;
-    background-color: #384aeb;
+    background-color: ${config.themeColor};
     color: white;
     font-size: 16px;
     padding: 11px 16px;

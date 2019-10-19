@@ -10,7 +10,7 @@ import ScrollButton from './ScrollButton';
 
 const Container = styled.footer`
   padding-bottom: 80px;
-  background-color: #394aeb;
+  background-color: ${config.primaryColor};
   position: relative;
   margin-top: 6rem;
   .is-4 {
@@ -26,7 +26,7 @@ const Heading = styled.p`
 `;
 
 const Bottom = styled.div`
-  background-color: #5b69ef;
+  background-color: ${config.footerColor};
   width: 100%;
   position: absolute;
   bottom: 0;

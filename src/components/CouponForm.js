@@ -6,6 +6,7 @@ import { withFormik } from 'formik';
 import gql from 'graphql-tag';
 import styled from 'styled-components';
 
+import config from '../config';
 import apolloClient from '../utils/apolloClient';
 
 const couponMutation = gql`
@@ -19,12 +20,12 @@ const couponMutation = gql`
 `;
 
 const ApplyBtn = styled.button`
-  border: 1px solid #384aeb;
-  background: #384aeb;
+  border: 1px solid ${config.themeColor};
+  background: ${config.themeColor};
   color: #fff;
   transition: all 0.4s ease;
   :hover {
-    border: 2px solid #384aeb;
+    border: 2px solid ${config.themeColor};
     background: transparent;
     color: #000;
   }

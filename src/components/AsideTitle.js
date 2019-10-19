@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '../config';
+
 const Container = styled.aside`
   background-color: #f1f6f7;
   width: 100%;
@@ -11,7 +13,7 @@ const Container = styled.aside`
 `;
 
 const Title = styled.p`
-  background-color: #384aeb;
+  background-color: ${config.themeColor};
   width: 100%;
   height: 4.5rem;
   font-size: 1.2rem;

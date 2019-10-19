@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import config from '../config';
+
 const ButtonWrapper = styled.button`
   width: ${props => props.width};
   margin-top: ${props => props.margin};
   margin-left: ${props => props.marginLeft};
-  border: 1px solid #384aeb;
+  border: 1px solid ${config.themeColor};
   padding: 12px 41px;
   height: 3.5rem;
-  background: #384aeb;
+  background: ${config.themeColor};
   transition: all 0.4s ease;
   color: #fff;
   :hover {
@@ -35,8 +37,7 @@ const Button = ({
     marginLeft={marginLeft}
     widthMobile={widthMobile}
     marginTop={marginTop}
-    className="button is-rounded has-text-weight-bold"
-  >
+    className="button is-rounded has-text-weight-bold">
     {text}
   </ButtonWrapper>
 );
