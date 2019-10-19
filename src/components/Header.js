@@ -73,6 +73,12 @@ const ContainerMobile = styled.div`
   }
 `;
 
+const SocialContainer = styled.div`
+  display: grid;
+  justify-content: end;
+  margin: 12px 0 0 0;
+`;
+
 const MobileMenu = styled(animated.div)`
   && {
     position: fixed;
@@ -140,6 +146,10 @@ const CartMobile = styled.div`
   }
 `;
 
+const LogoStyled = styled.span`
+  color: ${config.primaryColor};
+`;
+
 const NavItems = [
   { id: 1, name: 'Home', url: '/' },
   { id: 2, name: 'Shop', url: '/shop' },
@@ -176,7 +186,7 @@ class Header extends React.Component {
         <Query query={cartQuery}>
           {({ data }) => (
             <Link to="/cart">
-              <span className="icon has-text-link">
+              <span className="icon has-text-danger">
                 <i className="fas fa-shopping-cart" />
               </span>
               {data.cart && data.cart.count > 0 && (
@@ -192,12 +202,20 @@ class Header extends React.Component {
       <React.Fragment>
         <Container className="is-hidden-mobile">
           <div className="container">
+            <div className="columns">
+              <SocialContainer className="column">
+                <SocialIcons data={home} />
+              </SocialContainer>
+            </div>
             <nav
               className="navbar"
               role="navigation"
               aria-label="main navigation">
               <Link to="/">
-                <img src={config.logo} alt={`${config.siteName} logo`} />
+                {/* <img src={config.logo} alt={`${config.siteName} logo`} /> */}
+                <p className="is-size-1">
+                  <LogoStyled>e</LogoStyled>box
+                </p>
               </Link>
               <div id="navbarBasicExample" className="navbar-menu">
                 <div className="navbar-start has-text-centered">
@@ -243,7 +261,11 @@ class Header extends React.Component {
           <div className="columns is-mobile">
             <div className="column">
               <Link to="/">
-                <img src={config.logo} alt={`${config.siteName} logo`} />
+                {/* <img src={config.logo} alt={`${config.siteName} logo`} /> */}
+                <p className="is-size-1" style={{ margin: '0 0 0 1rem' }}>
+                  <LogoStyled>e</LogoStyled>
+                  <span className="has-text-black">box</span>
+                </p>
               </Link>
             </div>
             <div className="column">
@@ -254,10 +276,10 @@ class Header extends React.Component {
                   </a>
                 </span>
               ) : (
-                  <a onClick={this.toggleMobileMenu}>
-                    <i className="fas fa-bars menu-trigger" />
-                  </a>
-                )}
+                <a onClick={this.toggleMobileMenu}>
+                  <i className="fas fa-bars menu-trigger" />
+                </a>
+              )}
 
               <CartMobile>{cart}</CartMobile>
             </div>

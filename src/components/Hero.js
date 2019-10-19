@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'gatsby-link';
 
+import config from '../config';
 import ButtonLink from './ButtonLink';
 
 const Wrapper = styled.div`
@@ -48,6 +49,10 @@ const Content = styled.div`
   }
 `;
 
+const LinkStyled = styled(Link)`
+  color: ${config.themeColor};
+`;
+
 class Hero extends React.Component {
   render() {
     const { home } = this.props;
@@ -65,7 +70,7 @@ class Hero extends React.Component {
             </h1>
             <p className="has-text-weight-semibold">
               {home.heroDescription.heroDescription}{' '}
-              <Link to="/page/tv-upgrade">Find out how now!</Link>
+              <LinkStyled to="/page/tv-upgrade">Find out how now!</LinkStyled>
             </p>
             <ButtonLink text="Shop Now" link="/shop" />
           </Content>

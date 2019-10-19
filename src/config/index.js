@@ -21,10 +21,10 @@ module.exports = {
       : 'pk_live_fo5Q5XUV0G2gFfGPGjW28OLO00c7xoDSfQ',
   deliveryCharges: 2,
 
-  themeColor: '#384aeb',
-  primaryColor: '#394AEB',
+  themeColor: '#FE4330',
+  primaryColor: '#ed3423',
   secondaryColor: '#2876C4',
-  footerColor: '#5B69EF',
+  footerColor: '#e5584b',
   backgroundColor: '#e0e0e0',
   logo: '/images/logo.jpeg',
   homeBannerImage: '/images/home-bg-3.jpg',
