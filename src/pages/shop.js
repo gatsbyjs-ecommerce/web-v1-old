@@ -136,7 +136,7 @@ export default class Shop extends React.Component {
                 } = data;
                 return (
                   <div className="columns">
-                    <div className="column is-3">
+                    {/* <div className="column is-3">
                       <AsideMenu
                         brands={brands.edges}
                         categories={categories.edges}
@@ -145,8 +145,8 @@ export default class Shop extends React.Component {
                         onBrandChange={this.onBrandChange}
                         onCategoryChange={this.onCategoryChange}
                       />
-                    </div>
-                    <div className="column is-9">
+                </div> */}
+                    <div className="column">
                       <SearchBar
                         onChange={val => this.setState({ searchQuery: val })}
                       />
