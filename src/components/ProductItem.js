@@ -78,7 +78,7 @@ const ProductItem = ({ item }) => (
                 {formatCurrency(item.discountPrice)}
               </Price>
               {item.discountPrice < item.originalPrice && (
-                <Price className="subtitle is-6 has-text-grey-light old-price">
+                <Price className="subtitle is-6 has-text-grey-light">
                   {formatCurrency(item.originalPrice)}
                 </Price>
               )}

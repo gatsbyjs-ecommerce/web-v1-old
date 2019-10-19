@@ -6,10 +6,13 @@ import config from '../config/index';
 import Seo from '../components/Seo';
 import Layout from '../components/Layout';
 import Hero from '../components/Hero';
-import DiscountOffer from '../components/DiscountOffer';
+// import DiscountOffer from '../components/DiscountOffer';
 import Subscription from '../components/Subscription';
 import TrendingItems from '../components/TrendingItems';
 import ProductsTitleHeader from '../components/ProductsTitleHeader';
+import WhyUs from '../components/WhyUs';
+import LocationItems from '../components/LoactionItems';
+import BrandItems from '../components/BrandItems';
 
 export const indexQuery = graphql`
   query Products {
@@ -103,11 +106,17 @@ export default class IndexPage extends React.Component {
             } = data;
             return (
               <React.Fragment>
-                <Hero home={home} />
+                <Hero home={home} products={products.edges} />
+                <ProductsTitleHeader margin text="Why" label="Us" />
+                <WhyUs />
+                <ProductsTitleHeader margin text="Locations" />
+                <LocationItems />
                 <ProductsTitleHeader margin text="Latest" label="Products" />
                 <TrendingItems products={products.edges} />
-                <DiscountOffer home={home} />
+                {/* <DiscountOffer home={home} /> */}
                 <Subscription />
+                <ProductsTitleHeader margin text="Our" label="Brands" />
+                <BrandItems />
               </React.Fragment>
             );
           }}

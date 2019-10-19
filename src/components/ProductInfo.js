@@ -42,7 +42,7 @@ const Price = styled.div`
   span {
     color: #4a4a4a;
     font-size: 1rem;
-    text-decoration: line-through;
+    // text-decoration: line-through;
     font-weight: light;
   }
 `;
@@ -171,6 +171,12 @@ class ProductInfo extends React.Component {
     return (
       <React.Fragment>
         <Heading>{product.title}</Heading>
+        {/* {userType === null && (
+          <Price className="has-text-weight-semibold has-text-centered">
+            <span>{formatCurrency(product.originalPrice)}</span>
+            <Message>Login to get today's best price</Message>
+          </Price>
+        )} */}
         <Price className="has-text-weight-semibold has-text-centered">
           {formatCurrency(product.discountPrice)}{' '}
           {product.discountPrice < product.originalPrice && (
