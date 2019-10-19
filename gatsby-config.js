@@ -31,7 +31,7 @@ module.exports = {
     // {
     //   resolve: `gatsby-source-medium`,
     //   options: {
-    //     username: `smart-home-devices`,
+    //     username: `ebox`,
     //   },
     // },
     {

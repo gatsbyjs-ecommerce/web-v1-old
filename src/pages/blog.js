@@ -49,7 +49,7 @@ export default class Blog extends React.Component {
         <div className="container">
           <Seo
             title="News"
-            description="Smart home devices latest news"
+            description="ebox latest news"
             url={`${config.siteUrl}/blog`}
             keywords="blogs, latest updates, latest news"
           />

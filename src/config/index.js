@@ -1,19 +1,19 @@
 module.exports = {
   DEBUG: process.env.NODE_ENV === 'development',
 
-  siteName: 'Smart Home Devices',
+  siteName: 'ebox',
   author: 'Parminder Klair',
-  description: 'Latest Smart Home Devices Collection',
-  twitter: '@smarthomedevices',
-  fbUserId: '@smarthomedevices',
-  fbAppID: '@smarthomedevices',
+  description: 'Latest Printing Devices Collection',
+  twitter: '@ebox',
+  fbUserId: '@ebox',
+  fbAppID: '@ebox',
   type: 'website',
 
   GRAPHQL_ENDPOINT: 'https://smart-home-api.now.sh',
   GRAPHQL_ENDPOINT_DEV: 'https://smart-home-api.now.sh',
   // GRAPHQL_ENDPOINT_DEV: 'http://localhost:4000',
   siteUrl: 'https://www.shdevices.ca',
-  mediumPublicationUrl: 'https://medium.com/smart-home-devices',
+  // mediumPublicationUrl: 'https://medium.com/ebox',
   googleAnalytics: 'UA-1390187-40',
   stripePublishableKey:
     process.env.NODE_ENV === 'development'
@@ -25,6 +25,7 @@ module.exports = {
   primaryColor: '#ed3423',
   secondaryColor: '#2876C4',
   footerColor: '#e5584b',
+  textLite: '#f4f4f4',
   backgroundColor: '#e0e0e0',
   logo: '/images/logo.jpeg',
   homeBannerImage: '/images/home-bg-3.jpg',

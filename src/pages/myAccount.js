@@ -38,9 +38,9 @@ class MyAccount extends React.Component {
           <div className="container">
             <Seo
               title="My Account"
-              description="Manage your smart home devices account"
+              description="Manage your  account"
               url={`${config.siteUrl}/myAccount`}
-              keywords="my account, my smart home devices account"
+              keywords="my account"
             />
             <Heading>My Account</Heading>
             <div className="columns">

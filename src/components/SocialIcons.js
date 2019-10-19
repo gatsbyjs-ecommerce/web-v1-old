@@ -13,7 +13,7 @@ const Container = styled.section`
     }
   }
   svg {
-    color: ${props => (!props.inverted ? '#000' : '#fff')};
+    color: ${props => (!props.inverted ? '#FE4330' : '#fff')};
     font-size: 1.6rem;
   }
 `;

@@ -76,7 +76,7 @@ const ContainerMobile = styled.div`
 const SocialContainer = styled.div`
   display: grid;
   justify-content: end;
-  margin: 12px 0 0 0;
+  margin: 12px 30px 0 0;
 `;
 
 const MobileMenu = styled(animated.div)`
@@ -117,6 +117,7 @@ const Cart = styled.div`
   span {
     font-weight: 700;
     padding: 0 0.1rem 0 0.5rem;
+    color: ${config.themeColor};
   }
   .count {
     background-color: ${config.primaryColor};
@@ -150,14 +151,26 @@ const LogoStyled = styled.span`
   color: ${config.primaryColor};
 `;
 
+const BottomHeader = styled.nav`
+  background: #000;
+  .navbar-item {
+    color: ${config.textLite};
+  }
+`;
+
 const NavItems = [
   { id: 1, name: 'Home', url: '/' },
   { id: 2, name: 'Shop', url: '/shop' },
-  // { id: 3, name: 'Coupons', url: '/coupons' },
-  { id: 4, name: 'News', url: '/blog' },
-  { id: 5, name: 'Contact', url: '/contact' },
-  { id: 6, name: 'My Account', url: '/login' },
-  // { id: 7, name: 'Register', url: '/register' },
+  { id: 3, name: 'Signup/Account', url: '/login' },
+  { id: 4, name: 'Orders', url: '/register' },
+];
+
+const SubNavItems = [
+  { id: 1, name: 'Customer Support', url: '/' },
+  { id: 2, name: 'Todays deal', url: '/shop' },
+  { id: 3, name: 'Buy Again', url: '/login' },
+  { id: 4, name: 'Sell at ebox', url: '/register' },
+  { id: 5, name: 'Get Prints on Demand', url: '/coupons' },
 ];
 
 class Header extends React.Component {
@@ -186,7 +199,7 @@ class Header extends React.Component {
         <Query query={cartQuery}>
           {({ data }) => (
             <Link to="/cart">
-              <span className="icon has-text-danger">
+              <span className="icon">
                 <i className="fas fa-shopping-cart" />
               </span>
               {data.cart && data.cart.count > 0 && (
@@ -201,61 +214,95 @@ class Header extends React.Component {
     return (
       <React.Fragment>
         <Container className="is-hidden-mobile">
-          <div className="container">
-            <div className="columns">
-              <SocialContainer className="column">
-                <SocialIcons data={home} />
-              </SocialContainer>
-            </div>
-            <nav
-              className="navbar"
-              role="navigation"
-              aria-label="main navigation">
-              <Link to="/">
-                {/* <img src={config.logo} alt={`${config.siteName} logo`} /> */}
-                <p className="is-size-1">
-                  <LogoStyled>e</LogoStyled>box
-                </p>
-              </Link>
-              <div id="navbarBasicExample" className="navbar-menu">
-                <div className="navbar-start has-text-centered">
-                  <a className="navbar-item">
-                    <div className="navbar-menu navigate is-uppercase">
-                      {NavItems.map(item => (
-                        <Link
-                          to={item.url}
-                          className="navbar-item"
-                          key={item.id}
-                          activeClassName="active">
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  </a>
-                </div>
-
-                <Icons className="navbar-end">
-                  <div className="navbar-item">
-                    <div className="column has-text-right has-text-weight-semibold">
-                      <p>
-                        <ReactGA.OutboundLink
-                          eventLabel="siteEmail"
-                          to={`mailto:${home.email}`}>
-                          {home.email}
-                        </ReactGA.OutboundLink>{' '}
-                        <ReactGA.OutboundLink
-                          eventLabel="siteTelephone"
-                          to={`tel:${home.telephone}`}>
-                          {home.telephone}
-                        </ReactGA.OutboundLink>
-                      </p>
-                      <div>{cart}</div>
-                    </div>
-                  </div>
-                </Icons>
-              </div>
-            </nav>
+          <div className="columns">
+            <SocialContainer className="column">
+              <SocialIcons data={home} />
+            </SocialContainer>
           </div>
+          <nav
+            className="navbar"
+            role="navigation"
+            aria-label="main navigation">
+            <Link to="/" style={{ margin: '0rem 1.5rem' }}>
+              {/* <img src={config.logo} alt={`${config.siteName} logo`} /> */}
+              <p className="is-size-1">
+                <LogoStyled>e</LogoStyled>box
+              </p>
+            </Link>
+            <div id="navbarBasicExample" className="navbar-menu">
+              <Icons className="navbar-end">
+                <div className="navbar-item">
+                  <div className="navbar-menu navigate is-uppercase">
+                    {NavItems.map(item => (
+                      <Link
+                        to={item.url}
+                        className="navbar-item"
+                        key={item.id}
+                        activeClassName="active">
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="column has-text-right has-text-weight-semibold">
+                    <p>
+                      <ReactGA.OutboundLink
+                        eventLabel="siteEmail"
+                        to={`mailto:${home.email}`}>
+                        {home.email}
+                      </ReactGA.OutboundLink>{' '}
+                      <ReactGA.OutboundLink
+                        eventLabel="siteTelephone"
+                        to={`tel:${home.telephone}`}>
+                        {home.telephone}
+                      </ReactGA.OutboundLink>
+                    </p>
+                    <div>{cart}</div>
+                  </div>
+                </div>
+              </Icons>
+            </div>
+          </nav>
+          <BottomHeader
+            className="navbar"
+            role="navigation"
+            aria-label="main navigation">
+            <div className="navbar-menu">
+              <div className="navbar-start has-text-centered">
+                <a className="navbar-item">
+                  <div className="navbar-menu navigate">
+                    {SubNavItems.map(item => (
+                      <Link
+                        to={item.url}
+                        className="navbar-item"
+                        key={item.id}
+                        activeClassName="active">
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
+                </a>
+              </div>
+
+              <Icons className="navbar-end">
+                <div className="navbar-item">
+                  <div className="column has-text-right has-text-weight-semibold">
+                    <p>
+                      <ReactGA.OutboundLink
+                        eventLabel="siteEmail"
+                        to={`mailto:${home.email}`}>
+                        {home.email}
+                      </ReactGA.OutboundLink>{' '}
+                      <ReactGA.OutboundLink
+                        eventLabel="siteTelephone"
+                        to={`tel:${home.telephone}`}>
+                        {home.telephone}
+                      </ReactGA.OutboundLink>
+                    </p>
+                  </div>
+                </div>
+              </Icons>
+            </div>
+          </BottomHeader>
         </Container>
         <ContainerMobile className="is-hidden-tablet">
           <div className="columns is-mobile">
