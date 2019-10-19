@@ -9,6 +9,7 @@ const Brand = styled.div`
 
 const BrandWrapper = styled.div`
   z-index: 5;
+  margin-top: 2rem;
 `;
 
 class AsideMenu extends React.Component {
