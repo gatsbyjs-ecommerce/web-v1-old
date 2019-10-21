@@ -4,6 +4,7 @@ import gql from 'graphql-tag';
 import swal from 'sweetalert';
 import { Mutation } from 'react-apollo';
 
+import config from '../config';
 import SubscriptionForm from './SubscriptionForm';
 import Loading from './Loading';
 
@@ -64,6 +65,12 @@ const Container = styled.div`
       padding: 0rem;
       margin-right: 0rem;
     }
+    :active {
+      border-color: ${config.themeColor};
+    }
+    :focus {
+      border-color: ${config.themeColor};
+    }
   }
 `;
 
@@ -95,7 +102,8 @@ class Subscription extends React.Component {
                     error.message.replace('GraphQL error: ', ''),
                     'warning',
                   );
-                }}>
+                }}
+              >
                 {(subscription, { loading }) => {
                   return (
                     <React.Fragment>

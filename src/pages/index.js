@@ -73,12 +73,11 @@ export default class IndexPage extends React.Component {
                 <ProductsTitleHeader margin text="Locations" />
                 <AvailableLocations />
                 <ProductsTitleHeader margin text="Latest" label="Products" />
-
-                <div className="section">
+                <section className="section">
                   <div className="container">
                     <TrendingItems products={products.edges} />
                   </div>
-                </div>
+                </section>
                 {/* <DiscountOffer home={home} /> */}
                 <Subscription />
                 <ProductsTitleHeader margin text="Our" label="Brands" />
