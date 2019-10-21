@@ -5,9 +5,11 @@ import config from '../config';
 
 const Container = styled.div`
   margin-top: ${props => (props.margin ? '4rem' : '2rem')};
-  padding: ${props => props.padding};
   justify-content: left;
   display: flex;
+  @media only screen and (max-width: 768px) {
+    padding: 0 2rem;
+  }
   p {
     color: #777;
   }
@@ -18,8 +20,8 @@ const Container = styled.div`
   }
 `;
 
-const ProductsTitleHeader = ({ text, label, margin, padding }) => (
-  <Container className="container" margin={margin} padding={padding}>
+const ProductsTitleHeader = ({ text, label, margin }) => (
+  <Container className="container" margin={margin}>
     <p className="is-size-3 has-text-weight-bold has-text-black-bis">
       {text}
       {` `}

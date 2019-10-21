@@ -5,6 +5,9 @@ import WhyUsItem from './WhyUsItem';
 
 const Container = styled.div`
   display: flex;
+  @media only screen and (max-width: 768px) {
+    display: inline-grid;
+  }
 `;
 
 const WhyUs = () => {

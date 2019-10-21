@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import config from '../config';
 
 const Wrapper = styled.div`
-  margin: 0rem 1rem 0 0;
+  margin: 1rem 1rem 0 0;
   :hover {
     box-shadow: 2px 3px 9px rgba(254, 67, 48),
       0px 5px 6px -6px rgba(254, 67, 48);
