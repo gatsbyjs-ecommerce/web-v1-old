@@ -150,11 +150,7 @@ export default class Shop extends React.Component {
                       <SearchBar
                         onChange={val => this.setState({ searchQuery: val })}
                       />
-                      <ProductsTitleHeader
-                        text="Our"
-                        label="Products"
-                        padding="0 1.5rem"
-                      />
+                      <ProductsTitleHeader text="Our" label="Products" />
                       <TrendingItems
                         products={products.edges}
                         category={category}

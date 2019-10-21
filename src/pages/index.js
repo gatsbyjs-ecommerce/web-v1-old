@@ -44,42 +44,6 @@ export const indexQuery = graphql`
         }
       }
     }
-    contentfulHome {
-      homeSliderTitle
-      homeSliderSubTitle
-      homeSliderImage {
-        title
-        sizes(maxWidth: 550) {
-          ...GatsbyContentfulSizes
-        }
-      }
-      homeIntro {
-        childMarkdownRemark {
-          html
-        }
-      }
-
-      heroTitle
-      heroSubtitle
-      heroDescription {
-        heroDescription
-      }
-      discountTitile
-      discountSubtitle
-      discountDescription
-    }
-    allDataJson {
-      edges {
-        node {
-          CAD_USD {
-            val
-          }
-          CAD_INR {
-            val
-          }
-        }
-      }
-    }
   }
 `;
 
@@ -106,13 +70,18 @@ export default class IndexPage extends React.Component {
             } = data;
             return (
               <React.Fragment>
-                <Hero home={home} products={products.edges} />
+                <Hero />
                 <ProductsTitleHeader margin text="Why" label="Us" />
                 <WhyUs />
                 <ProductsTitleHeader margin text="Locations" />
                 <AvailableLocations />
                 <ProductsTitleHeader margin text="Latest" label="Products" />
-                <TrendingItems products={products.edges} />
+
+                <div className="section">
+                  <div className="container">
+                    <TrendingItems products={products.edges} />
+                  </div>
+                </div>
                 {/* <DiscountOffer home={home} /> */}
                 <Subscription />
                 <ProductsTitleHeader margin text="Our" label="Brands" />

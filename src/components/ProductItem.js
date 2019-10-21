@@ -74,7 +74,7 @@ const ProductItem = ({ item }) => (
             </p>
             <p className="subtitle is-6 has-text-grey">{item.color}</p>
             <div className="price-container has-text-right">
-              <Price className="title is-5 has-text-weight-normal price">
+              <Price className="title is-6 has-text-weight-normal price">
                 {formatCurrency(item.discountPrice)}
               </Price>
               {item.discountPrice < item.originalPrice && (
