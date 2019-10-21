@@ -178,10 +178,7 @@ class ProductInfo extends React.Component {
           </Price>
         )} */}
         <Price className="has-text-weight-semibold has-text-centered">
-          {formatCurrency(product.discountPrice)}{' '}
-          {product.discountPrice < product.originalPrice && (
-            <span>{formatCurrency(product.originalPrice)}</span>
-          )}
+          {formatCurrency(product.originalPrice)}{' '}
         </Price>
         <Spring
           native
