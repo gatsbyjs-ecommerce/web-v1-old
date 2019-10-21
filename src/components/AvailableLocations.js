@@ -2,7 +2,7 @@ import React from 'react';
 
 import TextItem from './TextItem';
 
-const LocationItems = () => {
+const AvailableLocations = () => {
   return (
     <div className="container">
       <div className="columns has-text-centered">
@@ -15,4 +15,4 @@ const LocationItems = () => {
   );
 };
 
-export default LocationItems;
+export default AvailableLocations;

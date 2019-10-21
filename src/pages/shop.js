@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import Layout from '../components/Layout';
 import config from '../config/index';
 import Seo from '../components/Seo';
-import AsideMenu from '../components/AsideMenu';
+// import AsideMenu from '../components/AsideMenu';
 import SearchBar from '../components/SearchBar';
 import ProductsTitleHeader from '../components/ProductsTitleHeader';
 import TrendingItems from '../components/TrendingItems';
@@ -150,7 +150,11 @@ export default class Shop extends React.Component {
                       <SearchBar
                         onChange={val => this.setState({ searchQuery: val })}
                       />
-                      <ProductsTitleHeader text="Our" label="Products" />
+                      <ProductsTitleHeader
+                        text="Our"
+                        label="Products"
+                        padding="0 1.5rem"
+                      />
                       <TrendingItems
                         products={products.edges}
                         category={category}

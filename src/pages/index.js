@@ -11,7 +11,7 @@ import Subscription from '../components/Subscription';
 import TrendingItems from '../components/TrendingItems';
 import ProductsTitleHeader from '../components/ProductsTitleHeader';
 import WhyUs from '../components/WhyUs';
-import LocationItems from '../components/LoactionItems';
+import AvailableLocations from '../components/AvailableLocations';
 import BrandItems from '../components/BrandItems';
 
 export const indexQuery = graphql`
@@ -110,7 +110,7 @@ export default class IndexPage extends React.Component {
                 <ProductsTitleHeader margin text="Why" label="Us" />
                 <WhyUs />
                 <ProductsTitleHeader margin text="Locations" />
-                <LocationItems />
+                <AvailableLocations />
                 <ProductsTitleHeader margin text="Latest" label="Products" />
                 <TrendingItems products={products.edges} />
                 {/* <DiscountOffer home={home} /> */}

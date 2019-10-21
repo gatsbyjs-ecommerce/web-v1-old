@@ -5,6 +5,7 @@ import config from '../config';
 
 const Container = styled.div`
   margin-top: ${props => (props.margin ? '4rem' : '2rem')};
+  padding: ${props => props.padding};
   justify-content: left;
   display: flex;
   p {
@@ -17,8 +18,8 @@ const Container = styled.div`
   }
 `;
 
-const ProductsTitleHeader = ({ text, label, margin }) => (
-  <Container className="container" margin={margin}>
+const ProductsTitleHeader = ({ text, label, margin, padding }) => (
+  <Container className="container" margin={margin} padding={padding}>
     <p className="is-size-3 has-text-weight-bold has-text-black-bis">
       {text}
       {` `}
