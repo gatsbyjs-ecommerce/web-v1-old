@@ -64,10 +64,7 @@ export default class IndexPage extends React.Component {
         <StaticQuery
           query={indexQuery}
           render={data => {
-            const {
-              allContentfulProduct: products,
-              contentfulHome: home,
-            } = data;
+            const { allContentfulProduct: products } = data;
             return (
               <React.Fragment>
                 <Hero />
