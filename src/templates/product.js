@@ -91,6 +91,9 @@ export const productQuery = graphql`
       slug
       originalPrice
       discountPrice
+      nonUserPrice
+      userPrice
+      dealerPrice
       shippingCost
       color
       productCode
@@ -127,6 +130,9 @@ export const productQuery = graphql`
           color
           originalPrice
           discountPrice
+          nonUserPrice
+          userPrice
+          dealerPrice
           featuredImage {
             title
             sizes(maxWidth: 550) {

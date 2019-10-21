@@ -29,6 +29,9 @@ export const indexQuery = graphql`
           color
           originalPrice
           discountPrice
+          nonUserPrice
+          userPrice
+          dealerPrice
           featuredImage {
             title
             sizes(maxWidth: 550) {
@@ -67,27 +70,14 @@ export default class IndexPage extends React.Component {
             const { allContentfulProduct: products } = data;
             return (
               <React.Fragment>
-                <ProductsTitleHeader
-                  padding="0 1rem"
-                  text="Featured"
-                  label="Products"
-                />
+                <ProductsTitleHeader margin text="Featured" label="Products" />
                 <Hero />
-                <ProductsTitleHeader container margin text="Why" label="Us" />
+                <ProductsTitleHeader margin text="Why" label="Us" />
                 <WhyUs />
-                <ProductsTitleHeader container margin text="Locations" />
+                <ProductsTitleHeader margin text="Locations" />
                 <AvailableLocations />
-                <ProductsTitleHeader
-                  container
-                  margin
-                  text="Latest"
-                  label="Products"
-                />
-                <section className="section">
-                  <div className="container">
-                    <TrendingItems products={products.edges} />
-                  </div>
-                </section>
+                <ProductsTitleHeader margin text="Latest" label="Products" />
+                <TrendingItems products={products.edges} />
                 {/* <DiscountOffer home={home} /> */}
                 <Subscription />
                 <ProductsTitleHeader

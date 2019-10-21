@@ -35,6 +35,10 @@ const Bottom = styled.div`
   }
 `;
 
+const Image = styled.img`
+  height: 26px;
+`;
+
 const NavItems = [
   { id: 2, name: 'Customer Care 24/7', url: '/contact' },
   { id: 5, name: 'Delivery Information', url: '/page/delivery-information' },
@@ -136,11 +140,7 @@ const Footer = ({ home }) => (
             <p>Copyright © 2019 - {config.siteName}</p>
           </div>
           <div className="column has-text-right is-hidden-mobile">
-            <img
-              src="/images/payment-strip.png"
-              style={{ height: '26px' }}
-              alt="payments cards"
-            />
+            <Image src="/images/payment-strip.png" alt="payments cards" />
           </div>
         </div>
       </div>

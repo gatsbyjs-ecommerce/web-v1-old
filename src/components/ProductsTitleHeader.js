@@ -18,11 +18,8 @@ const Container = styled.div`
   }
 `;
 
-const ProductsTitleHeader = ({ container, text, label, margin, padding }) => (
-  <Container
-    className={`${container ? 'container' : ''}`}
-    margin={margin}
-    padding={padding}>
+const ProductsTitleHeader = ({ text, label, margin, padding }) => (
+  <Container className="container" margin={margin} padding={padding}>
     <p className="is-size-3 has-text-weight-bold has-text-black-bis">
       {text}
       {` `}

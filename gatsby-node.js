@@ -80,6 +80,9 @@ exports.createPages = ({ actions, graphql }) => {
             status
             originalPrice
             discountPrice
+            nonUserPrice
+            userPrice
+            dealerPrice
             shippingCost
             color
             rating

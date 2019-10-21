@@ -15,6 +15,10 @@ const Container = styled.div`
   }
 `;
 
+const NavContainer = styled.nav`
+  padding: 1rem 1rem;
+`;
+
 export default ({ data }) => (
   <Container className="card">
     <header className="card-header">
@@ -23,7 +27,7 @@ export default ({ data }) => (
     <div className="card-content">
       <div className="content has-text-centered">{data.details.details}</div>
     </div>
-    <nav className="level card-header" style={{ padding: '1rem 1rem' }}>
+    <NavContainer className="level card-header">
       <div className="level-item has-text-centered">
         <div>
           <p className="heading  is-size-7">Coupon Code</p>
@@ -38,6 +42,6 @@ export default ({ data }) => (
           </p>
         </div>
       </div>
-    </nav>
+    </NavContainer>
   </Container>
 );

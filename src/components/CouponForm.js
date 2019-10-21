@@ -19,6 +19,10 @@ const couponMutation = gql`
   }
 `;
 
+const InputWrapper = styled.div`
+  width: 225px;
+`;
+
 const ApplyBtn = styled.button`
   border: 1px solid ${config.themeColor};
   background: ${config.themeColor};
@@ -44,7 +48,7 @@ class CouponForm extends React.Component {
     return (
       <form onSubmit={handleSubmit}>
         <div className="field has-addons">
-          <div className="control" style={{ width: '225px' }}>
+          <InputWrapper className="control">
             <input
               className="input is-shadowless"
               placeholder="Gift card or discount code"
@@ -53,7 +57,7 @@ class CouponForm extends React.Component {
               onChange={handleChange}
               onBlur={handleBlur}
             />
-          </div>
+          </InputWrapper>
           <div className="control">
             <ApplyBtn
               type="submit"

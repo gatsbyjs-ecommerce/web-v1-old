@@ -41,9 +41,6 @@ const Container = styled.div`
   .navbar-menu .navbar-item.active {
     color: ${config.themeColor};
   }
-  #navbarBasicExample {
-    margin-right: 1rem !important;
-  }
   .navbar-start {
     background-color: transparent !important;
   }
@@ -76,7 +73,6 @@ const ContainerMobile = styled.div`
 const SocialContainer = styled.div`
   display: grid;
   justify-content: end;
-  margin: 12px 30px 0 0;
 `;
 
 const MobileMenu = styled(animated.div)`
@@ -153,6 +149,9 @@ const LogoStyled = styled.span`
 
 const BottomHeader = styled.nav`
   background: #000;
+  .navbar-menu {
+    margin-right: 0rem !important;
+  }
   .navbar-item {
     color: ${config.textLite};
   }
@@ -213,7 +212,7 @@ class Header extends React.Component {
 
     return (
       <React.Fragment>
-        <Container className="is-hidden-mobile">
+        <Container className="container is-hidden-mobile">
           <div className="columns">
             <SocialContainer className="column">
               <SocialIcons data={home} />
@@ -223,7 +222,7 @@ class Header extends React.Component {
             className="navbar"
             role="navigation"
             aria-label="main navigation">
-            <Link to="/" style={{ margin: '0rem 1.5rem' }}>
+            <Link to="/">
               {/* <img src={config.logo} alt={`${config.siteName} logo`} /> */}
               <p className="is-size-1">
                 <LogoStyled>e</LogoStyled>box

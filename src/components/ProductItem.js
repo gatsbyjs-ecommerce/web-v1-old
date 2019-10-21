@@ -51,6 +51,10 @@ const Price = styled.p`
   margin-right: -1rem;
 `;
 
+const LinkWrapper = styled.p`
+  max-width: 94%;
+`;
+
 const ProductItem = ({ item }) => (
   <Container className="column is-one-third">
     <div className="card">
@@ -69,9 +73,9 @@ const ProductItem = ({ item }) => (
       <div className="card-content">
         <div className="media">
           <div className="media-content">
-            <p className="title is-5" style={{ maxWidth: '94%' }}>
+            <LinkWrapper className="title is-5" style={{ maxWidth: '94%' }}>
               <Link to={`/product/${item.slug}`}>{item.title}</Link>
-            </p>
+            </LinkWrapper>
             <p className="subtitle is-6 has-text-grey">{item.color}</p>
             <div className="price-container has-text-right">
               <Price className="title is-6 has-text-weight-normal price">

@@ -22,6 +22,9 @@ import Heading from '../components/Heading';
 //           slug
 //           color
 //           originalPrice
+//           nonUserPrice
+//           userPrice
+//           dealerPrice
 //           discountPrice
 //           featuredImage {
 //             title

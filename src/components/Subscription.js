@@ -23,7 +23,7 @@ const Card = styled.div`
 `;
 
 const Container = styled.div`
-  width: 85%;
+  width: 100%;
   height: 24.2rem;
   box-shadow: 0px 3px 15px rgba(10, 10, 10, 0.1),
     4px 4px 11px 1px rgba(10, 10, 10, 0.1);
@@ -81,48 +81,50 @@ class Subscription extends React.Component {
 
   render() {
     return (
-      <Card>
-        <Container className="card">
-          <div className="card-content has-text-centered">
-            <div className="media">
-              <div className="media-content has-text-centered">
-                <h1 className="has-text-weight-bold">
-                  GET UPDATE FROM ANYWHERE
-                </h1>
-                <p>Subscribe us to get our latest updates</p>
+      <div className="container">
+        <Card>
+          <Container className="card">
+            <div className="card-content has-text-centered">
+              <div className="media">
+                <div className="media-content has-text-centered">
+                  <h1 className="has-text-weight-bold">
+                    GET UPDATE FROM ANYWHERE
+                  </h1>
+                  <p>Subscribe us to get our latest updates</p>
+                </div>
+              </div>
+              <div className="content">
+                <Mutation
+                  mutation={subscribeMutation}
+                  update={this.onSuccess}
+                  onError={error => {
+                    swal(
+                      'Issue!',
+                      error.message.replace('GraphQL error: ', ''),
+                      'warning',
+                    );
+                  }}
+                >
+                  {(subscription, { loading }) => {
+                    return (
+                      <React.Fragment>
+                        <SubscriptionForm
+                          handleUpdate={data => {
+                            return subscription({
+                              variables: data,
+                            });
+                          }}
+                        />
+                        {loading ? <Loading /> : null}
+                      </React.Fragment>
+                    );
+                  }}
+                </Mutation>
               </div>
             </div>
-            <div className="content">
-              <Mutation
-                mutation={subscribeMutation}
-                update={this.onSuccess}
-                onError={error => {
-                  swal(
-                    'Issue!',
-                    error.message.replace('GraphQL error: ', ''),
-                    'warning',
-                  );
-                }}
-              >
-                {(subscription, { loading }) => {
-                  return (
-                    <React.Fragment>
-                      <SubscriptionForm
-                        handleUpdate={data => {
-                          return subscription({
-                            variables: data,
-                          });
-                        }}
-                      />
-                      {loading ? <Loading /> : null}
-                    </React.Fragment>
-                  );
-                }}
-              </Mutation>
-            </div>
-          </div>
-        </Container>
-      </Card>
+          </Container>
+        </Card>
+      </div>
     );
   }
 }

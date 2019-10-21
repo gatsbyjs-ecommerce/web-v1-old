@@ -29,6 +29,9 @@ export const shopQuery = graphql`
           color
           originalPrice
           discountPrice
+          nonUserPrice
+          userPrice
+          dealerPrice
           featuredImage {
             title
             sizes(maxWidth: 550) {
