@@ -67,12 +67,22 @@ export default class IndexPage extends React.Component {
             const { allContentfulProduct: products } = data;
             return (
               <React.Fragment>
+                <ProductsTitleHeader
+                  padding="0 1rem"
+                  text="Featured"
+                  label="Products"
+                />
                 <Hero />
-                <ProductsTitleHeader margin text="Why" label="Us" />
+                <ProductsTitleHeader container margin text="Why" label="Us" />
                 <WhyUs />
-                <ProductsTitleHeader margin text="Locations" />
+                <ProductsTitleHeader container margin text="Locations" />
                 <AvailableLocations />
-                <ProductsTitleHeader margin text="Latest" label="Products" />
+                <ProductsTitleHeader
+                  container
+                  margin
+                  text="Latest"
+                  label="Products"
+                />
                 <section className="section">
                   <div className="container">
                     <TrendingItems products={products.edges} />
@@ -80,7 +90,12 @@ export default class IndexPage extends React.Component {
                 </section>
                 {/* <DiscountOffer home={home} /> */}
                 <Subscription />
-                <ProductsTitleHeader margin text="Our" label="Brands" />
+                <ProductsTitleHeader
+                  container
+                  margin
+                  text="Our"
+                  label="Brands"
+                />
                 <BrandItems />
               </React.Fragment>
             );
