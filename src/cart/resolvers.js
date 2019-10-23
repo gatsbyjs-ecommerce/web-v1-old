@@ -38,7 +38,7 @@ export default {
           source: args.tokenId,
           receipt_email: args.customerEmail,
         });
-        // console.log('charge', charge);
+        console.log('charge', charge);
         args.stripeId = charge.id;
         args.status = charge.status;
         args.total = totalCost.toString();
