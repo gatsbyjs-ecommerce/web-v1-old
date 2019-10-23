@@ -17,11 +17,11 @@ exports.onPreBootstrap = () => {
     });
 };
 
-exports.createPages = async ({ graphql, actions, reporter }) => {
+exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
 
-  const result = await graphql(`
-    query {
+  return graphql(`
+    {
       allContentfulPages {
         edges {
           node {
@@ -162,36 +162,39 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
     }
-  `);
+  `).then(async result => {
+    if (result.errors) {
+      result.errors.forEach(e => console.error(e.toString())); // eslint-disable-line
+      return Promise.reject(result.errors);
+    }
 
-  if (result.errors) {
-    return reporter.panicOnBuild('🚨 ERROR: Loading "createPages" query');
-  }
-
-  const products = result.data.allContentfulProduct.edges || [];
-  const pages = result.data.allContentfulPages.edges || [];
-
-  products.forEach(({ node }) => {
-    createPage({
-      path: `product/${node.slug.current}`,
-      component: path.resolve(`src/templates/product.js`),
-      // additional data can be passed via context
-      context: {
-        slug: node.slug.current,
-      },
+    // console.log('result', result);
+    result.data.allContentfulPages.edges.forEach(({ node }) => {
+      // console.log('node', node);
+      const pagePath = `page/${node.slug}`;
+      createPage({
+        path: pagePath,
+        component: path.resolve(`src/templates/page.js`),
+        // additional data can be passed via context
+        context: {
+          slug: node.slug,
+        },
+      });
     });
-  });
 
-  pages.forEach(({ node }) => {
-    createPage({
-      path: `page/${node.slug.current}`,
-      component: path.resolve(`src/templates/product.js`),
-      // additional data can be passed via context
-      context: {
-        slug: node.slug.current,
-      },
+    result.data.allContentfulProduct.edges.forEach(({ node }) => {
+      // console.log('node', node);
+      const pagePath = `product/${node.slug}`;
+      createPage({
+        path: pagePath,
+        component: path.resolve(`src/templates/product.js`),
+        // additional data can be passed via context
+        context: {
+          slug: node.slug,
+        },
+      });
     });
-  });
 
-  return true;
+    return null;
+  });
 };
