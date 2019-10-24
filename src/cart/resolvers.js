@@ -3,7 +3,7 @@ import async from 'async';
 import { first } from 'lodash';
 
 import { getEntry, getEntries, createEntry } from '../utils/contentful';
-
+import { sendTelegram } from '../utils/telegram';
 import config from '../utils/config';
 
 export default {
@@ -13,6 +13,7 @@ export default {
   Mutation: {
     createOrder: async (parent, args) => {
       // get products
+      let productsString = '';
       const totalCost = await new Promise(resolve => {
         let total = 0;
         async.each(
@@ -20,6 +21,7 @@ export default {
           async (productId, callback) => {
             const product = await getEntry(productId);
             total += product.discountPrice;
+            productsString = `${productsString}, ${product.title}`;
             callback();
           },
           () => {
@@ -27,6 +29,14 @@ export default {
           },
         );
       });
+
+      // send to telegram
+      sendTelegram(`
+        *New Order ${args.orderId}*
+        - Customer: ${args.customerName} - ${args.customerTelephone}, ${args.customerEmail}
+        - Amount: ${totalCost}
+        - Product: ${productsString}
+      `);
 
       // process payment with stripe
       const stripe = new Stripe(config.get('stripeKey'));
