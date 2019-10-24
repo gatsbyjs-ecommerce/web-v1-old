@@ -8,7 +8,7 @@ dotenv.config();
 const conf = convict({
   siteName: {
     doc: 'Site name.',
-    default: 'Sejal Suits',
+    default: 'Smart Home Devices',
     env: 'SITE_NAME',
   },
   env: {

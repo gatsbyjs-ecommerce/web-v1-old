@@ -44,7 +44,7 @@ export default {
         const charge = await stripe.charges.create({
           amount: `${totalCost}00`,
           currency: 'gbp',
-          description: `Order by ${args.customerEmail} for SejalSuits`,
+          description: `Order by ${args.customerEmail} for SmartHomeDevices`,
           source: args.tokenId,
           receipt_email: args.customerEmail,
         });
