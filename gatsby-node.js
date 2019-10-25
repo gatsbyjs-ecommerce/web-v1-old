@@ -186,7 +186,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   pages.forEach(({ node }) => {
     createPage({
       path: `page/${node.slug}`,
-      component: path.resolve(`src/templates/product.js`),
+      component: path.resolve(`src/templates/page.js`),
       // additional data can be passed via context
       context: {
         slug: node.slug,
