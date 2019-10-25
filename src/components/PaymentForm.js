@@ -37,36 +37,8 @@ const BuyBtn = styled.button`
 `;
 
 const createOrder = gql`
-  mutation createOrder(
-    $tokenId: String!
-    $orderId: String!
-    $productIds: [String]!
-    $fullName: String!
-    $address1: String!
-    $address2: String
-    $city: String!
-    $state: String!
-    $postcode: String!
-    $country: String!
-    $email: String!
-    $telephone: String!
-  ) {
-    createOrder(
-      input: {
-        tokenId: $tokenId
-        orderId: $orderId
-        productIds: $productIds
-        customerName: $fullName
-        customerAddress1: $address1
-        customerAddress2: $address2
-        customerCity: $city
-        customerState: $state
-        customerPostcode: $postcode
-        customerCountry: $country
-        customerEmail: $email
-        customerTelephone: $telephone
-      }
-    ) {
+  mutation createOrder($input: OrderInput) {
+    createOrder(input: $input) {
       id
       orderId
     }
@@ -248,6 +220,7 @@ export default withFormik({
     const user = userData !== null ? userData : {};
     const orderId = randomstring.generate(6).toUpperCase();
     const alertify = require('alertify.js'); // eslint-disable-line
+    console.log('props.cartData.items', props.cartData.items);
     const productIds = props.cartData.items.map(item => item.id);
 
     $('.payment-form-btn').addClass('is-loading');
@@ -266,12 +239,12 @@ export default withFormik({
         cvc: values.cvc,
         exp_month: values.exp_month,
         exp_year: values.exp_year,
-        name: user.fullName,
-        address_line1: user.address1,
-        address_city: user.city,
-        address_state: user.state,
-        address_zip: user.postcode,
-        address_country: user.country,
+        name: user.customerName,
+        address_line1: user.customerAddress1,
+        address_city: user.customerCity,
+        address_state: user.customerState,
+        address_zip: user.customerPostcode,
+        address_country: user.customerCountry,
       },
       (error, token) => {
         if (error === 200) {
@@ -281,10 +254,12 @@ export default withFormik({
             .mutate({
               mutation: createOrder,
               variables: {
-                tokenId: token.id,
-                orderId,
-                productIds,
-                ...user,
+                input: {
+                  tokenId: token.id,
+                  orderId,
+                  productIds,
+                  ...user,
+                },
               },
             })
             .then(result => {

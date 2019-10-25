@@ -127,13 +127,14 @@ class ProductInfo extends React.Component {
     $('.product-info-btn').addClass('is-loading');
 
     const { product } = this.props;
+    console.log('product', product);
     const newCart = { ...data.cart };
     let items = JSON.parse(newCart.items);
     items = items !== null ? items : [];
 
     // log to google analytics
     ReactGA.plugin.execute('ecommerce', 'addItem', {
-      id: product.id,
+      id: product.contentful_id,
       name: product.title,
       sku: product.productCode,
       price: product.discountPrice,
@@ -142,7 +143,8 @@ class ProductInfo extends React.Component {
 
     newCart.count = items.length + 1;
     items.push({
-      id: product.id.slice(1),
+      // id: product.id.slice(1),
+      id: product.contentful_id,
       productCode: product.productCode,
       title: product.title,
       price: product.discountPrice,

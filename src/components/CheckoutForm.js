@@ -69,14 +69,14 @@ class CheckoutForm extends React.Component {
                   <div className="control">
                     <input
                       className="input is-shadowless"
-                      name="fullName"
-                      value={values.fullName}
+                      name="customerName"
+                      value={values.customerName}
                       onChange={handleChange}
                       onBlur={handleBlur}
                       autoFocus
                     />
-                    {errors.fullName && touched.fullName && (
-                      <p className="help is-danger">{errors.fullName}</p>
+                    {errors.customerName && touched.customerName && (
+                      <p className="help is-danger">{errors.customerName}</p>
                     )}
                   </div>
                 </div>
@@ -85,13 +85,15 @@ class CheckoutForm extends React.Component {
                   <div className="control">
                     <input
                       className="input is-shadowless"
-                      name="address1"
-                      value={values.address1}
+                      name="customerAddress1"
+                      value={values.customerAddress1}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.address1 && touched.address1 && (
-                      <p className="help is-danger">{errors.address1}</p>
+                    {errors.customerAddress1 && touched.customerAddress1 && (
+                      <p className="help is-danger">
+                        {errors.customerAddress1}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -100,13 +102,15 @@ class CheckoutForm extends React.Component {
                   <div className="control">
                     <input
                       className="input is-shadowless"
-                      name="address2"
-                      value={values.address2}
+                      name="customerAddress2"
+                      value={values.customerAddress2}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.address2 && touched.address2 && (
-                      <p className="help is-danger">{errors.address2}</p>
+                    {errors.customerAddress2 && touched.customerAddress2 && (
+                      <p className="help is-danger">
+                        {errors.customerAddress2}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -117,13 +121,15 @@ class CheckoutForm extends React.Component {
                       <div className="control">
                         <input
                           className="input is-shadowless"
-                          name="city"
-                          value={values.city}
+                          name="customerCity"
+                          value={values.customerCity}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.city && touched.city && (
-                          <p className="help is-danger">{errors.city}</p>
+                        {errors.customerCity && touched.customerCity && (
+                          <p className="help is-danger">
+                            {errors.customerCity}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -132,14 +138,17 @@ class CheckoutForm extends React.Component {
                       <div className="control">
                         <input
                           className="input is-shadowless"
-                          name="postcode"
-                          value={values.postcode}
+                          name="customerPostcode"
+                          value={values.customerPostcode}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.postcode && touched.postcode && (
-                          <p className="help is-danger">{errors.postcode}</p>
-                        )}
+                        {errors.customerPostcode &&
+                          touched.customerPostcode && (
+                            <p className="help is-danger">
+                              {errors.customerPostcode}
+                            </p>
+                          )}
                       </div>
                     </div>
                   </div>
@@ -151,13 +160,15 @@ class CheckoutForm extends React.Component {
                       <div className="control">
                         <input
                           className="input is-shadowless"
-                          name="state"
-                          value={values.state}
+                          name="customerState"
+                          value={values.customerState}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.state && touched.state && (
-                          <p className="help is-danger">{errors.state}</p>
+                        {errors.customerState && touched.customerState && (
+                          <p className="help is-danger">
+                            {errors.customerState}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -166,13 +177,15 @@ class CheckoutForm extends React.Component {
                       <div className="control">
                         <input
                           className="input is-shadowless"
-                          name="country"
-                          value={values.country}
+                          name="customerCountry"
+                          value={values.customerCountry}
                           onChange={handleChange}
                           onBlur={handleBlur}
                         />
-                        {errors.country && touched.country && (
-                          <p className="help is-danger">{errors.country}</p>
+                        {errors.customerCountry && touched.customerCountry && (
+                          <p className="help is-danger">
+                            {errors.customerCountry}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -183,13 +196,13 @@ class CheckoutForm extends React.Component {
                   <div className="control">
                     <input
                       className="input is-shadowless"
-                      name="email"
-                      value={values.email}
+                      name="customerEmail"
+                      value={values.customerEmail}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.email && touched.email && (
-                      <p className="help is-danger">{errors.email}</p>
+                    {errors.customerEmail && touched.customerEmail && (
+                      <p className="help is-danger">{errors.customerEmail}</p>
                     )}
                   </div>
                 </div>
@@ -198,13 +211,15 @@ class CheckoutForm extends React.Component {
                   <div className="control">
                     <input
                       className="input is-shadowless"
-                      name="telephone"
-                      value={values.telephone}
+                      name="customerTelephone"
+                      value={values.customerTelephone}
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                    {errors.telephone && touched.telephone && (
-                      <p className="help is-danger">{errors.telephone}</p>
+                    {errors.customerTelephone && touched.customerTelephone && (
+                      <p className="help is-danger">
+                        {errors.customerTelephone}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -232,27 +247,27 @@ CheckoutForm.propTypes = {
 
 export default withFormik({
   mapPropsToValues: () => ({
-    fullName: '',
-    address1: '',
-    address2: '',
-    city: '',
-    postcode: '',
-    state: '',
-    country: '',
-    email: '',
-    telephone: '',
+    customerName: '',
+    customerAddress1: '',
+    customerAddress2: '',
+    customerCity: '',
+    customerPostcode: '',
+    customerState: '',
+    customerCountry: '',
+    customerEmail: '',
+    customerTelephone: '',
   }),
   validationSchema: Yup.object().shape({
-    fullName: Yup.string().required('Full name is required.'),
-    address1: Yup.string().required('Address 1 is required.'),
-    city: Yup.string().required('City is required.'),
-    postcode: Yup.string().required('Postcode is required.'),
-    state: Yup.string().required('State is required.'),
-    country: Yup.string().required('Country is required.'),
-    email: Yup.string()
+    customerName: Yup.string().required('Full name is required.'),
+    customerAddress1: Yup.string().required('Address 1 is required.'),
+    customerCity: Yup.string().required('City is required.'),
+    customerPostcode: Yup.string().required('Postcode is required.'),
+    customerState: Yup.string().required('State is required.'),
+    customerCountry: Yup.string().required('Country is required.'),
+    customerEmail: Yup.string()
       .email('Invalid email address')
       .required('Email is required!'),
-    telephone: Yup.string().required('Telephone is required!'),
+    customerTelephone: Yup.string().required('Telephone is required!'),
   }),
   handleSubmit: (values, { setSubmitting, props }) => {
     // console.log('handle submit', values, props);

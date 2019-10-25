@@ -41,7 +41,6 @@ export default class Product extends React.Component {
         contentfulHome: home,
       },
     } = this.props;
-    // console.log('product', product);
 
     const metaImage = product.featuredImage
       ? product.featuredImage.sizes.src
@@ -87,6 +86,7 @@ export const productQuery = graphql`
   query ProductByPath($slug: String!) {
     contentfulProduct(slug: { eq: $slug }) {
       id
+      contentful_id
       title
       slug
       originalPrice

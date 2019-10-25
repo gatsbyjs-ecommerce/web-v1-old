@@ -75,6 +75,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         edges {
           node {
             id
+            contentful_id
             title
             slug
             status
@@ -173,22 +174,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   products.forEach(({ node }) => {
     createPage({
-      path: `product/${node.slug.current}`,
+      path: `product/${node.slug}`,
       component: path.resolve(`src/templates/product.js`),
       // additional data can be passed via context
       context: {
-        slug: node.slug.current,
+        slug: node.slug,
       },
     });
   });
 
   pages.forEach(({ node }) => {
     createPage({
-      path: `page/${node.slug.current}`,
+      path: `page/${node.slug}`,
       component: path.resolve(`src/templates/product.js`),
       // additional data can be passed via context
       context: {
-        slug: node.slug.current,
+        slug: node.slug,
       },
     });
   });
