@@ -5,7 +5,16 @@ import Link from 'gatsby-link';
 import ButtonLink from './ButtonLink';
 
 const Wrapper = styled.div`
-  .column :last-child {
+  background-image: url('/images/home/homebg1.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 44rem;
+  @media only screen and (max-width: 768px) {
+    background-size: contain;
+    height: 13rem;
+  }
+  .column {
     align-self: center;
   }
 `;
@@ -54,20 +63,21 @@ class Hero extends React.Component {
 
     return (
       <Wrapper className="columns">
-        <div className="column is-6 is-hidden-mobile">
-          <img src="/images/home/homebg.jpeg" alt="Smart Home Theme" />
-        </div>
         <div className="column">
           <Content>
-            <h2 className="is-size-3">{home.heroTitle}</h2>
-            <h1 className="has-text-dark has-text-weight-bold is-uppercase">
+            <h2 className="is-size-3 is-size-6-mobile has-text-white">
+              {home.heroTitle}
+            </h2>
+            <h1 className="has-text-white has-text-weight-bold is-size-6-mobile is-uppercase">
               {home.heroSubtitle}
             </h1>
-            <p className="has-text-weight-semibold">
+            <p className="has-text-weight-semibold has-text-white">
               {home.heroDescription.heroDescription}{' '}
-              <Link to="/page/tv-upgrade">Find out how now!</Link>
+              <Link to="/page/tv-upgrade">
+                <span className="has-text-white">Find out how now!</span>
+              </Link>
             </p>
-            <ButtonLink text="Shop Now" link="/shop" />
+            <ButtonLink text="Shop Now" link="/shop" isHidden />
           </Content>
         </div>
       </Wrapper>

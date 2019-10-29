@@ -25,9 +25,24 @@ const ButtonWrapper = styled.div`
   }
 `;
 
-const ButtonLink = ({ width, link, text, margin, widthMobile }) => (
+const ButtonLink = ({
+  width,
+  link,
+  className,
+  secondary,
+  isHidden,
+  text,
+  margin,
+  widthMobile,
+  ...otherProps
+}) => (
   <ButtonWrapper width={width} margin={margin} widthMobile={widthMobile}>
-    <Link to={`${link}`} className="button is-rounded has-text-weight-bold">
+    <Link
+      to={`${link}`}
+      className={`button ${
+        secondary ? '' : 'is-rounded has-text-weight-bold'
+      } ${isHidden ? 'is-hidden-mobile' : ''}`}
+      {...otherProps}>
       {text}
     </Link>
   </ButtonWrapper>
