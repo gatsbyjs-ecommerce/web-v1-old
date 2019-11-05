@@ -52,6 +52,10 @@ const Container = styled.div`
     height: auto;
     margin-top: 11px;
   }
+  nav {
+    background: #f9f7f7;
+    padding: 0px 1rem;
+  }
 `;
 
 const ContainerMobile = styled.div`
@@ -73,6 +77,7 @@ const ContainerMobile = styled.div`
 const SocialContainer = styled.div`
   display: grid;
   justify-content: end;
+  padding: 1rem;
 `;
 
 const MobileMenu = styled(animated.div)`
@@ -147,15 +152,15 @@ const LogoStyled = styled.span`
   color: ${config.primaryColor};
 `;
 
-const BottomHeader = styled.nav`
-  background: #000;
-  .navbar-menu {
-    margin-right: 0rem !important;
-  }
-  .navbar-item {
-    color: ${config.textLite};
-  }
-`;
+// const BottomHeader = styled.nav`
+//   background: #000;
+//   .navbar-menu {
+//     margin-right: 0rem !important;
+//   }
+//   .navbar-item {
+//     color: ${config.textLite};
+//   }
+// `;
 
 const NavItems = [
   { id: 1, name: 'Home', url: '/' },
@@ -164,13 +169,13 @@ const NavItems = [
   { id: 4, name: 'Orders', url: '/register' },
 ];
 
-const SubNavItems = [
-  { id: 1, name: 'Customer Support', url: '/' },
-  { id: 2, name: 'Todays deal', url: '/shop' },
-  { id: 3, name: 'Buy Again', url: '/login' },
-  { id: 4, name: 'Sell at ebox', url: '/register' },
-  { id: 5, name: 'Get Prints on Demand', url: '/coupons' },
-];
+// const SubNavItems = [
+//   { id: 1, name: 'Customer Support', url: '/' },
+//   { id: 2, name: 'Todays deal', url: '/shop' },
+//   { id: 3, name: 'Buy Again', url: '/login' },
+//   { id: 4, name: 'Sell at ebox', url: '/register' },
+//   { id: 5, name: 'Get Prints on Demand', url: '/coupons' },
+// ];
 
 class Header extends React.Component {
   constructor(props) {
@@ -261,7 +266,7 @@ class Header extends React.Component {
               </Icons>
             </div>
           </nav>
-          <BottomHeader
+          {/* <BottomHeader
             className="navbar"
             role="navigation"
             aria-label="main navigation">
@@ -301,7 +306,7 @@ class Header extends React.Component {
                 </div>
               </Icons>
             </div>
-          </BottomHeader>
+          </BottomHeader> */}
         </Container>
         <ContainerMobile className="is-hidden-tablet">
           <div className="columns is-mobile">
