@@ -25,6 +25,9 @@ const MyOrders = () => (
         />
         <Heading>My Orders</Heading>
         <MyOrderItem />
+        <MyOrderItem />
+        <MyOrderItem />
+        <MyOrderItem />
       </div>
     </Container>
   </Layout>
