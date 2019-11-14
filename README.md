@@ -2,7 +2,7 @@
 
 A minimalist static E-commerce site built using GatsbyJs.
 
-- Site is still in progress, happy for pull requests and issues if you find any
+- Site is still in progress, happy for pull requests and issues if you find any.
 
 [Live Demo](https://www.smarthomedevices.solutions/)
 
