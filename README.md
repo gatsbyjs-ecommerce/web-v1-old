@@ -1,5 +1,7 @@
 # GatsbyJs Ecommerce
 
+## THIS REPOSITORY HAS BEEN MOVED TO [https://github.com/gatsbyjs-ecommerce/web](https://github.com/gatsbyjs-ecommerce/web)
+
 A minimalist static E-commerce site built using GatsbyJs.
 
 It use headless CMS called Contentful, so no need to manage database for APIs hosting.
